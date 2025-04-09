@@ -67,8 +67,8 @@ public class EmployeeDAO {
     public List<Employee> getAllEmployees() throws SQLException {
         List<Employee> list = new ArrayList<>();
         String sql = "SELECT * FROM employee";
-        try (Statement stmt = connection.createStatement()) {
-            ResultSet rs = stmt.executeQuery(sql);
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Employee employee = new Employee(
                     rs.getInt("employee_id"),
