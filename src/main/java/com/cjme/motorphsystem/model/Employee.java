@@ -37,6 +37,22 @@ public class Employee {
         this.immediateSupervisor = immediateSupervisor;
     }
 
+    public Employee(String firstName, String lastName, Date birthday, String address, String phoneNum, String sssNum, String philHealthNum, String pagibigNum, String tinNum, String status, String position, String immediateSupervisor) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.address = address;
+        this.phoneNum = phoneNum;
+        this.sssNum = sssNum;
+        this.philHealthNum = philHealthNum;
+        this.pagibigNum = pagibigNum;
+        this.tinNum = tinNum;
+        this.status = status;
+        this.position = position;
+        this.immediateSupervisor = immediateSupervisor;
+        this.employeeID = 0;
+    }
+
     public int getEmployeeID() {
         return employeeID;
     }

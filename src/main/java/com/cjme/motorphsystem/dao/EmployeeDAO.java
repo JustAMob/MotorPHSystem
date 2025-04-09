@@ -4,32 +4,32 @@ package com.cjme.motorphsystem.dao;
  * @author JustAMob
  */
 import com.cjme.motorphsystem.model.Employee;
+import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAO {
-    private Connection connection;
+    private final Connection connection;
 
-    public EmployeeDAO(Connection connection) {
-        this.connection = connection;
+    public EmployeeDAO() throws SQLException {
+        this.connection = DBConnection.getConnection();
     }
 
     // CREATE
     public boolean addEmployee(Employee employee) throws SQLException {
-        String sql = "INSERT INTO employee (employee_id, first_name, last_name, birthday, address, phone_num, sss_num, philhealth_num, pagibig_num, tin_num, status, position, immediate_supervisor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO employee (first_name, last_name, birthday, address, phone_num, sss_num, philhealth_num, pagibig_num, tin_num, status, position, immediate_supervisor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, employee.getEmployeeID());
-            stmt.setString(2, employee.getFirstName());
-            stmt.setString(3, employee.getLastName());
-            stmt.setDate(4, employee.getBirthday());
-            stmt.setString(5, employee.getAddress());
-            stmt.setString(6, employee.getPhoneNum());
-            stmt.setString(7, employee.getSssNum());
-            stmt.setString(8, employee.getPhilHealthNum());
-            stmt.setString(9, employee.getPagibigNum());
-            stmt.setString(10, employee.getTinNum());
-            stmt.setString(11, employee.getStatus());
+            stmt.setString(1, employee.getFirstName());
+            stmt.setString(2, employee.getLastName());
+            stmt.setDate(3, employee.getBirthday());
+            stmt.setString(4, employee.getAddress());
+            stmt.setString(5, employee.getPhoneNum());
+            stmt.setString(6, employee.getSssNum());
+            stmt.setString(7, employee.getPhilHealthNum());
+            stmt.setString(8, employee.getPagibigNum());
+            stmt.setString(9, employee.getTinNum());
+            stmt.setString(10, employee.getStatus());
             stmt.setString(11, employee.getPosition());
             stmt.setString(12, employee.getImmediateSupervisor());
             return stmt.executeUpdate() > 0;
