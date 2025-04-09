@@ -8,7 +8,7 @@ public class DatabaseConnection {
 
     public static Connection getConnection() {
         // Change these values to match your database configuration
-        String url = "jdbc:mysql://localhost:3306/MotorPHDatabase"; // Database URL
+        String url = "jdbc:mysql://127.0.0.1:3306/motorphdatabase"; // Database URL
         String username = "root";  // MySQL Username
         String password = "01Tartaros";  // MySQL Password
 
@@ -20,7 +20,6 @@ public class DatabaseConnection {
             // Establish and return the connection
             return DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
         }
         
         return null;

@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cjme.motorphsystem.service;
+
+import com.cjme.motorphsystem.security.Permission;
+import com.cjme.motorphsystem.security.Role;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
  * @author JustAMob
  */
 public class UserRolesService {
-    
+
+
 }
+
