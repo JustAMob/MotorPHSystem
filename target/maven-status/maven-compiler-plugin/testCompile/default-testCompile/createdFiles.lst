@@ -1,1 +1,2 @@
-database\DatabaseConnection.class
+com\cjme\motorphsystem\dao\deductions\PhilHealthDAOTest.class
+com\cjme\motorphsystem\dao\deductions\SssDAOTest.class
