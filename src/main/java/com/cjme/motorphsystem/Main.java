@@ -4,6 +4,7 @@ import com.cjme.motorphsystem.dao.EmployeeDAO;
 import com.cjme.motorphsystem.model.Attendance;
 import com.cjme.motorphsystem.model.Employee;
 import com.cjme.motorphsystem.util.DBConnection;
+import com.cjme.motorphsystem.util.DeductionUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -20,6 +21,17 @@ public class Main {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException {
+       
+        
+        
+        
+//        try (Connection connection = DBConnection.getConnection()) {
+//            DeductionUtil.fillUpDeductions(connection);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+        
+
         // TODO code application logic here
 //        Connection conn = DBConnection.getConnection();
 //        if (conn != null) {

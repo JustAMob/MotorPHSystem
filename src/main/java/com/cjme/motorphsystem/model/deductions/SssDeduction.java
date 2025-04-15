@@ -13,6 +13,6 @@ public class SssDeduction extends Deduction {
 
     @Override
     public double calculate() {
-        return sssDAO.getContributionForSalary(salary);
+        return sssDAO.getContributionForSalary(this.salary);
     }
 }

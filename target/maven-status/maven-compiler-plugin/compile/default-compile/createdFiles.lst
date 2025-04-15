@@ -1,13 +1,16 @@
 com\cjme\motorphsystem\model\deductions\SssDeduction.class
 com\cjme\motorphsystem\exception\AuthorizationException.class
 com\cjme\motorphsystem\service\LeaveService.class
+com\cjme\motorphsystem\util\PayrollUtil.class
 com\cjme\motorphsystem\controller\Dashboard$1.class
 com\cjme\motorphsystem\exception\EmployeeNotFoundException.class
 com\cjme\motorphsystem\dao\EmployeeDAO.class
 com\cjme\motorphsystem\controller\LoginScreen.class
 com\cjme\motorphsystem\model\Employee.class
 com\cjme\motorphsystem\service\AttendanceTracker.class
+com\cjme\motorphsystem\model\deductions\PagibigDeduction.class
 com\cjme\motorphsystem\Main.class
+com\cjme\motorphsystem\util\DeductionUtil.class
 com\cjme\motorphsystem\service\EmployeeService.class
 com\cjme\motorphsystem\exception\LeaveRequestException.class
 com\cjme\motorphsystem\model\Salary.class
@@ -39,6 +42,7 @@ com\cjme\motorphsystem\dao\deductions\PagibigDAO.class
 com\cjme\motorphsystem\util\DBConnection.class
 com\cjme\motorphsystem\controller\EmployeeList.class
 com\cjme\motorphsystem\exception\AttendanceException.class
+com\cjme\motorphsystem\dao\DeductionDAO$DeductionRecord.class
 com\cjme\motorphsystem\dao\deductions\SssDAO.class
 com\cjme\motorphsystem\service\TaxService.class
 com\cjme\motorphsystem\dao\PayrollDAO.class
@@ -48,3 +52,4 @@ com\cjme\motorphsystem\dao\deductions\PhilHealthDAO.class
 com\cjme\motorphsystem\security\User.class
 com\cjme\motorphsystem\dao\AttendanceDAO.class
 com\cjme\motorphsystem\model\Allowance.class
+com\cjme\motorphsystem\model\deductions\PagibigContribution.class

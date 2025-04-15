@@ -12,4 +12,5 @@ public interface AllowanceDAO {
     boolean addAllowance(Allowance allowance, int employeeId) throws SQLException;
     List<Allowance> getAllAllowances() throws SQLException;
     List<Allowance> getAllowancesByEmployeeId(int employeeId) throws SQLException;
+    double getTotalAllowanceByEmployeeID(int employeeId) throws SQLException;
 }

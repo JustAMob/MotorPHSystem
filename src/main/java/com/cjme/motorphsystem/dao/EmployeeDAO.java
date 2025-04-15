@@ -90,6 +90,28 @@ public class EmployeeDAO {
         }
         return list;
     }
+    public Object getColumnValueByEmployeeId(int employeeId, String columnName) throws SQLException {
+    // Whitelist allowed column names to avoid SQL injection
+    List<String> allowedColumns = List.of(
+        "first_name", "last_name", "birthday", "address", "phone_num",
+        "sss_num", "philhealth_num", "pagibig_num", "tin_num",
+        "status", "position", "immediate_supervisor","basic_salary", "hourly_rate"
+    );
+
+    if (!allowedColumns.contains(columnName)) {
+        throw new IllegalArgumentException("Invalid column name: " + columnName);
+    }
+
+    String sql = "SELECT " + columnName + " FROM employee WHERE employee_id = ?";
+    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        stmt.setInt(1, employeeId);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return rs.getObject(columnName);
+        }
+    }
+    return null;
+}
 
     // UPDATE
     public boolean updateEmployee(Employee employee) throws SQLException {

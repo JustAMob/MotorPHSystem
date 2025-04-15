@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 public class PhilHealthDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     // Constructor to initialize the connection
     public PhilHealthDAO(Connection connection) {

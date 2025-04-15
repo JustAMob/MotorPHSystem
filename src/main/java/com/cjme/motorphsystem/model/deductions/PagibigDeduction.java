@@ -24,7 +24,6 @@ public class PagibigDeduction extends Deduction {
         double employeeContribution = salary * contribution.getEmployeeRate();
         double employerContribution = salary * contribution.getEmployerRate();
 
-        // Return combined contribution (or adjust according to your business rules)
-        return employeeContribution + employerContribution;
+        return Math.min(employeeContribution, 100);
     }
 }

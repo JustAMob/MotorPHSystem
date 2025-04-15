@@ -57,6 +57,20 @@ public class AllowanceDAOImpl implements AllowanceDAO {
         }
         return allowances;
     }
+    
+    @Override
+    public double getTotalAllowanceByEmployeeID(int employeeID) throws SQLException {
+    String sql = "SELECT total_allowance FROM allowance WHERE employee_id = ?";
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, employeeID);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return rs.getDouble("total_allowance");
+        }
+    }
+    return 0.0; // Default if no result found
+}
 
     private Allowance mapRowToAllowance(ResultSet rs) throws SQLException {
         Allowance allowance = new Allowance();

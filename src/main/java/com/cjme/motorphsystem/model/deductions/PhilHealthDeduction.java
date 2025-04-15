@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cjme.motorphsystem.model.deductions;
 
+import com.cjme.motorphsystem.dao.deductions.PhilHealthDAO;
 import com.cjme.motorphsystem.model.Deduction;
 
 /**
@@ -12,14 +9,17 @@ import com.cjme.motorphsystem.model.Deduction;
  */
 
 public class PhilHealthDeduction extends Deduction {
+    private final PhilHealthDAO philhealth;
 
-    public PhilHealthDeduction(double salary) {
+    public PhilHealthDeduction(double salary, PhilHealthDAO philhealth) {
         super(salary);
+        this.philhealth = philhealth;
     }
 
     @Override
     public double calculate() {
-        double premium = salary * 0.03; // 3% total
+        
+        double premium = salary * philhealth.getPremiumRate(); // 3% total
         return premium / 2; // employee share
     }
 }

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  */
 public class PagibigDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     // Constructor to initialize the connection
     public PagibigDAO(Connection connection) {

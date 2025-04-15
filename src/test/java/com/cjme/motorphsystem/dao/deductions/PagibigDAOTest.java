@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package com.cjme.motorphsystem.dao.deductions;
 
 import com.cjme.motorphsystem.model.deductions.PagibigContribution;
@@ -18,7 +14,6 @@ public class PagibigDAOTest {
 
     @Test
     public void testGetRatesForSalary() throws Exception {
-        // Use your utility class to get the database connection
         Connection connection = DBConnection.getConnection();
         PagibigDAO pagibigDAO = new PagibigDAO(connection);
 
@@ -28,9 +23,9 @@ public class PagibigDAOTest {
         // Get the rates from the DAO
         PagibigContribution contribution = pagibigDAO.getRatesForSalary(salary);
 
-        // Expected rates (from your database; these should match what's in the database)
-        double expectedEmployeeRate = 0.02; // Example rate (replace with actual)
-        double expectedEmployerRate = 0.02; // Example rate (replace with actual)
+        // Expected rates 
+        double expectedEmployeeRate = 0.02; 
+        double expectedEmployerRate = 0.02; 
 
         // Test if the rates are correct
         assertEquals(expectedEmployeeRate, contribution.getEmployeeRate(), 0.0001);
