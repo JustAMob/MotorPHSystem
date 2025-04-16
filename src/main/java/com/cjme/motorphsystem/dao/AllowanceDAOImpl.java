@@ -60,7 +60,7 @@ public class AllowanceDAOImpl implements AllowanceDAO {
     
     @Override
     public double getTotalAllowanceByEmployeeID(int employeeID) throws SQLException {
-    String sql = "SELECT total_allowance FROM allowance WHERE employee_id = ?";
+    String sql = "SELECT total_allowance FROM allowances WHERE employee_id = ?";
     try (Connection conn = DBConnection.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
         stmt.setInt(1, employeeID);

@@ -26,12 +26,12 @@ com\cjme\motorphsystem\security\SecurityManager.class
 com\cjme\motorphsystem\service\PayrollCalculator.class
 com\cjme\motorphsystem\exception\DuplicateEmployeeException.class
 com\cjme\motorphsystem\model\Report.class
-com\cjme\motorphsystem\service\DeductionService.class
 com\cjme\motorphsystem\config\AppConfig.class
 com\cjme\motorphsystem\model\deductions\PhilHealthDeduction.class
 com\cjme\motorphsystem\security\Permission.class
 com\cjme\motorphsystem\util\ValidationUtils.class
 com\cjme\motorphsystem\controller\Dashboard.class
+com\cjme\motorphsystem\dao\TaxDAO.class
 com\cjme\motorphsystem\security\Role.class
 com\cjme\motorphsystem\model\Payslip.class
 com\cjme\motorphsystem\config\DatabaseConfig.class

@@ -7,7 +7,8 @@ package com.cjme.motorphsystem.util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 /**
  *
  * @author JustAMob
@@ -37,5 +38,15 @@ public class PayrollUtil {
             stmt.executeUpdate();
         }
     }
+    
+
+
+    public static double round(double value) {
+        return BigDecimal.valueOf(value)
+                .setScale(2, RoundingMode.HALF_UP)
+                .doubleValue();
+    }
+
+    
 }
 

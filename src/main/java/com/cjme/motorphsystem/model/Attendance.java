@@ -29,6 +29,9 @@ public class Attendance {
         this.timeOut = timeOut;
     }
 
+    public Attendance() {
+    }
+
     public int getLogID() {
         return logID;
     }

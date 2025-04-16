@@ -13,6 +13,7 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DocumentationDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PayrollDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\TaxDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AttendanceException.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AuthorizationException.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\DuplicateEmployeeException.java
@@ -38,7 +39,6 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\SecurityManager.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\User.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AttendanceTracker.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\DeductionService.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\EmployeeService.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\LeaveService.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\PayrollCalculator.java

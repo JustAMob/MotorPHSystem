@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.util.DBConnection;
@@ -24,8 +20,8 @@ public class TaxDAO {
     }
 
     public double calculateTax(double salary) throws SQLException {
-        String sql = "SELECT base_tax, excess_rate, excess_over FROM tax_table " +
-                     "WHERE ? > excess_over ORDER BY excess_over DESC LIMIT 1";
+        String sql = "SELECT base_tax, excess_rate, excess_over FROM withholding_tax " +
+                     "WHERE ? BETWEEN min_salary AND max_salary";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setDouble(1, salary);

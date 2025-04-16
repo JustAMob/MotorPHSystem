@@ -26,16 +26,19 @@ public class AttendanceTracker {
         for (Attendance log : logs) {
             Time timeIn = log.getTimeIn();
             Time timeOut = log.getTimeOut();
-
+            
+            //System.out.println("Time In: " + timeIn + " Time Out: " + timeOut);  
+            
             if (timeIn != null && timeOut != null) {
                 LocalTime in = timeIn.toLocalTime();
                 LocalTime out = timeOut.toLocalTime();
 
                 Duration duration = Duration.between(in, out);
+                
                 totalHours += duration.toMinutes() / 60.0;  
             }
         }
-
+        //System.out.println("Total Hours Worked: " + totalHours); 
         return totalHours;
     }
     
