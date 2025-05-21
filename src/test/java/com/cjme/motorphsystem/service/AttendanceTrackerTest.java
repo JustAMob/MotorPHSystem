@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package com.cjme.motorphsystem.service;
 
 import com.cjme.motorphsystem.dao.AttendanceDAO;
@@ -26,16 +22,13 @@ public class AttendanceTrackerTest {
 
     @Before
     public void setUp() {
-        // Mock the AttendanceDAO dependency
         attendanceDAO = Mockito.mock(AttendanceDAO.class);
         
-        // Create an instance of the AttendanceTracker with the mocked DAO
         attendanceTracker = new AttendanceTracker(attendanceDAO);
     }
 
     @Test
     public void testCalculateTotalHoursWorked() throws Exception {
-        // Given: Mock attendance data for a specific employee (e.g., employeeId = 1, for May 2025)
         int employeeId = 1;
         int year = 2025;
         int month = 6;
@@ -59,6 +52,6 @@ public class AttendanceTrackerTest {
         double actualHours = attendanceTracker.calculateTotalHoursWorked(employeeId, year, month);
 
         // Assert: Verify that the result is correct
-        assertEquals(expectedHours, actualHours, 0.01);  // Allow a small margin of error for floating point comparison
+        assertEquals(expectedHours, actualHours, 0.01);  
     }
 }

@@ -90,8 +90,8 @@ public class EmployeeDAO {
         }
         return list;
     }
+    
     public Object getColumnValueByEmployeeId(int employeeId, String columnName) throws SQLException {
-    // Whitelist allowed column names to avoid SQL injection
     List<String> allowedColumns = List.of(
         "first_name", "last_name", "birthday", "address", "phone_num",
         "sss_num", "philhealth_num", "pagibig_num", "tin_num",
