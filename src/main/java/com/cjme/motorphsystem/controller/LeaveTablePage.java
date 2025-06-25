@@ -4,7 +4,6 @@
  */
 package com.cjme.motorphsystem.controller;
 
-import com.mycompany.motorph.model.LeaveRequest;
 import javax.swing.table.DefaultTableModel;
 import java.awt.HeadlessException;
 import java.io.IOException;
@@ -34,8 +33,6 @@ public class LeaveTablePage extends javax.swing.JFrame {
      * Populates the leave request table with data retrieved from LeaveRequest.
      */
     private void populateLeaveRequestTable() {
-        DefaultTableModel model = LeaveRequest.getLeaveRequestTableModel();
-        jTableLeaveRequest.setModel(model);
 
     }
 
@@ -47,7 +44,6 @@ public class LeaveTablePage extends javax.swing.JFrame {
     private void approveOrDecline(String approveOrDecline) {
         int selectedRow = jTableLeaveRequest.getSelectedRow();
 
-        LeaveRequest leaveRequest = new LeaveRequest();
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(null, "Please select a request to update.");
         }
@@ -62,10 +58,8 @@ public class LeaveTablePage extends javax.swing.JFrame {
             String remarks = (String) jTableLeaveRequest.getValueAt(selectedRow, 6);
 
             // Create the updated Leave Request object
-            LeaveRequest updatedLeaveRequest = new LeaveRequest(employeeID, status, remarks);
 
             // Update the CSV file with the new employee information
-            leaveRequest.updateLeaveRequest(updatedLeaveRequest);
 
             JOptionPane.showMessageDialog(null, "Employee information updated successfully!");
 
@@ -82,18 +76,7 @@ public class LeaveTablePage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableLeaveRequest.getModel();
         model.setRowCount(0); // Clear table before adding new data
 
-        List<LeaveRequest> leaves = LeaveRequest.getLeaveRequestList(); // Load from Employee_leave_requests.csv
-        for (LeaveRequest leave : leaves) {
-            model.addRow(new Object[]{
-                leave.getLeaveRequestID(),
-                leave.getName(),
-                leave.getStartDate(),
-                leave.getEndDate(),
-                leave.getLeaveRequestPurpose(),
-                leave.getLeaveStatus(),
-                leave.getLeaveRemarks()
-            });
-        }
+        
     }
 
     /**

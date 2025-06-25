@@ -4,7 +4,7 @@
  */
 package com.cjme.motorphsystem.controller;
 
-import com.mycompany.motorph.model.Employee;
+import com.cjme.motorphsystem.model.Employee;
 
 /**
  *
@@ -19,6 +19,6 @@ public class EmployeeViewProfileFrame extends ViewProfileFrame {
      * frame.
      */
     public EmployeeViewProfileFrame(Employee employeeInformation) {
-        super(employeeInformation);
+        super();
     }
 }
