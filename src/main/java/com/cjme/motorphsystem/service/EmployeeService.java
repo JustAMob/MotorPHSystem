@@ -6,21 +6,21 @@ package com.cjme.motorphsystem.service;
  */
 import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
 import com.cjme.motorphsystem.model.Employee;
-import com.cjme.motorphsystem.util.ValidationUtils;
+
+
 import java.sql.SQLException;
 import java.util.List;
 
 public class EmployeeService {
     private final EmployeeDAOImpl employeeDAO;
-    
+
     public EmployeeService() throws SQLException {
         this.employeeDAO = new EmployeeDAOImpl();
     }
 
-    public boolean addEmployee(Employee employee) throws SQLException {
-        ValidationUtils.validateEmployeeData(employee);
-        
-        return employeeDAO.addEmployee(employee);
+    public void addEmployee(Employee employee, String role) throws SQLException {
+        // Validation should be handled in GUI/controller before calling this
+        employeeDAO.addEmployee(employee, role);
     }
 
     public List<Employee> getAllEmployees() throws SQLException {
@@ -31,16 +31,11 @@ public class EmployeeService {
         return employeeDAO.getEmployeeById(id);
     }
 
-    public boolean updateEmployee(Employee employee) throws SQLException {
-        ValidationUtils.validateEmployeeData(employee);
-        
-        return employeeDAO.updateEmployee(employee);
+    public void updateEmployee(Employee employee, String role) throws SQLException {
+        employeeDAO.updateEmployee(employee, role);
     }
 
-    public boolean deleteEmployee(int id) throws SQLException {
-        
-        return employeeDAO.deleteEmployee(id);
+    public void deleteEmployee(int id, String role) throws SQLException {
+        employeeDAO.deleteEmployee(id, role);
     }
-
-
 }

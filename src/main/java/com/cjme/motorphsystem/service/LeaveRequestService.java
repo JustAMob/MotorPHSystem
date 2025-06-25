@@ -9,53 +9,65 @@ import com.cjme.motorphsystem.model.LeaveRequest;
 import java.sql.SQLException;
 import java.util.List;
 
+
 /**
  *
  * @author JustAMob
  */
 
+
 public class LeaveRequestService {
 
     private final LeaveRequestDAO leaveRequestDAO;
+    private final String currentUserRole;
 
-    public LeaveRequestService(LeaveRequestDAO leaveRequestDAO) {
+    public LeaveRequestService(LeaveRequestDAO leaveRequestDAO, String currentUserRole) {
         this.leaveRequestDAO = leaveRequestDAO;
+        this.currentUserRole = currentUserRole;
     }
 
-    // Apply for leave
+    /**  
+     * Employee applies for leave.  
+     * @param request
+     * @throws IllegalArgumentException if dates are invalid  
+     * @throws SQLException on DB errors  
+     */
     public void applyLeave(LeaveRequest request) throws SQLException {
-        // Optional business logic:
-        // - Check if dates are valid (start before end)
-        // - Check leave balance
-        // - Auto-approve if criteria are met
-
-        if (request.getStartDate().after(request.getEndDate())) {
-            throw new IllegalArgumentException("Start date must be before end date.");
+        // 1. Validate dates
+        if (request.getLeaveStart().after(request.getLeaveEnd())) {
+            throw new IllegalArgumentException("Start date must be on or before end date.");
         }
 
-        // Set default status
-        request.setStatus("PENDING");
+        // 2. Default status
+        request.setLeaveStatus("Pending");
 
-        leaveRequestDAO.applyLeave(request);
+        // 3. Delegate to DAO (pass role so it can enforce authorization)
+        leaveRequestDAO.addLeaveRequest(request, currentUserRole);
     }
 
-    // Get all leave requests for an employee
-    public List<LeaveRequest> getLeaveRequestsByEmployee(int employeeId) throws SQLException {
-        return leaveRequestDAO.getLeaveRequestsByEmployee(employeeId);
-    }
-
-    // Admin: View all leave requests
+  
+    /** Admin/HR: view all leave requests.
+     * @return 
+     * @throws java.sql.SQLException */
     public List<LeaveRequest> getAllLeaveRequests() throws SQLException {
         return leaveRequestDAO.getAllLeaveRequests();
     }
 
-    // Admin: Approve or reject leave
-    public void updateLeaveStatus(int requestId, String status) throws SQLException {
-        if (!status.equalsIgnoreCase("APPROVED") && !status.equalsIgnoreCase("REJECTED")) {
-            throw new IllegalArgumentException("Invalid status. Must be APPROVED or REJECTED.");
+    /** Admin/HR/Supervisor: approve or deny a request.
+     * @param requestId
+     * @param newStatus
+     * @throws java.sql.SQLException */
+    public void updateLeaveStatus(int requestId, String newStatus) throws SQLException {
+        String normalized = newStatus.trim().toLowerCase();
+        if (!normalized.equals("approved") && !normalized.equals("denied") && !normalized.equals("pending")) {
+            throw new IllegalArgumentException("Status must be one of: Approved, Denied, Pending");
         }
+        leaveRequestDAO.updateLeaveRequestStatus(requestId, capitalize(normalized), currentUserRole);
+    }
 
-        leaveRequestDAO.updateLeaveStatus(requestId, status);
+    /** Helper to capitalize first letter. */
+    private String capitalize(String s) {
+        return s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase();
     }
 }
 

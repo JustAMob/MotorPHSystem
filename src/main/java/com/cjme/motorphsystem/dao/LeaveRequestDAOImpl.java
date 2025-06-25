@@ -28,7 +28,7 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
             throw new SecurityException("Unauthorized to add leave requests.");
         }
 
-        String sql = "INSERT INTO Leave_Request (employee_id, leave_type, leave_start, leave_end, reason, leave_status) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO leave_request (employee_id, leave_type, leave_start, leave_end, reason, leave_status) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -48,7 +48,7 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
 
     @Override
     public LeaveRequest getLeaveRequestById(int id) {
-        String sql = "SELECT * FROM Leave_Request WHERE leave_request_id = ?";
+        String sql = "SELECT * FROM leave_request WHERE leave_request_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -76,7 +76,7 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
     @Override
     public List<LeaveRequest> getAllLeaveRequests() {
         List<LeaveRequest> list = new ArrayList<>();
-        String sql = "SELECT * FROM Leave_Request";
+        String sql = "SELECT * FROM leave_request";
 
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
@@ -99,14 +99,40 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
 
         return list;
     }
+    
+    /**
+     *
+     * @param requestId
+     * @param newStatus
+     * @param role
+     */
+    @Override
+    public void updateLeaveRequestStatus(int requestId, String newStatus, String role){
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to update leave status.");
+        }
 
+        String sql = "UPDATE leave_request SET leave_status = ? WHERE leave_request_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, newStatus);
+            stmt.setInt(2, requestId);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+           
+        }
+    }
+    
     @Override
     public void updateLeaveRequest(LeaveRequest request, String role) {
         if (!isAuthorized(role)) {
             throw new SecurityException("Unauthorized to update leave requests.");
         }
 
-        String sql = "UPDATE Leave_Request SET employee_id = ?, leave_type = ?, leave_start = ?, leave_end = ?, reason = ?, leave_status = ? WHERE leave_request_id = ?";
+        String sql = "UPDATE leave_request SET employee_id = ?, leave_type = ?, leave_start = ?, leave_end = ?, reason = ?, leave_status = ? WHERE leave_request_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -132,7 +158,7 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
             throw new SecurityException("Unauthorized to delete leave requests.");
         }
 
-        String sql = "DELETE FROM Leave_Request WHERE leave_request_id = ?";
+        String sql = "DELETE FROM leave_request WHERE leave_request_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

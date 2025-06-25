@@ -9,9 +9,12 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\deductions\SssDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DocumentationDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PayrollDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\SalaryDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\SalaryDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\TaxDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AttendanceException.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AuthorizationException.java

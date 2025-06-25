@@ -20,7 +20,7 @@ public class DeductionDAO {
 
     // Insert deductions fom an employee ID
     public void addDeductions(int employeeID, double sss, double philHealth, double pagibig) throws SQLException {
-        String sql = "INSERT INTO deductions (employee_id, sss_deduction, philhealth_deduction, pagibig_deduction) " +
+        String sql = "INSERT INTO deduction (employee_id, sss_deduction, philhealth_deduction, pagibig_deduction) " +
                      "VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, employeeID);
@@ -33,7 +33,7 @@ public class DeductionDAO {
 
     // Get total deductions from employee ID
     public double getTotalDeductions(int employeeID) throws SQLException {
-        String sql = "SELECT total_deductions FROM deductions WHERE employee_id = ?";
+        String sql = "SELECT total_deductions FROM deduction WHERE employee_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, employeeID);
             ResultSet rs = stmt.executeQuery();
@@ -46,7 +46,7 @@ public class DeductionDAO {
 
     //Get detailed deductions by type
     public DeductionRecord getDetailedDeductions(int employeeID) throws SQLException {
-        String sql = "SELECT sss_deduction, philhealth_deduction, pagibig_deduction FROM deductions WHERE payroll_id = ?";
+        String sql = "SELECT sss_deduction, philhealth_deduction, pagibig_deduction FROM deduction WHERE payroll_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, employeeID);
             ResultSet rs = stmt.executeQuery();

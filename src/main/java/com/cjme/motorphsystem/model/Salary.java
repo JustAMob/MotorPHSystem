@@ -1,122 +1,51 @@
 package com.cjme.motorphsystem.model;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
 /**
  *
  * @author JustAMob
  */
 public class Salary {
-    private int payrollID;
-    private int employeeID;
-    private LocalDate payrollDate;
-
-    private double bscSalary;
-    private double hourlyRate;
-
-    private double totalAllowance;
-
-    private double sssDeduction;
-    private double philhealthDeduction;
-    private double pagibigDeduction;
-    private double totalDeduction;
-
-    private double tax;
-    private double netpay;
+    private int salaryId;
+    private BigDecimal basicSalary;
+    private BigDecimal grossSemiMonthlyRate;
+    private BigDecimal hourlyRate;
 
     public Salary() {
     }
 
-    public int getPayrollID() {
-        return payrollID;
+    public void setSalaryId(int salaryId) {
+        this.salaryId = salaryId;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
+    public void setBasicSalary(BigDecimal basicSalary) {
+        this.basicSalary = basicSalary;
     }
 
-    public LocalDate getPayrollDate() {
-        return payrollDate;
+    public void setGrossSemiMonthlyRate(BigDecimal grossSemiMonthlyRate) {
+        this.grossSemiMonthlyRate = grossSemiMonthlyRate;
     }
 
-    public double getBscSalary() {
-        return bscSalary;
-    }
-
-    public double getHourlyRate() {
-        return hourlyRate;
-    }
-
-    public double getTotalAllowance() {
-        return totalAllowance;
-    }
-
-    public double getSssDeduction() {
-        return sssDeduction;
-    }
-
-    public double getPhilhealthDeduction() {
-        return philhealthDeduction;
-    }
-
-    public double getPagibigDeduction() {
-        return pagibigDeduction;
-    }
-
-    public double getTotalDeduction() {
-        return totalDeduction;
-    }
-
-    public double getTax() {
-        return tax;
-    }
-
-    public double getNetpay() {
-        return netpay;
-    }
-
-    public void setPayrollDate(LocalDate payrollDate) {
-        this.payrollDate = payrollDate;
-    }
-
-    public void setBscSalary(double bscSalary) {
-        this.bscSalary = bscSalary;
-    }
-
-    public void setHourlyRate(double hourlyRate) {
+    public void setHourlyRate(BigDecimal hourlyRate) {
         this.hourlyRate = hourlyRate;
     }
 
-    public void setTotalAllowance(double totalAllowance) {
-        this.totalAllowance = totalAllowance;
+    public int getSalaryId() {
+        return salaryId;
     }
 
-    public void setSssDeduction(double sssDeduction) {
-        this.sssDeduction = sssDeduction;
+    public BigDecimal getBasicSalary() {
+        return basicSalary;
     }
 
-    public void setPhilhealthDeduction(double philhealthDeduction) {
-        this.philhealthDeduction = philhealthDeduction;
+    public BigDecimal getGrossSemiMonthlyRate() {
+        return grossSemiMonthlyRate;
     }
 
-    public void setPagibigDeduction(double pagibigDeduction) {
-        this.pagibigDeduction = pagibigDeduction;
+    public BigDecimal getHourlyRate() {
+        return hourlyRate;
     }
-
-    public void setTotalDeduction(double totalDeduction) {
-        this.totalDeduction = totalDeduction;
-    }
-
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
-
-    public void setNetpay(double netpay) {
-        this.netpay = netpay;
-    }
-    
-    
-    
 
     
 }

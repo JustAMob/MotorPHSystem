@@ -67,7 +67,7 @@ public class Attendance {
     @Override
     public String toString(){
         return "Attendance:{"+
-                "timelogID" + logID +
+                "attendanceID" + logID +
                 "employeeID" + employeeID +
                 "logdate" + logDate +
                 "timeIn" + timeIn +

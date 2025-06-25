@@ -17,4 +17,5 @@ public interface LeaveRequestDAO {
     List<LeaveRequest> getAllLeaveRequests();
     void updateLeaveRequest(LeaveRequest request, String role);
     void deleteLeaveRequest(int id, String role);
+    public void updateLeaveRequestStatus(int requestId, String capitalize, String currentUserRole);
 }

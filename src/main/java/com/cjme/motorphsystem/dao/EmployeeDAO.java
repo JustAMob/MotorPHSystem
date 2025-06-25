@@ -1,4 +1,3 @@
-package com.cjme.motorphsystem.dao;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -9,6 +8,16 @@ package com.cjme.motorphsystem.dao;
  *
  * @author JustAMob
  */
+package com.cjme.motorphsystem.dao;
+
+import com.cjme.motorphsystem.model.Employee;
+import java.util.List;
+
 public interface EmployeeDAO {
-    
+    void addEmployee(Employee employee, String role);
+    Employee getEmployeeById(int id);
+    List<Employee> getAllEmployees();
+    void updateEmployee(Employee employee, String role);
+    void deleteEmployee(int id, String role);
 }
+
