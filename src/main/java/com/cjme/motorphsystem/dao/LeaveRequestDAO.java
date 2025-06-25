@@ -5,7 +5,6 @@
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.LeaveRequest;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,9 +12,9 @@ import java.util.List;
  * @author JustAMob
  */
 public interface LeaveRequestDAO {
-    void applyLeave(LeaveRequest request) throws SQLException;
-    List<LeaveRequest> getLeaveRequestsByEmployee(int employeeId) throws SQLException;
-    List<LeaveRequest> getAllLeaveRequests() throws SQLException;
-    void updateLeaveStatus(int requestId, String status) throws SQLException;
-    
+    void addLeaveRequest(LeaveRequest request, String role);
+    LeaveRequest getLeaveRequestById(int id);
+    List<LeaveRequest> getAllLeaveRequests();
+    void updateLeaveRequest(LeaveRequest request, String role);
+    void deleteLeaveRequest(int id, String role);
 }

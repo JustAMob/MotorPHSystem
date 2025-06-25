@@ -1,6 +1,7 @@
 com\cjme\motorphsystem\dao\deductions\PhilHealthDAOTest.class
-com\cjme\motorphsystem\dao\TaxDAOTest.class
+com\cjme\motorphsystem\util\DBConnectionTest.class
 com\cjme\motorphsystem\dao\deductions\SssDAOTest.class
-com\cjme\motorphsystem\service\PayrollCalculatorTest.class
 com\cjme\motorphsystem\dao\deductions\PagibigDAOTest.class
+com\cjme\motorphsystem\dao\TaxDAOTest.class
+com\cjme\motorphsystem\service\PayrollCalculatorTest.class
 com\cjme\motorphsystem\service\AttendanceTrackerTest.class

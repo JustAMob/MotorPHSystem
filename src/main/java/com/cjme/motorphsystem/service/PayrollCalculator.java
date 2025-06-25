@@ -2,7 +2,7 @@ package com.cjme.motorphsystem.service;
 
 import com.cjme.motorphsystem.dao.AllowanceDAO;
 import com.cjme.motorphsystem.dao.DeductionDAO;
-import com.cjme.motorphsystem.dao.EmployeeDAO;
+import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
 import com.cjme.motorphsystem.dao.TaxDAO;
 import static com.cjme.motorphsystem.util.PayrollUtil.round;
 
@@ -17,10 +17,10 @@ public class PayrollCalculator {
     private final AllowanceDAO allowanceDAO;
     private final AttendanceTracker attendance;
     private final DeductionDAO deductionDAO;
-    private final EmployeeDAO employeeDAO;
+    private final EmployeeDAOImpl employeeDAO;
     private final int employeeId;
 
-    public PayrollCalculator(TaxDAO taxDAO, AllowanceDAO allowanceDAO, AttendanceTracker attendance, DeductionDAO deductionDAO, EmployeeDAO employeeDAO, int employeeId) {
+    public PayrollCalculator(TaxDAO taxDAO, AllowanceDAO allowanceDAO, AttendanceTracker attendance, DeductionDAO deductionDAO, EmployeeDAOImpl employeeDAO, int employeeId) {
         this.taxDAO = taxDAO;
         this.allowanceDAO = allowanceDAO;
         this.attendance = attendance;

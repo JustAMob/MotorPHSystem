@@ -4,7 +4,7 @@ import com.cjme.motorphsystem.dao.AllowanceDAO;
 import com.cjme.motorphsystem.dao.AllowanceDAOImpl;
 import com.cjme.motorphsystem.dao.AttendanceDAO;
 import com.cjme.motorphsystem.dao.DeductionDAO;
-import com.cjme.motorphsystem.dao.EmployeeDAO;
+import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
 import com.cjme.motorphsystem.dao.TaxDAO;
 import com.cjme.motorphsystem.util.DBConnection;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class PayrollCalculatorTest {
         TaxDAO taxDAO = new TaxDAO();
         AllowanceDAO allowanceDAO = new AllowanceDAOImpl(); 
         DeductionDAO deductionDAO = new DeductionDAO(DBConnection.getConnection());
-        EmployeeDAO employeeDAO = new EmployeeDAO(); 
+        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl(); 
         AttendanceDAO attendanceDAO = new AttendanceDAO(); 
 
         AttendanceTracker attendance = new AttendanceTracker(attendanceDAO);

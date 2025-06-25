@@ -1,8 +1,5 @@
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\AppConfig.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\DatabaseConfig.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\Dashboard.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\EmployeeList.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\LoginScreen.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AllowanceDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AllowanceDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AttendanceDAO.java
@@ -12,6 +9,8 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\deductions\SssDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DocumentationDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PayrollDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\TaxDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AttendanceException.java
@@ -40,7 +39,7 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\User.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AttendanceTracker.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\EmployeeService.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\LeaveService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\LeaveRequestService.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\PayrollCalculator.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\TaxService.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\UserRolesService.java

@@ -1,146 +1,150 @@
 package com.cjme.motorphsystem.dao;
-/**
- *
- * @author JustAMob
- */
+
 import com.cjme.motorphsystem.model.Employee;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDAO {
-    private final Connection connection;
+public class EmployeeDAOImpl implements EmployeeDAO {
 
-    public EmployeeDAO() throws SQLException {
-        this.connection = DBConnection.getConnection();
+    private boolean isAuthorized(String role) {
+        return role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("hr");
     }
 
-    // CREATE
-    public boolean addEmployee(Employee employee) throws SQLException {
-        String sql = "INSERT INTO employee (first_name, last_name, birthday, address, phone_num, sss_num, philhealth_num, pagibig_num, tin_num, status, position, immediate_supervisor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, employee.getFirstName());
-            stmt.setString(2, employee.getLastName());
-            stmt.setDate(3, employee.getBirthday());
-            stmt.setString(4, employee.getAddress());
-            stmt.setString(5, employee.getPhoneNum());
-            stmt.setString(6, employee.getSssNum());
-            stmt.setString(7, employee.getPhilHealthNum());
-            stmt.setString(8, employee.getPagibigNum());
-            stmt.setString(9, employee.getTinNum());
-            stmt.setString(10, employee.getStatus());
-            stmt.setString(11, employee.getPosition());
-            stmt.setString(12, employee.getImmediateSupervisor());
-            return stmt.executeUpdate() > 0;
+    public void addEmployee(Employee emp, String role) {
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to add employee.");
+        }
+
+        String sql = "INSERT INTO Employee (first_name, last_name, address_id, phone_number, government_id, department_id, salary_id, supervisor_id, status_id, position_id, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, emp.getFirstName());
+            stmt.setString(2, emp.getLastName());
+            stmt.setInt(3, emp.getAddressId());
+            stmt.setInt(4, emp.getPhoneNumber());
+            stmt.setInt(5, emp.getGovernmentId());
+            stmt.setInt(6, emp.getDepartmentId());
+            stmt.setInt(7, emp.getSalaryId());
+            stmt.setInt(8, emp.getSupervisorId());
+            stmt.setInt(9, emp.getStatusId());
+            stmt.setInt(10, emp.getPositionId());
+            stmt.setDate(11, emp.getBirthday());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
         }
     }
 
-    // READ (Single Employee)
-    public Employee getEmployeeById(int id) throws SQLException {
-        String sql = "SELECT * FROM employee WHERE employee_id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+    public Employee getEmployeeById(int id) {
+        String sql = "SELECT * FROM Employee WHERE employee_id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
+
             if (rs.next()) {
-                return new Employee(
-                    rs.getInt("employee_id"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getDate("birthday"),
-                    rs.getString("address"),
-                    rs.getString("phone_num"),
-                    rs.getString("sss_num"),
-                    rs.getString("philhealth_num"),
-                    rs.getString("pagibig_num"),
-                    rs.getString("tin_num"),
-                    rs.getString("status"), 
-                    rs.getString("position"),
-                    rs.getString("immediate_supervisor")
-                );
+                Employee emp = new Employee();
+                emp.setEmployeeId(rs.getInt("employee_id"));
+                emp.setFirstName(rs.getString("first_name"));
+                emp.setLastName(rs.getString("last_name"));
+                emp.setAddressId(rs.getInt("address_id"));
+                emp.setPhoneNumber(rs.getInt("phone_number"));
+                emp.setGovernmentId(rs.getInt("government_id"));
+                emp.setDepartmentId(rs.getInt("department_id"));
+                emp.setSalaryId(rs.getInt("salary_id"));
+                emp.setSupervisorId(rs.getInt("supervisor_id"));
+                emp.setStatusId(rs.getInt("status_id"));
+                emp.setPositionId(rs.getInt("position_id"));
+                emp.setBirthday(rs.getDate("birthday"));
+                return emp;
             }
+
+        } catch (SQLException e) {
         }
+
         return null;
     }
 
-    // READ (All Employees)
-    public List<Employee> getAllEmployees() throws SQLException {
+    public List<Employee> getAllEmployees() {
         List<Employee> list = new ArrayList<>();
-        String sql = "SELECT * FROM employee";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            ResultSet rs = stmt.executeQuery();
+        String sql = "SELECT * FROM Employee";
+
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
-                Employee employee = new Employee(
-                    rs.getInt("employee_id"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getDate("birthday"),
-                    rs.getString("address"),
-                    rs.getString("phone_num"),
-                    rs.getString("sss_num"),
-                    rs.getString("philhealth_num"),
-                    rs.getString("pagibig_num"),
-                    rs.getString("tin_num"),
-                    rs.getString("status"),
-                    rs.getString("position"),
-                    rs.getString("immediate_supervisor")
-                );
-                list.add(employee);
+                Employee emp = new Employee();
+                emp.setEmployeeId(rs.getInt("employee_id"));
+                emp.setFirstName(rs.getString("first_name"));
+                emp.setLastName(rs.getString("last_name"));
+                emp.setAddressId(rs.getInt("address_id"));
+                emp.setPhoneNumber(rs.getInt("phone_number"));
+                emp.setGovernmentId(rs.getInt("government_id"));
+                emp.setDepartmentId(rs.getInt("department_id"));
+                emp.setSalaryId(rs.getInt("salary_id"));
+                emp.setSupervisorId(rs.getInt("supervisor_id"));
+                emp.setStatusId(rs.getInt("status_id"));
+                emp.setPositionId(rs.getInt("position_id"));
+                emp.setBirthday(rs.getDate("birthday"));
+                list.add(emp);
             }
+
+        } catch (SQLException e) {
         }
+
         return list;
     }
-    
-    public Object getColumnValueByEmployeeId(int employeeId, String columnName) throws SQLException {
-    List<String> allowedColumns = List.of(
-        "first_name", "last_name", "birthday", "address", "phone_num",
-        "sss_num", "philhealth_num", "pagibig_num", "tin_num",
-        "status", "position", "immediate_supervisor","basic_salary", "hourly_rate"
-    );
 
-    if (!allowedColumns.contains(columnName)) {
-        throw new IllegalArgumentException("Invalid column name: " + columnName);
-    }
-
-    String sql = "SELECT " + columnName + " FROM employee WHERE employee_id = ?";
-    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-        stmt.setInt(1, employeeId);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            return rs.getObject(columnName);
+    public void updateEmployee(Employee emp, String role) {
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to update employee.");
         }
-    }
-    return null;
-}
 
-    // UPDATE
-    public boolean updateEmployee(Employee employee) throws SQLException {
-        String sql = "UPDATE employee SET first_name=?, last_name=?, birthday=?, address=?, phone_num=?, sss_num=?, philhealth_num=?, pagibig_num=?, tin_num=?, position=?, immediate_supervisor=? WHERE employee_id=?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, employee.getFirstName());
-            stmt.setString(2, employee.getLastName());
-            stmt.setDate(3, employee.getBirthday());
-            stmt.setString(4, employee.getAddress());
-            stmt.setString(5, employee.getPhoneNum());
-            stmt.setString(6, employee.getSssNum());
-            stmt.setString(7, employee.getPhilHealthNum());
-            stmt.setString(8, employee.getPagibigNum());
-            stmt.setString(9, employee.getTinNum());
-            stmt.setString(10, employee.getStatus());
-            stmt.setString(10, employee.getPosition());
-            stmt.setString(11, employee.getImmediateSupervisor());
-            stmt.setInt(12, employee.getEmployeeID());
-            return stmt.executeUpdate() > 0;
+        String sql = "UPDATE Employee SET first_name = ?, last_name = ?, address_id = ?, phone_number = ?, government_id = ?, department_id = ?, salary_id = ?, supervisor_id = ?, status_id = ?, position_id = ?, birthday = ? WHERE employee_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, emp.getFirstName());
+            stmt.setString(2, emp.getLastName());
+            stmt.setInt(3, emp.getAddressId());
+            stmt.setInt(4, emp.getPhoneNumber());
+            stmt.setInt(5, emp.getGovernmentId());
+            stmt.setInt(6, emp.getDepartmentId());
+            stmt.setInt(7, emp.getSalaryId());
+            stmt.setInt(8, emp.getSupervisorId());
+            stmt.setInt(9, emp.getStatusId());
+            stmt.setInt(10, emp.getPositionId());
+            stmt.setDate(11, emp.getBirthday());
+            stmt.setInt(12, emp.getEmployeeId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
         }
     }
 
-    // DELETE
-    public boolean deleteEmployee(int id) throws SQLException {
-        String sql = "DELETE FROM employee WHERE employee_id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+    public void deleteEmployee(int id, String role) {
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to delete employee.");
+        }
+
+        String sql = "DELETE FROM Employee WHERE employee_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, id);
-            return stmt.executeUpdate() > 0;
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
         }
     }
 }
-

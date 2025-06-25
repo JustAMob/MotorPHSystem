@@ -7,54 +7,39 @@ import java.sql.Date;
  * @author JustAMob
  */
 public class Employee {
-    private final int employeeID;
+    private int employeeId;
     private String firstName;
     private String lastName;
-    private java.sql.Date birthday;
-    private String address;
-    private String phoneNum;
-    private final String sssNum;
-    private final String philHealthNum;
-    private final String pagibigNum;
-    private final String tinNum;
-    private String status;
-    private String position;
-    private String immediateSupervisor;
+    private int addressId;
+    private int phoneNumber;
+    private int governmentId;
+    private int departmentId;
+    private int salaryId;
+    private int supervisorId;
+    private int statusId;
+    private int positionId;
+    private Date birthday;
 
-    public Employee(int employeeID, String firstName, String lastName, Date birthday, String address, String phoneNum, String sssNum, String philHealthNum, String pagibigNum, String tinNum,String status, String position, String immediateSupervisor) {
-        this.employeeID = employeeID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthday = birthday;
-        this.address = address;
-        this.phoneNum = phoneNum;
-        this.sssNum = sssNum;
-        this.philHealthNum = philHealthNum;
-        this.pagibigNum = pagibigNum;
-        this.tinNum = tinNum;
-        this.status = status;
-        this.position = position;
-        this.immediateSupervisor = immediateSupervisor;
+    public Employee() {
     }
 
-    public Employee(String firstName, String lastName, Date birthday, String address, String phoneNum, String sssNum, String philHealthNum, String pagibigNum, String tinNum, String status, String position, String immediateSupervisor) {
+    public Employee(int employeeId, String firstName, String lastName, int addressId, int phoneNumber, int governmentId, int departmentId, int salaryId, int supervisorId, int statusId, int positionId, Date birthday) {
+        this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.addressId = addressId;
+        this.phoneNumber = phoneNumber;
+        this.governmentId = governmentId;
+        this.departmentId = departmentId;
+        this.salaryId = salaryId;
+        this.supervisorId = supervisorId;
+        this.statusId = statusId;
+        this.positionId = positionId;
         this.birthday = birthday;
-        this.address = address;
-        this.phoneNum = phoneNum;
-        this.sssNum = sssNum;
-        this.philHealthNum = philHealthNum;
-        this.pagibigNum = pagibigNum;
-        this.tinNum = tinNum;
-        this.status = status;
-        this.position = position;
-        this.immediateSupervisor = immediateSupervisor;
-        this.employeeID = 0;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
     public String getFirstName() {
@@ -65,44 +50,44 @@ public class Employee {
         return lastName;
     }
 
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public int getGovernmentId() {
+        return governmentId;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public int getSalaryId() {
+        return salaryId;
+    }
+
+    public int getSupervisorId() {
+        return supervisorId;
+    }
+
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public int getPositionId() {
+        return positionId;
+    }
+
     public Date getBirthday() {
         return birthday;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public String getSssNum() {
-        return sssNum;
-    }
-
-    public String getPhilHealthNum() {
-        return philHealthNum;
-    }
-
-    public String getPagibigNum() {
-        return pagibigNum;
-    }
-
-    public String getTinNum() {
-        return tinNum;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public String getImmediateSupervisor() {
-        return immediateSupervisor;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
     public void setFirstName(String firstName) {
@@ -113,37 +98,50 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setGovernmentId(int governmentId) {
+        this.governmentId = governmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public void setSalaryId(int salaryId) {
+        this.salaryId = salaryId;
+    }
+
+    public void setSupervisorId(int supervisorId) {
+        this.supervisorId = supervisorId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
+    public void setPositionId(int positionId) {
+        this.positionId = positionId;
+    }
+
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public void setImmediateSupervisor(String immediateSupervisor) {
-        this.immediateSupervisor = immediateSupervisor;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    
     
     @Override
     public String toString() {
         return "Employee{" +
-                "employeeID=" + employeeID +
+                "employeeID=" + employeeId +
                 ", name='" + firstName + " " + lastName + '\'' +
                 ", birthday=" + birthday +
-                ", position=" + position +
                 '}';
     }
 

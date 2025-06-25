@@ -15,80 +15,134 @@ import java.util.List;
  * @author JustAMob
  */
 public class LeaveRequestDAOImpl implements LeaveRequestDAO {
-    private final Connection connection;
 
-    public LeaveRequestDAOImpl() throws SQLException {
-        this.connection = DBConnection.getConnection();
+    private boolean isAuthorized(String role) {
+        return role.equalsIgnoreCase("admin") || 
+               role.equalsIgnoreCase("hr") || 
+               role.equalsIgnoreCase("supervisor");
     }
 
     @Override
-    public void applyLeave(LeaveRequest request) throws SQLException {
-        String sql = "INSERT INTO leave_requests (employee_id, leave_type, start_date, end_date, reason, status) VALUES (?, ?, ?, ?, ?, ?)";
+    public void addLeaveRequest(LeaveRequest request, String role) {
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to add leave requests.");
+        }
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, request.getEmployeeID());
+        String sql = "INSERT INTO Leave_Request (employee_id, leave_type, leave_start, leave_end, reason, leave_status) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, request.getEmployeeId());
             stmt.setString(2, request.getLeaveType());
-            stmt.setDate(3, request.getStartDate());
-            stmt.setDate(4, request.getEndDate());
+            stmt.setDate(3, request.getLeaveStart());
+            stmt.setDate(4, request.getLeaveEnd());
             stmt.setString(5, request.getReason());
-            stmt.setString(6, request.getStatus());
+            stmt.setString(6, request.getLeaveStatus());
+
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
         }
     }
 
     @Override
-    public List<LeaveRequest> getLeaveRequestsByEmployee(int employeeId) throws SQLException {
-        String sql = "SELECT * FROM leave_requests WHERE employee_id = ?";
-        List<LeaveRequest> requests = new ArrayList<>();
+    public LeaveRequest getLeaveRequestById(int id) {
+        String sql = "SELECT * FROM Leave_Request WHERE leave_request_id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, employeeId);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                requests.add(mapRowToLeaveRequest(rs));
+            if (rs.next()) {
+                LeaveRequest request = new LeaveRequest();
+                request.setLeaveRequestId(rs.getInt("leave_request_id"));
+                request.setEmployeeId(rs.getInt("employee_id"));
+                request.setLeaveType(rs.getString("leave_type"));
+                request.setLeaveStart(rs.getDate("leave_start"));
+                request.setLeaveEnd(rs.getDate("leave_end"));
+                request.setReason(rs.getString("reason"));
+                request.setLeaveStatus(rs.getString("leave_status"));
+                return request;
             }
+
+        } catch (SQLException e) {
         }
 
-        return requests;
+        return null;
     }
 
     @Override
-    public List<LeaveRequest> getAllLeaveRequests() throws SQLException {
-        String sql = "SELECT * FROM leave_requests";
-        List<LeaveRequest> requests = new ArrayList<>();
+    public List<LeaveRequest> getAllLeaveRequests() {
+        List<LeaveRequest> list = new ArrayList<>();
+        String sql = "SELECT * FROM Leave_Request";
 
-        try (Statement stmt = connection.createStatement()) {
-            ResultSet rs = stmt.executeQuery(sql);
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
-                requests.add(mapRowToLeaveRequest(rs));
+                LeaveRequest request = new LeaveRequest();
+                request.setLeaveRequestId(rs.getInt("leave_request_id"));
+                request.setEmployeeId(rs.getInt("employee_id"));
+                request.setLeaveType(rs.getString("leave_type"));
+                request.setLeaveStart(rs.getDate("leave_start"));
+                request.setLeaveEnd(rs.getDate("leave_end"));
+                request.setReason(rs.getString("reason"));
+                request.setLeaveStatus(rs.getString("leave_status"));
+                list.add(request);
             }
+
+        } catch (SQLException e) {
         }
 
-        return requests;
+        return list;
     }
 
     @Override
-    public void updateLeaveStatus(int requestId, String status) throws SQLException {
-        String sql = "UPDATE leave_requests SET status = ? WHERE id = ?";
+    public void updateLeaveRequest(LeaveRequest request, String role) {
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to update leave requests.");
+        }
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, status);
-            stmt.setInt(2, requestId);
+        String sql = "UPDATE Leave_Request SET employee_id = ?, leave_type = ?, leave_start = ?, leave_end = ?, reason = ?, leave_status = ? WHERE leave_request_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, request.getEmployeeId());
+            stmt.setString(2, request.getLeaveType());
+            stmt.setDate(3, request.getLeaveStart());
+            stmt.setDate(4, request.getLeaveEnd());
+            stmt.setString(5, request.getReason());
+            stmt.setString(6, request.getLeaveStatus());
+            stmt.setInt(7, request.getLeaveRequestId());
+
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
         }
     }
 
-    private LeaveRequest mapRowToLeaveRequest(ResultSet rs) throws SQLException {
-        LeaveRequest request = new LeaveRequest();
-        request.setLeaveID(rs.getInt("id"));
-        request.setEmployeeID(rs.getInt("employee_id"));
-        request.setLeaveType(rs.getString("leave_type"));
-        request.setStartDate(rs.getDate("start_date"));
-        request.setEndDate(rs.getDate("end_date"));
-        request.setReason(rs.getString("reason"));
-        request.setStatus(rs.getString("status"));
-        return request;
-    }
     
+    @Override
+    public void deleteLeaveRequest(int id, String role) {
+        if (!isAuthorized(role)) {
+            throw new SecurityException("Unauthorized to delete leave requests.");
+        }
+
+        String sql = "DELETE FROM Leave_Request WHERE leave_request_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+
+   
 }

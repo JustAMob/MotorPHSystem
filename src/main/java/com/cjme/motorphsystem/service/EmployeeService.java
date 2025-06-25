@@ -4,17 +4,17 @@ package com.cjme.motorphsystem.service;
  *
  * @author JustAMob
  */
-import com.cjme.motorphsystem.dao.EmployeeDAO;
+import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
 import com.cjme.motorphsystem.model.Employee;
 import com.cjme.motorphsystem.util.ValidationUtils;
 import java.sql.SQLException;
 import java.util.List;
 
 public class EmployeeService {
-    private final EmployeeDAO employeeDAO;
+    private final EmployeeDAOImpl employeeDAO;
     
     public EmployeeService() throws SQLException {
-        this.employeeDAO = new EmployeeDAO();
+        this.employeeDAO = new EmployeeDAOImpl();
     }
 
     public boolean addEmployee(Employee employee) throws SQLException {

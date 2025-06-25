@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * @author JustAMob
  */
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/motorphdatabase";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/payrollsystem_db";
     private static final String USER = "root";
     private static final String PASSWORD = "01Tartaros";
 

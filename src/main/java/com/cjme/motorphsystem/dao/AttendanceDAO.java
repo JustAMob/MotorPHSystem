@@ -23,7 +23,7 @@ public class AttendanceDAO {
     
     //CREATE
     public boolean addTimelog (Attendance attendance) throws SQLException {
-        String sql = "INSERT INTO timelog (employee_id, log_date, time_in, time_out) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO attendace (employee_id, log_date, time_in, time_out) VALUES(?,?,?,?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setInt(1,attendance.getEmployeeID());
             stmt.setDate(2,attendance.getLogDate());
@@ -36,7 +36,7 @@ public class AttendanceDAO {
     //Gets all timelogs for a specific employee.
     public List<Attendance> getTimeLogsByEmployee(int employeeID) throws SQLException {
         List<Attendance> list = new ArrayList<>();
-        String sql = "SELECT * FROM timelog WHERE employee_id = ?";
+        String sql = "SELECT * FROM attendance WHERE employee_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -80,7 +80,7 @@ public class AttendanceDAO {
     //Gets all timelogs for a specific date    
     public List<Attendance> getTimeLogsByDate(Date date) throws SQLException {
         List<Attendance> list = new ArrayList<>();
-        String sql = "SELECT * FROM timelog WHERE log_date = ?";
+        String sql = "SELECT * FROM attendance WHERE log_date = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -100,7 +100,7 @@ public class AttendanceDAO {
     //Gets all timelogs within a date range
     public List<Attendance> getTimeLogsByRange(Date startDate, Date endDate) throws SQLException {
         List<Attendance> list = new ArrayList<>();
-            String sql = "SELECT * FROM timelog WHERE log_date BETWEEN ? AND ?";
+            String sql = "SELECT * FROM attendace WHERE log_date BETWEEN ? AND ?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setDate(1, startDate);
                 stmt.setDate(2, endDate);
@@ -123,7 +123,7 @@ public class AttendanceDAO {
     //Gets all timelogs for an employee on a specific day
     public List<Attendance> getTimeLogsByEmployeeAndDate (int employeeID, Date date) throws SQLException {
         List<Attendance> list = new ArrayList<>();
-        String sql = "SELECT * FROM timelog WHERE employee_id = ? AND DATE(log_date) = ?";
+        String sql = "SELECT * FROM attendance WHERE employee_id = ? AND DATE(log_date) = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, employeeID);
             stmt.setDate(2, date);

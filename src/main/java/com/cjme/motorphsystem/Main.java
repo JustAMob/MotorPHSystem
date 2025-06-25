@@ -1,6 +1,6 @@
 package com.cjme.motorphsystem;
 
-import com.cjme.motorphsystem.dao.EmployeeDAO;
+import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
 import com.cjme.motorphsystem.model.Attendance;
 import com.cjme.motorphsystem.model.Employee;
 import com.cjme.motorphsystem.util.DBConnection;
