@@ -1,14 +1,14 @@
 package com.cjme.motorphsystem.service;
 
-import com.cjme.motorphsystem.dao.AllowanceDAO;
 import com.cjme.motorphsystem.dao.DeductionDAO;
-import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl;
 import com.cjme.motorphsystem.dao.SalaryDAO;
-import com.cjme.motorphsystem.dao.SalaryDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
 import com.cjme.motorphsystem.dao.TaxDAO;
 import com.cjme.motorphsystem.model.Employee;
 import com.cjme.motorphsystem.model.Salary;
 import static com.cjme.motorphsystem.util.PayrollUtil.round;
+
 
 
 /**
@@ -18,16 +18,16 @@ import static com.cjme.motorphsystem.util.PayrollUtil.round;
 
 public class PayrollCalculator {
     private final TaxDAO taxDAO;
-    private final AllowanceDAO allowanceDAO;
+    private final AllowanceService allowanceService;
     private final AttendanceTracker attendance;
     private final DeductionDAO deductionDAO;
     private final EmployeeDAOImpl employeeDAO;
-    private final SalaryDAOImpl salaryDAOImpl;
+    private final SalaryDAO salaryDAOImpl;
     private final int employeeId;
 
     public PayrollCalculator(
             TaxDAO taxDAO,
-            AllowanceDAO allowanceDAO,
+            AllowanceService allowanceService,
             AttendanceTracker attendance,
             DeductionDAO deductionDAO,
             EmployeeDAOImpl employeeDAO,
@@ -35,7 +35,7 @@ public class PayrollCalculator {
             int employeeId
     ) {
         this.taxDAO = taxDAO;
-        this.allowanceDAO = allowanceDAO;
+        this.allowanceService = allowanceService;
         this.attendance = attendance;
         this.deductionDAO = deductionDAO;
         this.employeeDAO = employeeDAO;
@@ -76,7 +76,7 @@ public class PayrollCalculator {
         System.out.println("Tax: " + taxed);
 
         // 8. Get total allowance
-        double totalAllowance = round(allowanceDAO.getTotalAllowanceByEmployeeID(employeeId));
+        double totalAllowance = round(allowanceService.getTotalAllowanceAmount(employeeId).doubleValue());
         System.out.println("Total Allowance: " + totalAllowance);
 
         // 9. Calculate net pay

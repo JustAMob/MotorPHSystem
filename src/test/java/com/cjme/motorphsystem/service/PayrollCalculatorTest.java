@@ -1,55 +1,57 @@
-package com.cjme.motorphsystem.service;
+    package com.cjme.motorphsystem.service;
 
-import com.cjme.motorphsystem.dao.AllowanceDAO;
-import com.cjme.motorphsystem.dao.AllowanceDAOImpl;
-import com.cjme.motorphsystem.dao.AttendanceDAO;
-import com.cjme.motorphsystem.dao.DeductionDAO;
-import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
-import com.cjme.motorphsystem.dao.SalaryDAOImpl;
-import com.cjme.motorphsystem.dao.TaxDAO;
-import com.cjme.motorphsystem.util.DBConnection;
-import org.junit.Test;
-import static org.junit.Assert.*;
+    import com.cjme.motorphsystem.dao.implementations.AllowanceTypeDAOImpl;
+    import com.cjme.motorphsystem.dao.AttendanceDAO;
+    import com.cjme.motorphsystem.dao.DeductionDAO;
+    import com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl;
+    import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
+    import com.cjme.motorphsystem.dao.TaxDAO;
+import com.cjme.motorphsystem.dao.implementations.EmployeeAllowanceDAOImpl;
+    import com.cjme.motorphsystem.util.DBConnection;
+    import org.junit.Test;
+    import static org.junit.Assert.*;
+   
 
-/**
- *
- * @author JustAMob
- */
-public class PayrollCalculatorTest {
+    /**
+     *
+     * @author JustAMob
+     */
+    public class PayrollCalculatorTest {
 
- @Test
-    public void testCalculateNetPay() throws Exception {
-        // Test parameters
-        int employeeId = 10008;  // Make sure this exists in your test DB
-        int month = 7;
-        int year = 2024;
+     @Test
+        public void testCalculateNetPay() throws Exception {
+            // Test parameters
+            int employeeId = 10008;
+            int month = 7;
+            int year = 2024;
 
-        // Initialize DAO dependencies
-        TaxDAO taxDAO = new TaxDAO();
-        AllowanceDAO allowanceDAO = new AllowanceDAOImpl();
-        DeductionDAO deductionDAO = new DeductionDAO(DBConnection.getConnection());
-        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-        SalaryDAOImpl salaryDAO = new SalaryDAOImpl();
-        AttendanceDAO attendanceDAO = new AttendanceDAO();
+            // Setup DAO & Service objects
+            TaxDAO taxDAO = new TaxDAO();
+            EmployeeAllowanceDAOImpl employeeAllowanceDAO = new EmployeeAllowanceDAOImpl();
+            AllowanceTypeDAOImpl allowanceTypeDAO = new AllowanceTypeDAOImpl();
+            AllowanceService allowanceService = new AllowanceService(employeeAllowanceDAO, allowanceTypeDAO);
+            AttendanceDAO attendanceDAO = new AttendanceDAO(); // implement or mock
+            AttendanceTracker attendance = new AttendanceTracker(attendanceDAO);
+            DeductionDAO deductionDAO = new DeductionDAO(DBConnection.getConnection());
+            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            SalaryDAOImpl salaryDAO = new SalaryDAOImpl();
 
-        AttendanceTracker attendance = new AttendanceTracker(attendanceDAO);
+            // Instantiate PayrollCalculator
+            PayrollCalculator calculator = new PayrollCalculator(
+                taxDAO,
+                allowanceService,
+                attendance,
+                deductionDAO,
+                employeeDAO,
+                salaryDAO,
+                employeeId
+            );
 
-        // Inject all dependencies into the PayrollCalculator
-        PayrollCalculator payrollCalculator = new PayrollCalculator(
-            taxDAO,
-            allowanceDAO,
-            attendance,
-            deductionDAO,
-            employeeDAO,
-            salaryDAO,
-            employeeId
-        );
+            // When: Calculating net pay
+            double netPay = calculator.calculateNetPay(month, year);
 
-        // Act
-        double netPay = payrollCalculator.calculateNetPay(month, year);
-        System.out.println("Net Pay for Employee " + employeeId + ": " + netPay);
-
-        // Assert
-        assertTrue("Net pay should not be negative", netPay >= 0);
+            // Then: Should return a non-negative number
+            System.out.println("Net Pay for Employee ID " + employeeId + ": " + netPay);
+            assertTrue("Net pay should be non-negative", netPay >= 0);
+        }
     }
-}

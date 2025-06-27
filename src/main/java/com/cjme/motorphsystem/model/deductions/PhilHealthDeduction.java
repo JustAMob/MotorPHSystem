@@ -1,6 +1,6 @@
 package com.cjme.motorphsystem.model.deductions;
 
-import com.cjme.motorphsystem.dao.deductions.PhilHealthDAO;
+import com.cjme.motorphsystem.dao.PhilHealthDAO;
 import com.cjme.motorphsystem.model.Deduction;
 
 /**

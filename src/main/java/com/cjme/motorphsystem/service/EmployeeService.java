@@ -4,7 +4,7 @@ package com.cjme.motorphsystem.service;
  *
  * @author JustAMob
  */
-import com.cjme.motorphsystem.dao.EmployeeDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl;
 import com.cjme.motorphsystem.model.Employee;
 
 

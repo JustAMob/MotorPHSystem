@@ -1,6 +1,6 @@
 package com.cjme.motorphsystem.model.deductions;
 
-import com.cjme.motorphsystem.dao.deductions.PagibigDAO;
+import com.cjme.motorphsystem.dao.PagibigDAO;
 import com.cjme.motorphsystem.model.Deduction;
 
 /**

@@ -1,5 +1,6 @@
 package com.cjme.motorphsystem.dao.deductions;
 
+import com.cjme.motorphsystem.dao.SssDAO;
 import com.cjme.motorphsystem.util.DBConnection;
 import org.junit.Test;
 import java.sql.Connection;

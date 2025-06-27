@@ -1,6 +1,6 @@
 package com.cjme.motorphsystem.model.deductions;
 
-import com.cjme.motorphsystem.dao.deductions.SssDAO;
+import com.cjme.motorphsystem.dao.SssDAO;
 import com.cjme.motorphsystem.model.Deduction;
 
 public class SssDeduction extends Deduction {

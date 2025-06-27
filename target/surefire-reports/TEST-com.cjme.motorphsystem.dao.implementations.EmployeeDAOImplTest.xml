@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest" time="0.046" tests="5" errors="3" skipped="0" failures="2">
+  <properties>
+    <property name="java.specification.version" value="23"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\target\test-classes;C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\target\classes;C:\Users\Ck\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Ck\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Ck\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Ck\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Ck\.m2\repository\org\mockito\mockito-core\4.0.0\mockito-core-4.0.0.jar;C:\Users\Ck\.m2\repository\net\bytebuddy\byte-buddy\1.11.19\byte-buddy-1.11.19.jar;C:\Users\Ck\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.19\byte-buddy-agent-1.11.19.jar;C:\Users\Ck\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Manila"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="23"/>
+    <property name="user.country" value="PH"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
+    <property name="sun.java.command" value="C:\Users\Ck\AppData\Local\Temp\surefire1382312335148765266\surefirebooter-20250627134832774_3.jar C:\Users\Ck\AppData\Local\Temp\surefire1382312335148765266 2025-06-27T13-48-32_670-jvmRun1 surefire-20250627134832774_1tmp surefire_0-20250627134832774_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="com.cjme.motorphsystem.dao.**.*Test"/>
+    <property name="surefire.test.class.path" value="C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\target\test-classes;C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\target\classes;C:\Users\Ck\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Ck\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Ck\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Ck\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Ck\.m2\repository\org\mockito\mockito-core\4.0.0\mockito-core-4.0.0.jar;C:\Users\Ck\.m2\repository\net\bytebuddy\byte-buddy\1.11.19\byte-buddy-1.11.19.jar;C:\Users\Ck\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.19\byte-buddy-agent-1.11.19.jar;C:\Users\Ck\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Ck"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-01-21"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-23"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Ck\AppData\Local\Temp\surefire1382312335148765266\surefirebooter-20250627134832774_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="23.0.2+7-58"/>
+    <property name="user.name" value="JustAMob"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-24\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="localRepository" value="C:\Users\Ck\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Ck\AppData\Local\Temp\"/>
+    <property name="java.version" value="23.0.2"/>
+    <property name="user.dir" value="C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\Ck\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\Ck\AppData\Local\Programs\Python\Python311\;C:\Users\Ck\AppData\Local\Microsoft\WindowsApps;C:\Users\Ck\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Program Files\OpenSSL-Win64\bin;C:\Program Files\Git\cmd;C:\Users\Ck\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\Ck\AppData\Local\Programs\Python\Python311\;C:\Users\Ck\AppData\Local\Microsoft\WindowsApps;C:\Users\Ck\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Users\Ck\OneDrive\Desktop\windows_10_cmake_Release_Graphviz-12.2.1-win64\Graphviz-12.2.1-win64\bin;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="23.0.2+7-58"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="67.0"/>
+  </properties>
+  <testcase name="testDeleteEmployee" classname="com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest" time="0.001">
+    <error message="Unauthorized to delete employee." type="java.lang.SecurityException"><![CDATA[java.lang.SecurityException: Unauthorized to delete employee.
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl.deleteEmployee(EmployeeDAOImpl.java:138)
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest.testDeleteEmployee(EmployeeDAOImplTest.java:107)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></error>
+    <system-out><![CDATA[deleteEmployee
+]]></system-out>
+  </testcase>
+  <testcase name="testAddEmployee" classname="com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest" time="0.001">
+    <error message="Unauthorized to add employee." type="java.lang.SecurityException"><![CDATA[java.lang.SecurityException: Unauthorized to add employee.
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl.addEmployee(EmployeeDAOImpl.java:18)
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest.testAddEmployee(EmployeeDAOImplTest.java:50)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></error>
+    <system-out><![CDATA[addEmployee
+]]></system-out>
+  </testcase>
+  <testcase name="testGetEmployeeById" classname="com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest" time="0.013">
+    <failure message="The test case is a prototype." type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: The test case is a prototype.
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest.testGetEmployeeById(EmployeeDAOImplTest.java:67)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></failure>
+    <system-out><![CDATA[getEmployeeById
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateEmployee" classname="com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest" time="0.001">
+    <error message="Unauthorized to update employee." type="java.lang.SecurityException"><![CDATA[java.lang.SecurityException: Unauthorized to update employee.
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl.updateEmployee(EmployeeDAOImpl.java:108)
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest.testUpdateEmployee(EmployeeDAOImplTest.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></error>
+    <system-out><![CDATA[updateEmployee
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllEmployees" classname="com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest" time="0.03">
+    <failure message="expected:&lt;null&gt; but was:&lt;[Employee{employeeID=10001, name=&apos;Manuel III Garcia&apos;, birthday=1983-10-11}, Employee{employeeID=10002, name=&apos;Antonio Lim&apos;, birthday=1988-06-19}, Employee{employeeID=10003, name=&apos;Bianca Sofia Aquino&apos;, birthday=1989-08-04}, Employee{employeeID=10004, name=&apos;Isabella Reyes&apos;, birthday=1994-06-16}, Employee{employeeID=10005, name=&apos;Eduard Hernandez&apos;, birthday=1989-09-23}, Employee{employeeID=10006, name=&apos;Andrea Mae Villanueva&apos;, birthday=1988-02-14}, Employee{employeeID=10007, name=&apos;Brad  San Jose&apos;, birthday=1996-03-15}, Employee{employeeID=10008, name=&apos;Alice Romualdez&apos;, birthday=1992-05-14}, Employee{employeeID=10009, name=&apos;Rosie  Atienza&apos;, birthday=1948-09-24}, Employee{employeeID=10010, name=&apos;Roderick Alvaro&apos;, birthday=1988-03-30}, Employee{employeeID=10011, name=&apos;Anthony Salcedo&apos;, birthday=1993-09-14}, Employee{employeeID=10012, name=&apos;Josie  Lopez&apos;, birthday=1987-01-14}, Employee{employeeID=10013, name=&apos;Martha Farala&apos;, birthday=1942-01-11}, Employee{employeeID=10014, name=&apos;Leila Martinez&apos;, birthday=1970-07-11}, Employee{employeeID=10015, name=&apos;Fredrick  Romualdez&apos;, birthday=1985-03-10}, Employee{employeeID=10016, name=&apos;Christian Mata&apos;, birthday=1987-10-21}, Employee{employeeID=10017, name=&apos;Selena  De Leon&apos;, birthday=1975-02-20}, Employee{employeeID=10018, name=&apos;Allison  San Jose&apos;, birthday=1986-06-24}, Employee{employeeID=10019, name=&apos;Cydney  Rosario&apos;, birthday=1996-10-06}, Employee{employeeID=10020, name=&apos;Mark  Bautista&apos;, birthday=1991-02-12}, Employee{employeeID=10021, name=&apos;Darlene  Lazaro&apos;, birthday=1985-11-25}, Employee{employeeID=10022, name=&apos;Kolby  Delos Santos&apos;, birthday=1980-02-26}, Employee{employeeID=10023, name=&apos;Vella  Santos&apos;, birthday=1983-12-31}, Employee{employeeID=10024, name=&apos;Tomas Del Rosario&apos;, birthday=1978-12-18}, Employee{employeeID=10025, name=&apos;Jacklyn  Tolentino&apos;, birthday=1984-05-19}, Employee{employeeID=10026, name=&apos;Percival  Gutierrez&apos;, birthday=1970-12-18}, Employee{employeeID=10027, name=&apos;Garfield  Manalaysay&apos;, birthday=1986-08-28}, Employee{employeeID=10028, name=&apos;Lizeth  Villegas&apos;, birthday=1981-12-12}, Employee{employeeID=10029, name=&apos;Carol  Ramos&apos;, birthday=1978-08-20}, Employee{employeeID=10030, name=&apos;Emelia  Maceda&apos;, birthday=1973-04-14}, Employee{employeeID=10031, name=&apos;Delia  Aguilar&apos;, birthday=1989-01-27}, Employee{employeeID=10032, name=&apos;John Rafael Castro&apos;, birthday=1992-02-09}, Employee{employeeID=10033, name=&apos;Carlos Ian Martinez&apos;, birthday=1990-11-16}, Employee{employeeID=10034, name=&apos;Beatriz Santos&apos;, birthday=1990-08-07}]&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<null> but was:<[Employee{employeeID=10001, name='Manuel III Garcia', birthday=1983-10-11}, Employee{employeeID=10002, name='Antonio Lim', birthday=1988-06-19}, Employee{employeeID=10003, name='Bianca Sofia Aquino', birthday=1989-08-04}, Employee{employeeID=10004, name='Isabella Reyes', birthday=1994-06-16}, Employee{employeeID=10005, name='Eduard Hernandez', birthday=1989-09-23}, Employee{employeeID=10006, name='Andrea Mae Villanueva', birthday=1988-02-14}, Employee{employeeID=10007, name='Brad  San Jose', birthday=1996-03-15}, Employee{employeeID=10008, name='Alice Romualdez', birthday=1992-05-14}, Employee{employeeID=10009, name='Rosie  Atienza', birthday=1948-09-24}, Employee{employeeID=10010, name='Roderick Alvaro', birthday=1988-03-30}, Employee{employeeID=10011, name='Anthony Salcedo', birthday=1993-09-14}, Employee{employeeID=10012, name='Josie  Lopez', birthday=1987-01-14}, Employee{employeeID=10013, name='Martha Farala', birthday=1942-01-11}, Employee{employeeID=10014, name='Leila Martinez', birthday=1970-07-11}, Employee{employeeID=10015, name='Fredrick  Romualdez', birthday=1985-03-10}, Employee{employeeID=10016, name='Christian Mata', birthday=1987-10-21}, Employee{employeeID=10017, name='Selena  De Leon', birthday=1975-02-20}, Employee{employeeID=10018, name='Allison  San Jose', birthday=1986-06-24}, Employee{employeeID=10019, name='Cydney  Rosario', birthday=1996-10-06}, Employee{employeeID=10020, name='Mark  Bautista', birthday=1991-02-12}, Employee{employeeID=10021, name='Darlene  Lazaro', birthday=1985-11-25}, Employee{employeeID=10022, name='Kolby  Delos Santos', birthday=1980-02-26}, Employee{employeeID=10023, name='Vella  Santos', birthday=1983-12-31}, Employee{employeeID=10024, name='Tomas Del Rosario', birthday=1978-12-18}, Employee{employeeID=10025, name='Jacklyn  Tolentino', birthday=1984-05-19}, Employee{employeeID=10026, name='Percival  Gutierrez', birthday=1970-12-18}, Employee{employeeID=10027, name='Garfield  Manalaysay', birthday=1986-08-28}, Employee{employeeID=10028, name='Lizeth  Villegas', birthday=1981-12-12}, Employee{employeeID=10029, name='Carol  Ramos', birthday=1978-08-20}, Employee{employeeID=10030, name='Emelia  Maceda', birthday=1973-04-14}, Employee{employeeID=10031, name='Delia  Aguilar', birthday=1989-01-27}, Employee{employeeID=10032, name='John Rafael Castro', birthday=1992-02-09}, Employee{employeeID=10033, name='Carlos Ian Martinez', birthday=1990-11-16}, Employee{employeeID=10034, name='Beatriz Santos', birthday=1990-08-07}]>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cjme.motorphsystem.dao.implementations.EmployeeDAOImplTest.testGetAllEmployees(EmployeeDAOImplTest.java:79)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></failure>
+    <system-out><![CDATA[getAllEmployees
+]]></system-out>
+  </testcase>
+</testsuite>

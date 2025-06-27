@@ -1,5 +1,6 @@
 package com.cjme.motorphsystem.dao.deductions;
 
+import com.cjme.motorphsystem.dao.PhilHealthDAO;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.Connection;
 import org.junit.Test;

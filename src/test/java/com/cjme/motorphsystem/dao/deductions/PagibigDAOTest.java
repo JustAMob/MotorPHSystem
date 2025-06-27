@@ -1,5 +1,6 @@
 package com.cjme.motorphsystem.dao.deductions;
 
+import com.cjme.motorphsystem.dao.PagibigDAO;
 import com.cjme.motorphsystem.model.deductions.PagibigContribution;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.Connection;

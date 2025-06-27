@@ -4,9 +4,9 @@ package com.cjme.motorphsystem.util;
  *
  * @author JustAMob
  */
-import com.cjme.motorphsystem.dao.deductions.PagibigDAO;
-import com.cjme.motorphsystem.dao.deductions.PhilHealthDAO;
-import com.cjme.motorphsystem.dao.deductions.SssDAO;
+import com.cjme.motorphsystem.dao.PagibigDAO;
+import com.cjme.motorphsystem.dao.PhilHealthDAO;
+import com.cjme.motorphsystem.dao.SssDAO;
 import com.cjme.motorphsystem.model.deductions.PagibigDeduction;
 import com.cjme.motorphsystem.model.deductions.PhilHealthDeduction;
 import com.cjme.motorphsystem.model.deductions.SssDeduction;
