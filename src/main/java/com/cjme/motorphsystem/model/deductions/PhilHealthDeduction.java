@@ -10,7 +10,7 @@ import com.cjme.motorphsystem.model.Deduction;
 
 public class PhilHealthDeduction extends Deduction {
     private final PhilHealthDAO philhealth;
-
+    
     public PhilHealthDeduction(double salary, PhilHealthDAO philhealth) {
         super(salary);
         this.philhealth = philhealth;
@@ -19,7 +19,7 @@ public class PhilHealthDeduction extends Deduction {
     @Override
     public double calculate() {
         
-        double premium = salary * philhealth.getPremiumRate(); // 3% total
+        double premium = salary * philhealth.getPremiumRate(salary); // 3% total
         return premium / 2; // employee share
     }
 }

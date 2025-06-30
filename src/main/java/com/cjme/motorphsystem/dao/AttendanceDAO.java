@@ -23,7 +23,7 @@ public class AttendanceDAO {
     
     //CREATE
     public boolean addTimelog (Attendance attendance) throws SQLException {
-        String sql = "INSERT INTO attendace (employee_id, attendance_date, time_in, time_out) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO attendance (employee_id, attendance_date, time_in, time_out) VALUES(?,?,?,?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setInt(1,attendance.getEmployeeID());
             stmt.setDate(2,attendance.getLogDate());
@@ -38,6 +38,7 @@ public class AttendanceDAO {
         List<Attendance> list = new ArrayList<>();
         String sql = "SELECT * FROM attendance WHERE employee_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, employeeID);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Attendance attendance = new Attendance (
@@ -82,6 +83,7 @@ public class AttendanceDAO {
         List<Attendance> list = new ArrayList<>();
         String sql = "SELECT * FROM attendance WHERE attendance_date = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setDate(1, date);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Attendance attendance = new Attendance (
@@ -100,7 +102,7 @@ public class AttendanceDAO {
     //Gets all timelogs within a date range
     public List<Attendance> getTimeLogsByRange(Date startDate, Date endDate) throws SQLException {
         List<Attendance> list = new ArrayList<>();
-            String sql = "SELECT * FROM attendace WHERE attendance_date BETWEEN ? AND ?";
+            String sql = "SELECT * FROM attendance WHERE attendance_date BETWEEN ? AND ?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setDate(1, startDate);
                 stmt.setDate(2, endDate);

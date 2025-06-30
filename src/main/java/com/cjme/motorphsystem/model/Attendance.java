@@ -52,6 +52,14 @@ public class Attendance {
         return timeOut;
     }
 
+    public void setLogID(int logID) {
+        this.logID = logID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
+    }
+
     public void setLogDate(Date logDate) {
         this.logDate = logDate;
     }

@@ -17,20 +17,28 @@ public class PhilHealthDAO {
         this.connection = connection;
     }
 
-    // Method to fetch the premium rate from the database
-    public double getPremiumRate() {
-        double premiumRate = 0.0000;
-        
+    public double getPremiumRate(double salary) {
+        double premiumRate = 0.0;
+
         try {
-            String sql = "SELECT premium_rate FROM philhealth WHERE philhealth_id = 1";  // Adjust the query if necessary
+            String sql = """
+                SELECT premium_rate 
+                FROM philhealth_contribution     
+                WHERE ? >= min_salary 
+                ORDER BY min_salary DESC 
+                LIMIT 1
+            """;
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setDouble(1, salary);
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 premiumRate = rs.getDouble("premium_rate");
             }
 
         } catch (SQLException e) {
+            // Consider logging this
+            
         }
 
         return premiumRate;

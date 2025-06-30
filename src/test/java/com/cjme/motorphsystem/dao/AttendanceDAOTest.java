@@ -6,11 +6,9 @@ package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.Attendance;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,118 +17,58 @@ import static org.junit.Assert.*;
  * @author JustAMob
  */
 public class AttendanceDAOTest {
-    
-    public AttendanceDAOTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+    private AttendanceDAO attendanceDAO;
+    private final int testEmployeeId = 10008; // Make sure this is a valid employee ID in your test DB
+    private final Date testDate = Date.valueOf("2024-06-03");
+
     @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public void setUp() throws Exception {
+        attendanceDAO = new AttendanceDAO();
+
+        // Insert test time log
+        Attendance attendance = new Attendance();
+        attendance.setEmployeeID(testEmployeeId);
+        attendance.setLogDate(testDate);
+        attendance.setTimeIn(Time.valueOf("08:00:00"));
+        attendance.setTimeOut(Time.valueOf("17:00:00"));
+
+        boolean inserted = attendanceDAO.addTimelog(attendance);
+        assertTrue("Test log should be inserted", inserted);
     }
 
-    /**
-     * Test of addTimelog method, of class AttendanceDAO.
-     */
-    @Test
-    public void testAddTimelog() throws Exception {
-        System.out.println("addTimelog");
-        Attendance attendance = null;
-        AttendanceDAO instance = new AttendanceDAO();
-        boolean expResult = false;
-        boolean result = instance.addTimelog(attendance);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTimeLogsByEmployee method, of class AttendanceDAO.
-     */
     @Test
     public void testGetTimeLogsByEmployee() throws Exception {
-        System.out.println("getTimeLogsByEmployee");
-        int employeeID = 0;
-        AttendanceDAO instance = new AttendanceDAO();
-        List<Attendance> expResult = null;
-        List<Attendance> result = instance.getTimeLogsByEmployee(employeeID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Attendance> logs = attendanceDAO.getTimeLogsByEmployee(testEmployeeId);
+        assertNotNull("Logs should not be null", logs);
+        assertTrue("Should contain logs for test employee", logs.size() > 0);
     }
 
-    /**
-     * Test of getTimeLogsByEmployeeAndMonth method, of class AttendanceDAO.
-     */
     @Test
     public void testGetTimeLogsByEmployeeAndMonth() throws Exception {
-        System.out.println("getTimeLogsByEmployeeAndMonth");
-        int employeeID = 0;
-        int year = 0;
-        int month = 0;
-        AttendanceDAO instance = new AttendanceDAO();
-        List<Attendance> expResult = null;
-        List<Attendance> result = instance.getTimeLogsByEmployeeAndMonth(employeeID, year, month);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Attendance> logs = attendanceDAO.getTimeLogsByEmployeeAndMonth(testEmployeeId, 2024, 6);
+        assertNotNull(logs);
+        assertTrue("Logs should contain at least one record", logs.size() > 0);
     }
 
-    /**
-     * Test of getTimeLogsByDate method, of class AttendanceDAO.
-     */
     @Test
     public void testGetTimeLogsByDate() throws Exception {
-        System.out.println("getTimeLogsByDate");
-        Date date = null;
-        AttendanceDAO instance = new AttendanceDAO();
-        List<Attendance> expResult = null;
-        List<Attendance> result = instance.getTimeLogsByDate(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Attendance> logs = attendanceDAO.getTimeLogsByDate(testDate);
+        assertNotNull(logs);
+        assertTrue("Logs should contain at least one record", logs.size() > 0);
     }
 
-    /**
-     * Test of getTimeLogsByRange method, of class AttendanceDAO.
-     */
     @Test
     public void testGetTimeLogsByRange() throws Exception {
-        System.out.println("getTimeLogsByRange");
-        Date startDate = null;
-        Date endDate = null;
-        AttendanceDAO instance = new AttendanceDAO();
-        List<Attendance> expResult = null;
-        List<Attendance> result = instance.getTimeLogsByRange(startDate, endDate);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Date start = Date.valueOf("2024-06-01");
+        Date end = Date.valueOf("2024-06-30");
+        List<Attendance> logs = attendanceDAO.getTimeLogsByRange(start, end);
+        assertNotNull(logs);
     }
 
-    /**
-     * Test of getTimeLogsByEmployeeAndDate method, of class AttendanceDAO.
-     */
     @Test
     public void testGetTimeLogsByEmployeeAndDate() throws Exception {
-        System.out.println("getTimeLogsByEmployeeAndDate");
-        int employeeID = 0;
-        Date date = null;
-        AttendanceDAO instance = new AttendanceDAO();
-        List<Attendance> expResult = null;
-        List<Attendance> result = instance.getTimeLogsByEmployeeAndDate(employeeID, date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Attendance> logs = attendanceDAO.getTimeLogsByEmployeeAndDate(testEmployeeId, testDate);
+        assertNotNull(logs);
+        assertFalse("Logs for specific date should not be empty", logs.isEmpty());
     }
-    
 }

@@ -61,12 +61,14 @@ public class EmployeeAllowanceDAOImpl implements EmployeeAllowanceDAO {
 
     @Override
     public BigDecimal getTotalAllowance(int employeeId) throws SQLException {
-        String sql = "SELECT SUM(amount) FROM employee_allowance WHERE employee_id = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, employeeId);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) return rs.getBigDecimal(1);
-        }
-        return BigDecimal.ZERO;
+     String sql = "SELECT COALESCE(SUM(amount), 0) FROM employee_allowance WHERE employee_id = ?";
+     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+         stmt.setInt(1, employeeId);
+         ResultSet rs = stmt.executeQuery();
+         if (rs.next()) {
+             return rs.getBigDecimal(1); // now never null
+         }
+     }
+     return BigDecimal.ZERO;
     }
 }

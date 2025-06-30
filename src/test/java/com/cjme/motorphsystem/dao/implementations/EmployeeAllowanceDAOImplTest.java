@@ -4,12 +4,13 @@
  */
 package com.cjme.motorphsystem.dao.implementations;
 
+import com.cjme.motorphsystem.util.DBConnection;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,69 +19,54 @@ import static org.junit.Assert.*;
  * @author JustAMob
  */
 public class EmployeeAllowanceDAOImplTest {
-    
-    public EmployeeAllowanceDAOImplTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    private EmployeeAllowanceDAOImpl dao;
+    private final int employeeId = 10016; 
+    private final int allowanceTypeId = 1; 
+    private final String allowanceRice = "rice_allowance"; 
+    private final String allowanceClothRankFile = "clothing_allowance"; 
+
     @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public void setUp() throws SQLException {
+        dao = new EmployeeAllowanceDAOImpl();
+
+        // Clean up before each test
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "DELETE FROM employee_allowance WHERE employee_id = ?")) {
+            stmt.setInt(1, employeeId);
+            stmt.executeUpdate();
+        }
     }
 
-    /**
-     * Test of assignAllowance method, of class EmployeeAllowanceDAOImpl.
-     */
     @Test
-    public void testAssignAllowance() throws Exception {
-        System.out.println("assignAllowance");
-        int employeeId = 0;
-        int allowanceTypeId = 0;
-        BigDecimal amount = null;
-        EmployeeAllowanceDAOImpl instance = new EmployeeAllowanceDAOImpl();
-        instance.assignAllowance(employeeId, allowanceTypeId, amount);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAssignAndRetrieveAllowance() throws SQLException {
+        BigDecimal amount = new BigDecimal("1500.00");
+
+        dao.assignAllowance(employeeId, allowanceTypeId, amount);
+
+        Map<String, BigDecimal> allowances = dao.getAllowancesByEmployee(employeeId);
+
+        assertTrue("Allowance map should contain key: " + allowanceRice, allowances.containsKey(allowanceRice));
+        assertEquals("Allowance amount should match", amount, allowances.get(allowanceRice));
     }
 
-    /**
-     * Test of getAllowancesByEmployee method, of class EmployeeAllowanceDAOImpl.
-     */
     @Test
-    public void testGetAllowancesByEmployee() throws Exception {
-        System.out.println("getAllowancesByEmployee");
-        int employeeId = 0;
-        EmployeeAllowanceDAOImpl instance = new EmployeeAllowanceDAOImpl();
-        Map<String, BigDecimal> expResult = null;
-        Map<String, BigDecimal> result = instance.getAllowancesByEmployee(employeeId);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testTotalAllowanceComputation() throws SQLException {
+        // Assign two allowances for total test (could be same or different allowance types)
+        dao.assignAllowance(employeeId, allowanceTypeId, new BigDecimal("1000.00"));
+        dao.assignAllowance(employeeId, allowanceTypeId, new BigDecimal("1000.00")); 
+
+        BigDecimal total = dao.getTotalAllowance(employeeId);
+
+        assertNotNull("Total allowance should not be null", total);
+        assertEquals(new BigDecimal("1000.00"), total); // last write should override previous
     }
 
-    /**
-     * Test of getTotalAllowance method, of class EmployeeAllowanceDAOImpl.
-     */
     @Test
-    public void testGetTotalAllowance() throws Exception {
-        System.out.println("getTotalAllowance");
-        int employeeId = 0;
-        EmployeeAllowanceDAOImpl instance = new EmployeeAllowanceDAOImpl();
-        BigDecimal expResult = null;
-        BigDecimal result = instance.getTotalAllowance(employeeId);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testZeroAllowanceWhenNoData() throws SQLException {
+        BigDecimal total = dao.getTotalAllowance(9999); // nonexistent employee
+        assertNotNull("Should return zero, not null", total);
+        assertTrue("Expected zero allowance", BigDecimal.ZERO.compareTo(total) == 0);
     }
-    
 }

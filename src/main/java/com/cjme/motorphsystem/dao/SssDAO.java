@@ -27,7 +27,7 @@ public class SssDAO {
     public double getContributionForSalary(double salary) {
         double contribution = 0.0;
         try {
-            String sql = "SELECT contribution FROM sss WHERE ? BETWEEN min_salary AND max_salary";
+            String sql = "SELECT contribution FROM sss_contribution WHERE ? BETWEEN min_salary AND max_salary";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setDouble(1, salary);
             ResultSet rs = stmt.executeQuery();
@@ -36,7 +36,7 @@ public class SssDAO {
                 contribution = rs.getDouble("contribution");
             } else {
                 // Check for max_salary = 'over' case
-                sql = "SELECT contribution FROM sss WHERE max_salary = 99999999 AND ? >= min_salary";
+                sql = "SELECT contribution FROM sss_contribution WHERE max_salary = 99999999 AND ? >= min_salary";
                 stmt = connection.prepareStatement(sql);
                 stmt.setDouble(1, salary);
                 rs = stmt.executeQuery();
