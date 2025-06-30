@@ -17,7 +17,6 @@ public class DBConnection {
     public static void setTestConnection(Connection conn) {
         testConnection = conn;
     }
-    
     public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

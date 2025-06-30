@@ -46,7 +46,7 @@ public class DeductionDAO {
 
     //Get detailed deductions by type
     public DeductionRecord getDetailedDeductions(int employeeID) throws SQLException {
-        String sql = "SELECT sss_deduction, philhealth_deduction, pagibig_deduction FROM deduction WHERE payroll_id = ?";
+        String sql = "SELECT sss_deduction, philhealth_deduction, pagibig_deduction FROM deduction WHERE employee_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, employeeID);
             ResultSet rs = stmt.executeQuery();

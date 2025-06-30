@@ -21,11 +21,9 @@ public class TaxDAOTest {
     @Before
     public void setUp() {
         try {
-            // Set up TaxDAO instance before each test
+            
             taxDAO = new TaxDAO();
         } catch (SQLException e) {
-            // Print the stack trace if there's an issue with DB connection
-            e.printStackTrace();
             fail("Failed to initialize TaxDAO: " + e.getMessage());
         }
     }
@@ -38,16 +36,13 @@ public class TaxDAOTest {
 
     @Test
     public void testCalculateTax() throws SQLException {
-        // Example salary value to test
         double salary = 35000.0;
 
-        // Call the calculateTax method from TaxDAO
+       
         double calculatedTax = taxDAO.calculateTax(salary);
 
-        // Expected tax 
         double expectedTax = 2916.75;
 
-        // Assert the calculated tax equals the expected tax
         assertEquals(expectedTax, calculatedTax, 0.01);
     }
 

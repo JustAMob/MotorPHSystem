@@ -14,7 +14,7 @@ import com.cjme.motorphsystem.model.Employee;
 import java.util.List;
 
 public interface EmployeeDAO {
-    void addEmployee(Employee employee, String role);
+    int addEmployee(Employee employee, String role);
     Employee getEmployeeById(int id);
     List<Employee> getAllEmployees();
     void updateEmployee(Employee employee, String role);

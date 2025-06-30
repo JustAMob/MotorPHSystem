@@ -5,6 +5,10 @@
 package com.cjme.motorphsystem.dao.implementations;
 
 import com.cjme.motorphsystem.model.LeaveRequest;
+import com.cjme.motorphsystem.util.DBConnection;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,110 +22,97 @@ import static org.junit.Assert.*;
  * @author JustAMob
  */
 public class LeaveRequestDAOImplTest {
-    
-    public LeaveRequestDAOImplTest() {
-    }
-    
+    private static LeaveRequestDAOImpl dao;
+    private static Connection conn;
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setupClass() throws SQLException {
+        conn = DBConnection.getConnection();
+        dao = new LeaveRequestDAOImpl();
+        clearTestData();
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public static void tearDownClass() throws SQLException {
+        clearTestData();
+        conn.close();
     }
 
-    /**
-     * Test of addLeaveRequest method, of class LeaveRequestDAOImpl.
-     */
+    private static void clearTestData() throws SQLException {
+        conn.prepareStatement("DELETE FROM leave_request WHERE reason LIKE 'Test Reason%'").executeUpdate();
+    }
+
     @Test
-    public void testAddLeaveRequest() {
-        System.out.println("addLeaveRequest");
-        LeaveRequest request = null;
-        String role = "";
-        LeaveRequestDAOImpl instance = new LeaveRequestDAOImpl();
-        instance.addLeaveRequest(request, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAddAndGetLeaveRequest() {
+        LeaveRequest request = new LeaveRequest();
+        request.setEmployeeId(10001); 
+        request.setLeaveType("Vacation");
+        request.setLeaveStart(Date.valueOf("2025-07-01"));
+        request.setLeaveEnd(Date.valueOf("2025-07-05"));
+        request.setReason("Test Reason Add");
+        request.setLeaveStatus("Pending");
+
+        dao.addLeaveRequest(request, "admin");
+
+        List<LeaveRequest> all = dao.getAllLeaveRequests();
+        boolean found = all.stream().anyMatch(lr -> "Test Reason Add".equals(lr.getReason()));
+        assertTrue(found);
     }
 
-    /**
-     * Test of getLeaveRequestById method, of class LeaveRequestDAOImpl.
-     */
-    @Test
-    public void testGetLeaveRequestById() {
-        System.out.println("getLeaveRequestById");
-        int id = 0;
-        LeaveRequestDAOImpl instance = new LeaveRequestDAOImpl();
-        LeaveRequest expResult = null;
-        LeaveRequest result = instance.getLeaveRequestById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test(expected = SecurityException.class)
+    public void testUnauthorizedAddLeaveRequest() {
+        LeaveRequest request = new LeaveRequest();
+        request.setEmployeeId(1);
+        request.setLeaveType("Sick");
+        request.setLeaveStart(Date.valueOf("2025-07-01"));
+        request.setLeaveEnd(Date.valueOf("2025-07-02"));
+        request.setReason("Test Reason Unauthorized");
+        request.setLeaveStatus("Pending");
+
+        dao.addLeaveRequest(request, "user");
     }
 
-    /**
-     * Test of getAllLeaveRequests method, of class LeaveRequestDAOImpl.
-     */
-    @Test
-    public void testGetAllLeaveRequests() {
-        System.out.println("getAllLeaveRequests");
-        LeaveRequestDAOImpl instance = new LeaveRequestDAOImpl();
-        List<LeaveRequest> expResult = null;
-        List<LeaveRequest> result = instance.getAllLeaveRequests();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of updateLeaveRequestStatus method, of class LeaveRequestDAOImpl.
-     */
     @Test
     public void testUpdateLeaveRequestStatus() {
-        System.out.println("updateLeaveRequestStatus");
-        int requestId = 0;
-        String newStatus = "";
-        String role = "";
-        LeaveRequestDAOImpl instance = new LeaveRequestDAOImpl();
-        instance.updateLeaveRequestStatus(requestId, newStatus, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LeaveRequest request = new LeaveRequest();
+        request.setEmployeeId(10001);
+        request.setLeaveType("Vacation");
+        request.setLeaveStart(Date.valueOf("2025-07-10"));
+        request.setLeaveEnd(Date.valueOf("2025-07-15"));
+        request.setReason("Test Reason Update");
+        request.setLeaveStatus("Pending");
+        dao.addLeaveRequest(request, "admin");
+
+        LeaveRequest inserted = dao.getAllLeaveRequests().stream()
+                .filter(lr -> "Test Reason Update".equals(lr.getReason()))
+                .findFirst().orElse(null);
+
+        assertNotNull(inserted);
+        dao.updateLeaveRequestStatus(inserted.getLeaveRequestId(), "Approved", "hr");
+        LeaveRequest updated = dao.getLeaveRequestById(inserted.getLeaveRequestId());
+        assertEquals("Approved", updated.getLeaveStatus());
     }
 
-    /**
-     * Test of updateLeaveRequest method, of class LeaveRequestDAOImpl.
-     */
-    @Test
-    public void testUpdateLeaveRequest() {
-        System.out.println("updateLeaveRequest");
-        LeaveRequest request = null;
-        String role = "";
-        LeaveRequestDAOImpl instance = new LeaveRequestDAOImpl();
-        instance.updateLeaveRequest(request, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of deleteLeaveRequest method, of class LeaveRequestDAOImpl.
-     */
     @Test
     public void testDeleteLeaveRequest() {
-        System.out.println("deleteLeaveRequest");
-        int id = 0;
-        String role = "";
-        LeaveRequestDAOImpl instance = new LeaveRequestDAOImpl();
-        instance.deleteLeaveRequest(id, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LeaveRequest request = new LeaveRequest();
+        request.setEmployeeId(10001);
+        request.setLeaveType("Sick");
+        request.setLeaveStart(Date.valueOf("2025-07-20"));
+        request.setLeaveEnd(Date.valueOf("2025-07-22"));
+        request.setReason("Test Reason Delete");
+        request.setLeaveStatus("Pending");
+
+        dao.addLeaveRequest(request, "admin");
+
+        LeaveRequest inserted = dao.getAllLeaveRequests().stream()
+                .filter(lr -> "Test Reason Delete".equals(lr.getReason()))
+                .findFirst().orElse(null);
+
+        assertNotNull(inserted);
+        dao.deleteLeaveRequest(inserted.getLeaveRequestId(), "supervisor");
+
+        LeaveRequest deleted = dao.getLeaveRequestById(inserted.getLeaveRequestId());
+        assertNull(deleted);
     }
-    
 }

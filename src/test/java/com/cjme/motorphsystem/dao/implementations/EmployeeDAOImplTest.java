@@ -5,6 +5,12 @@
 package com.cjme.motorphsystem.dao.implementations;
 
 import com.cjme.motorphsystem.model.Employee;
+import com.cjme.motorphsystem.util.DBConnection;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,101 +18,109 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Assume;
 
 /**
  *
  * @author JustAMob
  */
 public class EmployeeDAOImplTest {
-    
-    public EmployeeDAOImplTest() {
-    }
-    
+
+    private static Connection conn;
+    private EmployeeDAOImpl dao;
+    private static int testEmployeeId = 101;
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setupDB() {
+        conn = DBConnection.getConnection();
+        assertNotNull("DB connection should not be null", conn);
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
     @Before
     public void setUp() {
+        dao = new EmployeeDAOImpl();
+        testCreateEmployee();
     }
-    
+
     @After
-    public void tearDown() {
+    public void cleanupEachTest() throws SQLException {
+        if (testEmployeeId > 0) {
+            dao.deleteEmployee(testEmployeeId, "admin");
+            testEmployeeId = -1;
+        }
     }
 
-    /**
-     * Test of addEmployee method, of class EmployeeDAOImpl.
-     */
+    
+    public void testCreateEmployee() {
+        Employee emp = new Employee();
+        emp.setFirstName("John");
+        emp.setLastName("Doe");
+        emp.setAddressId(111);
+        emp.setPhoneNumber(123456789);
+        emp.setGovernmentId(111);
+        emp.setDepartmentId(1);
+        emp.setSalaryId(1);
+        emp.setSupervisorId(1);
+        emp.setStatusId(1);
+        emp.setPositionId(1);
+        emp.setBirthday(Date.valueOf("1990-01-01"));
+
+        int generatedId = dao.addEmployee(emp, "admin");
+        assertTrue("Failed to insert employee", generatedId > 0);
+        
+        testEmployeeId = generatedId;
+         
+        Employee fromDb = dao.getEmployeeById(generatedId);
+        assertNotNull("Inserted employee should be retrievable", fromDb);
+        assertEquals("First name mismatch", "John", fromDb.getFirstName());
+    }
+
     @Test
-    public void testAddEmployee() {
-        System.out.println("addEmployee");
-        Employee emp = null;
-        String role = "";
-        EmployeeDAOImpl instance = new EmployeeDAOImpl();
-        instance.addEmployee(emp, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testReadEmployee() {
+        Assume.assumeTrue(testEmployeeId != -1);
+
+        Employee emp = dao.getEmployeeById(testEmployeeId);
+        assertNotNull(emp);
+        assertEquals("John", emp.getFirstName());
     }
 
-    /**
-     * Test of getEmployeeById method, of class EmployeeDAOImpl.
-     */
-    @Test
-    public void testGetEmployeeById() {
-        System.out.println("getEmployeeById");
-        int id = 0;
-        EmployeeDAOImpl instance = new EmployeeDAOImpl();
-        Employee expResult = null;
-        Employee result = instance.getEmployeeById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAllEmployees method, of class EmployeeDAOImpl.
-     */
-    @Test
-    public void testGetAllEmployees() {
-        System.out.println("getAllEmployees");
-        EmployeeDAOImpl instance = new EmployeeDAOImpl();
-        List<Employee> expResult = null;
-        List<Employee> result = instance.getAllEmployees();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of updateEmployee method, of class EmployeeDAOImpl.
-     */
     @Test
     public void testUpdateEmployee() {
-        System.out.println("updateEmployee");
-        Employee emp = null;
-        String role = "";
-        EmployeeDAOImpl instance = new EmployeeDAOImpl();
-        instance.updateEmployee(emp, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assume.assumeTrue(testEmployeeId != -1);
+
+        Employee emp = dao.getEmployeeById(testEmployeeId);
+        emp.setFirstName("Jane");
+        emp.setLastName("Smith");
+
+        dao.updateEmployee(emp, "hr");
+
+        Employee updated = dao.getEmployeeById(testEmployeeId);
+        assertEquals("Jane", updated.getFirstName());
+        assertEquals("Smith", updated.getLastName());
     }
 
-    /**
-     * Test of deleteEmployee method, of class EmployeeDAOImpl.
-     */
     @Test
     public void testDeleteEmployee() {
-        System.out.println("deleteEmployee");
-        int id = 0;
-        String role = "";
-        EmployeeDAOImpl instance = new EmployeeDAOImpl();
-        instance.deleteEmployee(id, role);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assume.assumeTrue(testEmployeeId != -1);
+
+        dao.deleteEmployee(testEmployeeId, "admin");
+        Employee deleted = dao.getEmployeeById(testEmployeeId);
+        assertNull(deleted);
+
+        testEmployeeId = -1; // Reset to avoid false positives
     }
-    
+
+    @AfterClass
+    public static void tearDown() throws SQLException {
+        if (testEmployeeId != -1) {
+            try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM employee WHERE employee_id = ?")) {
+                stmt.setInt(1, testEmployeeId);
+                stmt.executeUpdate();
+            }
+        }
+
+        if (conn != null && !conn.isClosed()) {
+            conn.close();
+        }
+    }
 }

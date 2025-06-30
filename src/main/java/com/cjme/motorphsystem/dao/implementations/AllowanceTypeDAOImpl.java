@@ -14,8 +14,12 @@ import com.cjme.motorphsystem.dao.AllowanceTypeDAO;
 public class AllowanceTypeDAOImpl implements AllowanceTypeDAO {
     private final Connection conn;
 
+    public AllowanceTypeDAOImpl(Connection conn) {
+        this.conn = conn;
+    }
+
     public AllowanceTypeDAOImpl() {
-        this.conn = DBConnection.getConnection();
+        this(DBConnection.getConnection());
     }
 
     @Override

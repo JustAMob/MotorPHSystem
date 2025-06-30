@@ -6,6 +6,7 @@ import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import static javax.swing.UIManager.getInt;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 
@@ -13,15 +14,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("hr");
     }
 
-    public void addEmployee(Employee emp, String role) {
+    @Override
+    public int addEmployee(Employee emp, String role) {
         if (!isAuthorized(role)) {
             throw new SecurityException("Unauthorized to add employee.");
         }
 
-        String sql = "INSERT INTO Employee (first_name, last_name, address_id, phone_number, government_id, department_id, salary_id, supervisor_id, status_id, position_id, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO employee (first_name, last_name, address_id, phone_number, government_id, department_id, salary_id, supervisor_id, status_id, position_id, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
             stmt.setString(1, emp.getFirstName());
             stmt.setString(2, emp.getLastName());
@@ -35,14 +37,28 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             stmt.setInt(10, emp.getPositionId());
             stmt.setDate(11, emp.getBirthday());
 
-            stmt.executeUpdate();
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                System.out.println("Insert returned 0 rows.");
+            }
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                System.out.println("Generated ID: " + rs.getInt(1));
+                return rs.getInt(1);
+            } else {
+                System.out.println("No generated key returned.");
+            }
 
         } catch (SQLException e) {
+            e.printStackTrace(); // SHOW the real cause
         }
+        return -1;
     }
 
+    @Override
     public Employee getEmployeeById(int id) {
-        String sql = "SELECT * FROM Employee WHERE employee_id = ?";
+        String sql = "SELECT * FROM employee WHERE employee_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -72,9 +88,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
+    @Override
     public List<Employee> getAllEmployees() {
         List<Employee> list = new ArrayList<>();
-        String sql = "SELECT * FROM Employee";
+        String sql = "SELECT * FROM employee";
 
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
@@ -103,12 +120,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return list;
     }
 
+    @Override
     public void updateEmployee(Employee emp, String role) {
         if (!isAuthorized(role)) {
             throw new SecurityException("Unauthorized to update employee.");
         }
 
-        String sql = "UPDATE Employee SET first_name = ?, last_name = ?, address_id = ?, phone_number = ?, government_id = ?, department_id = ?, salary_id = ?, supervisor_id = ?, status_id = ?, position_id = ?, birthday = ? WHERE employee_id = ?";
+        String sql = "UPDATE employee SET first_name = ?, last_name = ?, address_id = ?, phone_number = ?, government_id = ?, department_id = ?, salary_id = ?, supervisor_id = ?, status_id = ?, position_id = ?, birthday = ? WHERE employee_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -138,7 +156,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             throw new SecurityException("Unauthorized to delete employee.");
         }
 
-        String sql = "DELETE FROM Employee WHERE employee_id = ?";
+        String sql = "DELETE FROM employee WHERE employee_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

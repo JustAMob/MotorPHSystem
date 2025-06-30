@@ -5,9 +5,12 @@
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.Attendance;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.List;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -17,12 +20,15 @@ import static org.junit.Assert.*;
  * @author JustAMob
  */
 public class AttendanceDAOTest {
+    private static Connection connection;
     private AttendanceDAO attendanceDAO;
     private final int testEmployeeId = 10008; // Make sure this is a valid employee ID in your test DB
     private final Date testDate = Date.valueOf("2024-06-03");
 
+    
     @Before
     public void setUp() throws Exception {
+        
         attendanceDAO = new AttendanceDAO();
 
         // Insert test time log
@@ -35,7 +41,8 @@ public class AttendanceDAOTest {
         boolean inserted = attendanceDAO.addTimelog(attendance);
         assertTrue("Test log should be inserted", inserted);
     }
-
+    
+  
     @Test
     public void testGetTimeLogsByEmployee() throws Exception {
         List<Attendance> logs = attendanceDAO.getTimeLogsByEmployee(testEmployeeId);

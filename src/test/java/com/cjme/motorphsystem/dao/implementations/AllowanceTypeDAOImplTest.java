@@ -4,7 +4,13 @@
  */
 package com.cjme.motorphsystem.dao.implementations;
 
+import com.cjme.motorphsystem.dao.implementations.AllowanceTypeDAOImpl;
 import com.cjme.motorphsystem.model.AllowanceType;
+import com.cjme.motorphsystem.util.DBConnection;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,79 +24,83 @@ import static org.junit.Assert.*;
  * @author JustAMob
  */
 public class AllowanceTypeDAOImplTest {
-    
-    public AllowanceTypeDAOImplTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    private static Connection connection;
+    private AllowanceTypeDAOImpl dao;
+
     @Before
-    public void setUp() {
+    public void setUp() throws SQLException {
+        connection = DBConnection.getConnection();
+        connection.setAutoCommit(false); 
+        dao = new AllowanceTypeDAOImpl(connection);
+        clearTable();
     }
-    
+
+    /**
+     *
+     * @throws SQLException
+     */
     @After
-    public void tearDown() {
+    public void tearDown() throws SQLException {
+        connection.rollback(); // undo any DB changes made during test
+        connection.setAutoCommit(true);
+        connection.close();
+    }
+    private void clearTable() throws SQLException {
+        try (Statement stmt = connection.createStatement()) {
+            stmt.executeUpdate("DELETE FROM employee_allowance"); // child table first
+            stmt.executeUpdate("DELETE FROM position_allowance_type"); // also child
+            stmt.executeUpdate("DELETE FROM allowance_type");      // then parent table
+        }
     }
 
-    /**
-     * Test of addAllowanceType method, of class AllowanceTypeDAOImpl.
-     */
     @Test
-    public void testAddAllowanceType() throws Exception {
-        System.out.println("addAllowanceType");
-        AllowanceType allowance = null;
-        AllowanceTypeDAOImpl instance = new AllowanceTypeDAOImpl();
-        instance.addAllowanceType(allowance);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAddAndGetAllowanceType() throws SQLException {
+        AllowanceType a = new AllowanceType();
+        a.setCode("TEST");
+        a.setCategory("Test Category");
+        a.setDescription("JUnit test desc");
+        a.setAmount(new BigDecimal("1000.00"));
+
+        dao.addAllowanceType(a);
+
+        List<AllowanceType> all = dao.getAllAllowanceTypes();
+        assertEquals(1, all.size());
+
+        AllowanceType fromDb = all.get(0);
+        assertEquals("TEST", fromDb.getCode());
+        assertEquals("Test Category", fromDb.getCategory());
+        assertEquals("JUnit test desc", fromDb.getDescription());
+        assertEquals(new BigDecimal("1000.00"), fromDb.getAmount());
+
+        AllowanceType byId = dao.getAllowanceTypeById(fromDb.getAllowanceTypeId());
+        assertNotNull(byId);
+        assertEquals(fromDb.getCode(), byId.getCode());
     }
 
-    /**
-     * Test of getAllAllowanceTypes method, of class AllowanceTypeDAOImpl.
-     */
     @Test
-    public void testGetAllAllowanceTypes() throws Exception {
-        System.out.println("getAllAllowanceTypes");
-        AllowanceTypeDAOImpl instance = new AllowanceTypeDAOImpl();
-        List<AllowanceType> expResult = null;
-        List<AllowanceType> result = instance.getAllAllowanceTypes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void testUpdateAllowanceType() throws SQLException {
+        // Insert initial record
+        AllowanceType a = new AllowanceType();
+        a.setCode("OT");
+        a.setCategory("Overtime");
+        a.setDescription("OT Rate");
+        a.setAmount(new BigDecimal("200.00"));
+        dao.addAllowanceType(a);
 
-    /**
-     * Test of getAllowanceTypeById method, of class AllowanceTypeDAOImpl.
-     */
-    @Test
-    public void testGetAllowanceTypeById() throws Exception {
-        System.out.println("getAllowanceTypeById");
-        int id = 0;
-        AllowanceTypeDAOImpl instance = new AllowanceTypeDAOImpl();
-        AllowanceType expResult = null;
-        AllowanceType result = instance.getAllowanceTypeById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        // Get inserted record to fetch auto-incremented ID
+        AllowanceType inserted = dao.getAllAllowanceTypes().get(0);
+        inserted.setCode("OT_UPDATED");
+        inserted.setCategory("Updated Category");
+        inserted.setDescription("Updated desc");
+        inserted.setAmount(new BigDecimal("250.00"));
 
-    /**
-     * Test of updateAllowanceType method, of class AllowanceTypeDAOImpl.
-     */
-    @Test
-    public void testUpdateAllowanceType() throws Exception {
-        System.out.println("updateAllowanceType");
-        AllowanceType allowance = null;
-        AllowanceTypeDAOImpl instance = new AllowanceTypeDAOImpl();
-        instance.updateAllowanceType(allowance);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        dao.updateAllowanceType(inserted);
+
+        AllowanceType updated = dao.getAllowanceTypeById(inserted.getAllowanceTypeId());
+        assertEquals("OT_UPDATED", updated.getCode());
+        assertEquals("Updated Category", updated.getCategory());
+        assertEquals("Updated desc", updated.getDescription());
+        assertEquals(new BigDecimal("250.00"), updated.getAmount());
     }
-    
 }
