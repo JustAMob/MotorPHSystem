@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI;
+package com.cjme.motorphsystem.controller;
 
 /**
  *
@@ -51,7 +51,6 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(835, 440));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(420, 342));
 
