@@ -21,44 +21,8 @@ public class Main {
      * @param args the command line arguments
      * @throws java.sql.SQLException
      */
-    public static void main(String[] args) throws SQLException {
-       
-        
-        PayslipGenerator.generatePayslipsForMonth(7, 2024);
-        
-//        try (Connection connection = DBConnection.getConnection()) {
-//            DeductionUtil.fillUpDeductions(connection);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-        
+    public static void main(String[] args) throws SQLException {     
 
-        // TODO code application logic here
-//        Connection conn = DBConnection.getConnection();
-//        if (conn != null) {
-//            System.out.println("Connected to DB!");
-//        } else {
-//            System.out.println("Failed to connect.");
-//        }
-//         try {
-//
-//            if (conn != null) {
-//                System.out.println("Connected to DB!");
-//
-//                EmployeeDAO employeeDAO = new EmployeeDAO(); // Pass the connection
-//
-//                List<Employee> employees = employeeDAO.getAllEmployees();
-//
-//                for (Employee emp : employees) {
-//                    System.out.println(emp); // This uses the toString() method in your Employee class
-//                }
-//
-//            } else {
-//                System.out.println("Failed to connect.");
-//            }
-//
-//        } catch (SQLException e) {
-//        }
       }
     
 }
