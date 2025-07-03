@@ -123,6 +123,11 @@ public class Login extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jCheckBox1.setText("Remember Me");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jCheckBox1, java.awt.BorderLayout.WEST);
 
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
@@ -177,6 +182,10 @@ public class Login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
