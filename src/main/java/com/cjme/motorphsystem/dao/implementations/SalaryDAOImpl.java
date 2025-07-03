@@ -37,7 +37,8 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public Salary getSalaryById(int salaryId) throws SQLException {
+    public Salary getSalaryById(int salaryId) {
+        Salary salary = null;
         String sql = "SELECT * FROM salary WHERE salary_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -47,17 +48,17 @@ public class SalaryDAOImpl implements SalaryDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Salary salary = new Salary();
+                salary = new Salary();
                 salary.setSalaryId(rs.getInt("salary_id"));
                 salary.setBasicSalary(rs.getBigDecimal("basic_salary"));
-                salary.setGrossSemiMonthlyRate(rs.getBigDecimal("gross_semi_monthly_rate"));
                 salary.setHourlyRate(rs.getBigDecimal("hourly_rate"));
-                return salary;
             }
+        } catch (SQLException e) {
         }
 
-        return null;
+        return salary;
     }
+    
     public BigDecimal getHourlyRateBySalaryId(int salaryId) throws SQLException {
         String sql = "SELECT hourly_rate FROM Salary WHERE salary_id = ?";
 

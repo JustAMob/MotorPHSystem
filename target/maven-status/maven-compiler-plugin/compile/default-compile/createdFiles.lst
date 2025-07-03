@@ -1,5 +1,6 @@
 com\cjme\motorphsystem\model\deductions\SssDeduction.class
 com\cjme\motorphsystem\exception\AuthorizationException.class
+com\cjme\motorphsystem\controller\Login$3.class
 com\cjme\motorphsystem\util\PayrollUtil.class
 com\cjme\motorphsystem\dao\SssDAO.class
 com\cjme\motorphsystem\exception\EmployeeNotFoundException.class
@@ -9,7 +10,9 @@ com\cjme\motorphsystem\model\AllowanceType.class
 com\cjme\motorphsystem\model\Employee.class
 com\cjme\motorphsystem\service\AttendanceTracker.class
 com\cjme\motorphsystem\model\deductions\PagibigDeduction.class
+com\cjme\motorphsystem\controller\Login.class
 com\cjme\motorphsystem\Main.class
+com\cjme\motorphsystem\util\PayslipGenerator.class
 com\cjme\motorphsystem\util\DeductionUtil.class
 com\cjme\motorphsystem\service\EmployeeService.class
 com\cjme\motorphsystem\dao\EmployeeAllowanceDAO.class
@@ -21,11 +24,14 @@ com\cjme\motorphsystem\util\DateTime.class
 com\cjme\motorphsystem\model\LeaveRequest.class
 com\cjme\motorphsystem\dao\implementations\LeaveRequestDAOImpl.class
 com\cjme\motorphsystem\service\LeaveRequestService.class
+com\cjme\motorphsystem\service\PayslipService.class
 com\cjme\motorphsystem\service\UserRolesService.class
 com\cjme\motorphsystem\exception\InvalidEmployeeDataException.class
+com\cjme\motorphsystem\dao\implementations\PayslipDAOImpl.class
 com\cjme\motorphsystem\security\SecurityManager.class
 com\cjme\motorphsystem\service\PayrollCalculator.class
 com\cjme\motorphsystem\exception\DuplicateEmployeeException.class
+com\cjme\motorphsystem\controller\Login$1.class
 com\cjme\motorphsystem\model\Report.class
 com\cjme\motorphsystem\dao\implementations\AllowanceTypeDAOImpl.class
 com\cjme\motorphsystem\config\AppConfig.class
@@ -44,6 +50,7 @@ com\cjme\motorphsystem\model\Deduction.class
 com\cjme\motorphsystem\dao\AllowanceTypeDAO.class
 com\cjme\motorphsystem\util\DBConnection.class
 com\cjme\motorphsystem\exception\AttendanceException.class
+com\cjme\motorphsystem\controller\Login$2.class
 com\cjme\motorphsystem\dao\DeductionDAO$DeductionRecord.class
 com\cjme\motorphsystem\service\TaxService.class
 com\cjme\motorphsystem\dao\PayrollDAO.class
@@ -51,6 +58,7 @@ com\cjme\motorphsystem\dao\DocumentationDAO.class
 com\cjme\motorphsystem\security\User.class
 com\cjme\motorphsystem\model\EmployeeAllowance.class
 com\cjme\motorphsystem\dao\implementations\EmployeeAllowanceDAOImpl.class
+com\cjme\motorphsystem\dao\PayslipDAO.class
 com\cjme\motorphsystem\dao\AttendanceDAO.class
 com\cjme\motorphsystem\model\deductions\PagibigContribution.class
 com\cjme\motorphsystem\dao\LeaveRequestDAO.class
