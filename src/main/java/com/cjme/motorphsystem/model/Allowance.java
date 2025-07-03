@@ -10,7 +10,7 @@ public class Allowance {
     private double riceAllowance;
     private double phoneAllowance;
     private double clothingAllowance;
-
+ 
     public Allowance() {}
 
     public Allowance(int employeeId, double riceAllowance, double phoneAllowance, double clothingAllowance) {
