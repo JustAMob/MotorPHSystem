@@ -28,164 +28,175 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPanel8 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        javax.swing.JPanel LogPanel = new javax.swing.JPanel();
+        WelcomeBack = new javax.swing.JPanel();
+        Welcome = new javax.swing.JLabel();
+        LoginWithGoogle = new javax.swing.JPanel();
+        GoogleLogin = new javax.swing.JButton();
+        CredentialBars = new javax.swing.JPanel();
+        EmailAdd = new javax.swing.JPanel();
+        EmailAddTextField = new javax.swing.JTextField();
+        EmailAddLabel = new javax.swing.JLabel();
+        Password = new javax.swing.JPanel();
+        PasswordLabel = new javax.swing.JLabel();
+        PasswordField = new javax.swing.JPasswordField();
+        RememberMe = new javax.swing.JPanel();
+        RememberCheckBox = new javax.swing.JCheckBox();
+        ForgotPassword = new javax.swing.JLabel();
+        Login = new javax.swing.JPanel();
+        LoginButton = new javax.swing.JButton();
+        SignUp = new javax.swing.JPanel();
+        NoAccountSignUp = new javax.swing.JLabel();
+        DesignPanel = new javax.swing.JPanel();
+        MotorPHLoginDesign = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(420, 342));
+        LogPanel.setPreferredSize(new java.awt.Dimension(420, 342));
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(400, 100));
+        WelcomeBack.setPreferredSize(new java.awt.Dimension(400, 100));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Welcome Back");
+        Welcome.setFont(new java.awt.Font("Raleway", 1, 32)); // NOI18N
+        Welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Welcome.setText("Welcome Back!");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jLabel1)
-                .addContainerGap(139, Short.MAX_VALUE))
+        javax.swing.GroupLayout WelcomeBackLayout = new javax.swing.GroupLayout(WelcomeBack);
+        WelcomeBack.setLayout(WelcomeBackLayout);
+        WelcomeBackLayout.setHorizontalGroup(
+            WelcomeBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomeBackLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24))
+        WelcomeBackLayout.setVerticalGroup(
+            WelcomeBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomeBackLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3);
+        LogPanel.add(WelcomeBack);
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(300, 50));
+        LoginWithGoogle.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jButton1.setText("Login with Google");
-        jButton1.setPreferredSize(new java.awt.Dimension(250, 23));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        GoogleLogin.setText("Log In with Google");
+        GoogleLogin.setToolTipText("");
+        GoogleLogin.setIconTextGap(10);
+        GoogleLogin.setMargin(new java.awt.Insets(2, 15, 4, 15));
+        GoogleLogin.setPreferredSize(new java.awt.Dimension(250, 30));
+        GoogleLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                GoogleLoginActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1);
+        LoginWithGoogle.add(GoogleLogin);
 
-        jPanel1.add(jPanel4);
+        LogPanel.add(LoginWithGoogle);
 
-        jPanel5.setPreferredSize(new java.awt.Dimension(400, 120));
+        CredentialBars.setPreferredSize(new java.awt.Dimension(400, 120));
 
-        jPanel6.setPreferredSize(new java.awt.Dimension(300, 50));
-        jPanel6.setLayout(new java.awt.BorderLayout(4, 4));
+        EmailAdd.setPreferredSize(new java.awt.Dimension(300, 50));
+        EmailAdd.setLayout(new java.awt.BorderLayout(4, 4));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        EmailAddTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                EmailAddTextFieldActionPerformed(evt);
             }
         });
-        jPanel6.add(jTextField1, java.awt.BorderLayout.CENTER);
+        EmailAdd.add(EmailAddTextField, java.awt.BorderLayout.CENTER);
 
-        jLabel2.setText("Email Address:");
-        jPanel6.add(jLabel2, java.awt.BorderLayout.PAGE_START);
+        EmailAddLabel.setText("Email Address:");
+        EmailAdd.add(EmailAddLabel, java.awt.BorderLayout.PAGE_START);
 
-        jPanel5.add(jPanel6);
+        CredentialBars.add(EmailAdd);
 
-        jPanel7.setPreferredSize(new java.awt.Dimension(300, 50));
-        jPanel7.setLayout(new java.awt.BorderLayout(4, 4));
+        Password.setPreferredSize(new java.awt.Dimension(300, 50));
+        Password.setLayout(new java.awt.BorderLayout(4, 4));
 
-        jLabel3.setText("Password");
-        jPanel7.add(jLabel3, java.awt.BorderLayout.PAGE_START);
-        jPanel7.add(jPasswordField1, java.awt.BorderLayout.CENTER);
+        PasswordLabel.setText("Password:");
+        Password.add(PasswordLabel, java.awt.BorderLayout.PAGE_START);
+        Password.add(PasswordField, java.awt.BorderLayout.CENTER);
 
-        jPanel5.add(jPanel7);
+        CredentialBars.add(Password);
 
-        jPanel1.add(jPanel5);
+        LogPanel.add(CredentialBars);
 
-        jPanel8.setPreferredSize(new java.awt.Dimension(300, 20));
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        RememberMe.setPreferredSize(new java.awt.Dimension(300, 20));
+        RememberMe.setLayout(new java.awt.BorderLayout());
 
-        jCheckBox1.setText("Remember Me");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        RememberCheckBox.setText("Remember Me");
+        RememberCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                RememberCheckBoxActionPerformed(evt);
             }
         });
-        jPanel8.add(jCheckBox1, java.awt.BorderLayout.WEST);
+        RememberMe.add(RememberCheckBox, java.awt.BorderLayout.WEST);
 
-        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel4.setText("Forgot Password?");
-        jPanel8.add(jLabel4, java.awt.BorderLayout.EAST);
+        ForgotPassword.setForeground(new java.awt.Color(255, 102, 102));
+        ForgotPassword.setText("Forgot Password?");
+        RememberMe.add(ForgotPassword, java.awt.BorderLayout.EAST);
 
-        jPanel1.add(jPanel8);
+        LogPanel.add(RememberMe);
 
-        jPanel9.setPreferredSize(new java.awt.Dimension(300, 50));
+        Login.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jButton2.setText("Login");
-        jButton2.setPreferredSize(new java.awt.Dimension(250, 23));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        LoginButton.setBackground(new java.awt.Color(255, 51, 51));
+        LoginButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        LoginButton.setForeground(new java.awt.Color(255, 255, 255));
+        LoginButton.setText("Log In");
+        LoginButton.setPreferredSize(new java.awt.Dimension(250, 40));
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                LoginButtonActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton2);
+        Login.add(LoginButton);
 
-        jPanel1.add(jPanel9);
+        LogPanel.add(Login);
 
-        jPanel10.setPreferredSize(new java.awt.Dimension(300, 50));
+        SignUp.setPreferredSize(new java.awt.Dimension(300, 100));
 
-        jLabel5.setText("Don`t Have Account Yet? Sign Up");
-        jPanel10.add(jLabel5);
+        NoAccountSignUp.setText("Don`t Have Account Yet? Sign Up");
+        SignUp.add(NoAccountSignUp);
 
-        jPanel1.add(jPanel10);
+        LogPanel.add(SignUp);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
+        getContentPane().add(LogPanel, java.awt.BorderLayout.WEST);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setMinimumSize(new java.awt.Dimension(100, 50));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 35));
+        DesignPanel.setBackground(new java.awt.Color(255, 255, 255));
+        DesignPanel.setToolTipText("");
+        DesignPanel.setAutoscrolls(true);
+        DesignPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        DesignPanel.setMaximumSize(new java.awt.Dimension(525, 525));
+        DesignPanel.setMinimumSize(new java.awt.Dimension(100, 50));
+        DesignPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel6.setBackground(new java.awt.Color(102, 153, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/MotorPh_background.png"))); // NOI18N
-        jPanel2.add(jLabel6);
+        MotorPHLoginDesign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/MotorPH Login 525 x 525.png"))); // NOI18N
+        DesignPanel.add(MotorPHLoginDesign);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        getContentPane().add(DesignPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void GoogleLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoogleLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_GoogleLoginActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void EmailAddTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailAddTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_EmailAddTextFieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void RememberCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RememberCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_RememberCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,26 +224,25 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel CredentialBars;
+    private javax.swing.JPanel DesignPanel;
+    private javax.swing.JPanel EmailAdd;
+    private javax.swing.JLabel EmailAddLabel;
+    private javax.swing.JTextField EmailAddTextField;
+    private javax.swing.JLabel ForgotPassword;
+    private javax.swing.JButton GoogleLogin;
+    private javax.swing.JPanel Login;
+    private javax.swing.JButton LoginButton;
+    private javax.swing.JPanel LoginWithGoogle;
+    private javax.swing.JLabel MotorPHLoginDesign;
+    private javax.swing.JLabel NoAccountSignUp;
+    private javax.swing.JPanel Password;
+    private javax.swing.JPasswordField PasswordField;
+    private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JCheckBox RememberCheckBox;
+    private javax.swing.JPanel RememberMe;
+    private javax.swing.JPanel SignUp;
+    private javax.swing.JLabel Welcome;
+    private javax.swing.JPanel WelcomeBack;
     // End of variables declaration//GEN-END:variables
 }
