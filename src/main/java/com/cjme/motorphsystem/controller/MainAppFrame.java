@@ -176,14 +176,14 @@ public class MainAppFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton7.setText("Edit Selected");
+        jButton7.setText("Edit Employee");
 
         jButton6.setText("Add Employee");
 
         jButton8.setBackground(new java.awt.Color(204, 0, 0));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Delete Selected");
+        jButton8.setText("Delete Employee");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
