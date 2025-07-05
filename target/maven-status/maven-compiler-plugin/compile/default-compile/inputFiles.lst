@@ -1,6 +1,7 @@
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\AppConfig.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\DatabaseConfig.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\Login.java
+<<<<<<< Updated upstream
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AllowanceTypeDAO.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AttendanceDAO.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DeductionDAO.java
@@ -8,6 +9,17 @@ C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\Documentat
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeAllowanceDAO.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AllowanceTypeDAOImpl.java
+=======
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\MainAppFrame.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AllowanceTypeDAO.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AttendanceDAO.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AuthenticationDAO.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DeductionDAO.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeAllowanceDAO.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AllowanceTypeDAOImpl.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AuthenticationDAOImpl.java
+>>>>>>> Stashed changes
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeAllowanceDAOImpl.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeDAOImpl.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\LeaveRequestDAOImpl.java
@@ -25,10 +37,18 @@ C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\Dupl
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\EmployeeNotFoundException.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\InvalidEmployeeDataException.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\LeaveRequestException.java
+<<<<<<< Updated upstream
+=======
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\LoginException.java
+>>>>>>> Stashed changes
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\PayrollCalculationException.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\Main.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\AllowanceType.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Attendance.java
+<<<<<<< Updated upstream
+=======
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Authentication.java
+>>>>>>> Stashed changes
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Deduction.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigContribution.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigDeduction.java
@@ -40,10 +60,17 @@ C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\LeaveReq
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Payslip.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Report.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Salary.java
+<<<<<<< Updated upstream
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Permission.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Role.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\SecurityManager.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\User.java
+=======
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\AuthService.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Permission.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Role.java
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\SecurityManager.java
+>>>>>>> Stashed changes
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AllowanceService.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AttendanceTracker.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\EmployeeService.java
@@ -51,6 +78,10 @@ C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\LeaveR
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\PayrollCalculator.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\TaxService.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\UserRolesService.java
+<<<<<<< Updated upstream
+=======
+C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\UserSession.java
+>>>>>>> Stashed changes
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DateTime.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DBConnection.java
 C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DeductionUtil.java
