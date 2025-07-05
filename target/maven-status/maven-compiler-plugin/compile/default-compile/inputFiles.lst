@@ -1,58 +1,63 @@
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\AppConfig.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\DatabaseConfig.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\Login.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AllowanceTypeDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AttendanceDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DeductionDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DocumentationDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeAllowanceDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AllowanceTypeDAOImpl.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeAllowanceDAOImpl.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeDAOImpl.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\LeaveRequestDAOImpl.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\SalaryDAOImpl.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PagibigDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PayrollDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PhilHealthDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\SalaryDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\SssDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\TaxDAO.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AttendanceException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AuthorizationException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\DuplicateEmployeeException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\EmployeeNotFoundException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\InvalidEmployeeDataException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\LeaveRequestException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\PayrollCalculationException.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\Main.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\AllowanceType.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Attendance.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Deduction.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigContribution.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigDeduction.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PhilHealthDeduction.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\SssDeduction.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Employee.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\EmployeeAllowance.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\LeaveRequest.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Payslip.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Report.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Salary.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Permission.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Role.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\SecurityManager.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\User.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AllowanceService.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AttendanceTracker.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\EmployeeService.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\LeaveRequestService.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\PayrollCalculator.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\TaxService.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\UserRolesService.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DateTime.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DBConnection.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DeductionUtil.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\PayrollUtil.java
-C:\SchoolLocal\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\ValidationUtils.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\AppConfig.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\config\DatabaseConfig.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\Login.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\controller\MainAppFrame.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AllowanceTypeDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AttendanceDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AuthenticationDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DeductionDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeAllowanceDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AllowanceTypeDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AuthenticationDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeAllowanceDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\LeaveRequestDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\SalaryDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PagibigDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PayrollDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\PhilHealthDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\SalaryDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\SssDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\TaxDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AttendanceException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\AuthorizationException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\DuplicateEmployeeException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\EmployeeNotFoundException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\InvalidEmployeeDataException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\LeaveRequestException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\LoginException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\exception\PayrollCalculationException.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\Main.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\AllowanceType.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Attendance.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Authentication.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Deduction.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigContribution.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigDeduction.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PhilHealthDeduction.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\SssDeduction.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Employee.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\EmployeeAllowance.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\LeaveRequest.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Payslip.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Report.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Salary.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\AuthService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Permission.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\Role.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\security\SecurityManager.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AllowanceService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\AttendanceTracker.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\EmployeeService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\LeaveRequestService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\PayrollCalculator.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\TaxService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\UserRolesService.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\service\UserSession.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DateTime.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DBConnection.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\DeductionUtil.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\PayrollUtil.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\util\ValidationUtils.java

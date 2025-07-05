@@ -4,17 +4,20 @@
  */
 package com.cjme.motorphsystem.controller;
 
+import com.cjme.motorphsystem.service.UserSession;
+import com.cjme.motorphsystem.security.SecurityManager;
 /**
  *
  * @author MYS
  */
 public class MainAppFrame extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Payroll
      */
     public MainAppFrame() {
         initComponents();
+        
     }
 
     /**
@@ -27,7 +30,7 @@ public class MainAppFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        MainPanel = new javax.swing.JTabbedPane();
+        MainTab = new javax.swing.JTabbedPane();
         EmployeePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -177,7 +180,7 @@ public class MainAppFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        MainPanel.setMaximumSize(new java.awt.Dimension(945, 525));
+        MainTab.setMaximumSize(new java.awt.Dimension(945, 525));
 
         jLabel11.setText("Search Employee:");
 
@@ -547,7 +550,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MainPanel.addTab("Employee Management", EmployeePanel);
+        MainTab.addTab("Employee Management", EmployeePanel);
 
         jLabel38.setText("Select Employee:");
 
@@ -701,7 +704,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        MainPanel.addTab("Attendance", AttendancePanel);
+        MainTab.addTab("Attendance", AttendancePanel);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -755,7 +758,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -1019,7 +1022,7 @@ public class MainAppFrame extends javax.swing.JFrame {
         PayrollPanelLayout.setVerticalGroup(
             PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollPanelLayout.createSequentialGroup()
-                .addComponent(PayrollTop, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PayrollTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1029,7 +1032,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MainPanel.addTab("Payroll", PayrollPanel);
+        MainTab.addTab("Payroll", PayrollPanel);
 
         jLabel41.setText("Payroll Period:");
 
@@ -1304,17 +1307,17 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MainPanel.addTab("Reports", ReportsPanel);
+        MainTab.addTab("Reports", ReportsPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(MainTab, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(MainTab, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -1360,6 +1363,31 @@ public class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton21ActionPerformed
 
+    public void setupTabs(UserSession session) {
+    SecurityManager.hideTabIfNoAccess(MainTab, EmployeePanel, session.hasAccess("employee", "view"));
+    SecurityManager.hideTabIfNoAccess(MainTab, AttendancePanel, session.hasAccess("attendance", "view"));
+    SecurityManager.hideTabIfNoAccess(MainTab, PayrollPanel, session.hasAccess("payroll", "view"));
+    SecurityManager.hideTabIfNoAccess(MainTab, ReportsPanel, session.hasAccess("reports", "view"));
+   // SecurityManager.hideTabIfNoAccess(MainTab, EmployeePanel, session.hasAccess("employeeInfo", "view")); 
+
+    // Leave Application Button
+    //leaveApplicationButton.setVisible(session.hasAccess("leave", "submit"));
+    }
+
+/*
+    private void logoutButton.addActionListener(e -> {
+    this.dispose(); // close MainForm
+    new LoginForm().setVisible(true); // show login again
+    });
+*/  
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -1391,18 +1419,14 @@ public class MainAppFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainAppFrame().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AttendancePanel;
     private javax.swing.JPanel AttendanceReportTab;
     private javax.swing.JPanel EmployeePanel;
-    private javax.swing.JTabbedPane MainPanel;
+    private javax.swing.JTabbedPane MainTab;
     private javax.swing.JPanel PayrollPanel;
     private javax.swing.JPanel PayrollReportTab;
     private javax.swing.JPanel PayrollTop;

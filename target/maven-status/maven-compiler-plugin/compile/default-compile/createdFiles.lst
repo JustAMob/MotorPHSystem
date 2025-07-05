@@ -1,0 +1,7 @@
+com\cjme\motorphsystem\service\UserSession.class
+com\cjme\motorphsystem\dao\implementations\AuthenticationDAOImpl.class
+com\cjme\motorphsystem\security\AuthService.class
+com\cjme\motorphsystem\dao\AuthenticationDAO.class
+com\cjme\motorphsystem\controller\Login$5.class
+com\cjme\motorphsystem\exception\LoginException.class
+com\cjme\motorphsystem\model\Authentication.class

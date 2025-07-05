@@ -1,49 +1,31 @@
 package com.cjme.motorphsystem.security;
 
-import java.security.Permission;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import org.json.JSONObject;
 
 /**
  *
  * @author JustAMob
  */
 public class Role {
+    private int roleId;
     private String roleName;
-    private Set<Permission> permissions;
+    private JSONObject access;
 
-    public Role() {
-        this.permissions = new HashSet<>();
-    }
+    public Role() {}
 
-    // Constructor with role name
-    public Role(String roleName) {
+    public Role(int roleId, String roleName, JSONObject access) {
+        this.roleId = roleId;
         this.roleName = roleName;
-        this.permissions = new HashSet<>();
+        this.access = access;
     }
 
-    public String getRoleName() {
-        return roleName;
-    }
+    // Getters and setters
+    public int getRoleId() { return roleId; }
+    public void setRoleId(int roleId) { this.roleId = roleId; }
 
-    public Set<Permission> getPermissions() {
-        return permissions;
-    }
- 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-    
-    public void setPermissions(Set<Permission> permissions) {
-        this.permissions = permissions;
-    }
+    public String getRoleName() { return roleName; }
+    public void setRoleName(String roleName) { this.roleName = roleName; }
 
-    public void addPermission(Permission permission) {
-        this.permissions.add(permission);
-    }
-
-    public void removePermission(Permission permission) {
-        this.permissions.remove(permission);
-    }
+    public JSONObject getAccess() { return access; }
+    public void setAccess(JSONObject access) { this.access = access; }
 }

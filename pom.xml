@@ -57,6 +57,16 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.21.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
     </dependencies>
     
     <properties>
@@ -80,9 +90,9 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <compilerArgs>
-              <release>${maven.compiler.release}</release>
-          </compilerArgs>
+        <source>23</source>
+        <target>23</target>
+        <release>23</release>
         </configuration>
       </plugin>
       

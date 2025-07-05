@@ -4,6 +4,15 @@
  */
 package com.cjme.motorphsystem.controller;
 
+import com.cjme.motorphsystem.dao.AuthenticationDAO;
+import com.cjme.motorphsystem.dao.implementations.AuthenticationDAOImpl;
+import com.cjme.motorphsystem.model.Authentication;
+import com.cjme.motorphsystem.service.UserSession;
+import com.cjme.motorphsystem.util.DBConnection;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
@@ -35,7 +44,7 @@ public class Login extends javax.swing.JFrame {
         GoogleLogin = new javax.swing.JButton();
         CredentialBars = new javax.swing.JPanel();
         EmailAdd = new javax.swing.JPanel();
-        EmailAddTextField = new javax.swing.JTextField();
+        EmpIDTextField = new javax.swing.JTextField();
         EmailAddLabel = new javax.swing.JLabel();
         Password = new javax.swing.JPanel();
         PasswordLabel = new javax.swing.JLabel();
@@ -101,14 +110,14 @@ public class Login extends javax.swing.JFrame {
         EmailAdd.setPreferredSize(new java.awt.Dimension(300, 50));
         EmailAdd.setLayout(new java.awt.BorderLayout(4, 4));
 
-        EmailAddTextField.addActionListener(new java.awt.event.ActionListener() {
+        EmpIDTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailAddTextFieldActionPerformed(evt);
+                EmpIDTextFieldActionPerformed(evt);
             }
         });
-        EmailAdd.add(EmailAddTextField, java.awt.BorderLayout.CENTER);
+        EmailAdd.add(EmpIDTextField, java.awt.BorderLayout.CENTER);
 
-        EmailAddLabel.setText("Email Address:");
+        EmailAddLabel.setText("Employee ID:");
         EmailAdd.add(EmailAddLabel, java.awt.BorderLayout.PAGE_START);
 
         CredentialBars.add(EmailAdd);
@@ -186,12 +195,55 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GoogleLoginActionPerformed
 
-    private void EmailAddTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailAddTextFieldActionPerformed
+    private void EmpIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmailAddTextFieldActionPerformed
+    }//GEN-LAST:event_EmpIDTextFieldActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
+          try {
+        int employeeId = Integer.parseInt(EmpIDTextField.getText().trim());
+        String enteredPassword = new String(PasswordField.getPassword()).trim();
+
+        AuthenticationDAO authDAO = new AuthenticationDAOImpl(DBConnection.getConnection());
+        Authentication auth = authDAO.getAuthenticationByEmployeeId(employeeId);
+
+        if (auth == null) {
+            JOptionPane.showMessageDialog(this, "Employee Not Found", "Login Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (auth.getAccountStatusId() != 1) { // assuming 1 = active
+            JOptionPane.showMessageDialog(this,"Account is inactive or locked.", "Login Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!enteredPassword.equals(auth.getPasswordHash())) { // Or use hashing like BCrypt
+            JOptionPane.showMessageDialog(this,"Incorrect password", "Login Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Optional: update last login
+       // authDAO.updateLastLogin(auth.getUserId(), LocalDateTime.now());
+
+        // Setup user session
+        UserSession session = new UserSession(auth.getRole().getAccess());
+
+        // Open main form and pass session
+        MainAppFrame mainForm = new MainAppFrame();
+        UserSession UserSession = null;
+        mainForm.setupTabs(UserSession);
+        mainForm.setVisible(true);
+
+        this.dispose(); // Close login form
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid Employee ID", "Login Error", JOptionPane.ERROR_MESSAGE);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Login Fail Due to an Error", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RememberCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RememberCheckBoxActionPerformed
@@ -218,9 +270,13 @@ public class Login extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -228,7 +284,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel DesignPanel;
     private javax.swing.JPanel EmailAdd;
     private javax.swing.JLabel EmailAddLabel;
-    private javax.swing.JTextField EmailAddTextField;
+    private javax.swing.JTextField EmpIDTextField;
     private javax.swing.JLabel ForgotPassword;
     private javax.swing.JButton GoogleLogin;
     private javax.swing.JPanel Login;
