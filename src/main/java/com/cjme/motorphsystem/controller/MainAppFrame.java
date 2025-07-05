@@ -1154,6 +1154,7 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         jLabel45.setText("Employee:");
 
+        jComboBox15.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Optional", "Item 2", "Item 3", "Item 4" }));
 
         jButton22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
