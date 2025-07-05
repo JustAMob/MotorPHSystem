@@ -50,6 +50,7 @@ public class DeductionUtil {
              System.out.println("✅ Deductions filled successfully.");
 
         } catch (SQLException e) {
+            e.printStackTrace(); 
         }
     }
 }
