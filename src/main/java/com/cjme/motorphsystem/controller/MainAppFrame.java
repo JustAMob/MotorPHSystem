@@ -11,13 +11,15 @@ import com.cjme.motorphsystem.security.SecurityManager;
  * @author MYS
  */
 public class MainAppFrame extends javax.swing.JFrame {
-    
+    private UserSession session;
     /**
      * Creates new form Payroll
      */
-    public MainAppFrame() {
+    public MainAppFrame(UserSession session) {
+        this.session = session;
         initComponents();
-        
+        setLocationRelativeTo(null);
+        setupTabs();
     }
 
     /**
@@ -239,6 +241,11 @@ public class MainAppFrame extends javax.swing.JFrame {
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Delete Employee");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1363,7 +1370,11 @@ public class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton21ActionPerformed
 
-    public void setupTabs(UserSession session) {
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    public void setupTabs() {
     SecurityManager.hideTabIfNoAccess(MainTab, EmployeePanel, session.hasAccess("employee", "view"));
     SecurityManager.hideTabIfNoAccess(MainTab, AttendancePanel, session.hasAccess("attendance", "view"));
     SecurityManager.hideTabIfNoAccess(MainTab, PayrollPanel, session.hasAccess("payroll", "view"));
@@ -1419,7 +1430,12 @@ public class MainAppFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+               // new MainAppFrame().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

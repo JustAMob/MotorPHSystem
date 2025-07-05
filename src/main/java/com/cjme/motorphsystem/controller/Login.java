@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.cjme.motorphsystem.controller;
 
 import com.cjme.motorphsystem.dao.AuthenticationDAO;
@@ -11,12 +8,10 @@ import com.cjme.motorphsystem.service.UserSession;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author USER
- */
+
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
@@ -26,6 +21,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
@@ -231,9 +228,7 @@ public class Login extends javax.swing.JFrame {
         UserSession session = new UserSession(auth.getRole().getAccess());
 
         // Open main form and pass session
-        MainAppFrame mainForm = new MainAppFrame();
-        UserSession UserSession = null;
-        mainForm.setupTabs(UserSession);
+        MainAppFrame mainForm = new MainAppFrame(session); 
         mainForm.setVisible(true);
 
         this.dispose(); // Close login form
@@ -273,8 +268,9 @@ public class Login extends javax.swing.JFrame {
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                
+                new Login().setVisible(true);
             }
         });
     }
