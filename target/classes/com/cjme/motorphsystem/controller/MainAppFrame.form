@@ -28,17 +28,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainTab" min="-2" pref="945" max="-2" attributes="0"/>
+          <Component id="MainPanel" min="-2" pref="945" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainTab" min="-2" pref="500" max="-2" attributes="0"/>
+          <Component id="MainPanel" min="-2" pref="500" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="MainTab">
+    <Container class="javax.swing.JTabbedPane" name="MainPanel">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[945, 525]"/>
@@ -758,9 +758,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Delete Employee"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1501,7 +1498,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="PayrollTop" min="-2" max="-2" attributes="0"/>
+                      <Component id="PayrollTop" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jPanel4" max="32767" attributes="0"/>
@@ -1548,7 +1545,7 @@
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
