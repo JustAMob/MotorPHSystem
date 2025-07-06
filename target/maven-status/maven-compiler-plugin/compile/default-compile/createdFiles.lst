@@ -6,10 +6,8 @@ com\cjme\motorphsystem\dao\SssDAO.class
 com\cjme\motorphsystem\controller\MainAppFrame$7.class
 com\cjme\motorphsystem\exception\EmployeeNotFoundException.class
 com\cjme\motorphsystem\controller\MainAppFrame$3.class
-com\cjme\motorphsystem\dao\EmployeeDAO.class
 com\cjme\motorphsystem\dao\PagibigDAO.class
 com\cjme\motorphsystem\model\AllowanceType.class
-com\cjme\motorphsystem\model\Employee.class
 com\cjme\motorphsystem\service\AttendanceTracker.class
 com\cjme\motorphsystem\model\deductions\PagibigDeduction.class
 com\cjme\motorphsystem\controller\Login.class
@@ -78,4 +76,3 @@ com\cjme\motorphsystem\dao\AttendanceDAO.class
 com\cjme\motorphsystem\model\deductions\PagibigContribution.class
 com\cjme\motorphsystem\dao\LeaveRequestDAO.class
 com\cjme\motorphsystem\service\AllowanceService.class
-com\cjme\motorphsystem\dao\implementations\EmployeeDAOImpl.class

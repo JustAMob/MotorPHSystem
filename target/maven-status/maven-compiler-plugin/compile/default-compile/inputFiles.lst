@@ -7,11 +7,13 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\AuthenticationDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\DeductionDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeAllowanceDAO.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeEntityDAO.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\EmployeeProfileDAO.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AllowanceTypeDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\AuthenticationDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeAllowanceDAOImpl.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeEntityDAOImpl.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\EmployeeProfileDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\LeaveRequestDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\implementations\SalaryDAOImpl.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\dao\LeaveRequestDAO.java
@@ -38,8 +40,9 @@ C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjm
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PagibigDeduction.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\PhilHealthDeduction.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\deductions\SssDeduction.java
-C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Employee.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\EmployeeAllowance.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\EmployeeEntity.java
+C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\EmployeeProfile.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\LeaveRequest.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Payslip.java
 C:\Users\Ck\OneDrive\Desktop\Project Folders\MotorPHSystem\src\main\java\com\cjme\motorphsystem\model\Report.java

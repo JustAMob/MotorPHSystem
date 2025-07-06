@@ -30,14 +30,16 @@ public class EmployeeProfileDAOImpl implements EmployeeProfileDAO {
                 if (rs.next()) {
                     EmployeeProfile emp = new EmployeeProfile();
                     emp.setEmployeeId(rs.getInt("employee_id"));
-                    emp.setFullName(rs.getString("first_name"+" "+"last_name"));              
+                    String firstName = rs.getString("first_name");
+                    String lastName = rs.getString("last_name");
+                    emp.setFullName(firstName + " " + lastName);
                     emp.setBirthday(rs.getDate("birthday"));
                     emp.setPhoneNumber(rs.getString("phone_number"));
                     emp.setFullAddress(rs.getString("full_address"));
                     emp.setDepartmentName(rs.getString("department_name"));
                     emp.setPositionName(rs.getString("position_name"));
                     emp.setSupervisorName(rs.getString("supervisor_name"));
-                    emp.setStatusName(rs.getString("status_name"));
+                    emp.setStatusName(rs.getString("status_type"));
                     return emp;
                 }
             }

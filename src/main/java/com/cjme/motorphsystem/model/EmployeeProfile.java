@@ -19,6 +19,7 @@ public class EmployeeProfile {
     private String positionName;
     private String supervisorName;
     private String statusName;
+   // private String
     private Date birthday;
 
     public EmployeeProfile() {
