@@ -57,6 +57,11 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.21.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
     
     <properties>
