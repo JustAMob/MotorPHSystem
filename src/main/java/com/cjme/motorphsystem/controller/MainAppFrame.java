@@ -177,34 +177,34 @@ public class MainAppFrame extends javax.swing.JFrame {
         PNetPayLabel = new javax.swing.JLabel();
         PNetPayTextField = new javax.swing.JTextField();
         ReportsPanel = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        PayrollReportTab = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jButton19 = new javax.swing.JButton();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jPanel11 = new javax.swing.JPanel();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        AttendanceReportTab = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jComboBox15 = new javax.swing.JComboBox<>();
-        jButton22 = new javax.swing.JButton();
-        jDateChooser5 = new com.toedter.calendar.JDateChooser();
-        jDateChooser6 = new com.toedter.calendar.JDateChooser();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jPanel13 = new javax.swing.JPanel();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
+        ReportsSubPanel = new javax.swing.JPanel();
+        ReportsTabbedPane = new javax.swing.JTabbedPane();
+        RPayrollReportsTab = new javax.swing.JPanel();
+        RPayrollTopPanel = new javax.swing.JPanel();
+        RPayrollPeriodLabel = new javax.swing.JLabel();
+        RPDepartmentLabel = new javax.swing.JLabel();
+        RPDepartmentComboBox = new javax.swing.JComboBox<>();
+        RPGenerateReportButton = new javax.swing.JButton();
+        RPayrollDateChooser = new com.toedter.calendar.JDateChooser();
+        RPayrollScrollPane = new javax.swing.JScrollPane();
+        RPayrollTable = new javax.swing.JTable();
+        RPayrollBottomPanel = new javax.swing.JPanel();
+        RPExportPDFButton = new javax.swing.JButton();
+        RPPrintReportButton = new javax.swing.JButton();
+        RAttendanceReportsTab = new javax.swing.JPanel();
+        RAttendanceTopPanel = new javax.swing.JPanel();
+        RAStartDateLabel = new javax.swing.JLabel();
+        RAEndDateLabel = new javax.swing.JLabel();
+        RAEmployeeLabel = new javax.swing.JLabel();
+        RAEmployeeSelectComboBox = new javax.swing.JComboBox<>();
+        RAGenerateReportButton = new javax.swing.JButton();
+        RAStartDateChooser = new com.toedter.calendar.JDateChooser();
+        RAEndDateChooser = new com.toedter.calendar.JDateChooser();
+        RAttendanceScrollPane = new javax.swing.JScrollPane();
+        RAttendanceTable = new javax.swing.JTable();
+        RAttendanceBottomPanel = new javax.swing.JPanel();
+        RAExportPDFButton = new javax.swing.JButton();
+        RAPrintReportButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -1332,46 +1332,46 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         MainPanel.addTab("Payroll", PayrollPanel);
 
-        jLabel41.setText("Payroll Period:");
+        RPayrollPeriodLabel.setText("Payroll Period:");
 
-        jLabel42.setText("Department:");
+        RPDepartmentLabel.setText("Department:");
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton19.setText("Generate Report");
+        RPGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        RPGenerateReportButton.setText("Generate Report");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout RPayrollTopPanelLayout = new javax.swing.GroupLayout(RPayrollTopPanel);
+        RPayrollTopPanel.setLayout(RPayrollTopPanelLayout);
+        RPayrollTopPanelLayout.setHorizontalGroup(
+            RPayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RPayrollTopPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel41)
+                .addComponent(RPayrollPeriodLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPayrollDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPDepartmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(RPGenerateReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        RPayrollTopPanelLayout.setVerticalGroup(
+            RPayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RPayrollTopPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel41)
-                        .addComponent(jLabel42)
-                        .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton19)))
+                .addGroup(RPayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RPayrollDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(RPayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(RPayrollPeriodLabel)
+                        .addComponent(RPDepartmentLabel)
+                        .addComponent(RPDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RPGenerateReportButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        RPayrollTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -1382,113 +1382,113 @@ public class MainAppFrame extends javax.swing.JFrame {
                 "Employee ID", "Name", "Department", "Gross Pay", "Total Deductions", "Net Pay"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        RPayrollScrollPane.setViewportView(RPayrollTable);
 
-        jButton20.setText("Export to PDF");
+        RPExportPDFButton.setText("Export to PDF");
 
-        jButton21.setText("Print Report");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        RPPrintReportButton.setText("Print Report");
+        RPPrintReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                RPPrintReportButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout RPayrollBottomPanelLayout = new javax.swing.GroupLayout(RPayrollBottomPanel);
+        RPayrollBottomPanel.setLayout(RPayrollBottomPanelLayout);
+        RPayrollBottomPanelLayout.setHorizontalGroup(
+            RPayrollBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RPayrollBottomPanelLayout.createSequentialGroup()
                 .addGap(0, 200, Short.MAX_VALUE)
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPPrintReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(RPExportPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+        RPayrollBottomPanelLayout.setVerticalGroup(
+            RPayrollBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RPayrollBottomPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton20)
-                    .addComponent(jButton21))
+                .addGroup(RPayrollBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RPExportPDFButton)
+                    .addComponent(RPPrintReportButton))
                 .addGap(18, 18, 18))
         );
 
-        javax.swing.GroupLayout PayrollReportTabLayout = new javax.swing.GroupLayout(PayrollReportTab);
-        PayrollReportTab.setLayout(PayrollReportTabLayout);
-        PayrollReportTabLayout.setHorizontalGroup(
-            PayrollReportTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(PayrollReportTabLayout.createSequentialGroup()
+        javax.swing.GroupLayout RPayrollReportsTabLayout = new javax.swing.GroupLayout(RPayrollReportsTab);
+        RPayrollReportsTab.setLayout(RPayrollReportsTabLayout);
+        RPayrollReportsTabLayout.setHorizontalGroup(
+            RPayrollReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(RPayrollReportsTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PayrollReportTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollReportTabLayout.createSequentialGroup()
+                .addGroup(RPayrollReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RPayrollTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RPayrollReportsTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        PayrollReportTabLayout.setVerticalGroup(
-            PayrollReportTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PayrollReportTabLayout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        RPayrollReportsTabLayout.setVerticalGroup(
+            RPayrollReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RPayrollReportsTabLayout.createSequentialGroup()
+                .addComponent(RPayrollTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Payroll Report", PayrollReportTab);
+        ReportsTabbedPane.addTab("Payroll Report", RPayrollReportsTab);
 
-        jLabel43.setText("Start Date:");
+        RAStartDateLabel.setText("Start Date:");
 
-        jLabel44.setText("End Date:");
+        RAEndDateLabel.setText("End Date:");
 
-        jLabel45.setText("Employee:");
+        RAEmployeeLabel.setText("Employee:");
 
-        jComboBox15.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Optional", "Item 2", "Item 3", "Item 4" }));
+        RAEmployeeSelectComboBox.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        RAEmployeeSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Optional", "Item 2", "Item 3", "Item 4" }));
 
-        jButton22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton22.setText("Generate Report");
+        RAGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        RAGenerateReportButton.setText("Generate Report");
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        javax.swing.GroupLayout RAttendanceTopPanelLayout = new javax.swing.GroupLayout(RAttendanceTopPanel);
+        RAttendanceTopPanel.setLayout(RAttendanceTopPanelLayout);
+        RAttendanceTopPanelLayout.setHorizontalGroup(
+            RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RAttendanceTopPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel43)
+                .addComponent(RAStartDateLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel44)
+                .addComponent(RAEndDateLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAEndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel45)
+                .addComponent(RAEmployeeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAEmployeeSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(RAGenerateReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        RAttendanceTopPanelLayout.setVerticalGroup(
+            RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RAttendanceTopPanelLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel43)
-                        .addComponent(jLabel44)
-                        .addComponent(jLabel45)
-                        .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton22)))
+                .addGroup(RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(RAEndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RAStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(RAStartDateLabel)
+                        .addComponent(RAEndDateLabel)
+                        .addComponent(RAEmployeeLabel)
+                        .addComponent(RAEmployeeSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RAGenerateReportButton)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        RAttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -1499,78 +1499,78 @@ public class MainAppFrame extends javax.swing.JFrame {
                 "Employee ID", "Employee Name", "Department", "Total Days Worked", "Total Absences", "Total Lates (min/hrs)", "Total Overtime (hrs)", "Total Leaves Taken"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        RAttendanceScrollPane.setViewportView(RAttendanceTable);
 
-        jButton23.setText("Export to PDF");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        RAExportPDFButton.setText("Export to PDF");
+        RAExportPDFButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                RAExportPDFButtonActionPerformed(evt);
             }
         });
 
-        jButton24.setText("Print Report");
+        RAPrintReportButton.setText("Print Report");
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+        javax.swing.GroupLayout RAttendanceBottomPanelLayout = new javax.swing.GroupLayout(RAttendanceBottomPanel);
+        RAttendanceBottomPanel.setLayout(RAttendanceBottomPanelLayout);
+        RAttendanceBottomPanelLayout.setHorizontalGroup(
+            RAttendanceBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RAttendanceBottomPanelLayout.createSequentialGroup()
                 .addGap(0, 124, Short.MAX_VALUE)
-                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAPrintReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(RAExportPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+        RAttendanceBottomPanelLayout.setVerticalGroup(
+            RAttendanceBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RAttendanceBottomPanelLayout.createSequentialGroup()
                 .addGap(0, 2, Short.MAX_VALUE)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton23)
-                    .addComponent(jButton24)))
+                .addGroup(RAttendanceBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RAExportPDFButton)
+                    .addComponent(RAPrintReportButton)))
         );
 
-        javax.swing.GroupLayout AttendanceReportTabLayout = new javax.swing.GroupLayout(AttendanceReportTab);
-        AttendanceReportTab.setLayout(AttendanceReportTabLayout);
-        AttendanceReportTabLayout.setHorizontalGroup(
-            AttendanceReportTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AttendanceReportTabLayout.createSequentialGroup()
+        javax.swing.GroupLayout RAttendanceReportsTabLayout = new javax.swing.GroupLayout(RAttendanceReportsTab);
+        RAttendanceReportsTab.setLayout(RAttendanceReportsTabLayout);
+        RAttendanceReportsTabLayout.setHorizontalGroup(
+            RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(AttendanceReportTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
-                    .addGroup(AttendanceReportTabLayout.createSequentialGroup()
-                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RAttendanceScrollPane)
+                    .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
+                        .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AttendanceReportTabLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RAttendanceReportsTabLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        AttendanceReportTabLayout.setVerticalGroup(
-            AttendanceReportTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AttendanceReportTabLayout.createSequentialGroup()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        RAttendanceReportsTabLayout.setVerticalGroup(
+            RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
+                .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAttendanceScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Attendance Report", AttendanceReportTab);
+        ReportsTabbedPane.addTab("Attendance Report", RAttendanceReportsTab);
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout ReportsSubPanelLayout = new javax.swing.GroupLayout(ReportsSubPanel);
+        ReportsSubPanel.setLayout(ReportsSubPanelLayout);
+        ReportsSubPanelLayout.setHorizontalGroup(
+            ReportsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportsSubPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(ReportsTabbedPane)
                 .addContainerGap())
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        ReportsSubPanelLayout.setVerticalGroup(
+            ReportsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportsSubPanelLayout.createSequentialGroup()
+                .addComponent(ReportsTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1580,14 +1580,14 @@ public class MainAppFrame extends javax.swing.JFrame {
             ReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ReportsSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ReportsPanelLayout.setVerticalGroup(
             ReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ReportsSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1639,13 +1639,13 @@ public class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EMSSSTextFieldActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+    private void RAExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAExportPDFButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton23ActionPerformed
+    }//GEN-LAST:event_RAExportPDFButtonActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    private void RPPrintReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPPrintReportButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+    }//GEN-LAST:event_RPPrintReportButtonActionPerformed
 
     private void ARefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARefreshButtonActionPerformed
         // TODO add your handling code here:
@@ -1711,7 +1711,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JLabel AStartDateLabel;
     private javax.swing.JTable ATable;
     private javax.swing.JPanel AttendancePanel;
-    private javax.swing.JPanel AttendanceReportTab;
     private javax.swing.JPanel AttendanceSubPanel;
     private javax.swing.JLabel EIAddressLabel;
     private javax.swing.JTextField EIAddressTextField;
@@ -1843,35 +1842,36 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PayrollDeductionsPanel;
     private javax.swing.JPanel PayrollEarningsPanel;
     private javax.swing.JPanel PayrollPanel;
-    private javax.swing.JPanel PayrollReportTab;
     private javax.swing.JPanel PayrollTopPanel;
+    private javax.swing.JLabel RAEmployeeLabel;
+    private javax.swing.JComboBox<String> RAEmployeeSelectComboBox;
+    private com.toedter.calendar.JDateChooser RAEndDateChooser;
+    private javax.swing.JLabel RAEndDateLabel;
+    private javax.swing.JButton RAExportPDFButton;
+    private javax.swing.JButton RAGenerateReportButton;
+    private javax.swing.JButton RAPrintReportButton;
+    private com.toedter.calendar.JDateChooser RAStartDateChooser;
+    private javax.swing.JLabel RAStartDateLabel;
+    private javax.swing.JPanel RAttendanceBottomPanel;
+    private javax.swing.JPanel RAttendanceReportsTab;
+    private javax.swing.JScrollPane RAttendanceScrollPane;
+    private javax.swing.JTable RAttendanceTable;
+    private javax.swing.JPanel RAttendanceTopPanel;
+    private javax.swing.JComboBox<String> RPDepartmentComboBox;
+    private javax.swing.JLabel RPDepartmentLabel;
+    private javax.swing.JButton RPExportPDFButton;
+    private javax.swing.JButton RPGenerateReportButton;
+    private javax.swing.JButton RPPrintReportButton;
+    private javax.swing.JPanel RPayrollBottomPanel;
+    private com.toedter.calendar.JDateChooser RPayrollDateChooser;
+    private javax.swing.JLabel RPayrollPeriodLabel;
+    private javax.swing.JPanel RPayrollReportsTab;
+    private javax.swing.JScrollPane RPayrollScrollPane;
+    private javax.swing.JTable RPayrollTable;
+    private javax.swing.JPanel RPayrollTopPanel;
     private javax.swing.JPanel ReportsPanel;
+    private javax.swing.JPanel ReportsSubPanel;
+    private javax.swing.JTabbedPane ReportsTabbedPane;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox15;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
-    private com.toedter.calendar.JDateChooser jDateChooser5;
-    private com.toedter.calendar.JDateChooser jDateChooser6;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
 }

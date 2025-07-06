@@ -1986,7 +1986,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel9" max="32767" attributes="0"/>
+                      <Component id="ReportsSubPanel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1995,21 +1995,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel9" max="32767" attributes="0"/>
+                      <Component id="ReportsSubPanel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel9">
+            <Container class="javax.swing.JPanel" name="ReportsSubPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                          <Component id="ReportsTabbedPane" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2017,18 +2017,18 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
+                          <Component id="ReportsTabbedPane" pref="0" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+                <Container class="javax.swing.JTabbedPane" name="ReportsTabbedPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="PayrollReportTab">
+                    <Container class="javax.swing.JPanel" name="RPayrollReportsTab">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Payroll Report">
@@ -2040,14 +2040,14 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
+                              <Component id="RPayrollScrollPane" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel10" max="32767" attributes="0"/>
+                                      <Component id="RPayrollTopPanel" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RPayrollBottomPanel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2057,33 +2057,33 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RPayrollTopPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" min="-2" pref="320" max="-2" attributes="0"/>
+                                  <Component id="RPayrollScrollPane" min="-2" pref="320" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel11" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="RPayrollBottomPanel" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="jPanel10">
+                        <Container class="javax.swing.JPanel" name="RPayrollTopPanel">
 
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RPayrollPeriodLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jDateChooser4" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <Component id="RPayrollDateChooser" min="-2" pref="195" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel42" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Component id="RPDepartmentLabel" min="-2" pref="68" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox10" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Component id="RPDepartmentComboBox" min="-2" pref="121" max="-2" attributes="0"/>
                                       <EmptySpace pref="241" max="32767" attributes="0"/>
-                                      <Component id="jButton19" min="-2" pref="184" max="-2" attributes="0"/>
+                                      <Component id="RPGenerateReportButton" min="-2" pref="184" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2092,12 +2092,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jDateChooser4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RPayrollDateChooser" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jButton19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RPayrollPeriodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RPDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RPDepartmentComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RPGenerateReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -2106,17 +2106,17 @@
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel41">
+                            <Component class="javax.swing.JLabel" name="RPayrollPeriodLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Payroll Period:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel42">
+                            <Component class="javax.swing.JLabel" name="RPDepartmentLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Department:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox10">
+                            <Component class="javax.swing.JComboBox" name="RPDepartmentComboBox">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="4">
@@ -2131,7 +2131,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton19">
+                            <Component class="javax.swing.JButton" name="RPGenerateReportButton">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Segoe UI" size="12" style="1"/>
@@ -2139,15 +2139,15 @@
                                 <Property name="text" type="java.lang.String" value="Generate Report"/>
                               </Properties>
                             </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser4">
+                            <Component class="com.toedter.calendar.JDateChooser" name="RPayrollDateChooser">
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                        <Container class="javax.swing.JScrollPane" name="RPayrollScrollPane">
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable3">
+                            <Component class="javax.swing.JTable" name="RPayrollTable">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="4">
@@ -2200,16 +2200,16 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel11">
+                        <Container class="javax.swing.JPanel" name="RPayrollBottomPanel">
 
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="200" max="32767" attributes="0"/>
-                                      <Component id="jButton21" min="-2" pref="117" max="-2" attributes="0"/>
+                                      <Component id="RPPrintReportButton" min="-2" pref="117" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButton20" min="-2" pref="132" max="-2" attributes="0"/>
+                                      <Component id="RPExportPDFButton" min="-2" pref="132" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2218,8 +2218,8 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jButton20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RPExportPDFButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RPPrintReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
@@ -2227,24 +2227,24 @@
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JButton" name="jButton20">
+                            <Component class="javax.swing.JButton" name="RPExportPDFButton">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Export to PDF"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton21">
+                            <Component class="javax.swing.JButton" name="RPPrintReportButton">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Print Report"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton21ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RPPrintReportButtonActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="AttendanceReportTab">
+                    <Container class="javax.swing.JPanel" name="RAttendanceReportsTab">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Attendance Report">
@@ -2259,16 +2259,16 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane4" max="32767" attributes="0"/>
+                                      <Component id="RAttendanceScrollPane" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jPanel12" max="32767" attributes="0"/>
+                                          <Component id="RAttendanceTopPanel" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RAttendanceBottomPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2276,37 +2276,37 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RAttendanceTopPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane4" min="-2" pref="323" max="-2" attributes="0"/>
+                                  <Component id="RAttendanceScrollPane" min="-2" pref="323" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RAttendanceBottomPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="jPanel12">
+                        <Container class="javax.swing.JPanel" name="RAttendanceTopPanel">
 
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RAStartDateLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jDateChooser5" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="RAStartDateChooser" min="-2" pref="170" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RAEndDateLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jDateChooser6" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="RAEndDateChooser" min="-2" pref="172" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RAEmployeeLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox15" min="-2" pref="118" max="-2" attributes="0"/>
+                                      <Component id="RAEmployeeSelectComboBox" min="-2" pref="118" max="-2" attributes="0"/>
                                       <EmptySpace pref="64" max="32767" attributes="0"/>
-                                      <Component id="jButton22" min="-2" pref="175" max="-2" attributes="0"/>
+                                      <Component id="RAGenerateReportButton" min="-2" pref="175" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2315,14 +2315,14 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jDateChooser6" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jDateChooser5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RAEndDateChooser" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RAStartDateChooser" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jComboBox15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jButton22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RAStartDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RAEndDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RAEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RAEmployeeSelectComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RAGenerateReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -2331,22 +2331,22 @@
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel43">
+                            <Component class="javax.swing.JLabel" name="RAStartDateLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Start Date:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel44">
+                            <Component class="javax.swing.JLabel" name="RAEndDateLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="End Date:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel45">
+                            <Component class="javax.swing.JLabel" name="RAEmployeeLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Employee:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox15">
+                            <Component class="javax.swing.JComboBox" name="RAEmployeeSelectComboBox">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Segoe UI" size="12" style="2"/>
@@ -2364,7 +2364,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton22">
+                            <Component class="javax.swing.JButton" name="RAGenerateReportButton">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Segoe UI" size="12" style="1"/>
@@ -2372,17 +2372,17 @@
                                 <Property name="text" type="java.lang.String" value="Generate Report"/>
                               </Properties>
                             </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser5">
+                            <Component class="com.toedter.calendar.JDateChooser" name="RAStartDateChooser">
                             </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser6">
+                            <Component class="com.toedter.calendar.JDateChooser" name="RAEndDateChooser">
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                        <Container class="javax.swing.JScrollPane" name="RAttendanceScrollPane">
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable4">
+                            <Component class="javax.swing.JTable" name="RAttendanceTable">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="8" rowCount="4">
@@ -2447,16 +2447,16 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel13">
+                        <Container class="javax.swing.JPanel" name="RAttendanceBottomPanel">
 
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
-                                      <Component id="jButton24" min="-2" pref="117" max="-2" attributes="0"/>
+                                      <Component id="RAPrintReportButton" min="-2" pref="117" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButton23" min="-2" pref="132" max="-2" attributes="0"/>
+                                      <Component id="RAExportPDFButton" min="-2" pref="132" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2465,23 +2465,23 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jButton23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RAExportPDFButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="RAPrintReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JButton" name="jButton23">
+                            <Component class="javax.swing.JButton" name="RAExportPDFButton">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Export to PDF"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton23ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RAExportPDFButtonActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton24">
+                            <Component class="javax.swing.JButton" name="RAPrintReportButton">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Print Report"/>
                               </Properties>
