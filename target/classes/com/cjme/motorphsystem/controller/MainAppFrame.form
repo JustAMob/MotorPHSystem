@@ -528,7 +528,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="EmployeePanel">
+        <Container class="javax.swing.JPanel" name="EmployeeManagementPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Employee Management">
@@ -542,15 +542,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jPanel1" pref="483" max="32767" attributes="0"/>
-                          <Component id="jPanel5" max="32767" attributes="0"/>
+                          <Component id="EMSearchPanel" pref="483" max="32767" attributes="0"/>
+                          <Component id="EMButtonPanel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="477" max="32767" attributes="0"/>
+                              <Component id="EMScrollPane" pref="477" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel6" min="-2" pref="445" max="-2" attributes="0"/>
+                      <Component id="EMDetailPanel" min="-2" pref="445" max="-2" attributes="0"/>
                       <EmptySpace pref="11" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -560,14 +560,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMSearchPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                              <Component id="EMScrollPane" pref="0" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMButtonPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jPanel6" max="32767" attributes="0"/>
+                              <Component id="EMDetailPanel" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -577,18 +577,18 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel1">
+            <Container class="javax.swing.JPanel" name="EMSearchPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" pref="97" max="-2" attributes="0"/>
+                          <Component id="EMSearchLabel" min="-2" pref="97" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField14" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="EMEmployeeSearchTextField" min="-2" pref="270" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="EMEmployeeSearchButton" min="-2" pref="84" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -598,9 +598,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="12" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMEmployeeSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMEmployeeSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -608,20 +608,20 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="EMSearchLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search Employee:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField14">
+                <Component class="javax.swing.JTextField" name="EMEmployeeSearchTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search by ID or Name..."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField14ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMEmployeeSearchTextFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="EMEmployeeSearchButton">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -631,11 +631,11 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JScrollPane" name="EMScrollPane">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="EMTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="4">
@@ -682,18 +682,18 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel5">
+            <Container class="javax.swing.JPanel" name="EMButtonPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton8" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="EMDeleteButton" min="-2" pref="141" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="EMAddButton" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton7" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="EMEditButton" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -702,9 +702,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton7" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMEditButton" alignment="3" max="32767" attributes="0"/>
+                              <Component id="EMAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -712,17 +712,17 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton7">
+                <Component class="javax.swing.JButton" name="EMEditButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Edit Employee"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="EMAddButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Add Employee"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton8">
+                <Component class="javax.swing.JButton" name="EMDeleteButton">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="cc" type="rgb"/>
@@ -738,7 +738,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel6">
+            <Container class="javax.swing.JPanel" name="EMDetailPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -747,49 +747,49 @@
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMDetailLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabel20" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <Component id="EMBasicSalaryLabel" min="-2" pref="85" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField25" min="-2" pref="113" max="-2" attributes="0"/>
+                                          <Component id="EMBasicSalaryTextField" min="-2" pref="113" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel23" max="32767" attributes="0"/>
-                                                  <Component id="jLabel18" pref="85" max="32767" attributes="0"/>
+                                                  <Component id="EMLastNameLabel" max="32767" attributes="0"/>
+                                                  <Component id="EMEmployeeIDLabel" pref="85" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jTextField15" pref="113" max="32767" attributes="0"/>
-                                                  <Component id="jTextField16" max="32767" attributes="0"/>
+                                                  <Component id="EMEmployeeIDTextField" pref="113" max="32767" attributes="0"/>
+                                                  <Component id="EMLastNameTextField" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel30" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel29" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel28" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel27" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel26" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel25" alignment="0" pref="85" max="32767" attributes="0"/>
-                                                  <Component id="jLabel24" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMPositionLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMStatusLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMPhoneLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMBirthdayLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMAddressLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMMiddleNameLabel" alignment="0" pref="85" max="32767" attributes="0"/>
+                                                  <Component id="EMFirstNameLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMDepartmentLabel" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jTextField22" max="32767" attributes="0"/>
-                                                  <Component id="jTextField21" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField20" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField19" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField23" pref="113" max="32767" attributes="0"/>
-                                                  <Component id="jTextField24" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField17" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField18" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMStatusTextField" max="32767" attributes="0"/>
+                                                  <Component id="EMPhoneTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMBirthdayTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMAddressTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMPositionTextField" pref="113" max="32767" attributes="0"/>
+                                                  <Component id="EMDepartmentTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMFirstNameTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EMMiddleNameTextField" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -798,27 +798,27 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel31" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel32" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel33" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel34" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel35" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel36" max="32767" attributes="0"/>
-                                              <Component id="jLabel37" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <Component id="EMRiceAllowanceLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMPhoneAllowanceLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMClothingAllowanceLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMSSSLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMPhilHealthLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMPagIBIGLabel" max="32767" attributes="0"/>
+                                              <Component id="EMTINLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jTextField31" alignment="0" pref="107" max="32767" attributes="0"/>
-                                              <Component id="jTextField30" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField29" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField28" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField27" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField26" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField32" max="32767" attributes="0"/>
+                                              <Component id="EMPagIBIGTextField" alignment="0" pref="107" max="32767" attributes="0"/>
+                                              <Component id="EMPhilHealthTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMSSSTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMClothingAllowanceTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMPhoneAllowanceTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMRiceAllowanceTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EMTINTextField" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jButton10" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                                      <Component id="jButton9" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMClearFormButton" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <Component id="EMSaveButton" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
@@ -830,105 +830,105 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel17" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="EMDetailLabel" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMEmployeeIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMEmployeeIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMLastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMLastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMFirstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMFirstNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMMiddleNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMMiddleNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMAddressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMBirthdayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMBirthdayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPhoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMRiceAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMRiceAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPhoneAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPhoneAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMClothingAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMClothingAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMSSSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMSSSTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPhilHealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPhilHealthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField31" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMTINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMTINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField22" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMStatusTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField23" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMPositionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMDepartmentLabel" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMClearFormButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField25" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMBasicSalaryLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMBasicSalaryTextField" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMSaveButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
@@ -936,7 +936,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel17">
+                <Component class="javax.swing.JLabel" name="EMDetailLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="20" style="1"/>
@@ -944,204 +944,204 @@
                     <Property name="text" type="java.lang.String" value="Employee Details"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
+                <Component class="javax.swing.JLabel" name="EMEmployeeIDLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Employee ID:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
+                <Component class="javax.swing.JLabel" name="EMLastNameLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Last Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
+                <Component class="javax.swing.JLabel" name="EMFirstNameLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="First Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
+                <Component class="javax.swing.JLabel" name="EMMiddleNameLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Middle Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel26">
+                <Component class="javax.swing.JLabel" name="EMAddressLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Address:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
+                <Component class="javax.swing.JLabel" name="EMBirthdayLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Birthday:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel28">
+                <Component class="javax.swing.JLabel" name="EMPhoneLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Phone No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel29">
+                <Component class="javax.swing.JLabel" name="EMStatusLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Status:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel30">
+                <Component class="javax.swing.JLabel" name="EMPositionLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Position:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField15">
+                <Component class="javax.swing.JTextField" name="EMEmployeeIDTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField16">
+                <Component class="javax.swing.JTextField" name="EMLastNameTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField17">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField17ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField18">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField19">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField20">
+                <Component class="javax.swing.JTextField" name="EMFirstNameTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField20ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMFirstNameTextFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField21">
+                <Component class="javax.swing.JTextField" name="EMMiddleNameTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField22">
+                <Component class="javax.swing.JTextField" name="EMAddressTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField23">
+                <Component class="javax.swing.JTextField" name="EMBirthdayTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMBirthdayTextFieldActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMPhoneTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JTextField" name="EMStatusTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMPositionTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EMDepartmentLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Department:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel20">
+                <Component class="javax.swing.JLabel" name="EMBasicSalaryLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Basic Salary:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel31">
+                <Component class="javax.swing.JLabel" name="EMRiceAllowanceLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Rice Allowance:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel32">
+                <Component class="javax.swing.JLabel" name="EMPhoneAllowanceLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Phone Allowance:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel33">
+                <Component class="javax.swing.JLabel" name="EMClothingAllowanceLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Clothing Allowance:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel34">
+                <Component class="javax.swing.JLabel" name="EMSSSLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="SSS No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel35">
+                <Component class="javax.swing.JLabel" name="EMPhilHealthLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PhilHealth No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel36">
+                <Component class="javax.swing.JLabel" name="EMPagIBIGLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel37">
+                <Component class="javax.swing.JLabel" name="EMTINLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="TIN No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField24">
+                <Component class="javax.swing.JTextField" name="EMDepartmentTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField25">
+                <Component class="javax.swing.JTextField" name="EMBasicSalaryTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField26">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField26ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField27">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField28">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField29">
+                <Component class="javax.swing.JTextField" name="EMRiceAllowanceTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField29ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMRiceAllowanceTextFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField30">
+                <Component class="javax.swing.JTextField" name="EMPhoneAllowanceTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField31">
+                <Component class="javax.swing.JTextField" name="EMClothingAllowanceTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField32">
+                <Component class="javax.swing.JTextField" name="EMSSSTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMSSSTextFieldActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMPhilHealthTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton10">
+                <Component class="javax.swing.JTextField" name="EMPagIBIGTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMTINTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="EMClearFormButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Clear Form"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton9">
+                <Component class="javax.swing.JButton" name="EMSaveButton">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="33" type="rgb"/>
