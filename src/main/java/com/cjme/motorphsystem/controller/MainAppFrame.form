@@ -59,23 +59,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel14" max="32767" attributes="0"/>
+                  <Component id="EIWelcomePanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
+                      <Component id="EIDetailsIDsPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
+                      <Component id="EIEmployeeInfoPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
+                      <Component id="EIWelcomePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel18" max="32767" attributes="0"/>
+                          <Component id="EIDetailsIDsPanel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIEmployeeInfoPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -84,7 +84,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel14">
+            <Container class="javax.swing.JPanel" name="EIWelcomePanel">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -93,21 +93,21 @@
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel47" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="EIEmployeeIDLabel" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField33" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="EIEmployeeIDTextField" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EIDepartmentLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField34" min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Component id="EIDepartmentTextField" min="-2" pref="170" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel46" min="-2" pref="112" max="-2" attributes="0"/>
+                                  <Component id="EIWelcomeLabel" min="-2" pref="112" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmployeeNameDisplay" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="EIWelcomeNameLabel" min="-2" pref="105" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton17" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="EIApplyForLeaveButton" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -121,28 +121,28 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EmployeeNameDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EIWelcomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EIWelcomeNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="jButton17" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EIApplyForLeaveButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField33" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField34" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIEmployeeIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIEmployeeIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel46">
+                <Component class="javax.swing.JLabel" name="EIWelcomeLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="24" style="1"/>
@@ -150,7 +150,7 @@
                     <Property name="text" type="java.lang.String" value="Welcome,"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EmployeeNameDisplay">
+                <Component class="javax.swing.JLabel" name="EIWelcomeNameLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="24" style="1"/>
@@ -158,7 +158,7 @@
                     <Property name="text" type="java.lang.String" value="Name"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel47">
+                <Component class="javax.swing.JLabel" name="EIEmployeeIDLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -166,15 +166,15 @@
                     <Property name="text" type="java.lang.String" value="Employee ID:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField33">
+                <Component class="javax.swing.JTextField" name="EIEmployeeIDTextField">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField33"/>
+                    <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField33ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EIEmployeeIDTextFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel48">
+                <Component class="javax.swing.JLabel" name="EIDepartmentLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -182,12 +182,12 @@
                     <Property name="text" type="java.lang.String" value="Department:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField34">
+                <Component class="javax.swing.JTextField" name="EIDepartmentTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField34"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton17">
+                <Component class="javax.swing.JButton" name="EIApplyForLeaveButton">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -197,58 +197,55 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel18">
+            <Container class="javax.swing.JPanel" name="EIDetailsIDsPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="EIPhilHealthLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EISSSLabel" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel52" min="-2" pref="90" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField35" pref="320" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel53" pref="90" max="32767" attributes="0"/>
-                                                  <Component id="jLabel54" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField36" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField37" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel56" alignment="0" pref="90" max="32767" attributes="0"/>
-                                                  <Component id="jLabel55" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel57" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel58" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField38" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField39" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField40" max="32767" attributes="0"/>
-                                                  <Component id="jTextField41" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                      <Component id="EIPhilHealthTextField" max="32767" attributes="0"/>
+                                      <Component id="EISSSTextField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="EIIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="EIAddressLabel" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="EIAddressTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="EIPhoneLabel" max="32767" attributes="0"/>
+                                          <Component id="EIBirthdayLabel" min="-2" pref="90" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="EIBirthdayTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EIPhoneTextField" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="EIFullNameLabel" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="EIFullNameTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="EIPersonalLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -256,43 +253,38 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                          <Component id="EIPersonalLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField35" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIFullNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIFullNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField36" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIAddressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField37" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIBirthdayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIBirthdayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EIPhoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="EIIDLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField38" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EISSSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EISSSTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField39" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField40" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField41" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPhilHealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPhilHealthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -300,7 +292,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel49">
+                <Component class="javax.swing.JLabel" name="EIPersonalLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="1"/>
@@ -308,7 +300,7 @@
                     <Property name="text" type="java.lang.String" value="Personal Details"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel50">
+                <Component class="javax.swing.JLabel" name="EIIDLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="1"/>
@@ -316,110 +308,110 @@
                     <Property name="text" type="java.lang.String" value="Statutory IDs"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel52">
+                <Component class="javax.swing.JLabel" name="EIAddressLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Address:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel53">
+                <Component class="javax.swing.JLabel" name="EIPhoneLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Phone No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel54">
+                <Component class="javax.swing.JLabel" name="EIBirthdayLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Birthday:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField35">
+                <Component class="javax.swing.JTextField" name="EIAddressTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField35"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField36">
+                <Component class="javax.swing.JTextField" name="EIBirthdayTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField36"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField37">
+                <Component class="javax.swing.JTextField" name="EIPhoneTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField37"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel55">
+                <Component class="javax.swing.JLabel" name="EISSSLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="SSS No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel56">
+                <Component class="javax.swing.JLabel" name="EIPhilHealthLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PhilHealth No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel57">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel58">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="TIN No.:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField38">
+                <Component class="javax.swing.JTextField" name="EISSSTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField38"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField39">
+                <Component class="javax.swing.JTextField" name="EIPhilHealthTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField39"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField40">
+                <Component class="javax.swing.JLabel" name="EIFullNameLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField40"/>
+                    <Property name="text" type="java.lang.String" value="Full Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField41">
+                <Component class="javax.swing.JTextField" name="EIFullNameTextField">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField41"/>
+                    <Property name="text" type="java.lang.String" value="jTextField49"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel15">
+            <Container class="javax.swing.JPanel" name="EIEmployeeInfoPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jLabel51" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel60" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel61" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel62" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel63" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel64" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel65" alignment="0" pref="120" max="32767" attributes="0"/>
+                                      <Component id="EIPagIBIGLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EITINLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField42" alignment="0" pref="310" max="32767" attributes="0"/>
-                                      <Component id="jTextField43" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField44" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField45" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField46" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField47" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField48" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EITINTextField" max="32767" attributes="0"/>
+                                      <Component id="EIPagIBIGTextField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EIEILabel" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="EIStatusLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EIDateHiredLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EIBasicSalaryLabel" alignment="0" pref="80" max="32767" attributes="0"/>
+                                              <Component id="EIPositionLabel" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="EIPositionTextField" pref="320" max="32767" attributes="0"/>
+                                              <Component id="EIStatusTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EIDateHiredTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EIBasicSalaryTextField" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="36" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -427,49 +419,44 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                          <Component id="EIEILabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField42" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPositionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField43" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIStatusTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField44" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIDateHiredLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIDateHiredTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField45" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIBasicSalaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EIPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField46" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EITINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EITINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField47" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField48" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel59">
+                <Component class="javax.swing.JLabel" name="EIEILabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="1"/>
@@ -477,74 +464,64 @@
                     <Property name="text" type="java.lang.String" value="Employment Information"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel51">
+                <Component class="javax.swing.JLabel" name="EIPositionLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Position:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel60">
+                <Component class="javax.swing.JLabel" name="EIStatusLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Status:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel61">
+                <Component class="javax.swing.JLabel" name="EIDateHiredLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Date Hired:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel62">
+                <Component class="javax.swing.JLabel" name="EIBasicSalaryLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Basic Salary:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel63">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Rice Allowance:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel64">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Phone Allowance:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel65">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Clothing Allowance:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField42">
+                <Component class="javax.swing.JTextField" name="EIPositionTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField42"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField43">
+                <Component class="javax.swing.JTextField" name="EIStatusTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField43"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField44">
+                <Component class="javax.swing.JTextField" name="EIDateHiredTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField44"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField45">
+                <Component class="javax.swing.JTextField" name="EIBasicSalaryTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField45"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField46">
+                <Component class="javax.swing.JLabel" name="EIPagIBIGLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField46"/>
+                    <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField47">
+                <Component class="javax.swing.JLabel" name="EITINLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField47"/>
+                    <Property name="text" type="java.lang.String" value="TIN No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField48">
+                <Component class="javax.swing.JTextField" name="EITINTextField">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField48"/>
+                    <Property name="text" type="java.lang.String" value="jTextField41"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EIPagIBIGTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jTextField40"/>
                   </Properties>
                 </Component>
               </SubComponents>

@@ -29,47 +29,43 @@ public class MainAppFrame extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         MainPanel = new javax.swing.JTabbedPane();
         EmployeeInfoPanel = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel46 = new javax.swing.JLabel();
-        EmployeeNameDisplay = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jTextField33 = new javax.swing.JTextField();
-        jLabel48 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
-        jButton17 = new javax.swing.JButton();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
-        jTextField47 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
+        EIWelcomePanel = new javax.swing.JPanel();
+        EIWelcomeLabel = new javax.swing.JLabel();
+        EIWelcomeNameLabel = new javax.swing.JLabel();
+        EIEmployeeIDLabel = new javax.swing.JLabel();
+        EIEmployeeIDTextField = new javax.swing.JTextField();
+        EIDepartmentLabel = new javax.swing.JLabel();
+        EIDepartmentTextField = new javax.swing.JTextField();
+        EIApplyForLeaveButton = new javax.swing.JButton();
+        EIDetailsIDsPanel = new javax.swing.JPanel();
+        EIPersonalLabel = new javax.swing.JLabel();
+        EIIDLabel = new javax.swing.JLabel();
+        EIAddressLabel = new javax.swing.JLabel();
+        EIPhoneLabel = new javax.swing.JLabel();
+        EIBirthdayLabel = new javax.swing.JLabel();
+        EIAddressTextField = new javax.swing.JTextField();
+        EIBirthdayTextField = new javax.swing.JTextField();
+        EIPhoneTextField = new javax.swing.JTextField();
+        EISSSLabel = new javax.swing.JLabel();
+        EIPhilHealthLabel = new javax.swing.JLabel();
+        EISSSTextField = new javax.swing.JTextField();
+        EIPhilHealthTextField = new javax.swing.JTextField();
+        EIFullNameLabel = new javax.swing.JLabel();
+        EIFullNameTextField = new javax.swing.JTextField();
+        EIEmployeeInfoPanel = new javax.swing.JPanel();
+        EIEILabel = new javax.swing.JLabel();
+        EIPositionLabel = new javax.swing.JLabel();
+        EIStatusLabel = new javax.swing.JLabel();
+        EIDateHiredLabel = new javax.swing.JLabel();
+        EIBasicSalaryLabel = new javax.swing.JLabel();
+        EIPositionTextField = new javax.swing.JTextField();
+        EIStatusTextField = new javax.swing.JTextField();
+        EIDateHiredTextField = new javax.swing.JTextField();
+        EIBasicSalaryTextField = new javax.swing.JTextField();
+        EIPagIBIGLabel = new javax.swing.JLabel();
+        EITINLabel = new javax.swing.JLabel();
+        EITINTextField = new javax.swing.JTextField();
+        EIPagIBIGTextField = new javax.swing.JTextField();
         EmployeePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -215,300 +211,287 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         MainPanel.setMaximumSize(new java.awt.Dimension(945, 525));
 
-        jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel46.setText("Welcome,");
+        EIWelcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        EIWelcomeLabel.setText("Welcome,");
 
-        EmployeeNameDisplay.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        EmployeeNameDisplay.setText("Name");
+        EIWelcomeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        EIWelcomeNameLabel.setText("Name");
 
-        jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel47.setText("Employee ID:");
+        EIEmployeeIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        EIEmployeeIDLabel.setText("Employee ID:");
 
-        jTextField33.setText("jTextField33");
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
+        EIEmployeeIDTextField.setText(" ");
+        EIEmployeeIDTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
+                EIEmployeeIDTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel48.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel48.setText("Department:");
+        EIDepartmentLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        EIDepartmentLabel.setText("Department:");
 
-        jTextField34.setText("jTextField34");
+        EIDepartmentTextField.setText("jTextField34");
 
-        jButton17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton17.setText("Apply for Leave");
+        EIApplyForLeaveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        EIApplyForLeaveButton.setText("Apply for Leave");
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout EIWelcomePanelLayout = new javax.swing.GroupLayout(EIWelcomePanel);
+        EIWelcomePanel.setLayout(EIWelcomePanelLayout);
+        EIWelcomePanelLayout.setHorizontalGroup(
+            EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EIWelcomePanelLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EIWelcomePanelLayout.createSequentialGroup()
+                        .addComponent(EIEmployeeIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EIEmployeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel48)
+                        .addComponent(EIDepartmentLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EIDepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(EIWelcomePanelLayout.createSequentialGroup()
+                        .addComponent(EIWelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmployeeNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EIWelcomeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EIApplyForLeaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+        EIWelcomePanelLayout.setVerticalGroup(
+            EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EIWelcomePanelLayout.createSequentialGroup()
+                .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EIWelcomePanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel46)
-                            .addComponent(EmployeeNameDisplay)))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EIWelcomeLabel)
+                            .addComponent(EIWelcomeNameLabel)))
+                    .addGroup(EIWelcomePanelLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jButton17)))
+                        .addComponent(EIApplyForLeaveButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel48)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIEmployeeIDLabel)
+                    .addComponent(EIEmployeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EIDepartmentLabel)
+                    .addComponent(EIDepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel49.setText("Personal Details");
+        EIPersonalLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        EIPersonalLabel.setText("Personal Details");
 
-        jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel50.setText("Statutory IDs");
+        EIIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        EIIDLabel.setText("Statutory IDs");
 
-        jLabel52.setText("Address:");
+        EIAddressLabel.setText("Address:");
 
-        jLabel53.setText("Phone No.:");
+        EIPhoneLabel.setText("Phone No.:");
 
-        jLabel54.setText("Birthday:");
+        EIBirthdayLabel.setText("Birthday:");
 
-        jTextField35.setText("jTextField35");
+        EIAddressTextField.setText("jTextField35");
 
-        jTextField36.setText("jTextField36");
+        EIBirthdayTextField.setText("jTextField36");
 
-        jTextField37.setText("jTextField37");
+        EIPhoneTextField.setText("jTextField37");
 
-        jLabel55.setText("SSS No.:");
+        EISSSLabel.setText("SSS No.:");
 
-        jLabel56.setText("PhilHealth No.:");
+        EIPhilHealthLabel.setText("PhilHealth No.:");
 
-        jLabel57.setText("Pag-IBIG No.:");
+        EISSSTextField.setText("jTextField38");
 
-        jLabel58.setText("TIN No.:");
+        EIPhilHealthTextField.setText("jTextField39");
 
-        jTextField38.setText("jTextField38");
+        EIFullNameLabel.setText("Full Name:");
 
-        jTextField39.setText("jTextField39");
+        EIFullNameTextField.setText("jTextField49");
 
-        jTextField40.setText("jTextField40");
-
-        jTextField41.setText("jTextField41");
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jLabel50)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel49)
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField35, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                                        .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField36)
-                                        .addComponent(jTextField37)))
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                                        .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel57, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel58, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField38)
-                                        .addComponent(jTextField39)
-                                        .addComponent(jTextField40)
-                                        .addComponent(jTextField41)))))
-                        .addContainerGap(24, Short.MAX_VALUE))))
+        javax.swing.GroupLayout EIDetailsIDsPanelLayout = new javax.swing.GroupLayout(EIDetailsIDsPanel);
+        EIDetailsIDsPanel.setLayout(EIDetailsIDsPanelLayout);
+        EIDetailsIDsPanelLayout.setHorizontalGroup(
+            EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EIDetailsIDsPanelLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EIDetailsIDsPanelLayout.createSequentialGroup()
+                        .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(EIPhilHealthLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EISSSLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EIPhilHealthTextField)
+                            .addComponent(EISSSTextField)))
+                    .addComponent(EIIDLabel)
+                    .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(EIDetailsIDsPanelLayout.createSequentialGroup()
+                            .addComponent(EIAddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EIAddressTextField))
+                        .addGroup(EIDetailsIDsPanelLayout.createSequentialGroup()
+                            .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EIPhoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EIBirthdayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(EIBirthdayTextField)
+                                .addComponent(EIPhoneTextField)))
+                        .addGroup(EIDetailsIDsPanelLayout.createSequentialGroup()
+                            .addComponent(EIFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EIFullNameTextField))
+                        .addGroup(EIDetailsIDsPanelLayout.createSequentialGroup()
+                            .addComponent(EIPersonalLabel)
+                            .addGap(294, 294, 294))))
+                .addContainerGap())
         );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+        EIDetailsIDsPanelLayout.setVerticalGroup(
+            EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EIDetailsIDsPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel49)
+                .addComponent(EIPersonalLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel52)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIFullNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EIFullNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel54)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIAddressLabel)
+                    .addComponent(EIAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel53)
-                    .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIBirthdayLabel)
+                    .addComponent(EIBirthdayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIPhoneLabel)
+                    .addComponent(EIPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel50)
+                .addComponent(EIIDLabel)
+                .addGap(18, 18, 18)
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EISSSLabel)
+                    .addComponent(EISSSTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel55)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel56)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel57)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel58)
-                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIPhilHealthLabel)
+                    .addComponent(EIPhilHealthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel59.setText("Employment Information");
+        EIEILabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        EIEILabel.setText("Employment Information");
 
-        jLabel51.setText("Position:");
+        EIPositionLabel.setText("Position:");
 
-        jLabel60.setText("Status:");
+        EIStatusLabel.setText("Status:");
 
-        jLabel61.setText("Date Hired:");
+        EIDateHiredLabel.setText("Date Hired:");
 
-        jLabel62.setText("Basic Salary:");
+        EIBasicSalaryLabel.setText("Basic Salary:");
 
-        jLabel63.setText("Rice Allowance:");
+        EIPositionTextField.setText("jTextField42");
 
-        jLabel64.setText("Phone Allowance:");
+        EIStatusTextField.setText("jTextField43");
 
-        jLabel65.setText("Clothing Allowance:");
+        EIDateHiredTextField.setText("jTextField44");
 
-        jTextField42.setText("jTextField42");
+        EIBasicSalaryTextField.setText("jTextField45");
 
-        jTextField43.setText("jTextField43");
+        EIPagIBIGLabel.setText("Pag-IBIG No.:");
 
-        jTextField44.setText("jTextField44");
+        EITINLabel.setText("TIN No.:");
 
-        jTextField45.setText("jTextField45");
+        EITINTextField.setText("jTextField41");
 
-        jTextField46.setText("jTextField46");
+        EIPagIBIGTextField.setText("jTextField40");
 
-        jTextField47.setText("jTextField47");
-
-        jTextField48.setText("jTextField48");
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        javax.swing.GroupLayout EIEmployeeInfoPanelLayout = new javax.swing.GroupLayout(EIEmployeeInfoPanel);
+        EIEmployeeInfoPanel.setLayout(EIEmployeeInfoPanelLayout);
+        EIEmployeeInfoPanelLayout.setHorizontalGroup(
+            EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EIEmployeeInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel59)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel60, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel61, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel65, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EIEmployeeInfoPanelLayout.createSequentialGroup()
+                        .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(EIPagIBIGLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EITINLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField42, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
-                            .addComponent(jTextField43)
-                            .addComponent(jTextField44)
-                            .addComponent(jTextField45)
-                            .addComponent(jTextField46)
-                            .addComponent(jTextField47)
-                            .addComponent(jTextField48))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EITINTextField)
+                            .addComponent(EIPagIBIGTextField)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EIEmployeeInfoPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EIEILabel)
+                            .addGroup(EIEmployeeInfoPanelLayout.createSequentialGroup()
+                                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(EIStatusLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EIDateHiredLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EIBasicSalaryLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                    .addComponent(EIPositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(EIPositionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                    .addComponent(EIStatusTextField)
+                                    .addComponent(EIDateHiredTextField)
+                                    .addComponent(EIBasicSalaryTextField))))))
+                .addGap(66, 66, 66))
         );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        EIEmployeeInfoPanelLayout.setVerticalGroup(
+            EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EIEmployeeInfoPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel59)
+                .addComponent(EIEILabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel51)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIPositionLabel)
+                    .addComponent(EIPositionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel60)
-                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIStatusLabel)
+                    .addComponent(EIStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel61)
-                    .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIDateHiredLabel)
+                    .addComponent(EIDateHiredTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel62)
-                    .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIBasicSalaryLabel)
+                    .addComponent(EIBasicSalaryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIPagIBIGLabel)
+                    .addComponent(EIPagIBIGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel63)
-                    .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel64)
-                    .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel65)
-                    .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EITINLabel)
+                    .addComponent(EITINTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout EmployeeInfoPanelLayout = new javax.swing.GroupLayout(EmployeeInfoPanel);
         EmployeeInfoPanel.setLayout(EmployeeInfoPanelLayout);
         EmployeeInfoPanelLayout.setHorizontalGroup(
             EmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(EIWelcomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EIDetailsIDsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         EmployeeInfoPanelLayout.setVerticalGroup(
             EmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EIWelcomePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EIDetailsIDsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -1668,9 +1651,9 @@ public class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
+    private void EIEmployeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIEmployeeIDTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
+    }//GEN-LAST:event_EIEmployeeIDTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1713,8 +1696,44 @@ public class MainAppFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AttendancePanel;
     private javax.swing.JPanel AttendanceReportTab;
+    private javax.swing.JLabel EIAddressLabel;
+    private javax.swing.JTextField EIAddressTextField;
+    private javax.swing.JButton EIApplyForLeaveButton;
+    private javax.swing.JLabel EIBasicSalaryLabel;
+    private javax.swing.JTextField EIBasicSalaryTextField;
+    private javax.swing.JLabel EIBirthdayLabel;
+    private javax.swing.JTextField EIBirthdayTextField;
+    private javax.swing.JLabel EIDateHiredLabel;
+    private javax.swing.JTextField EIDateHiredTextField;
+    private javax.swing.JLabel EIDepartmentLabel;
+    private javax.swing.JTextField EIDepartmentTextField;
+    private javax.swing.JPanel EIDetailsIDsPanel;
+    private javax.swing.JLabel EIEILabel;
+    private javax.swing.JLabel EIEmployeeIDLabel;
+    private javax.swing.JTextField EIEmployeeIDTextField;
+    private javax.swing.JPanel EIEmployeeInfoPanel;
+    private javax.swing.JLabel EIFullNameLabel;
+    private javax.swing.JTextField EIFullNameTextField;
+    private javax.swing.JLabel EIIDLabel;
+    private javax.swing.JLabel EIPagIBIGLabel;
+    private javax.swing.JTextField EIPagIBIGTextField;
+    private javax.swing.JLabel EIPersonalLabel;
+    private javax.swing.JLabel EIPhilHealthLabel;
+    private javax.swing.JTextField EIPhilHealthTextField;
+    private javax.swing.JLabel EIPhoneLabel;
+    private javax.swing.JTextField EIPhoneTextField;
+    private javax.swing.JLabel EIPositionLabel;
+    private javax.swing.JTextField EIPositionTextField;
+    private javax.swing.JLabel EISSSLabel;
+    private javax.swing.JTextField EISSSTextField;
+    private javax.swing.JLabel EIStatusLabel;
+    private javax.swing.JTextField EIStatusTextField;
+    private javax.swing.JLabel EITINLabel;
+    private javax.swing.JTextField EITINTextField;
+    private javax.swing.JLabel EIWelcomeLabel;
+    private javax.swing.JLabel EIWelcomeNameLabel;
+    private javax.swing.JPanel EIWelcomePanel;
     private javax.swing.JPanel EmployeeInfoPanel;
-    private javax.swing.JLabel EmployeeNameDisplay;
     private javax.swing.JPanel EmployeePanel;
     private javax.swing.JTabbedPane MainPanel;
     private javax.swing.JPanel PayrollPanel;
@@ -1730,7 +1749,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
@@ -1796,28 +1814,8 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1826,9 +1824,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1872,23 +1867,7 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
