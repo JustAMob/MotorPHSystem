@@ -6,7 +6,7 @@ import java.sql.Date;
  *
  * @author JustAMob
  */
-public class Employee {
+public class EmployeeEntity {
     private int employeeId;
     private String firstName;
     private String lastName;
@@ -20,10 +20,10 @@ public class Employee {
     private int positionId;
     private Date birthday;
 
-    public Employee() {
+    public EmployeeEntity() {
     }
 
-    public Employee(int employeeId, String firstName, String lastName, int addressId, int phoneNumber, int governmentId, int departmentId, int salaryId, int supervisorId, int statusId, int positionId, Date birthday) {
+    public EmployeeEntity(int employeeId, String firstName, String lastName, int addressId, int phoneNumber, int governmentId, int departmentId, int salaryId, int supervisorId, int statusId, int positionId, Date birthday) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -39,9 +39,9 @@ public class MainAppFrame extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         EmployeeNameDisplay = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jTextField33 = new javax.swing.JTextField();
+        employeeIDjTextField = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
+        departmentjTextField = new javax.swing.JTextField();
         jButton17 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
@@ -49,7 +49,7 @@ public class MainAppFrame extends javax.swing.JFrame {
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        jTextField35 = new javax.swing.JTextField();
+        addressjTextField = new javax.swing.JTextField();
         jTextField36 = new javax.swing.JTextField();
         jTextField37 = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
@@ -85,7 +85,7 @@ public class MainAppFrame extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        addEmployeejButton = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -230,17 +230,14 @@ public class MainAppFrame extends javax.swing.JFrame {
         jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel47.setText("Employee ID:");
 
-        jTextField33.setText("jTextField33");
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
+        employeeIDjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
+                employeeIDjTextFieldActionPerformed(evt);
             }
         });
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel48.setText("Department:");
-
-        jTextField34.setText("jTextField34");
 
         jButton17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton17.setText("Apply for Leave");
@@ -255,11 +252,11 @@ public class MainAppFrame extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(employeeIDjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jLabel48)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(departmentjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,9 +281,9 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeIDjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel48)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(departmentjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -300,8 +297,6 @@ public class MainAppFrame extends javax.swing.JFrame {
         jLabel53.setText("Phone No.:");
 
         jLabel54.setText("Birthday:");
-
-        jTextField35.setText("jTextField35");
 
         jTextField36.setText("jTextField36");
 
@@ -340,7 +335,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel18Layout.createSequentialGroup()
                                     .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField35, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                                    .addComponent(addressjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
                                 .addGroup(jPanel18Layout.createSequentialGroup()
                                     .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
@@ -371,7 +366,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
@@ -571,7 +566,7 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         jButton7.setText("Edit Employee");
 
-        jButton6.setText("Add Employee");
+        addEmployeejButton.setText("Add Employee");
 
         jButton8.setBackground(new java.awt.Color(204, 0, 0));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -586,7 +581,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addEmployeejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -596,7 +591,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6)
+                    .addComponent(addEmployeejButton)
                     .addComponent(jButton8))
                 .addContainerGap())
         );
@@ -863,7 +858,7 @@ public class MainAppFrame extends javax.swing.JFrame {
             EmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeePanelLayout.createSequentialGroup()
                 .addGroup(EmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(EmployeePanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -1079,7 +1074,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -1343,7 +1338,7 @@ public class MainAppFrame extends javax.swing.JFrame {
         PayrollPanelLayout.setVerticalGroup(
             PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollPanelLayout.createSequentialGroup()
-                .addComponent(PayrollTop, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PayrollTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1674,9 +1669,9 @@ public class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
+    private void employeeIDjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeIDjTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
+    }//GEN-LAST:event_employeeIDjTextFieldActionPerformed
     
      public void setupTabs() {
     com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeePanel, session.hasAccess("employee", "view"));
@@ -1749,7 +1744,11 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PayrollReportTab;
     private javax.swing.JPanel PayrollTop;
     private javax.swing.JPanel ReportsPanel;
+    private javax.swing.JButton addEmployeejButton;
+    private javax.swing.JTextField addressjTextField;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField departmentjTextField;
+    private javax.swing.JTextField employeeIDjTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1770,7 +1769,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -1900,9 +1898,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
     private javax.swing.JTextField jTextField36;
     private javax.swing.JTextField jTextField37;
     private javax.swing.JTextField jTextField38;

@@ -1,21 +1,21 @@
 package com.cjme.motorphsystem.dao.implementations;
 
-import com.cjme.motorphsystem.dao.EmployeeDAO;
-import com.cjme.motorphsystem.model.Employee;
+
+import com.cjme.motorphsystem.dao.EmployeeEntityDAO;
+import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import static javax.swing.UIManager.getInt;
 
-public class EmployeeDAOImpl implements EmployeeDAO {
+public class EmployeeEntityDAOImpl implements EmployeeEntityDAO {
 
     private boolean isAuthorized(String role) {
         return role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("hr");
     }
 
     @Override
-    public int addEmployee(Employee emp, String role) {
+    public int addEmployee(EmployeeEntity emp, String role) {
         if (!isAuthorized(role)) {
             throw new SecurityException("Unauthorized to add employee.");
         }
@@ -57,7 +57,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public Employee getEmployeeById(int id) {
+    public EmployeeEntity getEmployeeById(int id) {
         String sql = "SELECT * FROM employee WHERE employee_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -66,7 +66,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Employee emp = new Employee();
+                EmployeeEntity emp = new EmployeeEntity();
                 emp.setEmployeeId(rs.getInt("employee_id"));
                 emp.setFirstName(rs.getString("first_name"));
                 emp.setLastName(rs.getString("last_name"));
@@ -89,8 +89,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        List<Employee> list = new ArrayList<>();
+    public List<EmployeeEntity> getAllEmployees() {
+        List<EmployeeEntity> list = new ArrayList<>();
         String sql = "SELECT * FROM employee";
 
         try (Connection conn = DBConnection.getConnection();
@@ -98,7 +98,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                Employee emp = new Employee();
+                EmployeeEntity emp = new EmployeeEntity();
                 emp.setEmployeeId(rs.getInt("employee_id"));
                 emp.setFirstName(rs.getString("first_name"));
                 emp.setLastName(rs.getString("last_name"));
@@ -121,7 +121,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void updateEmployee(Employee emp, String role) {
+    public void updateEmployee(EmployeeEntity emp, String role) {
         if (!isAuthorized(role)) {
             throw new SecurityException("Unauthorized to update employee.");
         }

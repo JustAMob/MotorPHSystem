@@ -1,11 +1,11 @@
 package com.cjme.motorphsystem.service;
 
 import com.cjme.motorphsystem.dao.DeductionDAO;
-import com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
 import com.cjme.motorphsystem.dao.SalaryDAO;
 import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
 import com.cjme.motorphsystem.dao.TaxDAO;
-import com.cjme.motorphsystem.model.Employee;
+import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.Salary;
 import static com.cjme.motorphsystem.util.PayrollUtil.round;
 
@@ -21,7 +21,7 @@ public class PayrollCalculator {
     private final AllowanceService allowanceService;
     private final AttendanceTracker attendance;
     private final DeductionDAO deductionDAO;
-    private final EmployeeDAOImpl employeeDAO;
+    private final EmployeeEntityDAOImpl employeeDAO;
     private final SalaryDAO salaryDAOImpl;
     private final int employeeId;
 
@@ -30,7 +30,7 @@ public class PayrollCalculator {
             AllowanceService allowanceService,
             AttendanceTracker attendance,
             DeductionDAO deductionDAO,
-            EmployeeDAOImpl employeeDAO,
+            EmployeeEntityDAOImpl employeeDAO,
             SalaryDAOImpl salaryDAOImpl,
             int employeeId
     ) {
@@ -49,7 +49,7 @@ public class PayrollCalculator {
         System.out.println("Total Hours Worked: " + totalHours);
 
         // 2. Get salary_id from employee
-        Employee employee = employeeDAO.getEmployeeById(employeeId);
+        EmployeeEntity employee = employeeDAO.getEmployeeById(employeeId);
         int salaryId = employee.getSalaryId();
 
         // 3. Get hourly rate from Salary table

@@ -10,14 +10,14 @@
  */
 package com.cjme.motorphsystem.dao;
 
-import com.cjme.motorphsystem.model.Employee;
+import com.cjme.motorphsystem.model.EmployeeEntity;
 import java.util.List;
 
-public interface EmployeeDAO {
-    int addEmployee(Employee employee, String role);
-    Employee getEmployeeById(int id);
-    List<Employee> getAllEmployees();
-    void updateEmployee(Employee employee, String role);
+public interface EmployeeEntityDAO {
+    int addEmployee(EmployeeEntity employee, String role);
+    EmployeeEntity getEmployeeById(int id);
+    List<EmployeeEntity> getAllEmployees();
+    void updateEmployee(EmployeeEntity employee, String role);
     void deleteEmployee(int id, String role);
 }
 

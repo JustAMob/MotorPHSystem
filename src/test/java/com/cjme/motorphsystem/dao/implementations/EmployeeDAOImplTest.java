@@ -4,7 +4,7 @@
  */
 package com.cjme.motorphsystem.dao.implementations;
 
-import com.cjme.motorphsystem.model.Employee;
+import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.Connection;
 import java.sql.Date;
@@ -27,7 +27,7 @@ import org.junit.Assume;
 public class EmployeeDAOImplTest {
 
     private static Connection conn;
-    private EmployeeDAOImpl dao;
+    private EmployeeEntityDAOImpl dao;
     private static int testEmployeeId = 101;
 
     @BeforeClass
@@ -38,7 +38,7 @@ public class EmployeeDAOImplTest {
 
     @Before
     public void setUp() {
-        dao = new EmployeeDAOImpl();
+        dao = new EmployeeEntityDAOImpl();
         testCreateEmployee();
     }
 
@@ -52,7 +52,7 @@ public class EmployeeDAOImplTest {
 
     
     public void testCreateEmployee() {
-        Employee emp = new Employee();
+        EmployeeEntity emp = new EmployeeEntity();
         emp.setFirstName("John");
         emp.setLastName("Doe");
         emp.setAddressId(111);
@@ -70,7 +70,7 @@ public class EmployeeDAOImplTest {
         
         testEmployeeId = generatedId;
          
-        Employee fromDb = dao.getEmployeeById(generatedId);
+        EmployeeEntity fromDb = dao.getEmployeeById(generatedId);
         assertNotNull("Inserted employee should be retrievable", fromDb);
         assertEquals("First name mismatch", "John", fromDb.getFirstName());
     }
@@ -79,7 +79,7 @@ public class EmployeeDAOImplTest {
     public void testReadEmployee() {
         Assume.assumeTrue(testEmployeeId != -1);
 
-        Employee emp = dao.getEmployeeById(testEmployeeId);
+        EmployeeEntity emp = dao.getEmployeeById(testEmployeeId);
         assertNotNull(emp);
         assertEquals("John", emp.getFirstName());
     }
@@ -88,13 +88,13 @@ public class EmployeeDAOImplTest {
     public void testUpdateEmployee() {
         Assume.assumeTrue(testEmployeeId != -1);
 
-        Employee emp = dao.getEmployeeById(testEmployeeId);
+        EmployeeEntity emp = dao.getEmployeeById(testEmployeeId);
         emp.setFirstName("Jane");
         emp.setLastName("Smith");
 
         dao.updateEmployee(emp, "hr");
 
-        Employee updated = dao.getEmployeeById(testEmployeeId);
+        EmployeeEntity updated = dao.getEmployeeById(testEmployeeId);
         assertEquals("Jane", updated.getFirstName());
         assertEquals("Smith", updated.getLastName());
     }
@@ -104,7 +104,7 @@ public class EmployeeDAOImplTest {
         Assume.assumeTrue(testEmployeeId != -1);
 
         dao.deleteEmployee(testEmployeeId, "admin");
-        Employee deleted = dao.getEmployeeById(testEmployeeId);
+        EmployeeEntity deleted = dao.getEmployeeById(testEmployeeId);
         assertNull(deleted);
 
         testEmployeeId = -1; // Reset to avoid false positives

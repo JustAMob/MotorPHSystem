@@ -2,7 +2,6 @@ package com.cjme.motorphsystem.service;
 
 
 
-import java.sql.Connection;
 import org.json.JSONObject;
 import org.json.JSONException;
 /**
@@ -11,13 +10,16 @@ import org.json.JSONException;
  */
 public class UserSession {
   private final JSONObject accessPermissions;
+    private final int employeeId;
   
-  
-    public UserSession(JSONObject accessPermissions) {
+    public UserSession(int employeeId, JSONObject accessPermissions) {
+        this.employeeId = employeeId;
         this.accessPermissions = accessPermissions;
         
     }
-   
+    public int getEmployeeId() {
+        return employeeId;
+    }
     public boolean hasAccess(String module, String action) {
         try {
             return accessPermissions.getJSONObject(module).getBoolean(action);

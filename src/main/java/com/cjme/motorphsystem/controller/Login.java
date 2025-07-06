@@ -225,7 +225,7 @@ public class Login extends javax.swing.JFrame {
        // authDAO.updateLastLogin(auth.getUserId(), LocalDateTime.now());
 
         // Setup user session
-        UserSession session = new UserSession(auth.getRole().getAccess());
+        UserSession session = new UserSession(employeeId,auth.getRole().getAccess());
 
         // Open main form and pass session
         MainAppFrame mainForm = new MainAppFrame(session); 

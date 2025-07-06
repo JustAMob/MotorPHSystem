@@ -3,7 +3,7 @@
     import com.cjme.motorphsystem.dao.implementations.AllowanceTypeDAOImpl;
     import com.cjme.motorphsystem.dao.AttendanceDAO;
     import com.cjme.motorphsystem.dao.DeductionDAO;
-    import com.cjme.motorphsystem.dao.implementations.EmployeeDAOImpl;
+    import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
     import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
     import com.cjme.motorphsystem.dao.TaxDAO;
 import com.cjme.motorphsystem.dao.implementations.EmployeeAllowanceDAOImpl;
@@ -33,7 +33,7 @@ import com.cjme.motorphsystem.dao.implementations.EmployeeAllowanceDAOImpl;
             AttendanceDAO attendanceDAO = new AttendanceDAO(); // implement or mock
             AttendanceTracker attendance = new AttendanceTracker(attendanceDAO);
             DeductionDAO deductionDAO = new DeductionDAO(DBConnection.getConnection());
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+            EmployeeEntityDAOImpl employeeDAO = new EmployeeEntityDAOImpl();
             SalaryDAOImpl salaryDAO = new SalaryDAOImpl();
 
             // Instantiate PayrollCalculator
