@@ -1737,7 +1737,18 @@ public final class MainAppFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             e.printStackTrace();
         }
-    }  
+    } 
+
+    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        // TODO add your handling code here:
+        try {
+            Connection conn = DBConnection.getConnection();
+            new ReportGenerator(conn).generatePayslipReport();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }         
     
     public void setupTabs() {
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeInfoPanel, session.hasAccess("employee", "view"));
