@@ -1,0 +1,440 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Coffee_7" language="java" columnCount="1" pageWidth="600" pageHeight="800" orientation="Landscape" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ced95029-b569-4027-895c-af2843a4e088">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AOOP_Adapter"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50.0" bold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18.0"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12.0" bold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12.0"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle backcolor="#E6DAC3">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<query language="SQL"><![CDATA[SELECT * FROM employee_payslip_summary
+]]></query>
+	<field name="Payslip_No" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Payslip_No"/>
+		<property name="com.jaspersoft.studio.field.label" value="Payslip_No"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Employee_ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Employee_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employee_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Employee_Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employee_Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employee_Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Period_Start_Date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Period_Start_Date"/>
+		<property name="com.jaspersoft.studio.field.label" value="Period_Start_Date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Period_End_Date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Period_End_Date"/>
+		<property name="com.jaspersoft.studio.field.label" value="Period_End_Date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Employee_Position_Department" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Employee_Position_Department"/>
+		<property name="com.jaspersoft.studio.field.label" value="Employee_Position_Department"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Monthly_Rate" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Monthly_Rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="Monthly_Rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Hourly_Rate" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Hourly_Rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="Hourly_Rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="month_covered" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="month_covered"/>
+		<property name="com.jaspersoft.studio.field.label" value="month_covered"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="year_covered" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="year_covered"/>
+		<property name="com.jaspersoft.studio.field.label" value="year_covered"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Total_Hours_Worked" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Total_Hours_Worked"/>
+		<property name="com.jaspersoft.studio.field.label" value="Total_Hours_Worked"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Overtime_Income" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Overtime_Income"/>
+		<property name="com.jaspersoft.studio.field.label" value="Overtime_Income"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Gross_Income" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Gross_Income"/>
+		<property name="com.jaspersoft.studio.field.label" value="Gross_Income"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="rice_subsidy" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="rice_subsidy"/>
+		<property name="com.jaspersoft.studio.field.label" value="rice_subsidy"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="phone_allowance" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="phone_allowance"/>
+		<property name="com.jaspersoft.studio.field.label" value="phone_allowance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="clothing_allowance" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="clothing_allowance"/>
+		<property name="com.jaspersoft.studio.field.label" value="clothing_allowance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Benefits_Total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Benefits_Total"/>
+		<property name="com.jaspersoft.studio.field.label" value="Benefits_Total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Social_Security_System" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Social_Security_System"/>
+		<property name="com.jaspersoft.studio.field.label" value="Social_Security_System"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Philhealth" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Philhealth"/>
+		<property name="com.jaspersoft.studio.field.label" value="Philhealth"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Pagibig" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Pagibig"/>
+		<property name="com.jaspersoft.studio.field.label" value="Pagibig"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Withholding_Tax" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Withholding_Tax"/>
+		<property name="com.jaspersoft.studio.field.label" value="Withholding_Tax"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Total_Deductions" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Total_Deductions"/>
+		<property name="com.jaspersoft.studio.field.label" value="Total_Deductions"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Summary_Gross" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Summary_Gross"/>
+		<property name="com.jaspersoft.studio.field.label" value="Summary_Gross"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Summary_Benefits" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Summary_Benefits"/>
+		<property name="com.jaspersoft.studio.field.label" value="Summary_Benefits"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Summary_Deductions" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Summary_Deductions"/>
+		<property name="com.jaspersoft.studio.field.label" value="Summary_Deductions"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<field name="Take_Home_Pay" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Take_Home_Pay"/>
+		<property name="com.jaspersoft.studio.field.label" value="Take_Home_Pay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_payslip_summary"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="119" splitType="Stretch">
+		<element kind="staticText" uuid="1a652692-054a-40f3-ade5-68d8da36626d" x="170" y="0" width="390" height="59" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="50.0" bold="true" italic="true" vTextAlign="Middle" style="Title">
+			<text><![CDATA[MotorPH]]></text>
+		</element>
+		<element kind="staticText" uuid="f0bfb1ea-a85a-47cd-a1a4-43f22b45e80f" x="170" y="59" width="391" height="60" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[7 Jupiter Avenue cor. F. Sandoval Jr., Bagong Nayon, Quezon City
+
+Phone: (028) 911-5071 / (028) 911-5072 / (028) 911-5073 
+
+Email: corporate@motorph.com]]></text>
+		</element>
+		<element kind="image" uuid="165f5933-e542-44cb-9856-9102c5e5c33b" x="0" y="0" width="169" height="119">
+			<expression><![CDATA["src/main/resources/icons/MotorPH 250 x 140.png"]]></expression>
+		</element>
+	</title>
+	<pageHeader splitType="Stretch"/>
+	<columnHeader height="640" splitType="Stretch">
+		<element kind="staticText" uuid="8bf1e3c7-e698-4f14-914e-5ae33ffd1bba" x="169" y="10" width="210" height="20" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="15.0" bold="true" underline="true" hTextAlign="Center">
+			<text><![CDATA[EMPLOYEE PAYSLIP]]></text>
+		</element>
+		<element kind="rectangle" uuid="996a7757-4561-4c20-9236-08d896396167" x="138" y="40" width="141" height="30" forecolor="#1F3864" backcolor="rgba(31, 56, 100, 0.0)">
+			<pen lineColor="#1F3864"/>
+		</element>
+		<element kind="rectangle" uuid="5a8234d1-bad7-4b6a-88e4-56a0cbe40f55" x="419" y="40" width="141" height="30" forecolor="#1F3864" backcolor="rgba(31, 56, 100, 0.0)">
+			<pen lineColor="#1F3864"/>
+		</element>
+		<element kind="rectangle" uuid="9290c3b5-45ea-4cb3-a712-67c978d25999" x="0" y="40" width="139" height="30" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="80a7cccd-d4c8-4daa-a075-ed89af7e91e4" x="280" y="40" width="139" height="30" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="a6864242-7979-43d3-ae0e-6e0cd47c5c31" x="138" y="70" width="141" height="30" forecolor="#1F3864" backcolor="rgba(31, 56, 100, 0.0)">
+			<pen lineColor="#1F3864"/>
+		</element>
+		<element kind="rectangle" uuid="16dd5190-a2ef-4243-a347-4543d71e2e1f" x="419" y="70" width="141" height="30" forecolor="#1F3864" backcolor="rgba(31, 56, 100, 0.0)">
+			<pen lineColor="#1F3864"/>
+		</element>
+		<element kind="rectangle" uuid="fcb11201-ce89-49f2-bc02-004407e54c06" x="0" y="70" width="139" height="30" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="7af08210-1658-4b51-b79e-181ab0e45316" x="280" y="70" width="139" height="30" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="914e0496-51c0-47e1-926c-2dada0d00e0e" x="138" y="100" width="141" height="30" forecolor="#1F3864" backcolor="rgba(31, 56, 100, 0.0)">
+			<pen lineColor="#1F3864"/>
+		</element>
+		<element kind="rectangle" uuid="e99f3cb9-6906-4bf0-932a-5838a17d00b5" x="419" y="100" width="141" height="30" forecolor="#1F3864" backcolor="rgba(31, 56, 100, 0.0)">
+			<pen lineColor="#1F3864"/>
+		</element>
+		<element kind="rectangle" uuid="a8af2cc9-20a7-4582-b3a6-a1e9595d61e3" x="0" y="100" width="139" height="30" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="678b2519-d6ec-49e5-9c7f-97949c1c81fa" x="280" y="100" width="139" height="30" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="138c3360-b105-4d25-be1f-981352bd5886" x="10" y="46" width="79" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[PAYSLIP NO]]></text>
+		</element>
+		<element kind="staticText" uuid="d07def66-48f4-4776-8ffc-e09b7f5319f2" x="10" y="76" width="79" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[EMPLOYEE NO]]></text>
+		</element>
+		<element kind="staticText" uuid="164da848-fc09-4741-a9bc-09873e0842ec" x="10" y="106" width="90" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[EMPLOYEE NAME]]></text>
+		</element>
+		<element kind="staticText" uuid="2c89dd5c-c5c1-4876-ab1a-c84fae59e140" x="290" y="46" width="110" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[PERIOD START DATE]]></text>
+		</element>
+		<element kind="staticText" uuid="1ed922aa-0f47-442b-b304-915d332877d0" x="290" y="76" width="99" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[PERIOD END DATE]]></text>
+		</element>
+		<element kind="staticText" uuid="50ded9d9-19e6-403d-9b28-1ea9c3537299" x="290" y="100" width="128" height="30" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[EMPLOYEE POSITION/DEPARTMENT]]></text>
+		</element>
+		<element kind="rectangle" uuid="cbd61f1b-8546-4a3b-b985-90500e2a814e" x="0" y="140" width="561" height="20" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="42a63958-9235-4fe1-9706-93c6712be357" x="10" y="141" width="90" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[EARNINGS]]></text>
+		</element>
+		<element kind="rectangle" uuid="59583c5b-f377-41a0-97ec-0a9716481a32" x="0" y="160" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="ca220d58-ba33-4364-b1d2-8af550375f90" x="0" y="240" width="561" height="20" forecolor="#1F3864" backcolor="#EFEFEF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="3b217671-03f9-415a-99fb-b0eaba817872" x="0" y="180" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="3be80c9b-4299-4bde-bbd7-21283bf4e625" x="10" y="161" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Monthly Rate]]></text>
+		</element>
+		<element kind="staticText" uuid="14855b4e-c644-4290-84f2-235531abac06" x="10" y="181" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Hourly Rate]]></text>
+		</element>
+		<element kind="staticText" uuid="ab6550cd-babc-495c-82a2-8d027368f97c" x="10" y="241" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[GROSS INCOME]]></text>
+		</element>
+		<element kind="rectangle" uuid="b0446a89-8c8c-423c-aed0-10559fd1673d" x="0" y="280" width="561" height="20" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="815f30e5-ca4b-4cc9-85c6-bcbe4dd24b75" x="10" y="281" width="90" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[BENEFITS]]></text>
+		</element>
+		<element kind="rectangle" uuid="7519f992-2fd8-4758-b140-657d5d016045" x="0" y="300" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="adb59a98-df43-4ac3-8371-8698a2cd7c9d" x="0" y="360" width="561" height="20" forecolor="#1F3864" backcolor="#EFEFEF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="38ddb5bc-ed94-44d1-8f0d-f30f1602a99e" x="0" y="320" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="d09fda1a-091c-4f71-bbf9-803614043f88" x="0" y="340" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="7060be8c-5c12-4b61-8937-3e65851687c3" x="10" y="301" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Rice Subcidy]]></text>
+		</element>
+		<element kind="staticText" uuid="d65a0047-afb5-45ba-a1ab-c29d436b954c" x="10" y="321" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Phone Allowance]]></text>
+		</element>
+		<element kind="staticText" uuid="777db78f-6cb2-45a5-a477-db784fba37af" x="10" y="340" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Clothing Allowance]]></text>
+		</element>
+		<element kind="staticText" uuid="5133e500-6e5b-44ed-bfb2-f8fa5dc0cc81" x="10" y="361" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[TOTAL]]></text>
+		</element>
+		<element kind="rectangle" uuid="348f416f-5a31-44b4-91bd-b15e33390f6e" x="0" y="399" width="561" height="20" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="576c77fe-3798-48c1-99b0-0b29ca9156cc" x="10" y="400" width="90" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[DEDUCTION]]></text>
+		</element>
+		<element kind="rectangle" uuid="8ed0b73a-54af-422e-a07b-0249879453ce" x="0" y="419" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="60802fc7-c6b0-443d-8791-b701e036645a" x="0" y="499" width="561" height="20" forecolor="#1F3864" backcolor="#EFEFEF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="78fd3d52-8b5d-4074-8a8a-4cd82b500b26" x="0" y="439" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="7c75f2d3-893a-41ea-b5c6-f15686f76e80" x="0" y="459" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="815797ad-2147-49da-b18d-8f6cdb2545ca" x="0" y="479" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="1d2c051d-c51d-4c53-92fe-a984a8bf4df5" x="10" y="420" width="110" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Social Security System]]></text>
+		</element>
+		<element kind="staticText" uuid="a9147bec-1593-4b58-8a2d-74efe7a3c4da" x="10" y="440" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Philhealth]]></text>
+		</element>
+		<element kind="staticText" uuid="3f28f063-f1e6-4069-8fb7-909cfe2480ab" x="10" y="459" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Pag-Ibig]]></text>
+		</element>
+		<element kind="staticText" uuid="41108a58-3ab2-437e-a004-d1177fcbc3fb" x="10" y="480" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Withholding Tax]]></text>
+		</element>
+		<element kind="staticText" uuid="4a9d25a3-e9e7-4ca7-81b2-dfc611e99882" x="10" y="500" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Total Deduction]]></text>
+		</element>
+		<element kind="rectangle" uuid="ae921ead-d7bc-4e1b-b273-c52d54e325ae" x="0" y="540" width="561" height="20" forecolor="#1F3864" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="54b1cf9f-8cd2-4b05-9b6d-99bd6b2e00cd" x="10" y="541" width="90" height="19" forecolor="#FFFFFF" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[SUMMARY]]></text>
+		</element>
+		<element kind="rectangle" uuid="f279887b-0e0c-45e1-ac40-28346f189fed" x="0" y="560" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="51fb3f4c-5660-4b5d-84fb-a2e7aab287d5" x="0" y="620" width="561" height="20" forecolor="#1F3864" backcolor="#EFEFEF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="cbe707c1-a5fa-4eae-89be-eab53e90d250" x="0" y="580" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="rectangle" uuid="16721a49-e7da-43f1-b532-9c87e7de6ee5" x="0" y="600" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="aa6dfd97-e454-4cbd-982f-036ca8254d44" x="10" y="561" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Gross Income]]></text>
+		</element>
+		<element kind="staticText" uuid="7f3b25a8-2019-469d-9ac2-c39d8e28180b" x="10" y="581" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Benefits]]></text>
+		</element>
+		<element kind="staticText" uuid="f6067d61-c9a5-4d6a-aeb7-a89e40b73e2f" x="10" y="600" width="90" height="19" forecolor="#030303" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Deductions]]></text>
+		</element>
+		<element kind="staticText" uuid="121ae4a0-2b28-4a68-86de-5b409f101352" x="10" y="621" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="true" underline="true" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[TOTAL HOME PAY]]></text>
+		</element>
+		<element kind="textField" uuid="8b26df6e-5d16-4b79-a1ad-68db354c4f5b" x="150" y="48" width="140" height="14">
+			<expression><![CDATA[$F{Payslip_No}]]></expression>
+		</element>
+		<element kind="textField" uuid="d140f3e8-42d2-4803-9325-2717e70995fe" x="150" y="78" width="100" height="14">
+			<expression><![CDATA[$F{Employee_ID}]]></expression>
+		</element>
+		<element kind="textField" uuid="04053c7c-9d24-4466-9162-6d0c3da65a5d" x="150" y="107" width="100" height="16">
+			<expression><![CDATA[$F{Employee_Name}]]></expression>
+		</element>
+		<element kind="textField" uuid="c704f3d1-e428-45ec-a78d-94f864585363" x="430" y="48" width="40" height="14">
+			<expression><![CDATA[$F{Period_Start_Date}
+]]></expression>
+		</element>
+		<element kind="textField" uuid="79f9c8d5-794d-4699-ac09-5e2a2142f212" x="430" y="78" width="40" height="15">
+			<expression><![CDATA[$F{Period_End_Date}]]></expression>
+		</element>
+		<element kind="textField" uuid="3b7e23aa-f643-4afb-85c7-5ac84288da43" x="430" y="101" width="100" height="28">
+			<expression><![CDATA[$F{Employee_Position_Department}]]></expression>
+		</element>
+		<element kind="textField" uuid="269c8cd1-6f07-45fc-8237-ac80156d756e" x="491" y="163" width="70" height="15" linkType="None" linkTarget="Self" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Monthly_Rate}]]></expression>
+		</element>
+		<element kind="textField" uuid="046de613-cc86-456b-a62a-192a06828203" x="491" y="183" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Hourly_Rate}]]></expression>
+		</element>
+		<element kind="textField" uuid="a3cebf74-17af-46e7-ab73-034dd78db56b" x="480" y="482" width="81" height="15" bold="false" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Withholding_Tax}]]></expression>
+		</element>
+		<element kind="textField" uuid="74e117c2-e61a-4af6-a080-f8291e0dbb0c" x="480" y="461" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Pagibig}]]></expression>
+		</element>
+		<element kind="textField" uuid="30469ef2-6daf-438d-b4ce-36da4d4c82ad" x="480" y="442" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Philhealth}]]></expression>
+		</element>
+		<element kind="textField" uuid="389388e4-64bb-4845-9f97-0f4ed06419a9" x="480" y="422" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Social_Security_System}]]></expression>
+		</element>
+		<element kind="textField" uuid="e131ba8f-47b7-4340-bdc8-61a4c6b4eb21" x="480" y="502" width="81" height="15" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Total_Deductions}]]></expression>
+		</element>
+		<element kind="rectangle" uuid="402ff9ec-e79a-48a5-9cc0-49825721dfe5" x="0" y="200" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="20b7f4a7-9334-4108-8d29-92eb3d5318f8" x="10" y="201" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Total Hours Worked]]></text>
+		</element>
+		<element kind="rectangle" uuid="c0f09f0e-fb0b-4ab6-acd3-f9f9306d47bd" x="0" y="220" width="561" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="3ad37130-2f67-49ee-a652-bb5c6cd0b108" x="10" y="221" width="90" height="19" forecolor="#030303" fontName="Roboto" fontSize="10.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Overtime Income]]></text>
+		</element>
+		<element kind="textField" uuid="af4af4de-e59d-47c5-abb0-9fe178cf85f3" x="491" y="204" width="70" height="13" hTextAlign="Right">
+			<expression><![CDATA[$F{Total_Hours_Worked}]]></expression>
+		</element>
+		<element kind="textField" uuid="66cb71fe-9563-4271-af90-376542b6695b" x="421" y="223" width="140" height="14" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Overtime_Income}]]></expression>
+		</element>
+		<element kind="textField" uuid="6a4eb5b4-77fd-4de0-911d-10182f5de51c" x="455" y="243" width="106" height="15" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Gross_Income}]]></expression>
+		</element>
+		<element kind="textField" uuid="957b6300-e75a-44f3-9a06-348b8113d84c" x="480" y="303" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{rice_subsidy}]]></expression>
+		</element>
+		<element kind="textField" uuid="67e2e5f8-d0c0-4ff5-81c9-d70e34f75b08" x="480" y="323" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{phone_allowance}]]></expression>
+		</element>
+		<element kind="textField" uuid="cd43f253-94ac-4905-9ce9-a19f950fe103" x="480" y="343" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{clothing_allowance}]]></expression>
+		</element>
+		<element kind="textField" uuid="a4fb43fc-9428-485c-aae6-5a1ebbd6f81c" x="480" y="363" width="81" height="15" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Benefits_Total}]]></expression>
+		</element>
+		<element kind="textField" uuid="f47cb439-a5c3-48f3-a6bb-5097547e471a" x="480" y="563" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Summary_Gross}]]></expression>
+		</element>
+		<element kind="textField" uuid="d89161d8-3f48-40c2-b5a8-1f322f9aa177" x="480" y="583" width="81" height="15" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Summary_Benefits}]]></expression>
+		</element>
+		<element kind="textField" uuid="837dc373-faf0-4cd1-bbf2-58c9be2a89d7" x="480" y="602" width="81" height="14" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Summary_Deductions}]]></expression>
+		</element>
+		<element kind="textField" uuid="38770737-eb80-49ad-acf0-ba6a216b06ae" x="480" y="623" width="81" height="14" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP "+$F{Take_Home_Pay}]]></expression>
+		</element>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<summary splitType="Stretch"/>
+</jasperReport>
