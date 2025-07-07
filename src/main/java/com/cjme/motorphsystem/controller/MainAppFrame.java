@@ -205,6 +205,9 @@ public class MainAppFrame extends javax.swing.JFrame {
         RAttendanceBottomPanel = new javax.swing.JPanel();
         RAExportPDFButton = new javax.swing.JButton();
         RAPrintReportButton = new javax.swing.JButton();
+        SettingsPanel = new javax.swing.JPanel();
+        SettingsSubPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -1593,11 +1596,47 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         MainPanel.addTab("Reports", ReportsPanel);
 
+        jButton1.setBackground(new java.awt.Color(204, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Log Out");
+        jButton1.setAlignmentY(0.0F);
+
+        javax.swing.GroupLayout SettingsSubPanelLayout = new javax.swing.GroupLayout(SettingsSubPanel);
+        SettingsSubPanel.setLayout(SettingsSubPanelLayout);
+        SettingsSubPanelLayout.setHorizontalGroup(
+            SettingsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SettingsSubPanelLayout.createSequentialGroup()
+                .addContainerGap(743, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        SettingsSubPanelLayout.setVerticalGroup(
+            SettingsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SettingsSubPanelLayout.createSequentialGroup()
+                .addContainerGap(385, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+
+        javax.swing.GroupLayout SettingsPanelLayout = new javax.swing.GroupLayout(SettingsPanel);
+        SettingsPanel.setLayout(SettingsPanelLayout);
+        SettingsPanelLayout.setHorizontalGroup(
+            SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(SettingsSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        SettingsPanelLayout.setVerticalGroup(
+            SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(SettingsSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        MainPanel.addTab("Setttings", SettingsPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 945, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1872,6 +1911,9 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JPanel ReportsPanel;
     private javax.swing.JPanel ReportsSubPanel;
     private javax.swing.JTabbedPane ReportsTabbedPane;
+    private javax.swing.JPanel SettingsPanel;
+    private javax.swing.JPanel SettingsSubPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
