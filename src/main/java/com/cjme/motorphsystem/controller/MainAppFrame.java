@@ -9,9 +9,13 @@ import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
 import com.cjme.motorphsystem.model.EmployeeProfile;
 import com.cjme.motorphsystem.service.EmployeeService;
 import com.cjme.motorphsystem.service.UserSession;
+import com.cjme.motorphsystem.util.DBConnection;
+import com.cjme.motorphsystem.util.ReportGenerator;
 import java.awt.HeadlessException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -1724,6 +1728,16 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void tinNumjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinNumjTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tinNumjTextFieldActionPerformed
+
+    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        try {
+            Connection conn = DBConnection.getConnection();
+            new ReportGenerator(conn).generatePayrollReport();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }  
     
     public void setupTabs() {
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeInfoPanel, session.hasAccess("employee", "view"));

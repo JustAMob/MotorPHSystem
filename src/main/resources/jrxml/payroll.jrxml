@@ -1,0 +1,346 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Coffee_Landscape" language="java" columnCount="1" pageWidth="1450" pageHeight="930" columnWidth="1410" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AOOP_Adapter"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50.0" bold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18.0"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12.0" bold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12.0"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle backcolor="#E6DAC3">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<query language="SQL"><![CDATA[SELECT * FROM MONTH_SUMMARY_VIEW
+]]></query>
+	<field name="employee_no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="employee_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="employee_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="employee_full_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="employee_full_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="employee_full_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="position" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="position"/>
+		<property name="com.jaspersoft.studio.field.label" value="position"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="department" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="department"/>
+		<property name="com.jaspersoft.studio.field.label" value="department"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="pay_period_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pay_period_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="pay_period_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="gross_income" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="gross_income"/>
+		<property name="com.jaspersoft.studio.field.label" value="gross_income"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="social_security_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="social_security_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="social_security_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="social_security_contribution" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="social_security_contribution"/>
+		<property name="com.jaspersoft.studio.field.label" value="social_security_contribution"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="philhealth_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="philhealth_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="philhealth_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="philhealth_contribution" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="philhealth_contribution"/>
+		<property name="com.jaspersoft.studio.field.label" value="philhealth_contribution"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="pagibig_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pagibig_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="pagibig_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="pagibig_contribution" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="pagibig_contribution"/>
+		<property name="com.jaspersoft.studio.field.label" value="pagibig_contribution"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="tin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tin"/>
+		<property name="com.jaspersoft.studio.field.label" value="tin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="withholding_tax" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="withholding_tax"/>
+		<property name="com.jaspersoft.studio.field.label" value="withholding_tax"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<field name="net_pay" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="net_pay"/>
+		<property name="com.jaspersoft.studio.field.label" value="net_pay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="month_summary_view"/>
+	</field>
+	<variable name="gross_income1" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{gross_income}]]></expression>
+	</variable>
+	<variable name="gross_income2" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{gross_income}]]></expression>
+	</variable>
+	<variable name="social_security_contribution1" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{social_security_contribution}]]></expression>
+	</variable>
+	<variable name="social_security_contribution2" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{social_security_contribution}]]></expression>
+	</variable>
+	<variable name="philhealth_contribution1" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{philhealth_contribution}]]></expression>
+	</variable>
+	<variable name="net_pay1" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{net_pay}]]></expression>
+	</variable>
+	<variable name="withholding_tax1" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{withholding_tax}]]></expression>
+	</variable>
+	<variable name="pagibig_contribution1" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{pagibig_contribution}]]></expression>
+	</variable>
+	<variable name="pagibig_contribution2" resetType="Column" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{pagibig_contribution}]]></expression>
+	</variable>
+	<variable name="pagibig_contribution3" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{pagibig_contribution}]]></expression>
+	</variable>
+	<variable name="pagibig_contribution4" resetType="Column" calculation="Sum" class="java.math.BigDecimal">
+		<expression><![CDATA[$F{pagibig_contribution}]]></expression>
+	</variable>
+	<background splitType="Stretch"/>
+	<title height="136" splitType="Stretch">
+		<element kind="staticText" uuid="c1cbd231-eb6d-43d5-8314-1f6167f8e76a" x="170" y="0" width="390" height="59" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="50.0" bold="true" italic="true" vTextAlign="Middle" style="Title">
+			<text><![CDATA[MotorPH]]></text>
+		</element>
+		<element kind="staticText" uuid="0038699d-4e22-4ddf-992a-32a9aa29df12" x="170" y="59" width="391" height="60" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="10.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[7 Jupiter Avenue cor. F. Sandoval Jr., Bagong Nayon, Quezon City
+
+Phone: (028) 911-5071 / (028) 911-5072 / (028) 911-5073 
+
+Email: corporate@motorph.com]]></text>
+		</element>
+		<element kind="image" uuid="f99d817a-abc6-4e6b-a602-15ec14b5f7cb" x="0" y="0" width="170" height="136">
+			<expression><![CDATA["src/main/resources/icons/MotorPH 250 x 140.png"]]></expression>
+		</element>
+	</title>
+	<pageHeader splitType="Stretch"/>
+	<columnHeader height="85" splitType="Stretch">
+		<element kind="rectangle" uuid="dfe6b415-fc6e-4076-92fd-477729e6f78c" x="0" y="30" width="1410" height="55" forecolor="#FFFFFF" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="4bb69661-9f26-415c-a709-aeafd2c1deff" x="0" y="0" width="359" height="20" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="15.0" bold="true" underline="false" hTextAlign="Left">
+			<text><![CDATA[MONTHLY PAYROLL SUMMARY REPORT
+]]></text>
+		</element>
+		<element kind="staticText" uuid="5242ea05-0d94-4421-8c05-146db991e083" x="10" y="50" width="79" height="14" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Employee No]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc5f301-25e3-4454-ad79-bebad8884ed3"/>
+		</element>
+		<element kind="staticText" uuid="3e5bd4db-4676-4c18-894b-c9001039047d" x="104" y="50" width="106" height="14" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Employee Full Name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d190f52e-8f20-42e9-8ea2-dd6c9772ec1a"/>
+		</element>
+		<element kind="staticText" uuid="4a8d2166-099c-4982-a32d-dfd9c7e768d8" x="360" y="50" width="53" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[Position]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94047f33-36c0-4ce2-adfc-0d0aa86c19b1"/>
+		</element>
+		<element kind="staticText" uuid="b23a3a7a-0683-43a5-bc59-64cf61beb938" x="231" y="50" width="71" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[Department]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="369f63e4-b187-4c2f-97f0-f09893e20975"/>
+		</element>
+		<element kind="staticText" uuid="f6f344f7-f739-4fde-8aad-2cdd5403e50e" x="490" y="50" width="68" height="14" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Pay Period]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="76dae486-5079-4fa8-8319-6d459ef1bac8"/>
+		</element>
+		<element kind="staticText" uuid="bd19c1fa-1788-41f6-9417-a1320f2abd5d" x="570" y="50" width="74" height="14" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Gross Income]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52ebc0d2-0f42-41d3-a805-4701da31f23d"/>
+		</element>
+		<element kind="staticText" uuid="0f236e04-a39a-4177-87fe-c7256a9109d3" x="695" y="60" width="30" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[SSS#]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e110431-6c74-47cc-8374-5699c9b44d3f"/>
+		</element>
+		<element kind="staticText" uuid="830fa6e0-f0f6-41d0-8b53-1bef2da9be37" x="752" y="53" width="61" height="29" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[SSS
+Contribution]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e78724b-aad2-4f75-b352-8f4716857b4e"/>
+		</element>
+		<element kind="staticText" uuid="ae0fe2bf-7702-49ff-8bf3-b3a7f2f0f09b" x="858" y="60" width="59" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[Philhealth#]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="55a43b47-c9eb-4ae6-8aa5-1fb53412aa73"/>
+		</element>
+		<element kind="staticText" uuid="2827604f-6b66-4125-88b1-bf625adc8f29" x="930" y="56" width="60" height="22" forecolor="#FFFFFF" fontSize="9.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Philhealth
+Contribution]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dca116d0-4af4-4142-956d-258be68a0848"/>
+		</element>
+		<element kind="staticText" uuid="21945d6b-c468-4d5c-af81-b1f2ed3e4c71" x="1030" y="60" width="50" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[Pag-Ibig#]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bfb034de-aea5-4759-983c-0e931364d326"/>
+		</element>
+		<element kind="staticText" uuid="76359ca0-ce67-4c1c-b334-235e60b2bae9" x="1100" y="53" width="60" height="28" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Pag-Ibig Contribution]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3122dd8c-23b4-4993-832b-07603f835660"/>
+		</element>
+		<element kind="staticText" uuid="708dfd1f-a3c1-4b49-bac1-34b1a1456206" x="1211" y="60" width="20" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[Tin]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ac514098-21b4-4b68-80ad-9fdd6b554380"/>
+		</element>
+		<element kind="staticText" uuid="83621e38-b65c-4e3d-aa2a-cce5cda505cb" x="1260" y="60" width="80" height="14" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[Withholding Tax]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88627c1d-3d05-4053-8df4-72f4d1a7c5e7"/>
+		</element>
+		<element kind="staticText" uuid="2352597c-6b22-4aa7-93b4-754e5a1ddc5a" x="1370" y="50" width="40" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[Net Pay]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7abd4cba-2e73-4de0-94eb-e9cbb900130d"/>
+		</element>
+		<element kind="staticText" uuid="80f759ed-e286-4f96-b923-8209165be744" x="682" y="38" width="139" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[SOCIAL SECURITY SYSTEM]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e110431-6c74-47cc-8374-5699c9b44d3f"/>
+		</element>
+		<element kind="staticText" uuid="8626ad2e-38d3-4cd9-a15c-3c388d785643" x="890" y="38" width="68" height="15" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[PHILHEALTH]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7abd4cba-2e73-4de0-94eb-e9cbb900130d"/>
+		</element>
+		<element kind="staticText" uuid="34938b19-5016-44bb-ae1a-b65b0dbf43c2" x="1050" y="39" width="80" height="13" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Center" style="Column header">
+			<text><![CDATA[PAG-IBIG]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88627c1d-3d05-4053-8df4-72f4d1a7c5e7"/>
+		</element>
+		<element kind="staticText" uuid="f0c96324-8f44-436f-a754-dddec2e57270" x="1240" y="39" width="18" height="12" forecolor="#FFFFFF" fontSize="10.0" style="Column header">
+			<text><![CDATA[BIR
+]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ac514098-21b4-4b68-80ad-9fdd6b554380"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<element kind="frame" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174" mode="Opaque" x="0" y="0" width="1409" height="15" style="Row">
+				<element kind="textField" uuid="ab99b96f-7ac6-49f0-a645-2da8ab9f31a4" x="34" y="1" width="30" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{employee_no}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc5f301-25e3-4454-ad79-bebad8884ed3"/>
+				</element>
+				<element kind="textField" uuid="4303c9a4-e476-46c6-9886-27c41d297ca1" x="110" y="1" width="118" height="15" fontSize="10.0" textAdjust="StretchHeight" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{employee_full_name}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d190f52e-8f20-42e9-8ea2-dd6c9772ec1a"/>
+				</element>
+				<element kind="textField" uuid="43dfae54-fcde-49d7-98df-9b9e1e8076fd" x="360" y="0" width="130" height="15" fontSize="10.0" textAdjust="StretchHeight" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{position}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94047f33-36c0-4ce2-adfc-0d0aa86c19b1"/>
+				</element>
+				<element kind="textField" uuid="e6216cc2-7b90-4fee-bc27-7ed2e9b3edd3" x="230" y="0" width="128" height="15" fontSize="10.0" textAdjust="StretchHeight" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{department}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="369f63e4-b187-4c2f-97f0-f09893e20975"/>
+				</element>
+				<element kind="textField" uuid="9e6d8d43-6581-4451-8083-cc2e4078c0e1" x="505" y="0" width="39" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{pay_period_id}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="76dae486-5079-4fa8-8319-6d459ef1bac8"/>
+				</element>
+				<element kind="textField" uuid="ed550fe3-c4d7-4d19-8768-df9ed3e130fd" x="570" y="0" width="74" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Right" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA["PHP"+$F{gross_income}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52ebc0d2-0f42-41d3-a805-4701da31f23d"/>
+				</element>
+				<element kind="textField" uuid="dfbe705c-620e-418e-add1-46e62be0341b" x="680" y="1" width="61" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{social_security_no}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e110431-6c74-47cc-8374-5699c9b44d3f"/>
+				</element>
+				<element kind="textField" uuid="cafe791d-4bf3-4af0-940c-fc78d60285dc" x="752" y="1" width="61" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Right" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA["PHP"+$F{social_security_contribution}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e78724b-aad2-4f75-b352-8f4716857b4e"/>
+				</element>
+				<element kind="textField" uuid="4a7c7d12-6428-4174-9e34-f8f96dbf3a46" x="850" y="0" width="74" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{philhealth_no}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="55a43b47-c9eb-4ae6-8aa5-1fb53412aa73"/>
+				</element>
+				<element kind="textField" uuid="384dbbaa-1ae8-4bee-b631-03602f564eb5" x="922" y="0" width="66" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Right" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA["PHP"+$F{philhealth_contribution}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dca116d0-4af4-4142-956d-258be68a0848"/>
+				</element>
+				<element kind="textField" uuid="ba2030bd-b9a0-4970-b522-4b2126a4f255" x="1020" y="1" width="70" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{pagibig_no}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bfb034de-aea5-4759-983c-0e931364d326"/>
+				</element>
+				<element kind="textField" uuid="14f7ad83-f46c-4fc4-a09a-467b6fbeff63" x="1274" y="0" width="53" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA["PHP"+$F{pagibig_contribution}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3122dd8c-23b4-4993-832b-07603f835660"/>
+				</element>
+				<element kind="textField" uuid="0528ea4f-aada-4783-a168-16e2580875e0" x="1190" y="0" width="68" height="15" fontSize="10.0" textAdjust="StretchHeight" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA[$F{tin}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ac514098-21b4-4b68-80ad-9fdd6b554380"/>
+				</element>
+				<element kind="textField" uuid="3397448a-292e-4f3c-abd6-7437d3695d88" x="1090" y="0" width="70" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Right" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA["PHP"+$F{withholding_tax}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88627c1d-3d05-4053-8df4-72f4d1a7c5e7"/>
+				</element>
+				<element kind="textField" uuid="3e84ca44-5503-4b97-abbc-0570bd82f595" x="1325" y="0" width="80" height="15" fontSize="10.0" textAdjust="StretchHeight" hTextAlign="Right" vTextAlign="Middle" style="Detail">
+					<expression><![CDATA["PHP"+$F{net_pay}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7abd4cba-2e73-4de0-94eb-e9cbb900130d"/>
+				</element>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="19" splitType="Stretch">
+		<element kind="rectangle" uuid="f7b6e465-50d8-424a-b6f2-94dbbd663631" x="0" y="0" width="1409" height="19" forecolor="#FFFFFF" backcolor="#1F3864">
+			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
+		</element>
+		<element kind="staticText" uuid="a45d6412-440b-499a-90df-3025d76ddb13" x="10" y="2" width="79" height="14" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Left" style="Column header">
+			<text><![CDATA[TOTAL
+]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc5f301-25e3-4454-ad79-bebad8884ed3"/>
+		</element>
+		<element kind="textField" uuid="f689f879-01d9-4698-94ae-2a8b697b3ad3" x="570" y="1" width="74" height="16" forecolor="#FFFFFF" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP"+$V{gross_income2}]]></expression>
+		</element>
+		<element kind="textField" uuid="a44f921d-d522-4a59-8dec-99ff7b7bf472" x="741" y="1" width="71" height="16" forecolor="#FFFFFF" backcolor="#FFFFFF" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP"+$V{social_security_contribution2}]]></expression>
+		</element>
+		<element kind="textField" uuid="47436978-46dd-4a72-805e-a3cc6f653852" x="890" y="1" width="100" height="16" forecolor="#FFFFFF" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP"+$V{philhealth_contribution1}]]></expression>
+		</element>
+		<element kind="textField" uuid="7f099d52-8ff1-470f-91b6-ab2c5fe393ff" x="1308" y="1" width="100" height="16" forecolor="#FFFFFF" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP"+$V{net_pay1}]]></expression>
+		</element>
+		<element kind="textField" uuid="b658338f-2baf-4b1f-97ca-ba037b5019d4" x="1227" y="1" width="100" height="16" forecolor="#FFFFFF" linkType="None" linkTarget="Self" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP"+$V{withholding_tax1}]]></expression>
+		</element>
+		<element kind="textField" uuid="51e05654-486f-43b2-bac2-b728f1834d16" x="1060" y="0" width="100" height="18" forecolor="#FFFFFF" bold="true" hTextAlign="Right">
+			<expression><![CDATA["PHP"+$V{pagibig_contribution4}]]></expression>
+		</element>
+	</columnFooter>
+	<pageFooter height="25" splitType="Stretch">
+		<element kind="frame" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402" mode="Opaque" x="0" y="0" width="1409" height="25" forecolor="#D0B48E" backcolor="#F2EBDF">
+			<element kind="textField" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b" x="1349" y="1" width="40" height="20" forecolor="#736343" fontSize="10.0" evaluationTime="Report" bold="false" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+			</element>
+			<element kind="textField" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0" x="1269" y="1" width="80" height="20" forecolor="#736343" fontSize="10.0" bold="false" hTextAlign="Right" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+			</element>
+			<element kind="textField" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5" x="22" y="1" width="197" height="20" forecolor="#736343" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" bold="false" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA[new java.util.Date()]]></expression>
+			</element>
+		</element>
+	</pageFooter>
+	<summary splitType="Stretch"/>
+</jasperReport>
