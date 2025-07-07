@@ -1291,6 +1291,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         PGeneratePDFButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         PGeneratePDFButton.setText("Generate Payslip (PDF)");
+        PGeneratePDFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PGeneratePDFButtonActionPerformed(evt);
+            }
+        });
 
         PSaveDataButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         PSaveDataButton.setText("Save Payroll Data");
@@ -1739,7 +1744,18 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tinNumjTextFieldActionPerformed
 
-    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
+    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGeneratePDFButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection conn = DBConnection.getConnection();
+            new ReportGenerator(conn).generatePayslipReport();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
+
+    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
         try {
             Connection conn = DBConnection.getConnection();
@@ -1749,17 +1765,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     } 
-
-    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        // TODO add your handling code here:
-        try {
-            Connection conn = DBConnection.getConnection();
-            new ReportGenerator(conn).generatePayslipReport();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }         
+        
     
     public void setupTabs() {
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeInfoPanel, session.hasAccess("employee", "view"));
