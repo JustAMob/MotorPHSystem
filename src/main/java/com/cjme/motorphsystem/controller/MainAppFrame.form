@@ -1484,7 +1484,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="PayrollTopPanel" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="PayrollTopPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="PayrollDeductionsPanel" max="32767" attributes="0"/>
@@ -2240,6 +2240,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Export to PDF"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RPExportPDFButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="RPPrintReportButton">
                               <Properties>

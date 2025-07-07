@@ -62,6 +62,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EIDepartmentLabel = new javax.swing.JLabel();
         EIDepartmentTextField = new javax.swing.JTextField();
         EIApplyForLeaveButton = new javax.swing.JButton();
+        jLabel66 = new javax.swing.JLabel();
+        empNamejTextField = new javax.swing.JTextField();
         EIDetailsIDsPanel = new javax.swing.JPanel();
         EIPersonalLabel = new javax.swing.JLabel();
         EIIDLabel = new javax.swing.JLabel();
@@ -91,6 +93,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EITINLabel = new javax.swing.JLabel();
         EITINTextField = new javax.swing.JTextField();
         EIPagIBIGTextField = new javax.swing.JTextField();
+        clothAllowjTextField1 = new javax.swing.JTextField();
         EmployeeManagementPanel = new javax.swing.JPanel();
         EMSearchPanel = new javax.swing.JPanel();
         EMSearchLabel = new javax.swing.JLabel();
@@ -263,6 +266,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EIApplyForLeaveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         EIApplyForLeaveButton.setText("Apply for Leave");
 
+        jLabel66.setText("Name:");
+
         javax.swing.GroupLayout EIWelcomePanelLayout = new javax.swing.GroupLayout(EIWelcomePanel);
         EIWelcomePanel.setLayout(EIWelcomePanelLayout);
         EIWelcomePanelLayout.setHorizontalGroup(
@@ -406,7 +411,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addGroup(EIDetailsIDsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EIPhilHealthLabel)
                     .addComponent(EIPhilHealthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         EIEILabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -486,7 +491,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EIDateHiredLabel)
                     .addComponent(EIDateHiredTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EIBasicSalaryLabel)
                     .addComponent(EIBasicSalaryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1084,7 +1089,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(PSelectEmployeeLabel)
                         .addComponent(PSelectEmployeeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PPayrollPeriodLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         PEarningsLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -1348,7 +1353,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         PayrollPanelLayout.setVerticalGroup(
             PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollPanelLayout.createSequentialGroup()
-                .addComponent(PayrollTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PayrollTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PayrollDeductionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1413,6 +1418,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         RPayrollScrollPane.setViewportView(RPayrollTable);
 
         RPExportPDFButton.setText("Export to PDF");
+        RPExportPDFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RPExportPDFButtonActionPerformed(evt);
+            }
+        });
 
         RPPrintReportButton.setText("Print Report");
         RPPrintReportButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1729,7 +1739,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tinNumjTextFieldActionPerformed
 
-    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
+        // TODO add your handling code here:
         try {
             Connection conn = DBConnection.getConnection();
             new ReportGenerator(conn).generatePayrollReport();
@@ -1737,7 +1748,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             e.printStackTrace();
         }
-    }  
+    }//GEN-LAST:event_RPExportPDFButtonActionPerformed
+
+    
     
     public void setupTabs() {
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeInfoPanel, session.hasAccess("employee", "view"));
@@ -2007,5 +2020,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JPanel SettingsPanel;
     private javax.swing.JPanel SettingsSubPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField clothAllowjTextField1;
+    private javax.swing.JTextField empNamejTextField;
+    private javax.swing.JLabel jLabel66;
     // End of variables declaration//GEN-END:variables
 }
