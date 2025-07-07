@@ -1668,6 +1668,12 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
     private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
         // TODO add your handling code here:
+        Connection conn = DBConnection.getConnection();
+        if (conn != null) {
+           ReportGenerator.generatePayrollReport(conn);
+        } else {
+           System.out.println("Database connection failed.");
+        }
     }//GEN-LAST:event_jTextField20ActionPerformed
 
     private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
