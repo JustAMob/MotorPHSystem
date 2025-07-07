@@ -4,10 +4,17 @@
  */
 package com.cjme.motorphsystem.dao;
 
+import com.cjme.motorphsystem.model.Supervisor;
+import java.util.List;
+
 /**
  *
  * @author JustAMob
  */
 public interface SupervisorDAO {
-    
+    int addSupervisor(Supervisor supervisor);
+    Supervisor getSupervisorById(int id);
+    List<Supervisor> getAllSupervisors();
+    void updateSupervisor(Supervisor supervisor);
+    void deleteSupervisor(int id);
 }
