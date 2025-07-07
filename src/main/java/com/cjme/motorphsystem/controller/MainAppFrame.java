@@ -1715,7 +1715,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EIEmployeeIDTextFieldActionPerformed
 
-    }//GEN-LAST:event_employeeIDjTextFieldActionPerformed
+    
 
     private void bscSalaryjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bscSalaryjTextFieldActionPerformed
         // TODO add your handling code here:
@@ -1726,7 +1726,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tinNumjTextFieldActionPerformed
     
     public void setupTabs() {
-        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeManagementPanel, session.hasAccess("employee", "view"));
+        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeInfoPanel, session.hasAccess("employee", "view"));
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, AttendancePanel, session.hasAccess("attendance", "view"));
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, PayrollPanel, session.hasAccess("payroll", "view"));
         com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, ReportsPanel, session.hasAccess("reports", "view"));
