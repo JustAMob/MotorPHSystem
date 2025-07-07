@@ -45,7 +45,7 @@ public class EmployeeDAOImplTest {
     @After
     public void cleanupEachTest() throws SQLException {
         if (testEmployeeId > 0) {
-            dao.deleteEmployee(testEmployeeId, "admin");
+            dao.deleteEmployee(testEmployeeId);
             testEmployeeId = -1;
         }
     }
@@ -65,7 +65,7 @@ public class EmployeeDAOImplTest {
         emp.setPositionId(1);
         emp.setBirthday(Date.valueOf("1990-01-01"));
 
-        int generatedId = dao.addEmployee(emp, "admin");
+        int generatedId = dao.addEmployee(emp);
         assertTrue("Failed to insert employee", generatedId > 0);
         
         testEmployeeId = generatedId;
@@ -92,7 +92,7 @@ public class EmployeeDAOImplTest {
         emp.setFirstName("Jane");
         emp.setLastName("Smith");
 
-        dao.updateEmployee(emp, "hr");
+        dao.updateEmployee(emp);
 
         EmployeeEntity updated = dao.getEmployeeById(testEmployeeId);
         assertEquals("Jane", updated.getFirstName());
@@ -103,7 +103,7 @@ public class EmployeeDAOImplTest {
     public void testDeleteEmployee() {
         Assume.assumeTrue(testEmployeeId != -1);
 
-        dao.deleteEmployee(testEmployeeId, "admin");
+        dao.deleteEmployee(testEmployeeId);
         EmployeeEntity deleted = dao.getEmployeeById(testEmployeeId);
         assertNull(deleted);
 
