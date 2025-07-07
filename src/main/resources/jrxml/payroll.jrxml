@@ -132,9 +132,6 @@
 	</variable>
 	<background splitType="Stretch"/>
 	<title height="136" splitType="Stretch">
-		<element kind="image" uuid="84f03325-78b0-4e88-9aa3-23f05bc3365b" x="0" y="0" width="169" height="119">
-			<expression><![CDATA["C:\\Users\\gabri\\Downloads\\image-removebg-preview.png"]]></expression>
-		</element>
 		<element kind="staticText" uuid="c1cbd231-eb6d-43d5-8314-1f6167f8e76a" x="170" y="0" width="390" height="59" forecolor="#1F3864" fontName="DejaVu Sans Condensed" fontSize="50.0" bold="true" italic="true" vTextAlign="Middle" style="Title">
 			<text><![CDATA[MotorPH]]></text>
 		</element>
@@ -144,6 +141,9 @@
 Phone: (028) 911-5071 / (028) 911-5072 / (028) 911-5073 
 
 Email: corporate@motorph.com]]></text>
+		</element>
+		<element kind="image" uuid="f99d817a-abc6-4e6b-a602-15ec14b5f7cb" x="0" y="0" width="170" height="136">
+			<expression><![CDATA["src/main/resources/icons/MotorPH 250 x 140.png"]]></expression>
 		</element>
 	</title>
 	<pageHeader splitType="Stretch"/>

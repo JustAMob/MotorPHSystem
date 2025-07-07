@@ -120,7 +120,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         jTextField17 = new javax.swing.JTextField();
         jTextField18 = new javax.swing.JTextField();
         jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
+        payrollReport_PDF_btn = new javax.swing.JTextField();
         jTextField21 = new javax.swing.JTextField();
         jTextField22 = new javax.swing.JTextField();
         jTextField23 = new javax.swing.JTextField();
@@ -653,10 +653,10 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         jTextField19.setText(" ");
 
-        jTextField20.setText(" ");
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+        payrollReport_PDF_btn.setText(" ");
+        payrollReport_PDF_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
+                payrollReport_PDF_btnActionPerformed(evt);
             }
         });
 
@@ -758,7 +758,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTextField22)
                                         .addComponent(jTextField21, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField20, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(payrollReport_PDF_btn, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextField19, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextField23, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                                         .addComponent(jTextField24, javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,7 +818,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(payrollReport_PDF_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
@@ -1666,7 +1666,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField17ActionPerformed
 
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+    private void payrollReport_PDF_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payrollReport_PDF_btnActionPerformed
         // TODO add your handling code here:
         Connection conn = DBConnection.getConnection();
         if (conn != null) {
@@ -1674,7 +1674,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         } else {
            System.out.println("Database connection failed.");
         }
-    }//GEN-LAST:event_jTextField20ActionPerformed
+    }//GEN-LAST:event_payrollReport_PDF_btnActionPerformed
 
     private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
         // TODO add your handling code here:
@@ -1949,7 +1949,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField payrollReport_PDF_btn;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
