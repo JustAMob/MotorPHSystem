@@ -9,7 +9,9 @@ import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
 import com.cjme.motorphsystem.model.EmployeeProfile;
 import com.cjme.motorphsystem.service.EmployeeService;
 import com.cjme.motorphsystem.service.UserSession;
+import com.cjme.motorphsystem.util.ReportGenerator;
 import java.awt.HeadlessException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
