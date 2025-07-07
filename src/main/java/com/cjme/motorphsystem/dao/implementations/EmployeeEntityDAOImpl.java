@@ -3,6 +3,7 @@ package com.cjme.motorphsystem.dao.implementations;
 
 import com.cjme.motorphsystem.dao.EmployeeEntityDAO;
 import com.cjme.motorphsystem.model.EmployeeEntity;
+import com.cjme.motorphsystem.service.UserSession;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,20 +11,12 @@ import java.util.List;
 
 public class EmployeeEntityDAOImpl implements EmployeeEntityDAO {
 
-    private boolean isAuthorized(String role) {
-        return role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("hr");
-    }
-
-    @Override
-    public int addEmployee(EmployeeEntity emp, String role) {
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to add employee.");
-        }
-
+       @Override
+    public int addEmployee(EmployeeEntity emp) {
         String sql = "INSERT INTO employee (first_name, last_name, address_id, phone_number, government_id, department_id, salary_id, supervisor_id, status_id, position_id, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, emp.getFirstName());
             stmt.setString(2, emp.getLastName());
@@ -44,15 +37,12 @@ public class EmployeeEntityDAOImpl implements EmployeeEntityDAO {
 
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
-                System.out.println("Generated ID: " + rs.getInt(1));
                 return rs.getInt(1);
-            } else {
-                System.out.println("No generated key returned.");
             }
 
         } catch (SQLException e) {
-            e.printStackTrace(); // SHOW the real cause
         }
+
         return -1;
     }
 
@@ -121,11 +111,7 @@ public class EmployeeEntityDAOImpl implements EmployeeEntityDAO {
     }
 
     @Override
-    public void updateEmployee(EmployeeEntity emp, String role) {
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to update employee.");
-        }
-
+    public void updateEmployee(EmployeeEntity emp) {
         String sql = "UPDATE employee SET first_name = ?, last_name = ?, address_id = ?, phone_number = ?, government_id = ?, department_id = ?, salary_id = ?, supervisor_id = ?, status_id = ?, position_id = ?, birthday = ? WHERE employee_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -151,11 +137,7 @@ public class EmployeeEntityDAOImpl implements EmployeeEntityDAO {
     }
 
     @Override
-    public void deleteEmployee(int id, String role) {
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to delete employee.");
-        }
-
+    public void deleteEmployee(int id) {
         String sql = "DELETE FROM employee WHERE employee_id = ?";
 
         try (Connection conn = DBConnection.getConnection();

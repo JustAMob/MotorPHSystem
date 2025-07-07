@@ -37,7 +37,7 @@ private final EmployeeEntityDAO entityDAO;
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
-                int newId = entityDAO.addEmployee(emp, role);
+                int newId = entityDAO.addEmployee(emp);
                 conn.commit();
                 return newId;
             } catch (SQLException | SecurityException ex) {
@@ -60,7 +60,7 @@ private final EmployeeEntityDAO entityDAO;
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
-                entityDAO.updateEmployee(emp, role);
+                entityDAO.updateEmployee(emp);
                 conn.commit();
             } catch (SQLException | SecurityException ex) {
                 conn.rollback();
@@ -82,7 +82,7 @@ private final EmployeeEntityDAO entityDAO;
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
-                entityDAO.deleteEmployee(employeeId, role);
+                entityDAO.deleteEmployee(employeeId);
                 conn.commit();
             } catch (SQLException | SecurityException ex) {
                 conn.rollback();
