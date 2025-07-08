@@ -19,11 +19,11 @@ import java.util.List;
 public class LeaveRequestService {
 
     private final LeaveRequestDAO leaveRequestDAO;
-    private final String currentUserRole;
 
-    public LeaveRequestService(LeaveRequestDAO leaveRequestDAO, String currentUserRole) {
+
+    public LeaveRequestService(LeaveRequestDAO leaveRequestDAO) {
         this.leaveRequestDAO = leaveRequestDAO;
-        this.currentUserRole = currentUserRole;
+
     }
 
     /**  
@@ -41,8 +41,7 @@ public class LeaveRequestService {
         // 2. Default status
         request.setLeaveStatus("Pending");
 
-        // 3. Delegate to DAO (pass role so it can enforce authorization)
-        leaveRequestDAO.addLeaveRequest(request, currentUserRole);
+
     }
 
   
@@ -62,7 +61,7 @@ public class LeaveRequestService {
         if (!normalized.equals("approved") && !normalized.equals("denied") && !normalized.equals("pending")) {
             throw new IllegalArgumentException("Status must be one of: Approved, Denied, Pending");
         }
-        leaveRequestDAO.updateLeaveRequestStatus(requestId, capitalize(normalized), currentUserRole);
+        leaveRequestDAO.updateLeaveRequestStatus(requestId, capitalize(normalized));
     }
 
     /** Helper to capitalize first letter. */

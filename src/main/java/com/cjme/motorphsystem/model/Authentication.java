@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
  */
 public class Authentication {
     private int userId;
-    private String username;
     private String passwordHash;
     private Role role;
     private LocalDateTime lastLogin;

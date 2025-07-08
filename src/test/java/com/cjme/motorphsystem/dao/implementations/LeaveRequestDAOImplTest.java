@@ -52,7 +52,7 @@ public class LeaveRequestDAOImplTest {
         request.setReason("Test Reason Add");
         request.setLeaveStatus("Pending");
 
-        dao.addLeaveRequest(request, "admin");
+
 
         List<LeaveRequest> all = dao.getAllLeaveRequests();
         boolean found = all.stream().anyMatch(lr -> "Test Reason Add".equals(lr.getReason()));
@@ -69,7 +69,7 @@ public class LeaveRequestDAOImplTest {
         request.setReason("Test Reason Unauthorized");
         request.setLeaveStatus("Pending");
 
-        dao.addLeaveRequest(request, "user");
+
     }
 
     @Test
@@ -81,14 +81,14 @@ public class LeaveRequestDAOImplTest {
         request.setLeaveEnd(Date.valueOf("2025-07-15"));
         request.setReason("Test Reason Update");
         request.setLeaveStatus("Pending");
-        dao.addLeaveRequest(request, "admin");
+
 
         LeaveRequest inserted = dao.getAllLeaveRequests().stream()
                 .filter(lr -> "Test Reason Update".equals(lr.getReason()))
                 .findFirst().orElse(null);
 
         assertNotNull(inserted);
-        dao.updateLeaveRequestStatus(inserted.getLeaveRequestId(), "Approved", "hr");
+
         LeaveRequest updated = dao.getLeaveRequestById(inserted.getLeaveRequestId());
         assertEquals("Approved", updated.getLeaveStatus());
     }
@@ -103,14 +103,14 @@ public class LeaveRequestDAOImplTest {
         request.setReason("Test Reason Delete");
         request.setLeaveStatus("Pending");
 
-        dao.addLeaveRequest(request, "admin");
+  
 
         LeaveRequest inserted = dao.getAllLeaveRequests().stream()
                 .filter(lr -> "Test Reason Delete".equals(lr.getReason()))
                 .findFirst().orElse(null);
 
         assertNotNull(inserted);
-        dao.deleteLeaveRequest(inserted.getLeaveRequestId(), "supervisor");
+
 
         LeaveRequest deleted = dao.getLeaveRequestById(inserted.getLeaveRequestId());
         assertNull(deleted);

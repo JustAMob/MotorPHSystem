@@ -17,17 +17,10 @@ import java.util.List;
  */
 public class LeaveRequestDAOImpl implements LeaveRequestDAO {
 
-    private boolean isAuthorized(String role) {
-        return role.equalsIgnoreCase("admin") || 
-               role.equalsIgnoreCase("hr") || 
-               role.equalsIgnoreCase("supervisor");
-    }
 
     @Override
-    public void addLeaveRequest(LeaveRequest request, String role) {
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to add leave requests.");
-        }
+    public void addLeaveRequest(LeaveRequest request) {
+
 
         String sql = "INSERT INTO leave_request (employee_id, leave_type, leave_start, leave_end, reason, leave_status) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -105,13 +98,10 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
      *
      * @param requestId
      * @param newStatus
-     * @param role
      */
     @Override
-    public void updateLeaveRequestStatus(int requestId, String newStatus, String role){
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to update leave status.");
-        }
+    public void updateLeaveRequestStatus(int requestId, String newStatus){
+      
 
         String sql = "UPDATE leave_request SET leave_status = ? WHERE leave_request_id = ?";
 
@@ -128,10 +118,8 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
     }
     
     @Override
-    public void updateLeaveRequest(LeaveRequest request, String role) {
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to update leave requests.");
-        }
+    public void updateLeaveRequest(LeaveRequest request) {
+
 
         String sql = "UPDATE leave_request SET employee_id = ?, leave_type = ?, leave_start = ?, leave_end = ?, reason = ?, leave_status = ? WHERE leave_request_id = ?";
 
@@ -154,10 +142,8 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
 
     
     @Override
-    public void deleteLeaveRequest(int id, String role) {
-        if (!isAuthorized(role)) {
-            throw new SecurityException("Unauthorized to delete leave requests.");
-        }
+    public void deleteLeaveRequest(int id) {
+       
 
         String sql = "DELETE FROM leave_request WHERE leave_request_id = ?";
 

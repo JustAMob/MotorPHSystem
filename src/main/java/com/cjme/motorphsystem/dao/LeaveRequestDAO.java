@@ -12,10 +12,10 @@ import java.util.List;
  * @author JustAMob
  */
 public interface LeaveRequestDAO {
-    void addLeaveRequest(LeaveRequest request, String role);
+    void addLeaveRequest(LeaveRequest request);
     LeaveRequest getLeaveRequestById(int id);
     List<LeaveRequest> getAllLeaveRequests();
-    void updateLeaveRequest(LeaveRequest request, String role);
-    void deleteLeaveRequest(int id, String role);
-    public void updateLeaveRequestStatus(int requestId, String capitalize, String currentUserRole);
+    void updateLeaveRequest(LeaveRequest request);
+    void deleteLeaveRequest(int id);
+    public void updateLeaveRequestStatus(int requestId, String capitalize);
 }
