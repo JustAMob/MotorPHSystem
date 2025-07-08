@@ -165,7 +165,7 @@ Phone: (028) 911-5071 / (028) 911-5072 / (028) 911-5073
 Email: corporate@motorph.com]]></text>
 		</element>
 		<element kind="image" uuid="165f5933-e542-44cb-9856-9102c5e5c33b" x="0" y="0" width="169" height="119">
-			<expression><![CDATA["src/main/resources/icons/MotorPH 250 x 140.png"]]></expression>
+			<expression><![CDATA["MotorPH 250 x 140.png"]]></expression>
 		</element>
 	</title>
 	<pageHeader splitType="Stretch"/>
@@ -356,12 +356,11 @@ Email: corporate@motorph.com]]></text>
 		<element kind="textField" uuid="04053c7c-9d24-4466-9162-6d0c3da65a5d" x="150" y="107" width="100" height="16">
 			<expression><![CDATA[$F{Employee_Name}]]></expression>
 		</element>
-		<element kind="textField" uuid="c704f3d1-e428-45ec-a78d-94f864585363" x="430" y="48" width="40" height="14">
-			<expression><![CDATA[$F{Period_Start_Date}
-]]></expression>
+		<element kind="textField" uuid="c704f3d1-e428-45ec-a78d-94f864585363" x="430" y="48" width="100" height="14">
+			<expression><![CDATA[new java.text.SimpleDateFormat("yyyy-MM-dd").format($F{Period_Start_Date})]]></expression>
 		</element>
-		<element kind="textField" uuid="79f9c8d5-794d-4699-ac09-5e2a2142f212" x="430" y="78" width="40" height="15">
-			<expression><![CDATA[$F{Period_End_Date}]]></expression>
+		<element kind="textField" uuid="79f9c8d5-794d-4699-ac09-5e2a2142f212" x="430" y="78" width="100" height="15">
+			<expression><![CDATA[new java.text.SimpleDateFormat("yyyy-MM-dd").format($F{Period_End_Date})]]></expression>
 		</element>
 		<element kind="textField" uuid="3b7e23aa-f643-4afb-85c7-5ac84288da43" x="430" y="101" width="100" height="28">
 			<expression><![CDATA[$F{Employee_Position_Department}]]></expression>
