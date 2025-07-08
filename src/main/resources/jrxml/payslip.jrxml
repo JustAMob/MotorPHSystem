@@ -367,25 +367,25 @@ Email: corporate@motorph.com]]></text>
 			<expression><![CDATA[$F{Employee_Position_Department}]]></expression>
 		</element>
 		<element kind="textField" uuid="269c8cd1-6f07-45fc-8237-ac80156d756e" x="490" y="173" width="70" height="15" linkType="None" linkTarget="Self" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Monthly_Rate}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Monthly_Rate})]]></expression>
 		</element>
 		<element kind="textField" uuid="046de613-cc86-456b-a62a-192a06828203" x="490" y="193" width="70" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Hourly_Rate}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Hourly_Rate})]]></expression>
 		</element>
 		<element kind="textField" uuid="a3cebf74-17af-46e7-ab73-034dd78db56b" x="480" y="493" width="81" height="15" bold="false" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Withholding_Tax}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Withholding_Tax})]]></expression>
 		</element>
 		<element kind="textField" uuid="74e117c2-e61a-4af6-a080-f8291e0dbb0c" x="480" y="472" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Pagibig}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Pagibig})]]></expression>
 		</element>
 		<element kind="textField" uuid="30469ef2-6daf-438d-b4ce-36da4d4c82ad" x="480" y="453" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Philhealth}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Philhealth})]]></expression>
 		</element>
 		<element kind="textField" uuid="389388e4-64bb-4845-9f97-0f4ed06419a9" x="480" y="433" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Social_Security_System}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Social_Security_System})]]></expression>
 		</element>
 		<element kind="textField" uuid="e131ba8f-47b7-4340-bdc8-61a4c6b4eb21" x="480" y="513" width="81" height="15" bold="true" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Total_Deductions}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Total_Deductions})]]></expression>
 		</element>
 		<element kind="rectangle" uuid="402ff9ec-e79a-48a5-9cc0-49825721dfe5" x="0" y="210" width="560" height="20" forecolor="#1F3864" backcolor="#FFFFFF">
 			<pen lineColor="rgba(0, 0, 0, 0.0)"/>
@@ -400,34 +400,34 @@ Email: corporate@motorph.com]]></text>
 			<text><![CDATA[Overtime Income]]></text>
 		</element>
 		<element kind="textField" uuid="66cb71fe-9563-4271-af90-376542b6695b" x="420" y="253" width="140" height="14" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Overtime_Income}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Overtime_Income})]]></expression>
 		</element>
 		<element kind="textField" uuid="6a4eb5b4-77fd-4de0-911d-10182f5de51c" x="454" y="273" width="106" height="15" bold="true" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Gross_Income}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Gross_Income})]]></expression>
 		</element>
 		<element kind="textField" uuid="957b6300-e75a-44f3-9a06-348b8113d84c" x="480" y="313" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{rice_subsidy}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{rice_subsidy})]]></expression>
 		</element>
 		<element kind="textField" uuid="67e2e5f8-d0c0-4ff5-81c9-d70e34f75b08" x="480" y="333" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{phone_allowance}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{phone_allowance})]]></expression>
 		</element>
 		<element kind="textField" uuid="cd43f253-94ac-4905-9ce9-a19f950fe103" x="480" y="353" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{clothing_allowance}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{clothing_allowance})]]></expression>
 		</element>
 		<element kind="textField" uuid="a4fb43fc-9428-485c-aae6-5a1ebbd6f81c" x="480" y="373" width="81" height="15" bold="true" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Benefits_Total}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Benefits_Total})]]></expression>
 		</element>
 		<element kind="textField" uuid="f47cb439-a5c3-48f3-a6bb-5097547e471a" x="480" y="573" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Summary_Gross}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Summary_Gross})]]></expression>
 		</element>
 		<element kind="textField" uuid="d89161d8-3f48-40c2-b5a8-1f322f9aa177" x="480" y="593" width="81" height="15" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Summary_Benefits}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Summary_Benefits})]]></expression>
 		</element>
 		<element kind="textField" uuid="837dc373-faf0-4cd1-bbf2-58c9be2a89d7" x="480" y="612" width="81" height="14" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Summary_Deductions}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Summary_Deductions})]]></expression>
 		</element>
 		<element kind="textField" uuid="38770737-eb80-49ad-acf0-ba6a216b06ae" x="480" y="633" width="81" height="14" bold="true" hTextAlign="Right">
-			<expression><![CDATA["PHP "+$F{Take_Home_Pay}]]></expression>
+			<expression><![CDATA["PHP "+ new java.text.DecimalFormat("#,##0.00").format($F{Take_Home_Pay})]]></expression>
 		</element>
 		<element kind="textField" uuid="d6f89a63-312c-4eb9-9146-bfea43d8e83c" x="460" y="213" width="100" height="15" hTextAlign="Right" vTextAlign="Justified">
 			<expression><![CDATA[$F{Regular_Hours}]]></expression>
