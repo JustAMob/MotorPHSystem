@@ -1766,19 +1766,29 @@ public final class MainAppFrame extends javax.swing.JFrame {
         }
     } 
         
-    
-    public void setupTabs() {
-        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EmployeeInfoPanel, session.hasAccess("employee", "view"));
-        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, AttendancePanel, session.hasAccess("attendance", "view"));
-        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, PayrollPanel, session.hasAccess("payroll", "view"));
-        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, ReportsPanel, session.hasAccess("reports", "view"));
-        com.cjme.motorphsystem.security.SecurityManager.hideTabIfNoAccess(MainPanel, EIEmployeeInfoPanel, session.hasAccess("employeeInfo", "view")); 
 
-        // Leave Application Button
-        //leaveApplicationButton.setVisible(session.hasAccess("leave", "submit"));
-        MainPanel.revalidate();
-        MainPanel.repaint();
+    public void setupTabs() {
+    // Add only the tabs the user has access to
+    if (session.hasAccess("employee", "view")) {
+        MainPanel.addTab("Employee Management", EmployeeManagementPanel);
     }
+    if (session.hasAccess("attendance", "view")) {
+        MainPanel.addTab("Attendance", AttendancePanel);
+    }
+    if (session.hasAccess("payroll", "view")) {
+        MainPanel.addTab("Payroll", PayrollPanel);
+    }
+    if (session.hasAccess("reports", "view")) {
+        MainPanel.addTab("Reports", ReportsPanel);
+    }
+    if (session.hasAccess("employeeInfo", "view")) {
+        MainPanel.addTab("Employee Information", EmployeeInfoPanel); 
+    }
+
+    // Refresh UI
+    MainPanel.revalidate();
+    MainPanel.repaint();
+}
      
     public void loadEmployeeInformation(){
         try {
