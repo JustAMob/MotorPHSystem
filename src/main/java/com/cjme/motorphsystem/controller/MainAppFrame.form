@@ -7,6 +7,12 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1000, 630]"/>
+    </Property>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1000, 630]"/>
+    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -28,12 +34,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" alignment="0" pref="945" max="32767" attributes="0"/>
+          <Component id="MainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" min="-2" pref="500" max="-2" attributes="0"/>
+          <Component id="MainPanel" min="-2" pref="630" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -41,13 +47,30 @@
     <Container class="javax.swing.JTabbedPane" name="MainPanel">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[945, 525]"/>
+          <Dimension value="[1000, 630]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1000, 630]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1000, 620]"/>
         </Property>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="EmployeeInfoPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Employee Information">
@@ -63,7 +86,8 @@
                   <Group type="102" attributes="0">
                       <Component id="EIDetailsIDsPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="EIEmployeeInfoPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="EIEmployeeInfoPanel" min="-2" pref="417" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -73,12 +97,10 @@
                       <Component id="EIWelcomePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="EIDetailsIDsPanel" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="EIEmployeeInfoPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="EIDetailsIDsPanel" min="-2" max="-2" attributes="0"/>
+                          <Component id="EIEmployeeInfoPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -106,9 +128,7 @@
                                   <Component id="EIWelcomeLabel" min="-2" pref="112" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="EIWelcomeNameLabel" min="-2" pref="105" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="EIApplyForLeaveButton" min="-2" pref="147" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <EmptySpace min="35" pref="749" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -117,20 +137,12 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EIWelcomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EIWelcomeNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="EIApplyForLeaveButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EIWelcomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIWelcomeNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="13" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="EIEmployeeIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="EIEmployeeIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -187,14 +199,6 @@
                     <Property name="text" type="java.lang.String" value="jTextField34"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="EIApplyForLeaveButton">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Apply for Leave"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="EIDetailsIDsPanel">
@@ -202,9 +206,20 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="EIPagIBIGLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EITINLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EIPagIBIGTextField" max="32767" attributes="0"/>
+                                      <Component id="EITINTextField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="EIPhilHealthLabel" alignment="0" max="32767" attributes="0"/>
@@ -274,7 +289,7 @@
                               <Component id="EIPhoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="EIPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace pref="33" max="32767" attributes="0"/>
                           <Component id="EIIDLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -286,7 +301,17 @@
                               <Component id="EIPhilHealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="EIPhilHealthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EIPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EIPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EITINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EITINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -368,6 +393,26 @@
                     <Property name="text" type="java.lang.String" value="jTextField49"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="EIPagIBIGLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EITINLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="TIN No.:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EIPagIBIGTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jTextField40"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EITINTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jTextField41"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="EIEmployeeInfoPanel">
@@ -376,37 +421,24 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="EIPagIBIGLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="EITINLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="EITINTextField" max="32767" attributes="0"/>
-                                      <Component id="EIPagIBIGTextField" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="EIEILabel" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="EIStatusLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EIDateHiredLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EIBasicSalaryLabel" alignment="0" pref="80" max="32767" attributes="0"/>
-                                              <Component id="EIPositionLabel" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="EIPositionTextField" pref="320" max="32767" attributes="0"/>
-                                              <Component id="EIStatusTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EIDateHiredTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EIBasicSalaryTextField" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="EIEILabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="EIApplyForLeaveButton" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="EIStatusLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EIDateHiredLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EIBasicSalaryLabel" alignment="0" pref="80" max="32767" attributes="0"/>
+                                          <Component id="EIPositionLabel" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="EIPositionTextField" pref="320" max="32767" attributes="0"/>
+                                          <Component id="EIStatusTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EIDateHiredTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EIBasicSalaryTextField" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -440,17 +472,9 @@
                               <Component id="EIBasicSalaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="EIBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="EIPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="EIPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="EITINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="EITINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace pref="190" max="32767" attributes="0"/>
+                          <Component id="EIApplyForLeaveButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -504,24 +528,12 @@
                     <Property name="text" type="java.lang.String" value="jTextField45"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EIPagIBIGLabel">
+                <Component class="javax.swing.JButton" name="EIApplyForLeaveButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="EITINLabel">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="TIN No.:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="EITINTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField41"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="EIPagIBIGTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField40"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Apply for Leave"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -529,6 +541,17 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="EmployeeManagementPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Employee Management">
@@ -541,34 +564,37 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="EMSearchPanel" pref="483" max="32767" attributes="0"/>
-                          <Component id="EMButtonPanel" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="EMSearchPanel" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="EMScrollPane" pref="477" max="32767" attributes="0"/>
+                              <Component id="EMScrollPane" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMButtonPanel" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EMDetailPanel" min="-2" pref="445" max="-2" attributes="0"/>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <Component id="EMDetailPanel" min="-2" pref="352" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="EMSearchPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMScrollPane" pref="0" max="32767" attributes="0"/>
+                              <Component id="EMScrollPane" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="EMButtonPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="EMDetailPanel" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMDetailPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -586,10 +612,9 @@
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="EMSearchLabel" min="-2" pref="97" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EMEmployeeSearchTextField" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="EMEmployeeSearchTextField" pref="398" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EMEmployeeSearchButton" min="-2" pref="84" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="EMEmployeeSearchButton" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -688,8 +713,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EMDeleteButton" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="EMDeleteButton" min="-2" pref="147" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="EMAddButton" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -699,14 +723,10 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="EMEditButton" alignment="3" max="32767" attributes="0"/>
-                              <Component id="EMAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="EMDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="EMEditButton" alignment="3" max="32767" attributes="0"/>
+                          <Component id="EMAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -743,97 +763,112 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="EMDetailLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="EMLastNameLabel" max="32767" attributes="0"/>
+                                      <Component id="EMEmployeeIDLabel" pref="85" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="EMEmployeeIDTextField" pref="113" max="32767" attributes="0"/>
+                                      <Component id="EMLastNameTextField" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="EMBasicSalaryLabel" min="-2" pref="85" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="EMBasicSalaryTextField" min="-2" pref="113" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="EMLastNameLabel" max="32767" attributes="0"/>
-                                                  <Component id="EMEmployeeIDLabel" pref="85" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="EMEmployeeIDTextField" pref="113" max="32767" attributes="0"/>
-                                                  <Component id="EMLastNameTextField" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="EMPositionLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMStatusLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMPhoneLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMBirthdayLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMAddressLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMMiddleNameLabel" alignment="0" pref="85" max="32767" attributes="0"/>
-                                                  <Component id="EMFirstNameLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMDepartmentLabel" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="EMStatusTextField" max="32767" attributes="0"/>
-                                                  <Component id="EMPhoneTextField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMBirthdayTextField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMAddressTextField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMPositionTextField" pref="113" max="32767" attributes="0"/>
-                                                  <Component id="EMDepartmentTextField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMFirstNameTextField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="EMMiddleNameTextField" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="EMPositionLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMStatusLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMPhoneLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMBirthdayLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMAddressIDLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMMiddleNameLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMFirstNameLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMDepartmentLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMBuildingLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMStreetLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMCityLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMProvinceLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMZIPLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMBasicSalaryLabel" min="-2" pref="85" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="EMRiceAllowanceLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMPhoneAllowanceLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMClothingAllowanceLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMSSSLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMPhilHealthLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMPagIBIGLabel" max="32767" attributes="0"/>
-                                              <Component id="EMTINLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="EMPagIBIGTextField" alignment="0" pref="107" max="32767" attributes="0"/>
-                                              <Component id="EMPhilHealthTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMSSSTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMClothingAllowanceTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMPhoneAllowanceTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMRiceAllowanceTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EMTINTextField" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="EMClearFormButton" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                                      <Component id="EMSaveButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="EMStatusTextField" max="32767" attributes="0"/>
+                                      <Component id="EMPhoneTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMBirthdayTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMAddressTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMPositionTextField" max="32767" attributes="0"/>
+                                      <Component id="EMDepartmentTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMFirstNameTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMMiddleNameTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMBuildingTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMStreetTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMCityTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMProvinceTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMZIPTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EMBasicSalaryTextField" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EMPhilHealthTextField" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="EMPhilHealthLabel" max="32767" attributes="0"/>
+                                          <EmptySpace min="113" pref="113" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="EMPhoneAllowanceLabel" max="32767" attributes="0"/>
+                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="EMClothingAllowanceLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="EMSSSLabel" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EMRiceAllowanceLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                      <Component id="EMRiceAllowanceTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="EMPagIBIGTextField" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <Component id="EMPagIBIGLabel" min="-2" pref="97" max="-2" attributes="0"/>
+                                          <Component id="EMTINLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                          <Component id="EMTINTextField" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <Component id="EMPhoneAllowanceTextField" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <Component id="EMClearFormButton" max="32767" attributes="0"/>
+                                          <Component id="EMSaveButton" alignment="0" pref="108" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="EMClothingAllowanceTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <Component id="EMSSSTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMDetailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EMDetailLabel" min="-2" pref="39" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="EMDetailLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="EMEmployeeIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="EMEmployeeIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -855,8 +890,33 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMAddressIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="EMAddressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="EMBuildingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMBuildingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="EMStreetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMStreetTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="EMCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMCityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="EMProvinceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMProvinceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="EMZIPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMZIPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -869,68 +929,72 @@
                                       <Component id="EMPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="EMRiceAllowanceLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMRiceAllowanceTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMPhoneAllowanceLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMPhoneAllowanceTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMClothingAllowanceLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMClothingAllowanceTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMSSSLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMSSSTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMPhilHealthLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMPhilHealthTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMPagIBIGLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMPagIBIGTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMTINLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EMTINTextField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMRiceAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMRiceAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="EMStatusTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="EMStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="EMPositionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="EMPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="EMDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EMDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="EMBasicSalaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="EMClearFormButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMPhoneAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMPhoneAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMClothingAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMClothingAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMSSSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMSSSTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMPhilHealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMPhilHealthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EMTINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMTINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="EMSaveButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="EMStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="EMStatusTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="EMPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="EMPositionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="EMDepartmentLabel" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMClearFormButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="EMBasicSalaryLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="EMBasicSalaryTextField" min="-2" max="-2" attributes="0"/>
-                              <Component id="EMSaveButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -939,7 +1003,7 @@
                 <Component class="javax.swing.JLabel" name="EMDetailLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="20" style="1"/>
+                      <Font name="Segoe UI" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Employee Details"/>
                   </Properties>
@@ -964,9 +1028,9 @@
                     <Property name="text" type="java.lang.String" value="Middle Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EMAddressLabel">
+                <Component class="javax.swing.JLabel" name="EMAddressIDLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Address:"/>
+                    <Property name="text" type="java.lang.String" value="Address ID:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="EMBirthdayLabel">
@@ -1130,6 +1194,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMPagIBIGTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="EMTINTextField">
                   <Properties>
@@ -1152,7 +1219,68 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Save Employee Details"/>
+                    <Property name="text" type="java.lang.String" value="Save Details"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EMBuildingLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Building:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EMStreetLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Street:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EMCityLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="City:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EMProvinceLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Province:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMBuildingTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMStreetTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMStreetTextFieldActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMCityTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMProvinceTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="EMZIPLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ZIP Code:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="EMZIPTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Employment Details"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1160,6 +1288,17 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="AttendancePanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Attendance">
@@ -1171,14 +1310,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AttendanceSubPanel" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AButtonPanel" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="AttendanceSubPanel" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="AttendanceSubPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="AttendanceSubPanel" min="-2" pref="540" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="AButtonPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1189,33 +1334,34 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="AButtonPanel" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="ASelectLabel" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="ASearchLabel" min="-2" pref="98" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ASelectEmployeeComboBox" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="ASearchTextField" min="-2" pref="147" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ASearchButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="21" max="32767" attributes="0"/>
                                   <Component id="AStartDateLabel" min="-2" pref="62" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="AStartDateChooser" min="-2" pref="151" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="AEndDateLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="AEndDateChooser" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="ALoadDataButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="ARefreshButton" min="-2" pref="76" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="AScrollPane" min="-2" pref="934" max="-2" attributes="0"/>
+                                  <Component id="ARefreshButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AScrollPane" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1224,48 +1370,32 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="ASelectLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ASelectEmployeeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="AStartDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="AEndDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ALoadDataButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ARefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="AStartDateChooser" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ASearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ALoadDataButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ARefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AStartDateLabel" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="ASearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ASearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="AEndDateChooser" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="AEndDateLabel" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="AEndDateChooser" min="-2" pref="26" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="AStartDateChooser" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AScrollPane" pref="368" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AButtonPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AScrollPane" min="-2" pref="517" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="ASelectLabel">
+                <Component class="javax.swing.JLabel" name="ASearchLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Select Employee:"/>
+                    <Property name="text" type="java.lang.String" value="Search Employee:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="ASelectEmployeeComboBox">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="AStartDateLabel">
                   <Properties>
@@ -1350,97 +1480,100 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="AButtonPanel">
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ARecordOvertimeButton" min="-2" pref="127" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="AApproveLeaveButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                              <Component id="ADeleteTimeButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="AEditTimeButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="AAddTimeButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="AAddTimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="AEditTimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ADeleteTimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="AApproveLeaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ARecordOvertimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="16" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JButton" name="AAddTimeButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Add Time Entry"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="AEditTimeButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Edit Time Entry"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="ADeleteTimeButton">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="cc" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="12" style="1"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Delete Time Entry"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="AApproveLeaveButton">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="99" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="12" style="1"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Approve Leave"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="ARecordOvertimeButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Record Overtime"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="com.toedter.calendar.JDateChooser" name="AStartDateChooser">
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="AEndDateChooser">
+                </Component>
+                <Component class="javax.swing.JTextField" name="ASearchTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search..."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="ASearchButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="AButtonPanel">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="ARecordOvertimeButton" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="ADeleteTimeButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AEditTimeButton" min="-2" pref="125" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AAddTimeButton" min="-2" pref="125" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="AAddTimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="AEditTimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ADeleteTimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ARecordOvertimeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="AAddTimeButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Add Time Entry"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="AEditTimeButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Edit Time Entry"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="ADeleteTimeButton">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Delete Time Entry"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="ARecordOvertimeButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Record Overtime"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="PayrollPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Payroll">
@@ -1457,16 +1590,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="PayrollTopPanel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="PayrollEarningsPanel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="PayrollDeductionsPanel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="PayrollButtonsPanel" alignment="1" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="PayrollButtonsPanel" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="PayrollEarningsPanel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="PayrollDeductionsPanel" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1477,12 +1607,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="PayrollTopPanel" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="PayrollDeductionsPanel" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="PayrollEarningsPanel" max="32767" attributes="0"/>
+                          <Component id="PayrollDeductionsPanel" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PayrollButtonsPanel" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="PayrollButtonsPanel" min="-2" pref="58" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1496,16 +1626,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="PSelectEmployeeLabel" min="-2" pref="97" max="-2" attributes="0"/>
+                          <Component id="PSearchEmployeeLabel" min="-2" pref="97" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PSelectEmployeeComboBox" min="-2" pref="197" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="PSearchTextField" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="PSearchButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="PPayrollPeriodLabel" min="-2" pref="80" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PPayrollPeriodDateChooser" min="-2" pref="287" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PLoadDataButton" min="-2" pref="195" max="-2" attributes="0"/>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <Component id="PPayrollPeriodDateChooser" min="-2" pref="238" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="PLoadDataButton" min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1517,9 +1649,10 @@
                               <Component id="PLoadDataButton" min="-2" max="-2" attributes="0"/>
                               <Component id="PPayrollPeriodDateChooser" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="PSelectEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="PSelectEmployeeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PSearchEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="PPayrollPeriodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -1528,27 +1661,9 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="PSelectEmployeeComboBox">
+                <Component class="javax.swing.JLabel" name="PSearchEmployeeLabel">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PSelectEmployeeComboBoxActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="PSelectEmployeeLabel">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Select Employee:"/>
+                    <Property name="text" type="java.lang.String" value="Search Employee:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="PPayrollPeriodLabel">
@@ -1566,6 +1681,16 @@
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="PPayrollPeriodDateChooser">
                 </Component>
+                <Component class="javax.swing.JTextField" name="PSearchTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search..."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="PSearchButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="PayrollEarningsPanel">
@@ -1575,47 +1700,40 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="PPhoneAllowanceLabel" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="PClothingAllowanceLabel" max="32767" attributes="0"/>
-                                          <Component id="POvertimePayLabel" max="32767" attributes="0"/>
-                                          <Component id="PGrossPayLabel" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="PGrossIncomeLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="PGrossPayTextField" min="-2" pref="179" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="PPhoneAllowanceTextField" pref="179" max="32767" attributes="0"/>
-                                      <Component id="PClothingAllowanceTextField" max="32767" attributes="0"/>
-                                      <Component id="POvertimePayTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="PGrossPayTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="PPayPeriodLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PPositionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PDepartmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="PBasicSalaryLabel" min="-2" pref="106" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                          <Component id="PRiceAllowanceLabel" min="-2" pref="106" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PFullNameLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PEmployeeNoLabel" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="PRiceAllowanceTextField" pref="179" max="32767" attributes="0"/>
-                                      <Component id="PBasicSalaryTextField" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PBasicSalaryTextField" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="PRiceAllowanceTextField" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="PPhoneAllowanceTextField" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="PClothingAllowanceTextField" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="POvertimePayTextField" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="PEarningsLabel" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="PPayrollInfoLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1623,35 +1741,35 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PEarningsLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="PPayrollInfoLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PBasicSalaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PEmployeeNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="PBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="PRiceAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PRiceAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PFullNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="PPhoneAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PPhoneAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PClothingAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="PClothingAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="POvertimePayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPayPeriodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="POvertimePayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PGrossPayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PGrossIncomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="PGrossPayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1660,45 +1778,45 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="PEarningsLabel">
+                <Component class="javax.swing.JLabel" name="PPayrollInfoLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Earnings"/>
+                    <Property name="text" type="java.lang.String" value="Employee Payroll Information"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PBasicSalaryLabel">
+                <Component class="javax.swing.JLabel" name="PEmployeeNoLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Basic Salary:"/>
+                    <Property name="text" type="java.lang.String" value="Employee No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PRiceAllowanceLabel">
+                <Component class="javax.swing.JLabel" name="PFullNameLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Rice Allowance:"/>
+                    <Property name="text" type="java.lang.String" value="Full Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PPhoneAllowanceLabel">
+                <Component class="javax.swing.JLabel" name="PDepartmentLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Phone Allowance:"/>
+                    <Property name="text" type="java.lang.String" value="Department:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PClothingAllowanceLabel">
+                <Component class="javax.swing.JLabel" name="PPositionLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Clothing Allowance:"/>
+                    <Property name="text" type="java.lang.String" value="Position:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="POvertimePayLabel">
+                <Component class="javax.swing.JLabel" name="PPayPeriodLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Overtime Pay:"/>
+                    <Property name="text" type="java.lang.String" value="Pay Period:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PGrossPayLabel">
+                <Component class="javax.swing.JLabel" name="PGrossIncomeLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Gross Pay:"/>
+                    <Property name="text" type="java.lang.String" value="Gross Income:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="PBasicSalaryTextField">
@@ -1743,33 +1861,76 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="PDeductionsLabel" min="-2" pref="136" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="PSSSLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PPhilHealthLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PTotalDeductionsLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PWithholdingTaxLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PLoansLabel" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="PPagIBIGLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="PSSSLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PBIRLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="PTINLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="PTINTextField" min="-2" pref="170" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="PWithholdingTaxLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="PWithholdingTaxTextField" min="-2" pref="170" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PSSSNoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="PPagIBIGContributionLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="PPagIBIGNoLabel" min="-2" pref="82" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="PPagIBIGNoTextField" max="32767" attributes="0"/>
+                                                      <Component id="PPagIBIGContributionTextField" min="-2" pref="168" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="PPagIBIGLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="PPHLabel" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="PPhilHealthNoLabel" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="PPhilHealthContributionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="PPhilHealthContributionTextField" max="32767" attributes="0"/>
+                                                      <Component id="PPhilHealthNoTextField" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="PSSSContributionLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="PSSSContributionTextField" alignment="0" pref="170" max="32767" attributes="0"/>
+                                                  <Component id="PSSSNoTextField" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="PWithholdingTaxTextField" alignment="0" pref="188" max="32767" attributes="0"/>
-                              <Component id="PLoansTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PSSSTextField" max="32767" attributes="0"/>
-                              <Component id="PPhilHealthTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PPagIBIGTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PTotalDeductionsTextField" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1777,62 +1938,73 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PDeductionsLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="PSSSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PSSSTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PBIRLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PPhilHealthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PPhilHealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PSSSNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PSSSNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PTINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PTINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PPagIBIGLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="PSSSContributionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PSSSContributionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="PWithholdingTaxLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="PWithholdingTaxTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="PPHLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PLoansLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PLoansTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPhilHealthNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPhilHealthNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PTotalDeductionsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PTotalDeductionsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPhilHealthContributionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPhilHealthContributionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="PPagIBIGLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="PPagIBIGNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPagIBIGNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="PPagIBIGContributionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PPagIBIGContributionLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="70" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="PDeductionsLabel">
+                <Component class="javax.swing.JLabel" name="PSSSLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Deductions"/>
+                    <Property name="text" type="java.lang.String" value="Social Security System"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PSSSLabel">
+                <Component class="javax.swing.JLabel" name="PSSSNoLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="SSS Contributions:"/>
+                    <Property name="text" type="java.lang.String" value="SSS No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PPhilHealthLabel">
+                <Component class="javax.swing.JLabel" name="PPhilHealthContributionLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PhilHealth Contributions:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PPagIBIGLabel">
+                <Component class="javax.swing.JLabel" name="PPagIBIGContributionLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pag-IBIG Contributions:"/>
                   </Properties>
@@ -1842,30 +2014,27 @@
                     <Property name="text" type="java.lang.String" value="Withholding Tax:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PLoansLabel">
+                <Component class="javax.swing.JLabel" name="PPagIBIGNoLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Loans / Other Deductions:"/>
+                    <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="PTotalDeductionsLabel">
+                <Component class="javax.swing.JLabel" name="PTINLabel">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Total Deductions:"/>
+                    <Property name="text" type="java.lang.String" value="TIN:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="PSSSTextField">
+                <Component class="javax.swing.JTextField" name="PSSSNoTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="PPhilHealthTextField">
+                <Component class="javax.swing.JTextField" name="PPhilHealthContributionTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="PPagIBIGTextField">
+                <Component class="javax.swing.JTextField" name="PPagIBIGContributionTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField3"/>
                   </Properties>
@@ -1874,15 +2043,62 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField4"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PWithholdingTaxTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="PLoansTextField">
+                <Component class="javax.swing.JTextField" name="PPagIBIGNoTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="PTotalDeductionsTextField">
+                <Component class="javax.swing.JTextField" name="PTINTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField6"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="PSSSContributionLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="SSS Contributions:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="PPhilHealthNoLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="PhilHealth No.:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="PSSSContributionTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jTextField1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="PPhilHealthNoTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jTextField2"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="PPHLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="PhilHealth"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="PBIRLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="BIR"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="PPagIBIGLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Pag-IBIG"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1901,9 +2117,9 @@
                           <Component id="PCalculatePayrollButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="PGeneratePDFButton" min="-2" pref="192" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="PSaveDataButton" min="-2" pref="156" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1973,6 +2189,17 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ReportsPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Reports">
@@ -2082,7 +2309,7 @@
                                       <Component id="RPDepartmentLabel" min="-2" pref="68" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="RPDepartmentComboBox" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <EmptySpace pref="241" max="32767" attributes="0"/>
+                                      <EmptySpace pref="296" max="32767" attributes="0"/>
                                       <Component id="RPGenerateReportButton" min="-2" pref="184" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2305,7 +2532,7 @@
                                       <Component id="RAEmployeeLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="RAEmployeeSelectComboBox" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                                      <EmptySpace pref="119" max="32767" attributes="0"/>
                                       <Component id="RAGenerateReportButton" min="-2" pref="175" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2497,6 +2724,17 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="SettingsPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 630]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Setttings">
@@ -2524,7 +2762,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="749" max="32767" attributes="0"/>
+                          <EmptySpace pref="804" max="32767" attributes="0"/>
                           <Component id="SLogOutButton" min="-2" pref="176" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
@@ -2533,7 +2771,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="383" max="32767" attributes="0"/>
+                          <EmptySpace pref="513" max="32767" attributes="0"/>
                           <Component id="SLogOutButton" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
