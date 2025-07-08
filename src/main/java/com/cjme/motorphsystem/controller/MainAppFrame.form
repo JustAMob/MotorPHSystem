@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1625,18 +1621,22 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="PSearchEmployeeLabel" min="-2" pref="97" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PSearchTextField" max="32767" attributes="0"/>
+                          <Component id="PSearchTextField" min="-2" pref="180" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PSearchButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="PPayrollPeriodLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="PSearchButton" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PPayrollPeriodDateChooser" min="-2" pref="238" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="PLoadDataButton" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="PPayrollPeriodLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="PStartPayrollPeriodDateChooser" min="-2" pref="110" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="PEndPayrollPeriod" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jDateChooser1" min="-2" pref="113" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="PLoadDataButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1645,14 +1645,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="PLoadDataButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="PPayrollPeriodDateChooser" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="PSearchEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="PPayrollPeriodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="PSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="PSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="PPayrollPeriodLabel" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="PSearchEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jDateChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PLoadDataButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="PStartPayrollPeriodDateChooser" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="PEndPayrollPeriod" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -1668,7 +1672,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="PPayrollPeriodLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Payroll Period:"/>
+                    <Property name="text" type="java.lang.String" value="Start of Payroll Period:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="PLoadDataButton">
@@ -1679,7 +1683,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PLoadDataButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="PPayrollPeriodDateChooser">
+                <Component class="com.toedter.calendar.JDateChooser" name="PStartPayrollPeriodDateChooser">
                 </Component>
                 <Component class="javax.swing.JTextField" name="PSearchTextField">
                   <Properties>
@@ -1690,6 +1694,13 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="PEndPayrollPeriod">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="End of Payroll Period:"/>
+                  </Properties>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
                 </Component>
               </SubComponents>
             </Container>
@@ -1881,7 +1892,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                                  <EmptySpace pref="46" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -2270,14 +2281,12 @@
                               <Component id="RPayrollScrollPane" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="RPayrollTopPanel" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="RPayrollBottomPanel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="RPayrollTopPanel" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="RPayrollBottomPanel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2286,10 +2295,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="RPayrollTopPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="RPayrollScrollPane" min="-2" pref="320" max="-2" attributes="0"/>
+                                  <Component id="RPayrollScrollPane" pref="447" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="RPayrollBottomPanel" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2305,11 +2313,11 @@
                                       <Component id="RPayrollPeriodLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="RPayrollDateChooser" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="RPDepartmentLabel" min="-2" pref="68" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="RPDepartmentComboBox" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <EmptySpace pref="296" max="32767" attributes="0"/>
+                                      <Component id="RPDepartmentComboBox" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <EmptySpace pref="245" max="32767" attributes="0"/>
                                       <Component id="RPGenerateReportButton" min="-2" pref="184" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2483,7 +2491,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="RAttendanceScrollPane" max="32767" attributes="0"/>
@@ -2491,12 +2499,11 @@
                                           <Component id="RAttendanceTopPanel" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="RAttendanceBottomPanel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="RAttendanceBottomPanel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2505,10 +2512,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="RAttendanceTopPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="RAttendanceScrollPane" min="-2" pref="323" max="-2" attributes="0"/>
+                                  <Component id="RAttendanceScrollPane" pref="453" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="RAttendanceBottomPanel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2531,8 +2537,10 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="RAEmployeeLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="RAEmployeeSelectComboBox" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <EmptySpace pref="119" max="32767" attributes="0"/>
+                                      <Component id="REmployeeSearchTextField" pref="137" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="RASearchButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="RAGenerateReportButton" min="-2" pref="175" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2548,8 +2556,9 @@
                                               <Component id="RAStartDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="RAEndDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="RAEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="RAEmployeeSelectComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="RAGenerateReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="REmployeeSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="RASearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -2573,24 +2582,6 @@
                                 <Property name="text" type="java.lang.String" value="Employee:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="RAEmployeeSelectComboBox">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Segoe UI" size="12" style="2"/>
-                                </Property>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Optional"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
-                                  </StringArray>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
-                            </Component>
                             <Component class="javax.swing.JButton" name="RAGenerateReportButton">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -2602,6 +2593,16 @@
                             <Component class="com.toedter.calendar.JDateChooser" name="RAStartDateChooser">
                             </Component>
                             <Component class="com.toedter.calendar.JDateChooser" name="RAEndDateChooser">
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="REmployeeSearchTextField">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="jTextField1"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="RASearchButton">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Search"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -2719,6 +2720,360 @@
                     </Container>
                   </SubComponents>
                 </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="LeaveManagementPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Leave Management">
+                <Property name="tabTitle" type="java.lang.String" value="Leave Management"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LMTopPanel" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="LMScrollPane" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="LMSubPanel" alignment="1" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LMTopPanel" min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="LMScrollPane" min="-2" pref="461" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LMSubPanel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="LMTopPanel">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="LMFilterLabel" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LMEmployeeNameIDLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="LMEmployeeNameIDTextField" min="-2" pref="170" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="LMLeaveTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="LMStatusLabel" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="LMStatusComboBox" pref="153" max="32767" attributes="0"/>
+                              <Component id="LMLeaveComboBox" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LMStartDateLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="LMStartDateChooser" min="-2" pref="131" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LMEndDateLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="LMEndDateChooser" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="LMClearFiltersButton" min="-2" pref="106" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="LMRefreshButton" max="32767" attributes="0"/>
+                              <Component id="LMApplyFiltersButton" pref="117" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="LMFilterLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LMEmployeeNameIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LMEmployeeNameIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LMLeaveTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LMLeaveComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LMStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LMStatusComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="LMStartDateChooser" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="LMStartDateLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="LMClearFiltersButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LMApplyFiltersButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="LMEndDateChooser" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LMEndDateLabel" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="LMRefreshButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="LMFilterLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Filter By:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="LMEmployeeNameIDTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jTextField1"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMEmployeeNameIDTextFieldActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="LMEmployeeNameIDLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Employee Name / ID:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="LMLeaveTypeLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Leave Type:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="LMLeaveComboBox">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Item 1"/>
+                        <StringItem index="1" value="Item 2"/>
+                        <StringItem index="2" value="Item 3"/>
+                        <StringItem index="3" value="Item 4"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="LMStatusLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Status:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="LMStatusComboBox">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Item 1"/>
+                        <StringItem index="1" value="Item 2"/>
+                        <StringItem index="2" value="Item 3"/>
+                        <StringItem index="3" value="Item 4"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="LMStartDateLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Start Date:"/>
+                  </Properties>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="LMStartDateChooser">
+                </Component>
+                <Component class="javax.swing.JLabel" name="LMEndDateLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="End Date:"/>
+                  </Properties>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="LMEndDateChooser">
+                </Component>
+                <Component class="javax.swing.JButton" name="LMApplyFiltersButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Apply FIlters"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="LMClearFiltersButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Clear Filters"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="LMRefreshButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh List"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="LMScrollPane">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="LMTable">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="8" rowCount="4">
+                        <Column editable="true" title="Request ID" type="java.lang.Object"/>
+                        <Column editable="true" title="Employee ID" type="java.lang.Object"/>
+                        <Column editable="true" title="Employee Name" type="java.lang.Object"/>
+                        <Column editable="true" title="Leave Type" type="java.lang.Object"/>
+                        <Column editable="true" title="Start Date" type="java.lang.Object"/>
+                        <Column editable="true" title="End Date" type="java.lang.Object"/>
+                        <Column editable="true" title="Reason" type="java.lang.Object"/>
+                        <Column editable="true" title="Leave Status" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="LMSubPanel">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="LMDeleteButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="LMApproveButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="LMApproveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LMDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="LMApproveButton">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Approve Selected"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="LMDeleteButton">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Delete Selected"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

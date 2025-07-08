@@ -26,7 +26,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         MainPanel = new javax.swing.JTabbedPane();
         EmployeeInfoPanel = new javax.swing.JPanel();
         EIWelcomePanel = new javax.swing.JPanel();
@@ -151,9 +150,11 @@ public class MainAppFrame extends javax.swing.JFrame {
         PSearchEmployeeLabel = new javax.swing.JLabel();
         PPayrollPeriodLabel = new javax.swing.JLabel();
         PLoadDataButton = new javax.swing.JButton();
-        PPayrollPeriodDateChooser = new com.toedter.calendar.JDateChooser();
+        PStartPayrollPeriodDateChooser = new com.toedter.calendar.JDateChooser();
         PSearchTextField = new javax.swing.JTextField();
         PSearchButton = new javax.swing.JButton();
+        PEndPayrollPeriod = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         PayrollEarningsPanel = new javax.swing.JPanel();
         PPayrollInfoLabel = new javax.swing.JLabel();
         PEmployeeNoLabel = new javax.swing.JLabel();
@@ -215,15 +216,37 @@ public class MainAppFrame extends javax.swing.JFrame {
         RAStartDateLabel = new javax.swing.JLabel();
         RAEndDateLabel = new javax.swing.JLabel();
         RAEmployeeLabel = new javax.swing.JLabel();
-        RAEmployeeSelectComboBox = new javax.swing.JComboBox<>();
         RAGenerateReportButton = new javax.swing.JButton();
         RAStartDateChooser = new com.toedter.calendar.JDateChooser();
         RAEndDateChooser = new com.toedter.calendar.JDateChooser();
+        REmployeeSearchTextField = new javax.swing.JTextField();
+        RASearchButton = new javax.swing.JButton();
         RAttendanceScrollPane = new javax.swing.JScrollPane();
         RAttendanceTable = new javax.swing.JTable();
         RAttendanceBottomPanel = new javax.swing.JPanel();
         RAExportPDFButton = new javax.swing.JButton();
         RAPrintReportButton = new javax.swing.JButton();
+        LeaveManagementPanel = new javax.swing.JPanel();
+        LMTopPanel = new javax.swing.JPanel();
+        LMFilterLabel = new javax.swing.JLabel();
+        LMEmployeeNameIDTextField = new javax.swing.JTextField();
+        LMEmployeeNameIDLabel = new javax.swing.JLabel();
+        LMLeaveTypeLabel = new javax.swing.JLabel();
+        LMLeaveComboBox = new javax.swing.JComboBox<>();
+        LMStatusLabel = new javax.swing.JLabel();
+        LMStatusComboBox = new javax.swing.JComboBox<>();
+        LMStartDateLabel = new javax.swing.JLabel();
+        LMStartDateChooser = new com.toedter.calendar.JDateChooser();
+        LMEndDateLabel = new javax.swing.JLabel();
+        LMEndDateChooser = new com.toedter.calendar.JDateChooser();
+        LMApplyFiltersButton = new javax.swing.JButton();
+        LMClearFiltersButton = new javax.swing.JButton();
+        LMRefreshButton = new javax.swing.JButton();
+        LMScrollPane = new javax.swing.JScrollPane();
+        LMTable = new javax.swing.JTable();
+        LMSubPanel = new javax.swing.JPanel();
+        LMApproveButton = new javax.swing.JButton();
+        LMDeleteButton = new javax.swing.JButton();
         SettingsPanel = new javax.swing.JPanel();
         SettingsSubPanel = new javax.swing.JPanel();
         SLogOutButton = new javax.swing.JButton();
@@ -1117,7 +1140,7 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         PSearchEmployeeLabel.setText("Search Employee:");
 
-        PPayrollPeriodLabel.setText("Payroll Period:");
+        PPayrollPeriodLabel.setText("Start of Payroll Period:");
 
         PLoadDataButton.setText("Load Payroll Data");
         PLoadDataButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1130,37 +1153,46 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         PSearchButton.setText("Search");
 
+        PEndPayrollPeriod.setText("End of Payroll Period:");
+
         javax.swing.GroupLayout PayrollTopPanelLayout = new javax.swing.GroupLayout(PayrollTopPanel);
         PayrollTopPanel.setLayout(PayrollTopPanelLayout);
         PayrollTopPanelLayout.setHorizontalGroup(
             PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollTopPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(PSearchEmployeeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PSearchTextField)
+                .addComponent(PSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PSearchButton)
-                .addGap(26, 26, 26)
-                .addComponent(PPayrollPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PPayrollPeriodDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(PLoadDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PPayrollPeriodLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PStartPayrollPeriodDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PEndPayrollPeriod)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PLoadDataButton)
                 .addGap(19, 19, 19))
         );
         PayrollTopPanelLayout.setVerticalGroup(
             PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollTopPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PLoadDataButton)
-                    .addComponent(PPayrollPeriodDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PSearchEmployeeLabel)
-                        .addComponent(PPayrollPeriodLabel)
-                        .addComponent(PSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(PSearchButton)))
+                .addGroup(PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PPayrollPeriodLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PSearchEmployeeLabel)
+                            .addComponent(PSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PSearchButton))
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PLoadDataButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PStartPayrollPeriodDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PEndPayrollPeriod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1330,7 +1362,7 @@ public class MainAppFrame extends javax.swing.JFrame {
                                     .addComponent(PWithholdingTaxLabel)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(PWithholdingTaxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(43, Short.MAX_VALUE))
+                        .addContainerGap(46, Short.MAX_VALUE))
                     .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
                         .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PSSSNoLabel)
@@ -1511,11 +1543,11 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(RPayrollPeriodLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RPayrollDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(RPDepartmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RPDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                .addComponent(RPDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addComponent(RPGenerateReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         RPayrollTopPanelLayout.setVerticalGroup(
@@ -1581,22 +1613,20 @@ public class MainAppFrame extends javax.swing.JFrame {
             .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(RPayrollReportsTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(RPayrollReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RPayrollTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RPayrollReportsTabLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(RPayrollTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RPayrollReportsTabLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         RPayrollReportsTabLayout.setVerticalGroup(
             RPayrollReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RPayrollReportsTabLayout.createSequentialGroup()
                 .addComponent(RPayrollTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         ReportsTabbedPane.addTab("Payroll Report", RPayrollReportsTab);
@@ -1607,11 +1637,12 @@ public class MainAppFrame extends javax.swing.JFrame {
 
         RAEmployeeLabel.setText("Employee:");
 
-        RAEmployeeSelectComboBox.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        RAEmployeeSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Optional", "Item 2", "Item 3", "Item 4" }));
-
         RAGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         RAGenerateReportButton.setText("Generate Report");
+
+        REmployeeSearchTextField.setText("jTextField1");
+
+        RASearchButton.setText("Search");
 
         javax.swing.GroupLayout RAttendanceTopPanelLayout = new javax.swing.GroupLayout(RAttendanceTopPanel);
         RAttendanceTopPanel.setLayout(RAttendanceTopPanelLayout);
@@ -1629,8 +1660,10 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(RAEmployeeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAEmployeeSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(REmployeeSearchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(RASearchButton)
+                .addGap(18, 18, 18)
                 .addComponent(RAGenerateReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         RAttendanceTopPanelLayout.setVerticalGroup(
@@ -1644,8 +1677,9 @@ public class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(RAStartDateLabel)
                         .addComponent(RAEndDateLabel)
                         .addComponent(RAEmployeeLabel)
-                        .addComponent(RAEmployeeSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(RAGenerateReportButton)))
+                        .addComponent(RAGenerateReportButton)
+                        .addComponent(REmployeeSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RASearchButton)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -1700,21 +1734,19 @@ public class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(RAttendanceScrollPane)
                     .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
                         .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RAttendanceReportsTabLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addContainerGap())
+                    .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         RAttendanceReportsTabLayout.setVerticalGroup(
             RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
                 .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAttendanceScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RAttendanceScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         ReportsTabbedPane.addTab("Attendance Report", RAttendanceReportsTab);
@@ -1753,6 +1785,177 @@ public class MainAppFrame extends javax.swing.JFrame {
         );
 
         MainPanel.addTab("Reports", ReportsPanel);
+
+        LMFilterLabel.setText("Filter By:");
+
+        LMEmployeeNameIDTextField.setText("jTextField1");
+        LMEmployeeNameIDTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LMEmployeeNameIDTextFieldActionPerformed(evt);
+            }
+        });
+
+        LMEmployeeNameIDLabel.setText("Employee Name / ID:");
+
+        LMLeaveTypeLabel.setText("Leave Type:");
+
+        LMLeaveComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        LMStatusLabel.setText("Status:");
+
+        LMStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        LMStartDateLabel.setText("Start Date:");
+
+        LMEndDateLabel.setText("End Date:");
+
+        LMApplyFiltersButton.setText("Apply FIlters");
+
+        LMClearFiltersButton.setText("Clear Filters");
+
+        LMRefreshButton.setText("Refresh List");
+
+        javax.swing.GroupLayout LMTopPanelLayout = new javax.swing.GroupLayout(LMTopPanel);
+        LMTopPanel.setLayout(LMTopPanelLayout);
+        LMTopPanelLayout.setHorizontalGroup(
+            LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LMTopPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LMFilterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(LMTopPanelLayout.createSequentialGroup()
+                        .addComponent(LMEmployeeNameIDLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LMEmployeeNameIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LMLeaveTypeLabel)
+                    .addComponent(LMStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LMStatusComboBox, 0, 153, Short.MAX_VALUE)
+                    .addComponent(LMLeaveComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(LMTopPanelLayout.createSequentialGroup()
+                        .addComponent(LMStartDateLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LMStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LMTopPanelLayout.createSequentialGroup()
+                        .addComponent(LMEndDateLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LMEndDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(10, 10, 10)
+                .addComponent(LMClearFiltersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LMRefreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LMApplyFiltersButton, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        LMTopPanelLayout.setVerticalGroup(
+            LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LMTopPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(LMTopPanelLayout.createSequentialGroup()
+                            .addComponent(LMFilterLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(LMEmployeeNameIDLabel)
+                                .addComponent(LMEmployeeNameIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LMTopPanelLayout.createSequentialGroup()
+                            .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(LMLeaveTypeLabel)
+                                .addComponent(LMLeaveComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(LMStatusLabel)
+                                .addComponent(LMStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(LMTopPanelLayout.createSequentialGroup()
+                        .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LMStartDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LMStartDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(LMClearFiltersButton)
+                                .addComponent(LMApplyFiltersButton)))
+                        .addGap(7, 7, 7)
+                        .addGroup(LMTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LMEndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LMEndDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LMRefreshButton)))))
+        );
+
+        LMTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Request ID", "Employee ID", "Employee Name", "Leave Type", "Start Date", "End Date", "Reason", "Leave Status"
+            }
+        ));
+        LMScrollPane.setViewportView(LMTable);
+
+        LMApproveButton.setBackground(new java.awt.Color(0, 153, 0));
+        LMApproveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LMApproveButton.setForeground(new java.awt.Color(255, 255, 255));
+        LMApproveButton.setText("Approve Selected");
+
+        LMDeleteButton.setBackground(new java.awt.Color(204, 0, 0));
+        LMDeleteButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LMDeleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        LMDeleteButton.setText("Delete Selected");
+
+        javax.swing.GroupLayout LMSubPanelLayout = new javax.swing.GroupLayout(LMSubPanel);
+        LMSubPanel.setLayout(LMSubPanelLayout);
+        LMSubPanelLayout.setHorizontalGroup(
+            LMSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LMSubPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LMDeleteButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LMApproveButton)
+                .addContainerGap())
+        );
+        LMSubPanelLayout.setVerticalGroup(
+            LMSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LMSubPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(LMSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LMApproveButton)
+                    .addComponent(LMDeleteButton))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout LeaveManagementPanelLayout = new javax.swing.GroupLayout(LeaveManagementPanel);
+        LeaveManagementPanel.setLayout(LeaveManagementPanelLayout);
+        LeaveManagementPanelLayout.setHorizontalGroup(
+            LeaveManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LeaveManagementPanelLayout.createSequentialGroup()
+                .addGroup(LeaveManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LMTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(LeaveManagementPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LMScrollPane)))
+                .addContainerGap())
+            .addComponent(LMSubPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        LeaveManagementPanelLayout.setVerticalGroup(
+            LeaveManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LeaveManagementPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LMTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LMScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LMSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MainPanel.addTab("Leave Management", LeaveManagementPanel);
 
         SettingsPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         SettingsPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
@@ -1863,6 +2066,10 @@ public class MainAppFrame extends javax.swing.JFrame {
     private void PWithholdingTaxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWithholdingTaxTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PWithholdingTaxTextFieldActionPerformed
+
+    private void LMEmployeeNameIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMEmployeeNameIDTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LMEmployeeNameIDTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2020,6 +2227,27 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField EMZIPTextField;
     private javax.swing.JPanel EmployeeInfoPanel;
     private javax.swing.JPanel EmployeeManagementPanel;
+    private javax.swing.JButton LMApplyFiltersButton;
+    private javax.swing.JButton LMApproveButton;
+    private javax.swing.JButton LMClearFiltersButton;
+    private javax.swing.JButton LMDeleteButton;
+    private javax.swing.JLabel LMEmployeeNameIDLabel;
+    private javax.swing.JTextField LMEmployeeNameIDTextField;
+    private com.toedter.calendar.JDateChooser LMEndDateChooser;
+    private javax.swing.JLabel LMEndDateLabel;
+    private javax.swing.JLabel LMFilterLabel;
+    private javax.swing.JComboBox<String> LMLeaveComboBox;
+    private javax.swing.JLabel LMLeaveTypeLabel;
+    private javax.swing.JButton LMRefreshButton;
+    private javax.swing.JScrollPane LMScrollPane;
+    private com.toedter.calendar.JDateChooser LMStartDateChooser;
+    private javax.swing.JLabel LMStartDateLabel;
+    private javax.swing.JComboBox<String> LMStatusComboBox;
+    private javax.swing.JLabel LMStatusLabel;
+    private javax.swing.JPanel LMSubPanel;
+    private javax.swing.JTable LMTable;
+    private javax.swing.JPanel LMTopPanel;
+    private javax.swing.JPanel LeaveManagementPanel;
     private javax.swing.JTabbedPane MainPanel;
     private javax.swing.JLabel PBIRLabel;
     private javax.swing.JTextField PBasicSalaryTextField;
@@ -2027,6 +2255,7 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField PClothingAllowanceTextField;
     private javax.swing.JLabel PDepartmentLabel;
     private javax.swing.JLabel PEmployeeNoLabel;
+    private javax.swing.JLabel PEndPayrollPeriod;
     private javax.swing.JLabel PFullNameLabel;
     private javax.swing.JButton PGeneratePDFButton;
     private javax.swing.JLabel PGrossIncomeLabel;
@@ -2043,7 +2272,6 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField PPagIBIGNoTextField;
     private javax.swing.JLabel PPayPeriodLabel;
     private javax.swing.JLabel PPayrollInfoLabel;
-    private com.toedter.calendar.JDateChooser PPayrollPeriodDateChooser;
     private javax.swing.JLabel PPayrollPeriodLabel;
     private javax.swing.JLabel PPhilHealthContributionLabel;
     private javax.swing.JTextField PPhilHealthContributionTextField;
@@ -2061,6 +2289,7 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JButton PSearchButton;
     private javax.swing.JLabel PSearchEmployeeLabel;
     private javax.swing.JTextField PSearchTextField;
+    private com.toedter.calendar.JDateChooser PStartPayrollPeriodDateChooser;
     private javax.swing.JLabel PTINLabel;
     private javax.swing.JTextField PTINTextField;
     private javax.swing.JLabel PWithholdingTaxLabel;
@@ -2071,12 +2300,12 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PayrollPanel;
     private javax.swing.JPanel PayrollTopPanel;
     private javax.swing.JLabel RAEmployeeLabel;
-    private javax.swing.JComboBox<String> RAEmployeeSelectComboBox;
     private com.toedter.calendar.JDateChooser RAEndDateChooser;
     private javax.swing.JLabel RAEndDateLabel;
     private javax.swing.JButton RAExportPDFButton;
     private javax.swing.JButton RAGenerateReportButton;
     private javax.swing.JButton RAPrintReportButton;
+    private javax.swing.JButton RASearchButton;
     private com.toedter.calendar.JDateChooser RAStartDateChooser;
     private javax.swing.JLabel RAStartDateLabel;
     private javax.swing.JPanel RAttendanceBottomPanel;
@@ -2084,6 +2313,7 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane RAttendanceScrollPane;
     private javax.swing.JTable RAttendanceTable;
     private javax.swing.JPanel RAttendanceTopPanel;
+    private javax.swing.JTextField REmployeeSearchTextField;
     private javax.swing.JComboBox<String> RPDepartmentComboBox;
     private javax.swing.JLabel RPDepartmentLabel;
     private javax.swing.JButton RPExportPDFButton;
@@ -2102,7 +2332,7 @@ public class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JButton SLogOutButton;
     private javax.swing.JPanel SettingsPanel;
     private javax.swing.JPanel SettingsSubPanel;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
