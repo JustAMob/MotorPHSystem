@@ -1776,6 +1776,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         // Leave Application Button
         //leaveApplicationButton.setVisible(session.hasAccess("leave", "submit"));
+        MainPanel.revalidate();
+        MainPanel.repaint();
     }
      
     public void loadEmployeeInformation(){
