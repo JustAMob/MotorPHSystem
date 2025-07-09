@@ -4,10 +4,18 @@
  */
 package com.cjme.motorphsystem.controller;
 
+import com.cjme.motorphsystem.dao.SalaryDAO;
 import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.GovernmentIdDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
+import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
+import com.cjme.motorphsystem.model.GovernmentID;
+import com.cjme.motorphsystem.model.Salary;
 import com.cjme.motorphsystem.service.EmployeeService;
+import com.cjme.motorphsystem.service.GovernmentIDsService;
+import com.cjme.motorphsystem.service.SalaryService;
 import com.cjme.motorphsystem.service.UserSession;
 import com.cjme.motorphsystem.util.DBConnection;
 import com.cjme.motorphsystem.util.ReportGenerator;
@@ -24,6 +32,7 @@ import javax.swing.JOptionPane;
 public final class MainAppFrame extends javax.swing.JFrame {
     private final UserSession session;
     private final EmployeeService employeeService;
+    private final SalaryService salaryService;
     private final int loggedInEmployeeId;
     /**
      * Creates new form Payroll
@@ -32,6 +41,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
      */
     public MainAppFrame(UserSession session) {
        this.session = session;
+       this.salaryService = new SalaryService(
+        new SalaryDAOImpl()
+       );
        this.loggedInEmployeeId = session.getEmployeeId();
        this.employeeService   = new EmployeeService(
         new EmployeeEntityDAOImpl(),
@@ -40,6 +52,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setupTabs();    
         loadEmployeeInformation();
+        
     }
 
     /**
@@ -83,11 +96,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EIEILabel = new javax.swing.JLabel();
         EIPositionLabel = new javax.swing.JLabel();
         EIStatusLabel = new javax.swing.JLabel();
-        EIDateHiredLabel = new javax.swing.JLabel();
+        EISupervisorLabel = new javax.swing.JLabel();
         EIBasicSalaryLabel = new javax.swing.JLabel();
         EIPositionTextField = new javax.swing.JTextField();
         EIStatusTextField = new javax.swing.JTextField();
-        EIDateHiredTextField = new javax.swing.JTextField();
+        EISupervisorTextField = new javax.swing.JTextField();
         EIBasicSalaryTextField = new javax.swing.JTextField();
         EIPagIBIGLabel = new javax.swing.JLabel();
         EITINLabel = new javax.swing.JLabel();
@@ -265,6 +278,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         EIApplyForLeaveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         EIApplyForLeaveButton.setText("Apply for Leave");
+        EIApplyForLeaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EIApplyForLeaveButtonActionPerformed(evt);
+            }
+        });
 
         jLabel66.setText("Name:");
 
@@ -421,7 +439,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         EIStatusLabel.setText("Status:");
 
-        EIDateHiredLabel.setText("Date Hired:");
+        EISupervisorLabel.setText("Supervisor");
 
         EIBasicSalaryLabel.setText("Basic Salary:");
 
@@ -429,7 +447,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         EIStatusTextField.setText("jTextField43");
 
-        EIDateHiredTextField.setText("jTextField44");
+        EISupervisorTextField.setText("jTextField44");
 
         EIBasicSalaryTextField.setText("jTextField45");
 
@@ -463,14 +481,14 @@ public final class MainAppFrame extends javax.swing.JFrame {
                             .addGroup(EIEmployeeInfoPanelLayout.createSequentialGroup()
                                 .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(EIStatusLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(EIDateHiredLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EISupervisorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(EIBasicSalaryLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                     .addComponent(EIPositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(EIPositionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                                     .addComponent(EIStatusTextField)
-                                    .addComponent(EIDateHiredTextField)
+                                    .addComponent(EISupervisorTextField)
                                     .addComponent(EIBasicSalaryTextField))))))
                 .addGap(66, 66, 66))
         );
@@ -489,8 +507,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(EIStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EIDateHiredLabel)
-                    .addComponent(EIDateHiredTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EISupervisorLabel)
+                    .addComponent(EISupervisorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EIEmployeeInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EIBasicSalaryLabel)
@@ -1755,6 +1773,12 @@ public final class MainAppFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
 
+    private void EIApplyForLeaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIApplyForLeaveButtonActionPerformed
+        LeaveDialog leave = new LeaveDialog(this,true); 
+        leave.setLocationRelativeTo(this);
+        leave.setVisible(true);
+    }//GEN-LAST:event_EIApplyForLeaveButtonActionPerformed
+
     private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
         try {
@@ -1793,22 +1817,40 @@ public final class MainAppFrame extends javax.swing.JFrame {
     public void loadEmployeeInformation(){
         try {
              EmployeeProfile profile = employeeService.getEmployeeProfile(loggedInEmployeeId);
+             EmployeeEntity emp = employeeService.getEmployeeById(loggedInEmployeeId);
+             Salary salary = salaryService.getSalaryById(emp.getSalaryId());
+             GovernmentIDsService govIdService = new GovernmentIDsService(new GovernmentIdDAOImpl());
+             GovernmentID gov = govIdService.getGovernmentIdByEmployeeId(loggedInEmployeeId);
+
             if (profile == null) {
                 JOptionPane.showMessageDialog(this,
                     "Could not load your profile.",
                     "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            //Header
             EIEmployeeIDTextField.setText(String.valueOf(loggedInEmployeeId));
+            EIDepartmentTextField.setText(profile.getDepartmentName());
+            
+            //Personal Details
             EIFullNameTextField.setText(profile.getFullName());           
             EIAddressTextField.setText(profile.getFullAddress());
             EIPhoneTextField.setText(profile.getPhoneNumber());
-            EIDepartmentTextField.setText(profile.getDepartmentName());
-            EIPositionTextField.setText(profile.getPositionName());
-            //supervisorjTextField.setText(profile.getSupervisorName());
-            EIStatusTextField.setText(profile.getStatusName());
             EIBirthdayTextField.setText(profile.getBirthday().toString());
-
+            
+            //Employee Postion
+            EIPositionTextField.setText(profile.getPositionName());
+            EIStatusTextField.setText(profile.getStatusName());
+            EISupervisorTextField.setText(profile.getSupervisorName());
+            EIBasicSalaryTextField.setText(String.valueOf(salary.getBasicSalary()));
+            
+            //Government IDs
+            EISSSTextField.setText(gov.getSssId());
+            EIPagIBIGTextField.setText(gov.getPagibigId());
+            EIPhilHealthTextField.setText(gov.getPhilhealthId());
+            EITINTextField.setText(gov.getTinId());
+            
+            
         } catch (HeadlessException | SQLException ex) {
             JOptionPane.showMessageDialog(this,
                 "Error loading employee info:\n" + ex.getMessage(),
@@ -1890,8 +1932,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField EIBasicSalaryTextField;
     private javax.swing.JLabel EIBirthdayLabel;
     private javax.swing.JTextField EIBirthdayTextField;
-    private javax.swing.JLabel EIDateHiredLabel;
-    private javax.swing.JTextField EIDateHiredTextField;
     private javax.swing.JLabel EIDepartmentLabel;
     private javax.swing.JTextField EIDepartmentTextField;
     private javax.swing.JPanel EIDetailsIDsPanel;
@@ -1915,6 +1955,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private javax.swing.JTextField EISSSTextField;
     private javax.swing.JLabel EIStatusLabel;
     private javax.swing.JTextField EIStatusTextField;
+    private javax.swing.JLabel EISupervisorLabel;
+    private javax.swing.JTextField EISupervisorTextField;
     private javax.swing.JLabel EITINLabel;
     private javax.swing.JTextField EITINTextField;
     private javax.swing.JLabel EIWelcomeLabel;

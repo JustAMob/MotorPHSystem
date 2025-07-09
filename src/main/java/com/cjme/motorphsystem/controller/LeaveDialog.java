@@ -12,6 +12,8 @@ public class LeaveDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form LeaveDialog
+     * @param parent
+     * @param modal
      */
     public LeaveDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

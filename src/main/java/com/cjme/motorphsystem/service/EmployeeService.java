@@ -92,7 +92,11 @@ private final EmployeeEntityDAO entityDAO;
             }
         }
     }
-
+    
+    public EmployeeEntity getEmployeeById(int employeeId) {
+        return entityDAO.getEmployeeById(employeeId);
+    }
+    
     /**
      * Retrieves a full employee profile for display.
      *

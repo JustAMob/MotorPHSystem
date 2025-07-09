@@ -194,6 +194,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Apply for Leave"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EIApplyForLeaveButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel66">
                   <Properties>
@@ -403,7 +406,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="EIStatusLabel" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EIDateHiredLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EISupervisorLabel" alignment="0" max="32767" attributes="0"/>
                                               <Component id="EIBasicSalaryLabel" alignment="0" pref="80" max="32767" attributes="0"/>
                                               <Component id="EIPositionLabel" max="32767" attributes="0"/>
                                           </Group>
@@ -411,7 +414,7 @@
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="EIPositionTextField" pref="320" max="32767" attributes="0"/>
                                               <Component id="EIStatusTextField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EIDateHiredTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EISupervisorTextField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="EIBasicSalaryTextField" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -439,8 +442,8 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="EIDateHiredLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="EIDateHiredTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EISupervisorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EISupervisorTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -481,9 +484,9 @@
                     <Property name="text" type="java.lang.String" value="Status:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EIDateHiredLabel">
+                <Component class="javax.swing.JLabel" name="EISupervisorLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Date Hired:"/>
+                    <Property name="text" type="java.lang.String" value="Supervisor"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="EIBasicSalaryLabel">
@@ -501,7 +504,7 @@
                     <Property name="text" type="java.lang.String" value="jTextField43"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EIDateHiredTextField">
+                <Component class="javax.swing.JTextField" name="EISupervisorTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField44"/>
                   </Properties>
