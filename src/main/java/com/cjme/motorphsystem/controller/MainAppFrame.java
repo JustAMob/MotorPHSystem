@@ -1790,6 +1790,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
     public void setupTabs() {
     // Add only the tabs the user has access to
+    if (session.hasAccess("employeeInfo", "view")) {
+        MainPanel.addTab("Employee Information", EmployeeInfoPanel); 
+    }
     if (session.hasAccess("employee", "view")) {
         MainPanel.addTab("Employee Management", EmployeeManagementPanel);
     }
@@ -1803,7 +1806,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel.addTab("Reports", ReportsPanel);
     }
     if (session.hasAccess("employeeInfo", "view")) {
-        MainPanel.addTab("Employee Information", EmployeeInfoPanel); 
+        MainPanel.addTab("Settings", SettingsPanel); 
     }
 
     // Refresh UI
