@@ -253,7 +253,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        MainPanel.setMaximumSize(new java.awt.Dimension(945, 525));
+        MainPanel.setMaximumSize(new java.awt.Dimension(1500, 700));
+        MainPanel.setPreferredSize(new java.awt.Dimension(1200, 650));
 
         EIWelcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         EIWelcomeLabel.setText("Welcome,");
@@ -308,21 +309,17 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(EIWelcomeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EIApplyForLeaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
+                        .addGap(211, 211, 211))))
         );
         EIWelcomePanelLayout.setVerticalGroup(
             EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EIWelcomePanelLayout.createSequentialGroup()
-                .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EIWelcomePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EIWelcomeLabel)
-                            .addComponent(EIWelcomeNameLabel)))
-                    .addGroup(EIWelcomePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(EIApplyForLeaveButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EIWelcomeLabel)
+                    .addComponent(EIWelcomeNameLabel)
+                    .addComponent(EIApplyForLeaveButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(EIWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EIEmployeeIDLabel)
                     .addComponent(EIEmployeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -543,7 +540,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(EIDetailsIDsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
                         .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 30, Short.MAX_VALUE))))
         );
 
         MainPanel.addTab("Employee Information", EmployeeInfoPanel);
