@@ -5,18 +5,21 @@
 package com.cjme.motorphsystem.controller;
 
 import com.cjme.motorphsystem.dao.implementations.AddressDAOImpl;
+import com.cjme.motorphsystem.dao.PayrollDAO;
 import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.GovernmentIdDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.LeaveRequestDAOImpl;
 import com.cjme.motorphsystem.model.Address;
+import com.cjme.motorphsystem.dao.implementations.PayrollDAOImpl;
 
 import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
 import com.cjme.motorphsystem.model.GovernmentID;
 import com.cjme.motorphsystem.model.Salary;
 import com.cjme.motorphsystem.model.LeaveRequest;
+import com.cjme.motorphsystem.model.Payroll;
 
 import com.cjme.motorphsystem.service.EmployeeService;
 import com.cjme.motorphsystem.service.GovernmentIDsService;
@@ -32,8 +35,10 @@ import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
@@ -482,7 +487,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 630));
         setMinimumSize(new java.awt.Dimension(1000, 630));
         setResizable(false);
 
@@ -757,7 +761,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addComponent(EIWelcomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
                 .addComponent(EIDetailsIDsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -1283,7 +1287,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(ASearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ASearchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(AStartDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1373,7 +1377,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(AttendanceSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         PayrollPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
@@ -1772,10 +1776,15 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         RPDepartmentLabel.setText("Department:");
 
-        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","CEO","COO","CFO","CMO","IT Operations and Systems","Human Resources","Finance","Accounts","Sales and Marketing","Supply Chain and Logistics","Customer Service and Relations" }));
 
         RPGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         RPGenerateReportButton.setText("Generate Report");
+        RPGenerateReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RPGenerateReportButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RPayrollTopPanelLayout = new javax.swing.GroupLayout(RPayrollTopPanel);
         RPayrollTopPanel.setLayout(RPayrollTopPanelLayout);
@@ -2272,6 +2281,22 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
         MainPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
+        // Automatically show all payroll data when Reports tab is selected
+        MainPanel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                if (MainPanel.getSelectedComponent() == ReportsPanel) {
+                    // Set department to ALL if available
+                    if (RPDepartmentComboBox.getItemCount() > 0) {
+                        RPDepartmentComboBox.setSelectedIndex(0); // 'ALL' should be first
+                    }
+                    // Clear the date chooser
+                    RPayrollDateChooser.setDate(null);
+                    // Trigger the report generation
+                    RPGenerateReportButtonActionPerformed(null);
+                }
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2460,23 +2485,33 @@ public final class MainAppFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RPPrintReportButtonActionPerformed
 
     private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
-        // TODO add your handling code here:
         try {
+            // Get the selected date from JCalendar
+            Date selectedDate = RPayrollDateChooser.getDate();
+            
+            // Format the date as needed for your report (e.g., "yyyy-MM" for year-month)
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+            String payrollPeriod = selectedDate != null ? dateFormat.format(selectedDate) : "";
+            
+            // Get department if you have a department field (replace with your actual component)
+            String department = (String) RPDepartmentComboBox.getSelectedItem(); 
+            
             Connection conn = DBConnection.getConnection();
-            new ReportGenerator(conn).generatePayrollReport();
+            new ReportGenerator(conn).generatePayrollReport(payrollPeriod, department);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error generating PDF report: " + e.getMessage(),
+                                       "Export Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_RPExportPDFButtonActionPerformed
 
     private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGeneratePDFButtonActionPerformed
-        // TODO add your handling code here:
+       /* // TODO add your handling code here:
         try {
             Connection conn = DBConnection.getConnection();
             new ReportGenerator(conn).generatePayslipReport();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
 
     private void PCalculatePayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PCalculatePayrollButtonActionPerformed
@@ -2544,6 +2579,37 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void EMpositionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMpositionComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EMpositionComboBoxActionPerformed
+
+    private void RPGenerateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPGenerateReportButtonActionPerformed
+                // Logic for generating payroll report
+        String payPeriod = null;
+        if (RPayrollDateChooser.getDate() != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+            payPeriod = sdf.format(RPayrollDateChooser.getDate());
+        }
+        String department = (String) RPDepartmentComboBox.getSelectedItem();
+        if (department != null && (department.equalsIgnoreCase("ALL") || department.startsWith("Item"))) {
+            department = null; // treat 'ALL' or default as no filter
+        }
+        try {
+            PayrollDAO payrollDAO = new PayrollDAOImpl();
+            List<Payroll> payrolls = payrollDAO.getMonthSummary(payPeriod, department);
+            DefaultTableModel model = (DefaultTableModel) RPayrollTable.getModel();
+            model.setRowCount(0);
+            for (Payroll payroll : payrolls) {
+                model.addRow(new Object[] {
+                    payroll.getEmployeeNo(),
+                    payroll.getEmployeeFullName(),
+                    payroll.getDepartment(),
+                    payroll.getGrossIncome(),
+                    payroll.getSummaryDeductions(),
+                    payroll.getNetPay()
+                });
+            }
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error generating report: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_RPGenerateReportButtonActionPerformed
 
     private void EMAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMAddButtonActionPerformed
         // TODO add your handling code here:

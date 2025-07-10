@@ -5,10 +5,9 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.*;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Utility class for generating and displaying JasperReports.
- */
 public class ReportGenerator {
 
     private final Connection connection;
@@ -19,33 +18,42 @@ public class ReportGenerator {
 
     /**
      * Generates and displays the payroll report.
+     * @param payrollPeriod The payroll period to filter by (can be null)
+     * @param department The department to filter by (can be null)
      */
-    public void generatePayrollReport() {
-        generateReport("src/main/resources/jrxml/payroll.jrxml", "Payroll Report");
+    public void generatePayrollReport(String payrollPeriod, String department) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("PayrollPeriod", payrollPeriod);
+        parameters.put("Department", department);
+        generateReport("src/main/resources/jrxml/payroll.jrxml", "Payroll Report", parameters);
     }
 
     /**
      * Generates and displays the payslip report.
+     * @param employeeId The employee ID to generate payslip for
      */
-    public void generatePayslipReport() {
-        generateReport("src/main/resources/jrxml/payslip.jrxml", "Employee Payslip");
+    public void generatePayslipReport(String employeeId) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("EmployeeId", employeeId);
+        generateReport("src/main/resources/jrxml/payslip.jrxml", "Employee Payslip", parameters);
     }
 
     /**
-     * Compiles, fills, and displays a JasperReport with no parameters.
+     * Compiles, fills, and displays a JasperReport with parameters.
      *
      * @param reportPath Path to the JRXML file
      * @param title      Title for the report viewer window
+     * @param parameters Map of parameters to pass to the report
      */
-    private void generateReport(String reportPath, String title) {
+    private void generateReport(String reportPath, String title, Map<String, Object> parameters) {
         try {
-            // Compile the JRXML file to a JasperReport
             JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters != null ? parameters : new HashMap<>(),
+                    connection
+            );
 
-            // Fill the report with the database connection (no parameters)
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new java.util.HashMap<>(), connection);
-
-            // Display the report
             JasperViewer viewer = new JasperViewer(jasperPrint, false);
             viewer.setTitle(title);
             viewer.setVisible(true);
@@ -55,7 +63,7 @@ public class ReportGenerator {
             JOptionPane.showMessageDialog(
                 null,
                 "Error generating report:\n" + e.getMessage(),
-                "Report Error",
+                "Jasper Report Error",
                 JOptionPane.ERROR_MESSAGE
             );
         }
