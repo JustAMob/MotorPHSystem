@@ -2696,7 +2696,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             MainPanel.addTab("Attendance", AttendancePanel);
         }
 
-        if (session.hasAccess("leave", "view")) {
+        if (session.hasAccess("attendance", "view")) {
             System.out.println("✓ Access: Leave Management");
             MainPanel.addTab("Leave Management", LeaveManagementPanel);
         }
@@ -2711,10 +2711,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             MainPanel.addTab("Reports", ReportsPanel);
         }
 
-        if (session.hasAccess("settings", "view")) {
-            System.out.println("✓ Access: Settings");
-            MainPanel.addTab("Settings", SettingsPanel);
-        }
+
         MainPanel.addTab("Settings", SettingsPanel);
         System.out.println("Total tabs: " + MainPanel.getTabCount());
         MainPanel.revalidate();
