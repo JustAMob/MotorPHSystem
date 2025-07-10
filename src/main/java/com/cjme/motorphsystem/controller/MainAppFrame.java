@@ -34,6 +34,8 @@ import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -78,7 +80,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         loadEmployeeInformation();
         
         initComboBoxes(); 
-        initLeaveTable();       
+        initLeaveTable(); 
+        loadEmployeeList();
         loadAllLeaveRequests(); 
         
     }
@@ -800,15 +803,23 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         EMTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Employee ID", "Last Name", "First Name", "Position", "Department"
+                "Employee ID", "Full Name", "Position", "Department"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         EMScrollPane.setViewportView(EMTable);
 
         EMEditButton.setText("Edit Employee");
@@ -1644,7 +1655,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PPagIBIGContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PPagIBIGContributionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         PCalculatePayrollButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -1841,7 +1852,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addGroup(RPayrollReportsTabLayout.createSequentialGroup()
                 .addComponent(RPayrollTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(RPayrollScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RPayrollBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1961,7 +1972,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
                 .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAttendanceScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                .addComponent(RAttendanceScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2221,7 +2232,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         SettingsSubPanelLayout.setVerticalGroup(
             SettingsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SettingsSubPanelLayout.createSequentialGroup()
-                .addContainerGap(513, Short.MAX_VALUE)
+                .addContainerGap(548, Short.MAX_VALUE)
                 .addComponent(SLogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -2606,7 +2617,34 @@ public final class MainAppFrame extends javax.swing.JFrame {
      
     }
     
-    
+    public void loadEmployeeList() {
+        DefaultTableModel tableModel = new DefaultTableModel(
+            new Object[]{"Employee ID", "Full Name", "Department", "Position"}, 0
+        ) {
+            
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Disable editing cells
+        }
+        };
+    try {
+        List<EmployeeProfile> profiles = employeeService.getAllEmployeeProfiles();
+
+        for (EmployeeProfile profile : profiles) {
+            tableModel.addRow(new Object[]{
+                String.valueOf(profile.getEmployeeId()),
+                profile.getFullName(),
+                profile.getDepartmentName(),
+                profile.getPositionName()
+            });
+        }
+
+        EMTable.setModel(tableModel); // Apply to your JTable
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Failed to load employee data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     
     
