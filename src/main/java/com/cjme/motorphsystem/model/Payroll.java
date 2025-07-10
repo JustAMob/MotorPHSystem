@@ -4,37 +4,36 @@
  */
 package com.cjme.motorphsystem.model;
 
-import java.math.BigDecimal;
-
 /**
  *
  * @author JustAMob
  */
 public class Payroll {
-    private int payPeriodId;
-    private int employeeId;
+    private String payPeriodId;
+    private int employeeNo;
     private String employeeFullName;
-    private String positon;
+    private String position;
     private String department;
-    private String grossIncome;
-    private int socialSecurityNo;
-    private BigDecimal socialSecurityContribution;
-    private int philhealthNo;
-    private BigDecimal philhealthContribution;
-    private int pagibigNo;
-    private BigDecimal pabigibContribution;
-    private int tin;
-    private BigDecimal withholdingTax;
-    private BigDecimal netPay;
+    private double grossIncome;
+    private String socialSecurityNo;
+    private double socialSecurityContribution;
+    private String philhealthNo;
+    private double philhealthContribution;
+    private String pagibigNo;
+    private double pagibigContribution;
+    private String tin;
+    private double withholdingTax;
+    private double summaryDeductions;
+    private double netPay;
 
     public Payroll() {
     }
 
-    public Payroll(int payPeriodId, int employeeId, String employeeFullName, String positon, String department, String grossIncome, int socialSecurityNo, BigDecimal socialSecurityContribution, int philhealthNo, BigDecimal philhealthContribution, int pagibigNo, BigDecimal pabigibContribution, int tin, BigDecimal withholdingTax, BigDecimal netPay) {
+    public Payroll(String payPeriodId, int employeeNo, String employeeFullName, String position, String department, double grossIncome, String socialSecurityNo, double socialSecurityContribution, String philhealthNo, double philhealthContribution, String pagibigNo, double pagibigContribution, String tin, double withholdingTax, double summaryDeductions, double netPay) {
         this.payPeriodId = payPeriodId;
-        this.employeeId = employeeId;
+        this.employeeNo = employeeNo;
         this.employeeFullName = employeeFullName;
-        this.positon = positon;
+        this.position = position;
         this.department = department;
         this.grossIncome = grossIncome;
         this.socialSecurityNo = socialSecurityNo;
@@ -42,26 +41,27 @@ public class Payroll {
         this.philhealthNo = philhealthNo;
         this.philhealthContribution = philhealthContribution;
         this.pagibigNo = pagibigNo;
-        this.pabigibContribution = pabigibContribution;
+        this.pagibigContribution = pagibigContribution;
         this.tin = tin;
         this.withholdingTax = withholdingTax;
+        this.summaryDeductions = summaryDeductions;
         this.netPay = netPay;
     }
 
-    public int getPayPeriodId() {
+    public String getPayPeriodId() {
         return payPeriodId;
     }
 
-    public void setPayPeriodId(int payPeriodId) {
+    public void setPayPeriodId(String payPeriodId) {
         this.payPeriodId = payPeriodId;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
+    public int getEmployeeNo() {
+        return employeeNo;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployeeNo(int employeeNo) {
+        this.employeeNo = employeeNo;
     }
 
     public String getEmployeeFullName() {
@@ -72,12 +72,12 @@ public class Payroll {
         this.employeeFullName = employeeFullName;
     }
 
-    public String getPositon() {
-        return positon;
+    public String getPosition() {
+        return position;
     }
 
-    public void setPositon(String positon) {
-        this.positon = positon;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getDepartment() {
@@ -88,86 +88,91 @@ public class Payroll {
         this.department = department;
     }
 
-    public String getGrossIncome() {
+    public double getGrossIncome() {
         return grossIncome;
     }
 
-    public void setGrossIncome(String grossIncome) {
+    public void setGrossIncome(double grossIncome) {
         this.grossIncome = grossIncome;
     }
 
-    public int getSocialSecurityNo() {
+    public String getSocialSecurityNo() {
         return socialSecurityNo;
     }
 
-    public void setSocialSecurityNo(int socialSecurityNo) {
+    public void setSocialSecurityNo(String socialSecurityNo) {
         this.socialSecurityNo = socialSecurityNo;
     }
 
-    public BigDecimal getSocialSecurityContribution() {
+    public double getSocialSecurityContribution() {
         return socialSecurityContribution;
     }
 
-    public void setSocialSecurityContribution(BigDecimal socialSecurityContribution) {
+    public void setSocialSecurityContribution(double socialSecurityContribution) {
         this.socialSecurityContribution = socialSecurityContribution;
     }
 
-    public int getPhilhealthNo() {
+    public String getPhilhealthNo() {
         return philhealthNo;
     }
 
-    public void setPhilhealthNo(int philhealthNo) {
+    public void setPhilhealthNo(String philhealthNo) {
         this.philhealthNo = philhealthNo;
     }
 
-    public BigDecimal getPhilhealthContribution() {
+    public double getPhilhealthContribution() {
         return philhealthContribution;
     }
 
-    public void setPhilhealthContribution(BigDecimal philhealthContribution) {
+    public void setPhilhealthContribution(double philhealthContribution) {
         this.philhealthContribution = philhealthContribution;
     }
 
-    public int getPagibigNo() {
+    public String getPagibigNo() {
         return pagibigNo;
     }
 
-    public void setPagibigNo(int pagibigNo) {
+    public void setPagibigNo(String pagibigNo) {
         this.pagibigNo = pagibigNo;
     }
 
-    public BigDecimal getPabigibContribution() {
-        return pabigibContribution;
+    public double getPagibigContribution() {
+        return pagibigContribution;
     }
 
-    public void setPabigibContribution(BigDecimal pabigibContribution) {
-        this.pabigibContribution = pabigibContribution;
+    public void setPagibigContribution(double pagibigContribution) {
+        this.pagibigContribution = pagibigContribution;
     }
 
-    public int getTin() {
+    public String getTin() {
         return tin;
     }
 
-    public void setTin(int tin) {
+    public void setTin(String tin) {
         this.tin = tin;
     }
 
-    public BigDecimal getWithholdingTax() {
+    public double getWithholdingTax() {
         return withholdingTax;
     }
 
-    public void setWithholdingTax(BigDecimal withholdingTax) {
+    public void setWithholdingTax(double withholdingTax) {
         this.withholdingTax = withholdingTax;
     }
 
-    public BigDecimal getNetPay() {
+    public double getSummaryDeductions() {
+        return summaryDeductions;
+    }
+
+    public void setSummaryDeductions(double summaryDeductions) {
+        this.summaryDeductions = summaryDeductions;
+    }
+
+    public double getNetPay() {
         return netPay;
     }
 
-    public void setNetPay(BigDecimal netPay) {
+    public void setNetPay(double netPay) {
         this.netPay = netPay;
     }
-    
-    
-    
 }
