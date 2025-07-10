@@ -294,7 +294,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         MainPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         MainPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
-        MainPanel.setPreferredSize(new java.awt.Dimension(1000, 620));
+        MainPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
         EmployeeInfoPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         EmployeeInfoPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
@@ -1402,7 +1402,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                                     .addComponent(PWithholdingTaxLabel)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(PWithholdingTaxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(46, Short.MAX_VALUE))
+                        .addContainerGap(34, Short.MAX_VALUE))
                     .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
                         .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PSSSNoLabel)
@@ -1543,10 +1543,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addGroup(PayrollPanelLayout.createSequentialGroup()
                         .addComponent(PayrollButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(PayrollPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollPanelLayout.createSequentialGroup()
                         .addComponent(PayrollEarningsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PayrollDeductionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(PayrollDeductionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))))
         );
         PayrollPanelLayout.setVerticalGroup(
             PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1987,9 +1988,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(LMTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(LeaveManagementPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(LMScrollPane)))
+                        .addComponent(LMScrollPane))
+                    .addComponent(LMSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(LMSubPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         LeaveManagementPanelLayout.setVerticalGroup(
             LeaveManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
