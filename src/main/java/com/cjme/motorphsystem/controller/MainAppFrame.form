@@ -84,54 +84,57 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" min="-2" pref="630" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="MainPanel" min="-2" pref="630" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                   <Component id="EmployeeInfoPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                   <Component id="EmployeeManagementPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                   <Component id="AttendancePanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                   <Component id="PayrollPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="5" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                   <Component id="ReportsPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="6" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                   <Component id="LeaveManagementPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="7" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                   <Component id="SettingsPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -157,7 +160,7 @@
               <Component id="EIWelcomePanel" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Component id="EIDetailsIDsPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
                   <Component id="EIEmployeeInfoPanel" min="-2" pref="417" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
@@ -632,18 +635,23 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="EMSearchPanel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="EMSearchPanel" max="32767" attributes="0"/>
+                      <Component id="EMButtonPanel" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="EMScrollPane" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EMButtonPanel" max="32767" attributes="0"/>
+                          <Component id="EMScrollPane" pref="660" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="EMDetailPanel" min="-2" pref="352" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="EMDetailPanel" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="EMClearFormButton" min="-2" pref="108" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="EMSaveButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -651,20 +659,24 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="EMSearchPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EMScrollPane" max="32767" attributes="0"/>
+                          <Component id="EMScrollPane" min="-2" pref="494" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="EMButtonPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="EMDetailPanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EMClearFormButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -679,9 +691,10 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="EMSearchLabel" min="-2" pref="97" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EMEmployeeSearchTextField" pref="398" max="32767" attributes="0"/>
+                      <Component id="EMEmployeeSearchTextField" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="EMEmployeeSearchButton" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -777,6 +790,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="EMDeleteButton" min="-2" pref="147" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="EMAddButton" min="-2" pref="140" max="-2" attributes="0"/>
@@ -830,236 +844,237 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="EMLastNameLabel" max="32767" attributes="0"/>
-                                  <Component id="EMEmployeeIDLabel" pref="85" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="EMEmployeeIDTextField" pref="113" max="32767" attributes="0"/>
-                                  <Component id="EMLastNameTextField" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="EMPositionLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMStatusLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMPhoneLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBirthdayLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMAddressIDLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMMiddleNameLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMFirstNameLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMDepartmentLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBuildingLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMStreetLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMCityLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMProvinceLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMZIPLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBasicSalaryLabel" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="EMPhoneTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMAddressTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMFirstNameTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMMiddleNameTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBuildingTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMStreetTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMCityTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMProvinceTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMZIPTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBasicSalaryTextField" alignment="0" pref="113" max="32767" attributes="0"/>
-                                  <Component id="EMdepartmentComboBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMpositionComboBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMemploymentStatusComboBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBirthdayDateChooser" min="-2" pref="110" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="EMPhilHealthLabel" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="EMPhoneAllowanceLabel" max="32767" attributes="0"/>
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="EMClothingAllowanceLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="EMSSSLabel" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="EMRiceAllowanceLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                  <Component id="EMRiceAllowanceTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="EMPagIBIGTextField" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="EMTINLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="EMTINTextField" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="EMPhoneAllowanceTextField" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="EMClearFormButton" max="32767" attributes="0"/>
-                                      <Component id="EMSaveButton" alignment="0" pref="210" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="EMClothingAllowanceTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Component id="EMSSSTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Component id="EMPhilHealthTextField" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Component id="EMPagIBIGLabel" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="EMDetailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="EMZIPTextField" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="EMBuildingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EMStreetLabel" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="EMBuildingTextField" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="EMStreetTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="EMLastNameLabel" max="32767" attributes="0"/>
+                                          <Component id="EMEmployeeIDLabel" pref="85" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="EMEmployeeIDTextField" pref="113" max="32767" attributes="0"/>
+                                          <Component id="EMLastNameTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="EMPhoneLabel" max="32767" attributes="0"/>
+                                          <Component id="EMPhoneTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="EMCityLabel" min="-2" pref="72" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="EMCityTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="EMBirthdayDateChooser" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="EMProvinceLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="EMProvinceTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="91" pref="91" max="-2" attributes="0"/>
+                                              <Component id="EMFirstNameTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="EMFirstNameLabel" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                                              <Component id="EMBirthdayLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="EMZIPLabel" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="EMDetailLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="EMBasicSalaryLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                      <Component id="EMBasicSalaryTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="EMSSSLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="EMSSSTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="EMPhilHealthLabel" max="32767" attributes="0"/>
+                                                                  <Component id="EMPagIBIGLabel" max="32767" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="EMTINLabel" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="EMPagIBIGTextField" pref="113" max="32767" attributes="0"/>
+                                                          <Component id="EMPhilHealthTextField" max="32767" attributes="0"/>
+                                                          <Component id="EMTINTextField" max="32767" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="EMdepartmentComboBox" alignment="0" pref="93" max="32767" attributes="0"/>
+                                          <Component id="EMpositionComboBox" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EMemploymentStatusComboBox" alignment="1" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="EMDepartmentLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="EMPositionLabel" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="EMStatusLabel" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="EMDetailLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMEmployeeIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMEmployeeIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMPhoneLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMLastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMLastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMFirstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMFirstNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMBirthdayLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMEmployeeIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMEmployeeIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMLastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMLastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMFirstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMFirstNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMMiddleNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMMiddleNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMAddressIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMAddressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMBuildingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMBuildingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMStreetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMStreetTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMCityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMProvinceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMProvinceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMZIPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMZIPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="EMBirthdayLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="EMBirthdayDateChooser" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMPhoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="EMRiceAllowanceLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMRiceAllowanceTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMPhoneAllowanceLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMPhoneAllowanceTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMClothingAllowanceLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMClothingAllowanceTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMSSSLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMSSSTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMPhilHealthLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMPhilHealthTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMPagIBIGLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMPagIBIGTextField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMTINLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMTINTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMBirthdayDateChooser" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="EMCityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="EMCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMBuildingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMBuildingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMStreetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMStreetTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMProvinceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMProvinceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EMZIPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EMZIPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="EMStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="EMemploymentStatusComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="EMPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="EMpositionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                      <Component id="EMDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="EMdepartmentComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="EMPositionLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMpositionComboBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMDepartmentLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMdepartmentComboBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMStatusLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EMemploymentStatusComboBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="EMBasicSalaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="EMBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="EMClearFormButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EMSaveButton" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="EMSSSTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMSSSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="EMPhilHealthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMPhilHealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="EMPagIBIGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="EMTINTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EMTINLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1088,16 +1103,6 @@
                 <Property name="text" type="java.lang.String" value="First Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="EMMiddleNameLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Middle Name:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMAddressIDLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Address ID:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="EMBirthdayLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Birthday:"/>
@@ -1106,16 +1111,6 @@
             <Component class="javax.swing.JLabel" name="EMPhoneLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Phone No.:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMStatusLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Status:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMPositionLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Position:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="EMEmployeeIDTextField">
@@ -1136,139 +1131,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMFirstNameTextFieldActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="EMMiddleNameTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMAddressTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="EMPhoneTextField">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMDepartmentLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Department:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMBasicSalaryLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Basic Salary:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMRiceAllowanceLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Rice Allowance:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMPhoneAllowanceLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Phone Allowance:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMClothingAllowanceLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Clothing Allowance:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMSSSLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="SSS No.:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMPhilHealthLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="PhilHealth No.:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMPagIBIGLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="EMTINLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="TIN No.:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMBasicSalaryTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMRiceAllowanceTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMRiceAllowanceTextFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMPhoneAllowanceTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMClothingAllowanceTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMSSSTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMSSSTextFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMPhilHealthTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMPhilHealthTextFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMPagIBIGTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMPagIBIGTextFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMTINTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="EMClearFormButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Clear Form"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="EMSaveButton">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="99" red="33" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Save Details"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMSaveButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="EMBuildingLabel">
               <Properties>
@@ -1331,6 +1197,75 @@
                 <Property name="text" type="java.lang.String" value="Employment Details"/>
               </Properties>
             </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="EMBirthdayDateChooser">
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMBasicSalaryLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Basic Salary:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="EMBasicSalaryTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMBasicSalaryTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMSSSLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="SSS No.:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="EMSSSTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMSSSTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMPhilHealthLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PhilHealth No.:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="EMPhilHealthTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMPhilHealthTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMPagIBIGLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pag-IBIG No.:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="EMPagIBIGTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMPagIBIGTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMTINLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="TIN No.:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="EMTINTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMStatusLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Status:"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JComboBox" name="EMemploymentStatusComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1345,6 +1280,31 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMDepartmentLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Department:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="EMdepartmentComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="EMPositionLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Position:"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="EMpositionComboBox">
               <Properties>
@@ -1364,25 +1324,30 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="EMdepartmentComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="EMBirthdayDateChooser">
-            </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="EMClearFormButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clear Form"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="EMSaveButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Save Details"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMSaveButtonActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="AttendancePanel">
@@ -1414,7 +1379,7 @@
                   <Component id="AttendanceSubPanel" min="-2" pref="540" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="AButtonPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1434,7 +1399,7 @@
                               <Component id="ASearchTextField" min="-2" pref="147" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ASearchButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="36" max="32767" attributes="0"/>
+                              <EmptySpace pref="21" max="32767" attributes="0"/>
                               <Component id="AStartDateLabel" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="AStartDateChooser" min="-2" pref="151" max="-2" attributes="0"/>
@@ -2075,7 +2040,7 @@
                           <Component id="PPagIBIGContributionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PPagIBIGContributionLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="129" max="32767" attributes="0"/>
+                      <EmptySpace pref="101" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2208,7 +2173,7 @@
                       <Component id="PNetPayLabel" min="-2" pref="72" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="PNetPayTextField" min="-2" pref="205" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
                       <Component id="PCalculatePayrollButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="PGeneratePDFButton" min="-2" pref="192" max="-2" attributes="0"/>
@@ -2335,7 +2300,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="ReportsTabbedPane" pref="0" max="32767" attributes="0"/>
+                      <Component id="ReportsTabbedPane" pref="612" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
