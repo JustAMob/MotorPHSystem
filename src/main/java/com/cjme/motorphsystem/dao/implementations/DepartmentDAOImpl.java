@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -118,5 +120,19 @@ public class DepartmentDAOImpl implements DepartmentDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+
+    public Map<String, Integer> getDepartmentNameIdMap() throws SQLException {
+    Map<String, Integer> map = new HashMap<>();
+    String sql = "SELECT department_id, name FROM Department";
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            map.put(rs.getString("name"), rs.getInt("department_id"));
+        }
+    }
+    return map;
     }
 }

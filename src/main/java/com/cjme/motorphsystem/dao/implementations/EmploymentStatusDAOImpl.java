@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -118,5 +120,17 @@ public class EmploymentStatusDAOImpl implements EmploymentStatusDAO {
 
         } catch (SQLException e) {
         }
+    }
+    public Map<String, Integer> getEmploymentStatusNameIdMap() throws SQLException {
+    Map<String, Integer> map = new HashMap<>();
+    String sql = "SELECT status_id, status_type FROM employment_status";
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            map.put(rs.getString("status_type"), rs.getInt("status_id"));
+        }
+    }
+    return map;
     }
 }

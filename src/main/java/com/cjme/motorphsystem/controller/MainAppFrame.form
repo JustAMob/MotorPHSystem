@@ -856,13 +856,10 @@
                                   <Component id="EMBasicSalaryLabel" min="-2" pref="85" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="EMStatusTextField" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="EMPhoneTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMBirthdayTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMAddressTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMPositionTextField" max="32767" attributes="0"/>
-                                  <Component id="EMDepartmentTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMFirstNameTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMMiddleNameTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMBuildingTextField" alignment="0" max="32767" attributes="0"/>
@@ -870,7 +867,10 @@
                                   <Component id="EMCityTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMProvinceTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMZIPTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBasicSalaryTextField" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="EMBasicSalaryTextField" alignment="0" pref="113" max="32767" attributes="0"/>
+                                  <Component id="EMdepartmentComboBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="EMpositionComboBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="EMemploymentStatusComboBox" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1028,22 +1028,22 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="EMStatusTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="EMStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EMemploymentStatusComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="EMPositionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="EMPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EMpositionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                      <Component id="EMDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="EMDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EMdepartmentComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="EMBasicSalaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="EMBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1155,16 +1155,6 @@
                 <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="EMStatusTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMPositionTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="EMDepartmentLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Department:"/>
@@ -1208,11 +1198,6 @@
             <Component class="javax.swing.JLabel" name="EMTINLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="TIN No.:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="EMDepartmentTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="EMBasicSalaryTextField">
@@ -1343,6 +1328,54 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Employment Details"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="EMemploymentStatusComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="EMpositionComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMpositionComboBoxActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="EMdepartmentComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

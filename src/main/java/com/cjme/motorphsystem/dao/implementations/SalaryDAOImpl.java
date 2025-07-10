@@ -17,7 +17,9 @@ import com.cjme.motorphsystem.util.DBConnection;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SalaryDAOImpl implements SalaryDAO {
 
@@ -125,5 +127,23 @@ public class SalaryDAOImpl implements SalaryDAO {
             stmt.setInt(1, salaryId);
             stmt.executeUpdate();
         }
+    }
+    public Map<String, Integer> getSalaryDescriptionIdMap() throws SQLException {
+        Map<String, Integer> map = new HashMap<>();
+        String sql = "SELECT salary_id, basic_salary, hourly_rate FROM Salary";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("salary_id");
+                double basic = rs.getDouble("basic_salary");
+                double hourly = rs.getDouble("hourly_rate");
+
+                // Combine values into a readable string
+                String label = String.format("₱%.2f / ₱%.2f hourly", basic, hourly);
+                map.put(label, id);
+            }
+        }
+        return map;
     }
 }

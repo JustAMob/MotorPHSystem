@@ -5,7 +5,9 @@
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.Department;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,4 +19,8 @@ public interface DepartmentDAO {
     List<Department> getAllDepartments();
     void updateDepartment(Department department);
     void deleteDepartment(int id);
+
+    public Map<String, Integer> getDepartmentNameIdMap()throws SQLException;
+
+
 }

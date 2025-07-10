@@ -5,7 +5,9 @@
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.EmploymentStatus;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,4 +19,6 @@ public interface EmploymentStatusDAO {
     List<EmploymentStatus> getAllStatuses();
     void updateStatus(EmploymentStatus status);
     void deleteStatus(int id);
+
+    public Map<String, Integer> getEmploymentStatusNameIdMap()throws SQLException;
 }

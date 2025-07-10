@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -114,5 +116,18 @@ public class SupervisorDAOImpl implements SupervisorDAO {
 
         } catch (SQLException e) {
         }
+    }
+    
+    public Map<String, Integer> getSupervisorNameIdMap() throws SQLException {
+    Map<String, Integer> map = new HashMap<>();
+    String sql = "SELECT superviso_id, name FROM supervisor";
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            map.put(rs.getString("name"), rs.getInt("supervisor_id"));
+        }
+    }
+    return map;
     }
 }

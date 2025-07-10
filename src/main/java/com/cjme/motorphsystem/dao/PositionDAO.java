@@ -5,7 +5,9 @@
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.Position;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,4 +19,8 @@ public interface PositionDAO {
     List<Position> getAllPositions();
     void updatePosition(Position position);
     void deletePosition(int id);
+
+    public Map<String, Integer> getPositionNameIdMap()throws SQLException;
+
+  
 }

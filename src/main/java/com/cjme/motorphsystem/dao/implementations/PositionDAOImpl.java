@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -119,5 +121,18 @@ public class PositionDAOImpl implements PositionDAO {
 
         } catch (SQLException e) {
         }
+    }
+
+    public Map<String, Integer> getPositionNameIdMap() throws SQLException {
+    Map<String, Integer> map = new HashMap<>();
+    String sql = "SELECT position_id, position_name FROM position";
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            map.put(rs.getString("position_name"), rs.getInt("position_id"));
+        }
+    }
+    return map;
     }
 }
