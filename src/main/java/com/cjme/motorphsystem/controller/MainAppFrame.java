@@ -8,49 +8,228 @@ import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.GovernmentIdDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.LeaveRequestDAOImpl;
+
 import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
 import com.cjme.motorphsystem.model.GovernmentID;
 import com.cjme.motorphsystem.model.Salary;
+import com.cjme.motorphsystem.model.LeaveRequest;
+
 import com.cjme.motorphsystem.service.EmployeeService;
 import com.cjme.motorphsystem.service.GovernmentIDsService;
 import com.cjme.motorphsystem.service.SalaryService;
 import com.cjme.motorphsystem.service.UserSession;
+import com.cjme.motorphsystem.service.LeaveRequestService;
+
 import com.cjme.motorphsystem.util.DBConnection;
 import com.cjme.motorphsystem.util.ReportGenerator;
+
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
  * @author MYS
  */
+
 public final class MainAppFrame extends javax.swing.JFrame {
     private final UserSession session;
     private final EmployeeService employeeService;
     private final SalaryService salaryService;
+    private final LeaveRequestService leaveRequestService;
+    private DefaultTableModel leaveTableModel;
     private final int loggedInEmployeeId;
+    
     /**
      * Creates new form Payroll
      * @param employeeId
      * @param session
      */
+    
     public MainAppFrame(UserSession session) {
        this.session = session;
        this.salaryService = new SalaryService(
         new SalaryDAOImpl()
        );
+       
        this.loggedInEmployeeId = session.getEmployeeId();
        this.employeeService   = new EmployeeService(
         new EmployeeEntityDAOImpl(),
         new EmployeeProfileDAOImpl());
+       
+       
+        this.leaveRequestService = new LeaveRequestService(
+        new LeaveRequestDAOImpl()
+        );
+
+        
+       
         initComponents();
         setLocationRelativeTo(null);
         setupTabs();    
         loadEmployeeInformation();
         
+        initComboBoxes(); 
+        initLeaveTable();       
+        loadAllLeaveRequests(); 
+        
+    }
+    
+    private void initLeaveTable() {
+    
+    leaveTableModel = new DefaultTableModel(
+        new Object[]{"ID", "Emp ID", "Type", "Start Date", "End Date", "Reason", "Status"},
+        0 
+        )
+    {
+        
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+    
+    LMTable.setModel(leaveTableModel); 
+
+    // MouseListener for LMTable to enable selection for Approve/Delete
+    
+    LMTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int selectedRow = LMTable.getSelectedRow();
+            LMApproveButton.setEnabled(selectedRow != -1);
+            LMDeleteButton.setEnabled(selectedRow != -1);
+        }
+    });
+    }
+    
+    private void initComboBoxes() {
+    LMLeaveComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
+        "All",            
+        "Sick",          
+        "Regular",        
+        "Vacation"       
+    }));
+    LMLeaveComboBox.setSelectedIndex(0); // Select "All" by default
+
+   
+    LMStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
+        "All",        
+        "Pending",       
+        "Approved",      
+        "Denied"
+    }));
+    LMStatusComboBox.setSelectedIndex(0); // Select "All" by default
+    }
+    
+    // Method to load ALL leave requests (e.g., on tab open or refresh)
+    private void loadAllLeaveRequests() {
+    leaveTableModel.setRowCount(0); // Clear existing data in the table
+
+    try {
+        List<LeaveRequest> requests = leaveRequestService.getAllLeaveRequests();
+        for (LeaveRequest request : requests) {
+            // Add a row for each LeaveRequest object
+            leaveTableModel.addRow(new Object[]{
+                request.getLeaveRequestId(),
+                request.getEmployeeId(),
+                request.getLeaveType(),
+                request.getLeaveStart().toString(),
+                request.getLeaveEnd().toString(),   
+                request.getReason(),
+                request.getLeaveStatus()
+            });
+        }
+    } catch (SQLException ex) {
+        // Handle database errors
+        JOptionPane.showMessageDialog(this, "Error loading all leave requests: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace(); // For debugging purposes
+    }
+    }  
+    
+    
+    // Method to filter leave requests based on GUI input
+    private void filterLeaveRequests() {
+        
+    System.out.println("DEBUG: filterLeaveRequests() called.");
+    leaveTableModel.setRowCount(0); // Clear table before applying filters
+
+    // Get filter values from GUI components
+    Integer employeeId = null;
+    String employeeIdText = LMEmployeeNameIDTextField.getText().trim();
+    
+    System.out.println("DEBUG: employeeIdText content (trimmed): '" + employeeIdText + "'");
+    System.out.println("DEBUG: employeeIdText isEmpty(): " + employeeIdText.isEmpty());
+    
+    if (!employeeIdText.isEmpty()) { // This condition should prevent parsing if it's empty
+        try {
+            employeeId = Integer.parseInt(employeeIdText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            return; // Stop processing if ID is invalid
+        }
+    }
+    
+    System.out.println("DEBUG: Filter - Employee ID (from GUI): " + employeeId);
+
+    String leaveType = (String) LMLeaveComboBox.getSelectedItem();
+    // Handle "All" option from ComboBox (if present)
+    if (leaveType != null && "All".equalsIgnoreCase(leaveType)) {
+        leaveType = null;
+    }
+    
+     System.out.println("DEBUG: Filter - Leave Type (from GUI): " + leaveType);
+
+    String status = (String) LMStatusComboBox.getSelectedItem();
+    // Handle "All" option from ComboBox (if present)
+    if (status != null && "All".equalsIgnoreCase(status)) {
+        status = null;
+    }
+    
+     System.out.println("DEBUG: Filter - Status (from GUI): " + status);
+
+    // Convert java.util.Date from JDateChooser to java.time.LocalDate
+    
+    LocalDate startDate = null;
+    if (LMStartDateChooser.getDate() != null) {
+        startDate = LMStartDateChooser.getDate().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+    }
+    
+    System.out.println("DEBUG: Filter - Start Date (from GUI): " + startDate);
+    
+    LocalDate endDate = null;
+    if (LMEndDateChooser.getDate() != null) {
+        endDate = LMEndDateChooser.getDate().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+    }
+    
+    System.out.println("DEBUG: Filter - End Date (from GUI): " + endDate);
+
+    try {
+        // Call the search method in your service
+        List<LeaveRequest> requests = leaveRequestService.searchLeaveRequests(employeeId, leaveType, status, startDate, endDate);
+        for (LeaveRequest request : requests) {
+            // Add rows to the table model with filtered data
+            leaveTableModel.addRow(new Object[]{
+                request.getLeaveRequestId(),
+                request.getEmployeeId(),
+                request.getLeaveType(),
+                request.getLeaveStart().toString(),
+                request.getLeaveEnd().toString(),
+                request.getReason(),
+                request.getLeaveStatus()
+            });
+        }
+    } catch (SQLException ex) {
+        // Handle database errors during filtering
+        JOptionPane.showMessageDialog(this, "Error filtering leave requests: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
     }
 
     /**
@@ -1836,7 +2015,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         LMFilterLabel.setText("Filter By:");
 
-        LMEmployeeNameIDTextField.setText("jTextField1");
         LMEmployeeNameIDTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LMEmployeeNameIDTextFieldActionPerformed(evt);
@@ -1858,10 +2036,25 @@ public final class MainAppFrame extends javax.swing.JFrame {
         LMEndDateLabel.setText("End Date:");
 
         LMApplyFiltersButton.setText("Apply FIlters");
+        LMApplyFiltersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LMApplyFiltersButtonActionPerformed(evt);
+            }
+        });
 
         LMClearFiltersButton.setText("Clear Filters");
+        LMClearFiltersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LMClearFiltersButtonActionPerformed(evt);
+            }
+        });
 
         LMRefreshButton.setText("Refresh List");
+        LMRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LMRefreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LMTopPanelLayout = new javax.swing.GroupLayout(LMTopPanel);
         LMTopPanel.setLayout(LMTopPanelLayout);
@@ -1952,11 +2145,21 @@ public final class MainAppFrame extends javax.swing.JFrame {
         LMApproveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         LMApproveButton.setForeground(new java.awt.Color(255, 255, 255));
         LMApproveButton.setText("Approve Selected");
+        LMApproveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LMApproveButtonActionPerformed(evt);
+            }
+        });
 
         LMDeleteButton.setBackground(new java.awt.Color(204, 0, 0));
         LMDeleteButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         LMDeleteButton.setForeground(new java.awt.Color(255, 255, 255));
         LMDeleteButton.setText("Delete Selected");
+        LMDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LMDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LMSubPanelLayout = new javax.swing.GroupLayout(LMSubPanel);
         LMSubPanel.setLayout(LMSubPanelLayout);
@@ -2145,6 +2348,101 @@ public final class MainAppFrame extends javax.swing.JFrame {
         leave.setLocationRelativeTo(this);
         leave.setVisible(true);
     }//GEN-LAST:event_EIApplyForLeaveButtonActionPerformed
+
+    private void LMApplyFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApplyFiltersButtonActionPerformed
+        // TODO add your handling code here:
+         System.out.println("DEBUG: filterLeaveRequests() called.");
+        LMApplyFiltersButton.addActionListener(e -> filterLeaveRequests());
+    }//GEN-LAST:event_LMApplyFiltersButtonActionPerformed
+
+    private void LMClearFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMClearFiltersButtonActionPerformed
+        // TODO add your handling code here:
+        
+        LMClearFiltersButton.addActionListener(e -> {
+        // Clear all filter fields
+        LMEmployeeNameIDTextField.setText("");
+        LMLeaveComboBox.setSelectedIndex(0); 
+        LMStatusComboBox.setSelectedIndex(0);
+        LMStartDateChooser.setDate(null);
+        LMEndDateChooser.setDate(null);
+        loadAllLeaveRequests(); 
+        });
+    }//GEN-LAST:event_LMClearFiltersButtonActionPerformed
+
+    private void LMRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMRefreshButtonActionPerformed
+        // TODO add your handling code here:
+        
+        LMRefreshButton.addActionListener(e -> {
+    
+            LMEmployeeNameIDTextField.setText("");
+            LMLeaveComboBox.setSelectedIndex(0);
+            LMStatusComboBox.setSelectedIndex(0);
+            LMStartDateChooser.setDate(null);
+            LMEndDateChooser.setDate(null);
+            loadAllLeaveRequests();
+        });
+    }//GEN-LAST:event_LMRefreshButtonActionPerformed
+
+    private void LMApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApproveButtonActionPerformed
+        // TODO add your handling code here:
+        
+        LMApproveButton.addActionListener(e -> {
+        int selectedRow = LMTable.getSelectedRow();
+        if (selectedRow != -1) {
+            
+        // Get the Leave Request ID from the first column of the selected rowww
+            int requestId = (int) leaveTableModel.getValueAt(selectedRow, 0); 
+            int confirm = JOptionPane.showConfirmDialog(this,
+                "Are you sure you want to approve leave request ID: " + requestId + "?",
+                "Confirm Approval",
+                JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+             try {
+                leaveRequestService.updateLeaveStatus(requestId, "Approved");
+                JOptionPane.showMessageDialog(this, "Leave request approved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                filterLeaveRequests(); // Refresh table to show updated status
+                } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Database error during approval: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+             } catch (IllegalArgumentException ex) {
+                 JOptionPane.showMessageDialog(this, "Approval failed: " + ex.getMessage(), "Validation Error", JOptionPane.WARNING_MESSAGE);
+                }
+         }
+         } else {
+        JOptionPane.showMessageDialog(this, "Please select a leave request to approve.", "No Selection", JOptionPane.WARNING_MESSAGE);
+    }
+        });
+        
+    }//GEN-LAST:event_LMApproveButtonActionPerformed
+
+    private void LMDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMDeleteButtonActionPerformed
+        // TODO add your handling code here:
+        
+            LMDeleteButton.addActionListener(e -> {
+            int selectedRow = LMTable.getSelectedRow();
+            if (selectedRow != -1) {
+                 int requestId = (int) leaveTableModel.getValueAt(selectedRow, 0); // Assuming ID is column 0
+                 int confirm = JOptionPane.showConfirmDialog(this,
+                "Are you sure you want to delete leave request ID: " + requestId + "? This action cannot be undone.",
+                "Confirm Deletion",
+                JOptionPane.YES_NO_OPTION);
+
+             if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                leaveRequestService.deleteLeaveRequest(requestId);
+                JOptionPane.showMessageDialog(this, "Leave request deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                filterLeaveRequests(); // Refresh table to show changes
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Database error during deletion: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+             }
+            } else {
+         JOptionPane.showMessageDialog(this, "Please select a leave request to delete.", "No Selection", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+    }//GEN-LAST:event_LMDeleteButtonActionPerformed
                                                                                                  
        
 

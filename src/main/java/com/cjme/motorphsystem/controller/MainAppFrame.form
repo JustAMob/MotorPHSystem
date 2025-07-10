@@ -2870,9 +2870,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="LMEmployeeNameIDTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMEmployeeNameIDTextFieldActionPerformed"/>
                   </Events>
@@ -2940,16 +2937,25 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Apply FIlters"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMApplyFiltersButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="LMClearFiltersButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Clear Filters"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMClearFiltersButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="LMRefreshButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Refresh List"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMRefreshButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3063,6 +3069,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Approve Selected"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMApproveButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="LMDeleteButton">
                   <Properties>
@@ -3077,6 +3086,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Delete Selected"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LMDeleteButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

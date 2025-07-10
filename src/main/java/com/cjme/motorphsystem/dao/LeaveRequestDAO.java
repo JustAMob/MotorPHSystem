@@ -6,6 +6,8 @@ package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.LeaveRequest;
 import java.util.List;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 /**
  *
@@ -18,4 +20,6 @@ public interface LeaveRequestDAO {
     void updateLeaveRequest(LeaveRequest request);
     void deleteLeaveRequest(int id);
     public void updateLeaveRequestStatus(int requestId, String capitalize);
+    
+    List<LeaveRequest> searchLeaveRequests(Integer employeeId, String leaveType, String status, LocalDate startDate, LocalDate endDate) throws SQLException;
 }
