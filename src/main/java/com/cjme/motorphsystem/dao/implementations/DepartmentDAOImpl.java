@@ -43,6 +43,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
         return -1;
     }
+    
 
     @Override
     public Department getDepartmentById(int id) {
@@ -123,6 +124,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
     
 
+    @Override
     public Map<String, Integer> getDepartmentNameIdMap() throws SQLException {
     Map<String, Integer> map = new HashMap<>();
     String sql = "SELECT department_id, name FROM Department";

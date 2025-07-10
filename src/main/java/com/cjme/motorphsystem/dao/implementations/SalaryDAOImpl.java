@@ -24,19 +24,47 @@ import java.util.Map;
 public class SalaryDAOImpl implements SalaryDAO {
 
     @Override
-    public void addSalary(Salary salary) throws SQLException {
-        String sql = "INSERT INTO salary (basic_salary, gross_semi_monthly_rate, hourly_rate) VALUES (?, ?, ?)";
+    public int addSalary(Salary salary) throws SQLException {
+    String sql = "INSERT INTO salary (basic_salary, gross_semi_monthly_rate, hourly_rate) VALUES (?, ?, ?)";
+    
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setBigDecimal(1, salary.getBasicSalary());
+        stmt.setBigDecimal(2, salary.getGrossSemiMonthlyRate());
+        stmt.setBigDecimal(3, salary.getHourlyRate());
 
-            stmt.setBigDecimal(1, salary.getBasicSalary());
-            stmt.setBigDecimal(2, salary.getGrossSemiMonthlyRate());
-            stmt.setBigDecimal(3, salary.getHourlyRate());
+        stmt.executeUpdate();
 
-            stmt.executeUpdate();
+        try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Creating salary failed, no ID obtained.");
+            }
         }
     }
+}
+    @Override
+    public int addSalary(Salary salary, Connection conn) throws SQLException {
+    String sql = "INSERT INTO salary (basic_salary, gross_semi_monthly_rate, hourly_rate) VALUES (?, ?, ?)";
+    
+    try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        stmt.setBigDecimal(1, salary.getBasicSalary());
+        stmt.setBigDecimal(2, salary.getGrossSemiMonthlyRate());
+        stmt.setBigDecimal(3, salary.getHourlyRate());
+
+        stmt.executeUpdate();
+
+        try (ResultSet rs = stmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                throw new SQLException("Failed to insert salary, no ID returned.");
+            }
+        }
+    }
+}
 
     @Override
     public Salary getSalaryById(int salaryId) throws SQLException {
@@ -128,6 +156,7 @@ public class SalaryDAOImpl implements SalaryDAO {
             stmt.executeUpdate();
         }
     }
+    @Override
     public Map<String, Integer> getSalaryDescriptionIdMap() throws SQLException {
         Map<String, Integer> map = new HashMap<>();
         String sql = "SELECT salary_id, basic_salary, hourly_rate FROM Salary";

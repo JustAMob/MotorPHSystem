@@ -10,14 +10,18 @@ package com.cjme.motorphsystem.dao;
  */
 
 import com.cjme.motorphsystem.model.Salary;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface SalaryDAO {
-    void addSalary(Salary salary) throws SQLException;
+    int addSalary(Salary salary) throws SQLException;
+    int addSalary(Salary salary, Connection conn) throws SQLException;
     Salary getSalaryById(int salaryId) throws SQLException;
     List<Salary> getAllSalaries() throws SQLException;
     void updateSalary(Salary salary) throws SQLException;
     void deleteSalary(int salaryId) throws SQLException;
+    Map<String, Integer> getSalaryDescriptionIdMap() throws SQLException;
 }
 

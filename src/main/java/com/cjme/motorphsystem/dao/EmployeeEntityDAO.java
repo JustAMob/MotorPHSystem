@@ -11,10 +11,12 @@
 package com.cjme.motorphsystem.dao;
 
 import com.cjme.motorphsystem.model.EmployeeEntity;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface EmployeeEntityDAO {
-    int addEmployee(EmployeeEntity employee);
+    int addEmployee(EmployeeEntity emp, Connection conn) throws SQLException;
     EmployeeEntity getEmployeeById(int id);
     List<EmployeeEntity> getAllEmployees();
     void updateEmployee(EmployeeEntity employee);

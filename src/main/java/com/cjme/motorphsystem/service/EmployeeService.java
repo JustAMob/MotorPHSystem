@@ -4,10 +4,16 @@ package com.cjme.motorphsystem.service;
  *
  * @author JustAMob
  */
+import com.cjme.motorphsystem.dao.AddressDAO;
 import com.cjme.motorphsystem.dao.EmployeeEntityDAO;
 import com.cjme.motorphsystem.dao.EmployeeProfileDAO;
+import com.cjme.motorphsystem.dao.GovernmentIdDAO;
+import com.cjme.motorphsystem.dao.SalaryDAO;
+import com.cjme.motorphsystem.model.Address;
 import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
+import com.cjme.motorphsystem.model.GovernmentID;
+import com.cjme.motorphsystem.model.Salary;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.Connection;
 
@@ -16,35 +22,43 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class EmployeeService {
-private final EmployeeEntityDAO entityDAO;
+    private final EmployeeEntityDAO entityDAO;
     private final EmployeeProfileDAO profileDAO;
+    private final AddressDAO addressDAO;
+    private final GovernmentIdDAO governmentDAO;
+    private final SalaryDAO salaryDAO;
 
-    public EmployeeService(EmployeeEntityDAO entityDAO, EmployeeProfileDAO profileDAO) {
+    public EmployeeService(EmployeeEntityDAO entityDAO, EmployeeProfileDAO profileDAO, AddressDAO addressDAO, GovernmentIdDAO governmentDAO, SalaryDAO salaryDAO) {
         this.entityDAO = entityDAO;
         this.profileDAO = profileDAO;
+        this.addressDAO = addressDAO;
+        this.governmentDAO = governmentDAO;
+        this.salaryDAO = salaryDAO;
     }
 
-    /**
-     * Creates a new employee record using the provided entity data and role for authorization.
-     * All operations occur in a single transaction.
-     *
-     * @param emp  the EmployeeEntity containing FK IDs and basic info
-     * @param role the role of the user performing the operation (for authorization)
-     * @return generated employee ID
-     * @throws SQLException on DB errors or authorization failure
-     */
-    public int createEmployee(EmployeeEntity emp, String role) throws SQLException {
+
+
+
+
+    public int insertNewEmployee(EmployeeEntity employee, Address address, GovernmentID govId, Salary salary) throws SQLException {
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
-                int newId = entityDAO.addEmployee(emp);
+                int addressId = addressDAO.addAddress(address, conn);
+                int govIdId = governmentDAO.addGovernmentId(govId, conn);
+                int salaryId = salaryDAO.addSalary(salary, conn);
+
+                employee.setAddressId(addressId);
+                employee.setGovernmentId(govIdId);
+                employee.setSalaryId(salaryId);
+
+                int empId = entityDAO.addEmployee(employee, conn);
                 conn.commit();
-                return newId;
-            } catch (SQLException | SecurityException ex) {
+                return empId;
+
+            } catch (SQLException ex) {
                 conn.rollback();
                 throw ex;
-            } finally {
-                conn.setAutoCommit(true);
             }
         }
     }

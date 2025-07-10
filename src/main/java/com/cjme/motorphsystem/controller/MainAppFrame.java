@@ -4,11 +4,13 @@
  */
 package com.cjme.motorphsystem.controller;
 
+import com.cjme.motorphsystem.dao.implementations.AddressDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.GovernmentIdDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.LeaveRequestDAOImpl;
+import com.cjme.motorphsystem.model.Address;
 
 import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
@@ -28,6 +30,7 @@ import com.cjme.motorphsystem.util.ReportGenerator;
 
 import java.awt.HeadlessException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
@@ -62,7 +65,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
        this.loggedInEmployeeId = session.getEmployeeId();
        this.employeeService   = new EmployeeService(
         new EmployeeEntityDAOImpl(),
-        new EmployeeProfileDAOImpl());
+        new EmployeeProfileDAOImpl(),
+        new AddressDAOImpl(),
+        new GovernmentIdDAOImpl(),
+        new SalaryDAOImpl()
+       );
        
        
         this.leaveRequestService = new LeaveRequestService(
@@ -828,6 +835,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMEditButton.setText("Edit Employee");
 
         EMAddButton.setText("Add Employee");
+        EMAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EMAddButtonActionPerformed(evt);
+            }
+        });
 
         EMDeleteButton.setBackground(new java.awt.Color(204, 0, 0));
         EMDeleteButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -2532,6 +2544,65 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void EMpositionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMpositionComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EMpositionComboBoxActionPerformed
+
+    private void EMAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMAddButtonActionPerformed
+        // TODO add your handling code here:
+//         try {
+//            // Collect values from fields
+//            String firstName = EMfirstNameTextField.getText();
+//            String lastName = lastNameTextField.getText();
+//            int phoneNumber = Integer.parseInt(phoneNumberTextField.getText());
+//            Date birthday = new java.sql.Date(birthdayChooser.getDate().getTime());
+//
+//            // Combo box selections
+//            int departmentId = ForeignKeyMapperUtil.departmentMap.get(departmentComboBox.getSelectedItem().toString());
+//            int positionId = ForeignKeyMapperUtil.positionMap.get(positionComboBox.getSelectedItem().toString());
+//            int statusId = ForeignKeyMapperUtil.statusMap.get(statusComboBox.getSelectedItem().toString());
+//
+//            // Create models
+//            Address address = new Address();
+//            address.setBuilding(buildingField.getText());
+//            address.setStreet(streetField.getText());
+//            address.setCity(cityField.getText());
+//            address.setProvince(provinceField.getText());
+//            address.setZipcode(zipcodeField.getText());
+//
+//            GovernmentID govId = new GovernmentID();
+//            govId.setSssId(sssField.getText());
+//            govId.setPagibigId(pagibigField.getText());
+//            govId.setPhilhealthId(philhealthField.getText());
+//            govId.setTinId(tinField.getText());
+//
+//            Salary salary = new Salary();
+//            salary.setBasicSalary(new BigDecimal(basicSalaryField.getText()));
+//            salary.setGrossSemiMonthlyRate(new BigDecimal(semiMonthlyField.getText()));
+//            salary.setHourlyRate(new BigDecimal(hourlyRateField.getText()));
+//
+//            EmployeeEntity emp = new EmployeeEntity();
+//            emp.setFirstName(firstName);
+//            emp.setLastName(lastName);
+//            emp.setPhoneNumber(phoneNumber);
+//            emp.setBirthday(birthday);
+//            emp.setDepartmentId(departmentId);
+//            emp.setPositionId(positionId);
+//            emp.setStatusId(statusId);
+//            emp.setSupervisorId(1); // Temporary; adjust based on real logic
+//
+//            // Insert using service layer
+//            int newEmpId = employeeService.insertNewEmployee(emp, address, govId, salary);
+//
+//            if (newEmpId != -1) {
+//                JOptionPane.showMessageDialog(this, "Employee added successfully!");
+//                loadEmployeeList(); // Refresh table
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Failed to add employee.");
+//            }
+//
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+//        }
+    }//GEN-LAST:event_EMAddButtonActionPerformed
 
                                           
                                                                                                  

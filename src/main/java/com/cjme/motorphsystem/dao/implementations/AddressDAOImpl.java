@@ -18,103 +18,89 @@ import java.util.List;
  *
  * @author JustAMob
  */
-public class AddressDAOImpl implements AddressDAO{
-    private final Connection conn;
-
-    public AddressDAOImpl(Connection conn) {
-        this.conn = conn;
-    }
+public class AddressDAOImpl implements AddressDAO {
 
     @Override
-    public int addAddress(Address address) {
-        String sql = "INSERT INTO address (building, street, province, zipcode) VALUES (?, ?, ?, ?)";
+    public int addAddress(Address address, Connection conn) throws SQLException {
+        String sql = "INSERT INTO address (building, street, city, province, zipcode) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, address.getBuilding());
             stmt.setString(2, address.getStreet());
-            stmt.setString(3, address.getProvince());
-            stmt.setString(4, address.getZipcode());
-            stmt.executeUpdate();
+            stmt.setString(3, address.getCity());
+            stmt.setString(4, address.getProvince());
+            stmt.setString(5, address.getZipcode());
 
+            stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 return rs.getInt(1); // return generated address_id
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return -1;
     }
 
     @Override
-    public Address getAddressById(int addressId) {
+    public Address getAddressById(int addressId, Connection conn) throws SQLException {
         String sql = "SELECT * FROM address WHERE address_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, addressId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Address(
-                    rs.getInt("address_id"),
-                    rs.getString("building"),
-                    rs.getString("street"),
-                    rs.getString("city"),
-                    rs.getString("province"),
-                    rs.getString("zipcode")
+                        rs.getInt("address_id"),
+                        rs.getString("building"),
+                        rs.getString("street"),
+                        rs.getString("city"),
+                        rs.getString("province"),
+                        rs.getString("zipcode")
                 );
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
 
     @Override
-    public List<Address> getAllAddresses() {
+    public List<Address> getAllAddresses(Connection conn) throws SQLException {
         List<Address> list = new ArrayList<>();
         String sql = "SELECT * FROM address";
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Address address = new Address(
-                    rs.getInt("address_id"),
-                    rs.getString("building"),
-                    rs.getString("street"),
-                    rs.getString("city"),
-                    rs.getString("province"),
-                    rs.getString("zipcode")
+                        rs.getInt("address_id"),
+                        rs.getString("building"),
+                        rs.getString("street"),
+                        rs.getString("city"),
+                        rs.getString("province"),
+                        rs.getString("zipcode")
                 );
                 list.add(address);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return list;
     }
 
     @Override
-    public boolean updateAddress(Address address) {
-        String sql = "UPDATE address SET building = ?, street = ?, province = ?, zipcode = ? WHERE address_id = ?";
+    public boolean updateAddress(Address address, Connection conn) throws SQLException {
+        String sql = "UPDATE address SET building = ?, street = ?, city = ?, province = ?, zipcode = ? WHERE address_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, address.getBuilding());
             stmt.setString(2, address.getStreet());
-            stmt.setString(3, address.getProvince());
-            stmt.setString(4, address.getZipcode());
-            stmt.setInt(5, address.getAddressId());
+            stmt.setString(3, address.getCity());
+            stmt.setString(4, address.getProvince());
+            stmt.setString(5, address.getZipcode());
+            stmt.setInt(6, address.getAddressId());
+
             return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return false;
     }
 
     @Override
-    public boolean deleteAddress(int addressId) {
+    public boolean deleteAddress(int addressId, Connection conn) throws SQLException {
         String sql = "DELETE FROM address WHERE address_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, addressId);
             return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return false;
     }
 }

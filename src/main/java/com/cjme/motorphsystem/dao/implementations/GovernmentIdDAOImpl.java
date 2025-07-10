@@ -45,6 +45,35 @@ public class GovernmentIdDAOImpl implements GovernmentIdDAO {
 
         return -1;
     }
+    
+    @Override
+    public int addGovernmentId(GovernmentID gov, Connection conn) throws SQLException {
+        String sql = "INSERT INTO government_id_table (employee_id, sss_id, pagibig_id, philhealth_id, tin_id) VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt.setInt(1, gov.getEmployeeId());
+            stmt.setString(2, gov.getSssId());
+            stmt.setString(3, gov.getPagibigId());
+            stmt.setString(4, gov.getPhilhealthId());
+            stmt.setString(5, gov.getTinId());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Inserting government ID failed, no rows affected.");
+            }
+
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                } else {
+                    throw new SQLException("Inserting government ID failed, no ID obtained.");
+                }
+            }
+
+        }
+    }
 
     @Override
     public GovernmentID getGovernmentIdByEmployeeId(int employeeId) {
