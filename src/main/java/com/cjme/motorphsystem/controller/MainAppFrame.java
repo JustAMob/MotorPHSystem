@@ -4,6 +4,7 @@
  */
 package com.cjme.motorphsystem.controller;
 
+import com.cjme.motorphsystem.dao.AddressDAO;
 import com.cjme.motorphsystem.dao.implementations.AddressDAOImpl;
 import com.cjme.motorphsystem.dao.PayrollDAO;
 import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
@@ -55,6 +56,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private final LeaveRequestService leaveRequestService;
     private DefaultTableModel leaveTableModel;
     private final int loggedInEmployeeId;
+    private int selectedEmployeeId = -1;
 
     /**
      * Creates new form Payroll
@@ -834,6 +836,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        EMTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EMTableMouseClicked(evt);
             }
         });
         EMScrollPane.setViewportView(EMTable);
@@ -2464,14 +2471,14 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
     private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
         try {
-            // Get the selected date from JCalendar
+            
             Date selectedDate = (Date) RPayrollDateChooser.getDate();
             
-            // Format the date as needed for your report (e.g., "yyyy-MM" for year-month)
+            // Format the date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
             String payrollPeriod = selectedDate != null ? dateFormat.format(selectedDate) : "";
             
-            // Get department if you have a department field (replace with your actual component)
+            // Get department if you have a department field (
             String department = (String) RPDepartmentComboBox.getSelectedItem(); 
             
             Connection conn = DBConnection.getConnection();
@@ -2626,7 +2633,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             emp.setDepartmentId(departmentId);
             emp.setPositionId(positionId);
             emp.setStatusId(statusId);
-            emp.setSupervisorId(1); // Temporary; adjust based on real logic
+            emp.setSupervisorId(1); 
 
             // Insert using service layer
             int newEmpId = employeeService.insertNewEmployee(emp, address, govId, salary);
@@ -2647,6 +2654,55 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void EMPhilHealthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMPhilHealthTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EMPhilHealthTextFieldActionPerformed
+
+    private void EMTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EMTableMouseClicked
+        if (EMTable.getSelectedRow() != -1) {
+              int row = EMTable.getSelectedRow();
+              selectedEmployeeId = Integer.parseInt(EMTable.getValueAt(row, 0).toString()); // assuming column 0 is employee_id
+
+              try {
+                  // Retrieve data from service
+                  EmployeeEntity entity = employeeService.getEmployeeById(selectedEmployeeId);
+                  EmployeeProfile profile = employeeService.getEmployeeProfile(selectedEmployeeId);
+                  Address address = employeeService.getAddressByEmployeeId(selectedEmployeeId);
+                  GovernmentID govId = employeeService.getGovernmentIdByEmployeeId(selectedEmployeeId);
+                  Salary salary = employeeService.getSalaryByEmployeeId(selectedEmployeeId);
+                  
+                  EMEmployeeIDTextField.setText(String.valueOf(selectedEmployeeId));
+                  
+                  // Set fields
+                  EMFirstNameTextField.setText(entity.getFirstName());
+                  EMLastNameTextField.setText(entity.getLastName());
+                  EMPhoneTextField.setText(String.valueOf(entity.getPhoneNumber()));
+                  EMBirthdayDateChooser.setDate(entity.getBirthday());
+
+                  // Address
+                  EMBuildingTextField.setText(address.getBuilding());
+                  EMStreetTextField.setText(address.getStreet());
+                  EMCityTextField.setText(address.getCity());
+                  EMProvinceTextField.setText(address.getProvince());
+                  EMZIPTextField.setText(address.getZipcode());
+
+                  // ComboBoxes
+                  EMdepartmentComboBox.setSelectedItem(profile.getDepartmentName());
+                  EMpositionComboBox.setSelectedItem(profile.getPositionName());
+                  EMemploymentStatusComboBox.setSelectedItem(profile.getStatusName());
+
+                  // Government IDs
+                  EMSSSTextField.setText(govId.getSssId());
+                  EMPagIBIGTextField.setText(govId.getPagibigId());
+                  EMPhilHealthTextField.setText(govId.getPhilhealthId());
+                  EMTINTextField.setText(govId.getTinId());
+
+                  // Salary
+                  EMBasicSalaryTextField.setText(salary.getBasicSalary().toString());
+
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+                  JOptionPane.showMessageDialog(this, "Failed to load employee data.");
+              }
+          }
+    }//GEN-LAST:event_EMTableMouseClicked
 
                                           
                                                                                                  

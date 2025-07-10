@@ -16,6 +16,6 @@ public interface GovernmentIdDAO {
     int addGovernmentId(GovernmentID govId);
     int addGovernmentId(GovernmentID gov, Connection conn) throws SQLException;
     GovernmentID getGovernmentIdByEmployeeId(int employeeId);
-    void updateGovernmentId(GovernmentID govId);
+    void updateGovernmentId(GovernmentID govId, Connection conn) throws SQLException;
     void deleteGovernmentId(int governmentId);
 }

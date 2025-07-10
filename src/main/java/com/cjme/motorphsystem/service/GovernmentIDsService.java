@@ -6,6 +6,8 @@ package com.cjme.motorphsystem.service;
 
 import com.cjme.motorphsystem.dao.GovernmentIdDAO;
 import com.cjme.motorphsystem.model.GovernmentID;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -29,8 +31,8 @@ public class GovernmentIDsService {
     }
 
     // Update existing record
-    public void updateGovernmentId(GovernmentID gov) {
-        governmentIdDAO.updateGovernmentId(gov);
+    public void updateGovernmentId(GovernmentID gov, Connection conn) throws SQLException {
+        governmentIdDAO.updateGovernmentId(gov, conn);
     }
 
     // Delete record

@@ -6,6 +6,7 @@ package com.cjme.motorphsystem.dao.implementations;
 
 import com.cjme.motorphsystem.dao.AddressDAO;
 import com.cjme.motorphsystem.model.Address;
+import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,15 @@ import java.util.List;
  * @author JustAMob
  */
 public class AddressDAOImpl implements AddressDAO {
+    private Connection conn;
 
+    public AddressDAOImpl() {
+    }
+
+    public AddressDAOImpl(Connection conn) {
+        this.conn = conn;
+    }
+    
     @Override
     public int addAddress(Address address, Connection conn) throws SQLException {
         String sql = "INSERT INTO address (building, street, city, province, zipcode) VALUES (?, ?, ?, ?, ?)";
@@ -43,6 +52,29 @@ public class AddressDAOImpl implements AddressDAO {
     public Address getAddressById(int addressId, Connection conn) throws SQLException {
         String sql = "SELECT * FROM address WHERE address_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, addressId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Address(
+                        rs.getInt("address_id"),
+                        rs.getString("building"),
+                        rs.getString("street"),
+                        rs.getString("city"),
+                        rs.getString("province"),
+                        rs.getString("zipcode")
+                );
+            }
+        }
+        return null;
+    }
+
+    
+    @Override
+    public Address getAddressById(int addressId) throws SQLException {
+        String sql = "SELECT * FROM address WHERE address_id = ?";
+        try (Connection connection = this.conn != null ? this.conn : DBConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+
             stmt.setInt(1, addressId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {

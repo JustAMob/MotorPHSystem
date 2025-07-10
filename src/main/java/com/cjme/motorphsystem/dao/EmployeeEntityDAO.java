@@ -19,7 +19,7 @@ public interface EmployeeEntityDAO {
     int addEmployee(EmployeeEntity emp, Connection conn) throws SQLException;
     EmployeeEntity getEmployeeById(int id);
     List<EmployeeEntity> getAllEmployees();
-    void updateEmployee(EmployeeEntity employee);
+    void updateEmployee(EmployeeEntity employee, Connection conn) throws SQLException; 
     void deleteEmployee(int id);
 }
 

@@ -70,17 +70,18 @@ public class EmployeeService {
      * @param role the role of the user performing the operation
      * @throws SQLException on DB errors or authorization failure
      */
-    public void updateEmployee(EmployeeEntity emp, String role) throws SQLException {
+    public void updateEmployee(EmployeeEntity emp, Address address, GovernmentID govId, Salary salary, String role) throws SQLException {
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
-                entityDAO.updateEmployee(emp);
+                entityDAO.updateEmployee(emp, conn);
+                addressDAO.updateAddress(address, conn);
+                governmentDAO.updateGovernmentId(govId, conn); 
+                salaryDAO.updateSalary(salary, conn);          
                 conn.commit();
             } catch (SQLException | SecurityException ex) {
                 conn.rollback();
                 throw ex;
-            } finally {
-                conn.setAutoCommit(true);
             }
         }
     }
@@ -130,5 +131,28 @@ public class EmployeeService {
      */
     public List<EmployeeProfile> getAllEmployeeProfiles() throws SQLException {
         return profileDAO.getAllEmployees();
+    }
+    public Address getAddressByEmployeeId(int employeeId) throws SQLException {
+        EmployeeEntity emp = entityDAO.getEmployeeById(employeeId);
+        if (emp != null) {
+            return addressDAO.getAddressById(emp.getAddressId());
+        }
+        return null;
+    }
+
+    public GovernmentID getGovernmentIdByEmployeeId(int employeeId) throws SQLException {
+        EmployeeEntity emp = entityDAO.getEmployeeById(employeeId);
+        if (emp != null) {
+            return governmentDAO.getGovernmentIdByEmployeeId(employeeId);
+        }
+        return null;
+    }
+
+    public Salary getSalaryByEmployeeId(int employeeId) throws SQLException {
+        EmployeeEntity emp = entityDAO.getEmployeeById(employeeId);
+        if (emp != null) {
+            return salaryDAO.getSalaryById(emp.getSalaryId());
+        }
+        return null;
     }
 }

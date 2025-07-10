@@ -6,6 +6,7 @@ package com.cjme.motorphsystem.service;
 
 import com.cjme.motorphsystem.dao.SalaryDAO;
 import com.cjme.motorphsystem.model.Salary;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
@@ -45,9 +46,9 @@ public class SalaryService {
         }
     }
 
-    public void updateSalary(Salary salary) {
+    public void updateSalary(Salary salary, Connection conn) {
         try {
-            salaryDAO.updateSalary(salary);
+            salaryDAO.updateSalary(salary, conn);
         } catch (SQLException e) {
         }
     }

@@ -130,12 +130,10 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public void updateSalary(Salary salary) throws SQLException {
-        String sql = "UPDATE Salary SET basic_salary = ?, gross_semi_monthly_rate = ?, hourly_rate = ? WHERE salary_id = ?";
+    public void updateSalary(Salary salary, Connection conn) throws SQLException {
+        String sql = "UPDATE salary SET basic_salary = ?, gross_semi_monthly_rate = ?, hourly_rate = ? WHERE salary_id = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setBigDecimal(1, salary.getBasicSalary());
             stmt.setBigDecimal(2, salary.getGrossSemiMonthlyRate());
             stmt.setBigDecimal(3, salary.getHourlyRate());

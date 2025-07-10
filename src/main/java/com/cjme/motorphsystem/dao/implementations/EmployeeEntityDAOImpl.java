@@ -141,28 +141,26 @@ public class EmployeeEntityDAOImpl implements EmployeeEntityDAO {
     }
 
     @Override
-    public void updateEmployee(EmployeeEntity emp) {
-        String sql = "UPDATE employee SET first_name = ?, last_name = ?, address_id = ?, phone_number = ?, government_id = ?, department_id = ?, salary_id = ?, supervisor_id = ?, status_id = ?, position_id = ?, birthday = ? WHERE employee_id = ?";
+    public void updateEmployee(EmployeeEntity emp, Connection conn) throws SQLException {
+        String sql = "UPDATE employee SET first_name = ?, last_name = ?, phone_number = ?, birthday = ?, " +
+                     "department_id = ?, status_id = ?, position_id = ?, address_id = ?, government_id = ?, salary_id = ?, supervisor_id = ? " +
+                     "WHERE employee_id = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, emp.getFirstName());
             stmt.setString(2, emp.getLastName());
-            stmt.setInt(3, emp.getAddressId());
-            stmt.setInt(4, emp.getPhoneNumber());
-            stmt.setInt(5, emp.getGovernmentId());
-            stmt.setInt(6, emp.getDepartmentId());
-            stmt.setInt(7, emp.getSalaryId());
-            stmt.setInt(8, emp.getSupervisorId());
-            stmt.setInt(9, emp.getStatusId());
-            stmt.setInt(10, emp.getPositionId());
-            stmt.setDate(11, emp.getBirthday());
+            stmt.setInt(3, emp.getPhoneNumber());
+            stmt.setDate(4, emp.getBirthday());
+            stmt.setInt(5, emp.getDepartmentId());
+            stmt.setInt(6, emp.getStatusId());
+            stmt.setInt(7, emp.getPositionId());
+            stmt.setInt(8, emp.getAddressId());
+            stmt.setInt(9, emp.getGovernmentId());
+            stmt.setInt(10, emp.getSalaryId());
+            stmt.setInt(11, emp.getSupervisorId());
             stmt.setInt(12, emp.getEmployeeId());
 
             stmt.executeUpdate();
-
-        } catch (SQLException e) {
         }
     }
 

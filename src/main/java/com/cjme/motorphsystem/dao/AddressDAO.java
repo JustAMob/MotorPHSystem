@@ -19,4 +19,5 @@ public interface AddressDAO {
     List<Address> getAllAddresses(Connection conn) throws SQLException;
     boolean updateAddress(Address address, Connection conn) throws SQLException;
     boolean deleteAddress(int addressId, Connection conn) throws SQLException;
+    Address getAddressById(int addressId) throws SQLException;
 }

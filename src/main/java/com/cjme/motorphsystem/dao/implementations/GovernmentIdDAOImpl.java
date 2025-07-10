@@ -104,12 +104,10 @@ public class GovernmentIdDAOImpl implements GovernmentIdDAO {
     }
 
     @Override
-    public void updateGovernmentId(GovernmentID gov) {
+    public void updateGovernmentId(GovernmentID gov, Connection conn) throws SQLException {
         String sql = "UPDATE government_id_table SET sss_id = ?, pagibig_id = ?, philhealth_id = ?, tin_id = ? WHERE government_id = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, gov.getSssId());
             stmt.setString(2, gov.getPagibigId());
             stmt.setString(3, gov.getPhilhealthId());
@@ -117,9 +115,6 @@ public class GovernmentIdDAOImpl implements GovernmentIdDAO {
             stmt.setInt(5, gov.getGovernmentId());
 
             stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
