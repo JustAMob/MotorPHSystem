@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -155,6 +157,76 @@ public class LeaveRequestDAOImpl implements LeaveRequestDAO {
 
         } catch (SQLException e) {
         }
+    }
+    
+    @Override 
+    public List<LeaveRequest> searchLeaveRequests(Integer employeeId, String leaveType, String status, LocalDate startDate, LocalDate endDate) throws SQLException {
+        List<LeaveRequest> list = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT * FROM leave_request WHERE 1=1");
+
+       
+        if (employeeId != null && employeeId > 0) {
+            sql.append(" AND employee_id = ?");
+        }
+        if (leaveType != null && !leaveType.isEmpty() && !"All".equalsIgnoreCase(leaveType)) {
+            sql.append(" AND leave_type = ?");
+        }
+        if (status != null && !status.isEmpty() && !"All".equalsIgnoreCase(status)) {
+            sql.append(" AND leave_status = ?");
+        }
+        if (startDate != null) {
+            sql.append(" AND leave_start >= ?");
+        }
+        if (endDate != null) {
+            sql.append(" AND leave_end <= ?");
+        }
+
+        sql.append(" ORDER BY leave_start DESC, employee_id ASC");
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+
+            int paramIndex = 1;
+            if (employeeId != null && employeeId > 0) {
+                stmt.setInt(paramIndex++, employeeId);
+            }
+            if (leaveType != null && !leaveType.isEmpty() && !"All".equalsIgnoreCase(leaveType)) {
+                stmt.setString(paramIndex++, leaveType);
+            }
+            if (status != null && !status.isEmpty() && !"All".equalsIgnoreCase(status)) {
+                stmt.setString(paramIndex++, status);
+            }
+            if (startDate != null) {
+                stmt.setDate(paramIndex++, Date.valueOf(startDate));
+            }
+            if (endDate != null) {
+                stmt.setDate(paramIndex++, Date.valueOf(endDate));
+            }
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapResultSetToLeaveRequest(rs));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Database error during leave request search: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+        return list;
+    }
+    
+    private LeaveRequest mapResultSetToLeaveRequest(ResultSet rs) throws SQLException {
+        LeaveRequest request = new LeaveRequest();
+        request.setLeaveRequestId(rs.getInt("leave_request_id"));
+        request.setEmployeeId(rs.getInt("employee_id"));
+        request.setLeaveType(rs.getString("leave_type"));
+        request.setLeaveStart(rs.getDate("leave_start"));
+        request.setLeaveEnd(rs.getDate("leave_end"));
+        request.setReason(rs.getString("reason"));
+        request.setLeaveStatus(rs.getString("leave_status"));
+        return request;
     }
 
    
