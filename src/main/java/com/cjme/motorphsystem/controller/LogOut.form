@@ -94,11 +94,17 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Yes, Log Out"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="YesLogOutButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="NoGoBackButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="No, Go Back"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NoGoBackButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

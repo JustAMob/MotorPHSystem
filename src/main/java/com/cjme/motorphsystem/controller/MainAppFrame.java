@@ -52,7 +52,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         loadEmployeeInformation();
         
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -2014,6 +2014,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         SLogOutButton.setForeground(new java.awt.Color(255, 255, 255));
         SLogOutButton.setText("Log Out");
         SLogOutButton.setAlignmentY(0.0F);
+        SLogOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SLogOutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SettingsSubPanelLayout = new javax.swing.GroupLayout(SettingsSubPanel);
         SettingsSubPanel.setLayout(SettingsSubPanelLayout);
@@ -2141,15 +2146,23 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
     private void EIApplyForLeaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIApplyForLeaveButtonActionPerformed
         // TODO add your handling code here:
-         LeaveDialog leave = new LeaveDialog(this,true); 
+        LeaveDialog leave = new LeaveDialog(this,true); 
         leave.setLocationRelativeTo(this);
         leave.setVisible(true);
     }//GEN-LAST:event_EIApplyForLeaveButtonActionPerformed
+
+    private void SLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SLogOutButtonActionPerformed
+        // TODO add your handling code here:
+        LogOut logout = new LogOut(this,true,session); 
+        logout.setLocationRelativeTo(this);
+        logout.setVisible(true);
+    }//GEN-LAST:event_SLogOutButtonActionPerformed
                                                                                                  
        
 
     public void setupTabs() {
     // Add only the tabs the user has access to
+    System.out.println("Session: " + session);
     if (session.hasAccess("employeeInfo", "view")) {
         MainPanel.addTab("Employee Information", EmployeeInfoPanel); 
     }
@@ -2171,7 +2184,19 @@ public final class MainAppFrame extends javax.swing.JFrame {
     if (session.hasAccess("employeeInfo", "view")) {
         MainPanel.addTab("Settings", SettingsPanel); 
     }
-
+    
+    //Debugging
+    System.out.println("Access to employeeInfo:view → " + session.hasAccess("employeeInfo", "view"));
+    System.out.println("Access to employee:view → " + session.hasAccess("employee", "view"));
+    System.out.println("Access to payroll:view → " + session.hasAccess("payroll", "view"));
+    System.out.println("Access to attendance:view → " + session.hasAccess("attendance", "view"));
+    System.out.println("Access to leave:view → " + session.hasAccess("leave", "view"));
+    System.out.println("Access to reports:view → " + session.hasAccess("reports", "view"));
+    System.out.println("Access to settings:view → " + session.hasAccess("settings", "view"));
+    
+    
+    
+    
     // Refresh UI
     MainPanel.revalidate();
     MainPanel.repaint();

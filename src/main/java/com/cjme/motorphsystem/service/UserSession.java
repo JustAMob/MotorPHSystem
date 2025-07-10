@@ -42,6 +42,11 @@ public class UserSession {
     public static void clearSession() {
         currentSession = null;
     }
+    
+    @Override
+    public String toString() {
+        return "UserSession{employeeId=" + employeeId + ", roles=" + accessPermissions + "}";
+    }
 
 }
 
