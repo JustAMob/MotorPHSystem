@@ -26,12 +26,14 @@ import com.cjme.motorphsystem.util.DBConnection;
 import com.cjme.motorphsystem.util.ReportGenerator;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
@@ -45,7 +47,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private final LeaveRequestService leaveRequestService;
     private DefaultTableModel leaveTableModel;
     private final int loggedInEmployeeId;
-    
+
     /**
      * Creates new form Payroll
      * @param employeeId
@@ -241,7 +243,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MainPanel = new javax.swing.JTabbedPane();
         EmployeeInfoPanel = new javax.swing.JPanel();
         EIWelcomePanel = new javax.swing.JPanel();
         EIWelcomeLabel = new javax.swing.JLabel();
@@ -465,15 +466,12 @@ public final class MainAppFrame extends javax.swing.JFrame {
         SettingsPanel = new javax.swing.JPanel();
         SettingsSubPanel = new javax.swing.JPanel();
         SLogOutButton = new javax.swing.JButton();
+        MainPanel = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 630));
         setMinimumSize(new java.awt.Dimension(1000, 630));
         setResizable(false);
-
-        MainPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
-        MainPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
-        MainPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
         EmployeeInfoPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         EmployeeInfoPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
@@ -760,8 +758,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        MainPanel.addTab("Employee Information", EmployeeInfoPanel);
 
         EmployeeManagementPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         EmployeeManagementPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
@@ -1206,8 +1202,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MainPanel.addTab("Employee Management", EmployeeManagementPanel);
-
         AttendancePanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         AttendancePanel.setMinimumSize(new java.awt.Dimension(1000, 630));
         AttendancePanel.setPreferredSize(new java.awt.Dimension(1000, 630));
@@ -1350,8 +1344,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(AButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
-
-        MainPanel.addTab("Attendance", AttendancePanel);
 
         PayrollPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         PayrollPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
@@ -1741,8 +1733,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MainPanel.addTab("Payroll", PayrollPanel);
-
         ReportsPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         ReportsPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
         ReportsPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
@@ -2011,8 +2001,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MainPanel.addTab("Reports", ReportsPanel);
-
         LMFilterLabel.setText("Filter By:");
 
         LMEmployeeNameIDTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -2206,8 +2194,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(LMSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        MainPanel.addTab("Leave Management", LeaveManagementPanel);
-
         SettingsPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
         SettingsPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
         SettingsPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
@@ -2251,33 +2237,188 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addComponent(SettingsSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        MainPanel.addTab("Setttings", SettingsPanel);
+        MainPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
+        MainPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
+        MainPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(EmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(EmployeeManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(AttendancePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(PayrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(ReportsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(LeaveManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(SettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(EmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(EmployeeManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(AttendancePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(PayrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(ReportsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(LeaveManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(SettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PCalculatePayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PCalculatePayrollButtonActionPerformed
+    private void LMDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMDeleteButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PCalculatePayrollButtonActionPerformed
 
-    private void PLoadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLoadDataButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PLoadDataButtonActionPerformed
+        LMDeleteButton.addActionListener(e -> {
+            int selectedRow = LMTable.getSelectedRow();
+            if (selectedRow != -1) {
+                int requestId = (int) leaveTableModel.getValueAt(selectedRow, 0); // Assuming ID is column 0
+                int confirm = JOptionPane.showConfirmDialog(this,
+                    "Are you sure you want to delete leave request ID: " + requestId + "? This action cannot be undone.",
+                    "Confirm Deletion",
+                    JOptionPane.YES_NO_OPTION);
 
-    private void EMEmployeeSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMEmployeeSearchTextFieldActionPerformed
+                if (confirm == JOptionPane.YES_OPTION) {
+                    try {
+                        leaveRequestService.deleteLeaveRequest(requestId);
+                        JOptionPane.showMessageDialog(this, "Leave request deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        filterLeaveRequests(); // Refresh table to show changes
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(this, "Database error during deletion: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        ex.printStackTrace();
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select a leave request to delete.", "No Selection", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+    }//GEN-LAST:event_LMDeleteButtonActionPerformed
+
+    private void LMApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApproveButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMEmployeeSearchTextFieldActionPerformed
+
+        LMApproveButton.addActionListener(e -> {
+            int selectedRow = LMTable.getSelectedRow();
+            if (selectedRow != -1) {
+
+                // Get the Leave Request ID from the first column of the selected rowww
+                int requestId = (int) leaveTableModel.getValueAt(selectedRow, 0);
+                int confirm = JOptionPane.showConfirmDialog(this,
+                    "Are you sure you want to approve leave request ID: " + requestId + "?",
+                    "Confirm Approval",
+                    JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    try {
+                        leaveRequestService.updateLeaveStatus(requestId, "Approved");
+                        JOptionPane.showMessageDialog(this, "Leave request approved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        filterLeaveRequests(); // Refresh table to show updated status
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(this, "Database error during approval: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        ex.printStackTrace();
+                    } catch (IllegalArgumentException ex) {
+                        JOptionPane.showMessageDialog(this, "Approval failed: " + ex.getMessage(), "Validation Error", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select a leave request to approve.", "No Selection", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+    }//GEN-LAST:event_LMApproveButtonActionPerformed
+
+    private void LMRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMRefreshButtonActionPerformed
+        // TODO add your handling code here:
+
+        LMEmployeeNameIDTextField.setText("");
+        LMLeaveComboBox.setSelectedIndex(0);
+        LMStatusComboBox.setSelectedIndex(0);
+        LMStartDateChooser.setDate(null);
+        LMEndDateChooser.setDate(null);
+        loadAllLeaveRequests();
+    }//GEN-LAST:event_LMRefreshButtonActionPerformed
+
+    private void LMClearFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMClearFiltersButtonActionPerformed
+        // TODO add your handling code here:
+
+        LMClearFiltersButton.addActionListener(e -> {
+            // Clear all filter fields
+            LMEmployeeNameIDTextField.setText("");
+            LMLeaveComboBox.setSelectedIndex(0);
+            LMStatusComboBox.setSelectedIndex(0);
+            LMStartDateChooser.setDate(null);
+            LMEndDateChooser.setDate(null);
+            loadAllLeaveRequests();
+        });
+    }//GEN-LAST:event_LMClearFiltersButtonActionPerformed
+
+    private void LMApplyFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApplyFiltersButtonActionPerformed
+        // TODO add your handling code here:
+        System.out.println("DEBUG: filterLeaveRequests() called.");
+        LMApplyFiltersButton.addActionListener(e -> filterLeaveRequests());
+    }//GEN-LAST:event_LMApplyFiltersButtonActionPerformed
+
+    private void LMEmployeeNameIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMEmployeeNameIDTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LMEmployeeNameIDTextFieldActionPerformed
 
     private void RAExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAExportPDFButtonActionPerformed
         // TODO add your handling code here:
@@ -2287,13 +2428,41 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RPPrintReportButtonActionPerformed
 
+    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection conn = DBConnection.getConnection();
+            new ReportGenerator(conn).generatePayrollReport();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_RPExportPDFButtonActionPerformed
+
+    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGeneratePDFButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection conn = DBConnection.getConnection();
+            new ReportGenerator(conn).generatePayslipReport();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
+
+    private void PCalculatePayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PCalculatePayrollButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PCalculatePayrollButtonActionPerformed
+
+    private void PWithholdingTaxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWithholdingTaxTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PWithholdingTaxTextFieldActionPerformed
+
+    private void PLoadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLoadDataButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PLoadDataButtonActionPerformed
+
     private void ARefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARefreshButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ARefreshButtonActionPerformed
-
-    private void EIEmployeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIEmployeeIDTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EIEmployeeIDTextFieldActionPerformed
 
     private void EMStreetTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMStreetTextFieldActionPerformed
         // TODO add your handling code here:
@@ -2319,179 +2488,78 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EMFirstNameTextFieldActionPerformed
 
-    private void PWithholdingTaxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWithholdingTaxTextFieldActionPerformed
+    private void EMEmployeeSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMEmployeeSearchTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PWithholdingTaxTextFieldActionPerformed
+    }//GEN-LAST:event_EMEmployeeSearchTextFieldActionPerformed
 
-    private void LMEmployeeNameIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMEmployeeNameIDTextFieldActionPerformed
+    private void SLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SLogOutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LMEmployeeNameIDTextFieldActionPerformed
-
-    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGeneratePDFButtonActionPerformed
-        // TODO add your handling code here:
-        try {
-            Connection conn = DBConnection.getConnection();
-            new ReportGenerator(conn).generatePayslipReport();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
-
-    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
-        // TODO add your handling code here:
-        try {
-            Connection conn = DBConnection.getConnection();
-            new ReportGenerator(conn).generatePayrollReport();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_RPExportPDFButtonActionPerformed
+        LogOut logout = new LogOut(this,true,session);
+        logout.setVisible(true);
+        logout.setLocationRelativeTo(null);
+    }//GEN-LAST:event_SLogOutButtonActionPerformed
 
     private void EIApplyForLeaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIApplyForLeaveButtonActionPerformed
         // TODO add your handling code here:
-        LeaveDialog leave = new LeaveDialog(this,true); 
+        LeaveDialog leave = new LeaveDialog(this,true);
         leave.setLocationRelativeTo(this);
         leave.setVisible(true);
     }//GEN-LAST:event_EIApplyForLeaveButtonActionPerformed
 
-    private void LMApplyFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApplyFiltersButtonActionPerformed
+    private void EIEmployeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIEmployeeIDTextFieldActionPerformed
         // TODO add your handling code here:
-         System.out.println("DEBUG: filterLeaveRequests() called.");
-        LMApplyFiltersButton.addActionListener(e -> filterLeaveRequests());
-    }//GEN-LAST:event_LMApplyFiltersButtonActionPerformed
+    }//GEN-LAST:event_EIEmployeeIDTextFieldActionPerformed
 
-    private void LMClearFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMClearFiltersButtonActionPerformed
-        // TODO add your handling code here:
-        
-        LMClearFiltersButton.addActionListener(e -> {
-        // Clear all filter fields
-        LMEmployeeNameIDTextField.setText("");
-        LMLeaveComboBox.setSelectedIndex(0); 
-        LMStatusComboBox.setSelectedIndex(0);
-        LMStartDateChooser.setDate(null);
-        LMEndDateChooser.setDate(null);
-        loadAllLeaveRequests(); 
-        });
-    }//GEN-LAST:event_LMClearFiltersButtonActionPerformed
-
-    private void LMRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMRefreshButtonActionPerformed
-        // TODO add your handling code here:
-        
-        LMRefreshButton.addActionListener(e -> {
-    
-            LMEmployeeNameIDTextField.setText("");
-            LMLeaveComboBox.setSelectedIndex(0);
-            LMStatusComboBox.setSelectedIndex(0);
-            LMStartDateChooser.setDate(null);
-            LMEndDateChooser.setDate(null);
-            loadAllLeaveRequests();
-        });
-    }//GEN-LAST:event_LMRefreshButtonActionPerformed
-
-    private void LMApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApproveButtonActionPerformed
-        // TODO add your handling code here:
-        
-        LMApproveButton.addActionListener(e -> {
-        int selectedRow = LMTable.getSelectedRow();
-        if (selectedRow != -1) {
-            
-        // Get the Leave Request ID from the first column of the selected rowww
-            int requestId = (int) leaveTableModel.getValueAt(selectedRow, 0); 
-            int confirm = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to approve leave request ID: " + requestId + "?",
-                "Confirm Approval",
-                JOptionPane.YES_NO_OPTION);
-
-            if (confirm == JOptionPane.YES_OPTION) {
-             try {
-                leaveRequestService.updateLeaveStatus(requestId, "Approved");
-                JOptionPane.showMessageDialog(this, "Leave request approved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                filterLeaveRequests(); // Refresh table to show updated status
-                } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Database error during approval: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                ex.printStackTrace();
-             } catch (IllegalArgumentException ex) {
-                 JOptionPane.showMessageDialog(this, "Approval failed: " + ex.getMessage(), "Validation Error", JOptionPane.WARNING_MESSAGE);
-                }
-         }
-         } else {
-        JOptionPane.showMessageDialog(this, "Please select a leave request to approve.", "No Selection", JOptionPane.WARNING_MESSAGE);
-    }
-        });
-        
-    }//GEN-LAST:event_LMApproveButtonActionPerformed
-
-    private void LMDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMDeleteButtonActionPerformed
-        // TODO add your handling code here:
-        
-            LMDeleteButton.addActionListener(e -> {
-            int selectedRow = LMTable.getSelectedRow();
-            if (selectedRow != -1) {
-                 int requestId = (int) leaveTableModel.getValueAt(selectedRow, 0); // Assuming ID is column 0
-                 int confirm = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to delete leave request ID: " + requestId + "? This action cannot be undone.",
-                "Confirm Deletion",
-                JOptionPane.YES_NO_OPTION);
-
-             if (confirm == JOptionPane.YES_OPTION) {
-            try {
-                leaveRequestService.deleteLeaveRequest(requestId);
-                JOptionPane.showMessageDialog(this, "Leave request deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                filterLeaveRequests(); // Refresh table to show changes
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Database error during deletion: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                ex.printStackTrace();
-            }
-             }
-            } else {
-         JOptionPane.showMessageDialog(this, "Please select a leave request to delete.", "No Selection", JOptionPane.WARNING_MESSAGE);
-            }
-        });
-    }//GEN-LAST:event_LMDeleteButtonActionPerformed
+                                          
                                                                                                  
        
 
-    public void setupTabs() {
-    // Add only the tabs the user has access to
-    System.out.println("Session: " + session);
-    if (session.hasAccess("employeeInfo", "view")) {
-        MainPanel.addTab("Employee Information", EmployeeInfoPanel); 
+   public void setupTabs() {
+        System.out.println("Setting up tabs...");
+        EmployeeManagementPanel.setVisible(false);
+        AttendancePanel.setVisible(false);
+        LeaveManagementPanel.setVisible(false);
+        ReportsPanel.setVisible(false);
+
+        if (session.hasAccess("employeeInfo", "view")) {
+            System.out.println("✓ Access: Employee Info");
+            MainPanel.addTab("Employee Information", EmployeeInfoPanel);
+        }
+
+        if (session.hasAccess("employee", "view")) {
+            System.out.println("✓ Access: Employee Management");
+            MainPanel.addTab("Employee Management", EmployeeManagementPanel);
+        }
+
+        if (session.hasAccess("attendance", "view")) {
+            System.out.println("✓ Access: Attendance");
+            MainPanel.addTab("Attendance", AttendancePanel);
+        }
+
+        if (session.hasAccess("leave", "view")) {
+            System.out.println("✓ Access: Leave Management");
+            MainPanel.addTab("Leave Management", LeaveManagementPanel);
+        }
+
+        if (session.hasAccess("payroll", "view")) {
+            System.out.println("✓ Access: Payroll");
+            MainPanel.addTab("Payroll", PayrollPanel);
+        }
+
+        if (session.hasAccess("reports", "view")) {
+            System.out.println("✓ Access: Reports");
+            MainPanel.addTab("Reports", ReportsPanel);
+        }
+
+        if (session.hasAccess("settings", "view")) {
+            System.out.println("✓ Access: Settings");
+            MainPanel.addTab("Settings", SettingsPanel);
+        }
+        MainPanel.addTab("Settings", SettingsPanel);
+        System.out.println("Total tabs: " + MainPanel.getTabCount());
+        MainPanel.revalidate();
+        MainPanel.repaint();
     }
-    if (session.hasAccess("employee", "view")) {
-        MainPanel.addTab("Employee Management", EmployeeManagementPanel);
-    }
-    if (session.hasAccess("attendance", "view")) {
-        MainPanel.addTab("Attendance", AttendancePanel);
-    }
-    if (session.hasAccess("attendance", "view")) {
-        MainPanel.addTab("Leave Management", LeaveManagementPanel);
-    }
-    if (session.hasAccess("payroll", "view")) {
-        MainPanel.addTab("Payroll", PayrollPanel);
-    }
-    if (session.hasAccess("reports", "view")) {
-        MainPanel.addTab("Reports", ReportsPanel);
-    }
-    if (session.hasAccess("employeeInfo", "view")) {
-        MainPanel.addTab("Settings", SettingsPanel); 
-    }
-    
-    //Debugging
-    System.out.println("Access to employeeInfo:view → " + session.hasAccess("employeeInfo", "view"));
-    System.out.println("Access to employee:view → " + session.hasAccess("employee", "view"));
-    System.out.println("Access to payroll:view → " + session.hasAccess("payroll", "view"));
-    System.out.println("Access to attendance:view → " + session.hasAccess("attendance", "view"));
-    System.out.println("Access to leave:view → " + session.hasAccess("leave", "view"));
-    System.out.println("Access to reports:view → " + session.hasAccess("reports", "view"));
-    System.out.println("Access to settings:view → " + session.hasAccess("settings", "view"));
-    
-    
-    
-    
-    // Refresh UI
-    MainPanel.revalidate();
-    MainPanel.repaint();
-}
      
     public void loadEmployeeInformation(){
         try {
