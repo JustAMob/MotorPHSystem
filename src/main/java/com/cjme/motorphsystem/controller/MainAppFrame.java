@@ -976,6 +976,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMSaveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         EMSaveButton.setForeground(new java.awt.Color(0, 0, 102));
         EMSaveButton.setText("Save Details");
+        EMSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EMSaveButtonActionPerformed(evt);
+            }
+        });
 
         EMBuildingLabel.setText("Building:");
 
@@ -2703,6 +2708,66 @@ public final class MainAppFrame extends javax.swing.JFrame {
               }
           }
     }//GEN-LAST:event_EMTableMouseClicked
+
+    private void EMSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMSaveButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (selectedEmployeeId == -1) {
+                JOptionPane.showMessageDialog(this, "No employee selected.");
+                return;
+            }
+
+            // Retrieve updated values from the form
+            String firstName = EMFirstNameTextField.getText();
+            String lastName = EMLastNameTextField.getText();
+            int phoneNumber = Integer.parseInt(EMPhoneTextField.getText());
+            Date birthday = new java.sql.Date(EMBirthdayDateChooser.getDate().getTime());
+
+            // Combo box values → IDs
+            int departmentId = ForeignKeyMapperUtil.departmentMap.get(EMdepartmentComboBox.getSelectedItem().toString());
+            int positionId = ForeignKeyMapperUtil.positionMap.get(EMpositionComboBox.getSelectedItem().toString());
+            int statusId = ForeignKeyMapperUtil.statusMap.get(EMemploymentStatusComboBox.getSelectedItem().toString());
+
+            // Create updated entity
+            EmployeeEntity emp = employeeService.getEmployeeById(selectedEmployeeId);
+            emp.setFirstName(firstName);
+            emp.setLastName(lastName);
+            emp.setPhoneNumber(phoneNumber);
+            emp.setBirthday(birthday);
+            emp.setDepartmentId(departmentId);
+            emp.setPositionId(positionId);
+            emp.setStatusId(statusId);
+
+            // Address
+            Address address = employeeService.getAddressByEmployeeId(selectedEmployeeId);
+            address.setBuilding(EMBuildingTextField.getText());
+            address.setStreet(EMStreetTextField.getText());
+            address.setCity(EMCityTextField.getText());
+            address.setProvince(EMProvinceTextField.getText());
+            address.setZipcode(EMZIPTextField.getText());
+
+            // Government IDs
+            GovernmentID govId = employeeService.getGovernmentIdByEmployeeId(selectedEmployeeId);
+            govId.setSssId(EMSSSTextField.getText());
+            govId.setPagibigId(EMPagIBIGTextField.getText());
+            govId.setPhilhealthId(EMPhilHealthTextField.getText());
+            govId.setTinId(EMTINTextField.getText());
+
+            // Salary
+            Salary salary = employeeService.getSalaryByEmployeeId(selectedEmployeeId);
+            salary.setBasicSalary(new BigDecimal(EMBasicSalaryTextField.getText()));
+           
+            // Call update
+            employeeService.updateEmployee(emp, address, govId, salary, "admin");
+
+            JOptionPane.showMessageDialog(this, "Employee updated successfully.");
+            loadEmployeeList(); // Refresh table
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Failed to update employee: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_EMSaveButtonActionPerformed
 
                                           
                                                                                                  
