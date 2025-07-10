@@ -157,7 +157,7 @@
               <Component id="EIWelcomePanel" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Component id="EIDetailsIDsPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
                   <Component id="EIEmployeeInfoPanel" min="-2" pref="417" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
@@ -861,7 +861,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="EMPhoneTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EMBirthdayTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMAddressTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMFirstNameTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMMiddleNameTextField" alignment="0" max="32767" attributes="0"/>
@@ -874,20 +873,15 @@
                                   <Component id="EMdepartmentComboBox" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMpositionComboBox" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EMemploymentStatusComboBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="EMBirthdayDateChooser" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="EMPhilHealthTextField" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="EMPhilHealthLabel" max="32767" attributes="0"/>
-                                      <EmptySpace min="113" pref="113" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="EMPhilHealthLabel" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="EMPhoneAllowanceLabel" max="32767" attributes="0"/>
@@ -901,15 +895,16 @@
                                   <Component id="EMRiceAllowanceTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="EMPagIBIGTextField" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="EMPagIBIGLabel" min="-2" pref="97" max="-2" attributes="0"/>
                                       <Component id="EMTINLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                       <Component id="EMTINTextField" min="-2" pref="107" max="-2" attributes="0"/>
                                       <Component id="EMPhoneAllowanceTextField" min="-2" pref="107" max="-2" attributes="0"/>
                                       <Component id="EMClearFormButton" max="32767" attributes="0"/>
-                                      <Component id="EMSaveButton" alignment="0" pref="108" max="32767" attributes="0"/>
+                                      <Component id="EMSaveButton" alignment="0" pref="210" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="EMClothingAllowanceTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                   <Component id="EMSSSTextField" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="EMPhilHealthTextField" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="EMPagIBIGLabel" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -983,9 +978,12 @@
                                   <Component id="EMZIPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="EMBirthdayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EMBirthdayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="EMBirthdayLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="EMBirthdayDateChooser" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1145,14 +1143,6 @@
                 <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="EMBirthdayTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMBirthdayTextFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JTextField" name="EMPhoneTextField">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" "/>
@@ -1238,6 +1228,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMPhilHealthTextFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="EMPagIBIGTextField">
               <Properties>
@@ -1380,6 +1373,8 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="EMBirthdayDateChooser">
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -1413,7 +1408,7 @@
                   <Component id="AttendanceSubPanel" min="-2" pref="540" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="AButtonPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1433,7 +1428,7 @@
                               <Component id="ASearchTextField" min="-2" pref="147" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ASearchButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                               <Component id="AStartDateLabel" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="AStartDateChooser" min="-2" pref="151" max="-2" attributes="0"/>

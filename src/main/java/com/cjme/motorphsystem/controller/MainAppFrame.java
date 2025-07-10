@@ -32,6 +32,7 @@ import com.cjme.motorphsystem.util.ForeignKeyMapperUtil;
 import com.cjme.motorphsystem.util.ReportGenerator;
 
 import java.awt.HeadlessException;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -326,7 +327,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMFirstNameTextField = new javax.swing.JTextField();
         EMMiddleNameTextField = new javax.swing.JTextField();
         EMAddressTextField = new javax.swing.JTextField();
-        EMBirthdayTextField = new javax.swing.JTextField();
         EMPhoneTextField = new javax.swing.JTextField();
         EMDepartmentLabel = new javax.swing.JLabel();
         EMBasicSalaryLabel = new javax.swing.JLabel();
@@ -361,6 +361,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMemploymentStatusComboBox = new javax.swing.JComboBox<>();
         EMpositionComboBox = new javax.swing.JComboBox<>();
         EMdepartmentComboBox = new javax.swing.JComboBox<>();
+        EMBirthdayDateChooser = new com.toedter.calendar.JDateChooser();
         AttendancePanel = new javax.swing.JPanel();
         AttendanceSubPanel = new javax.swing.JPanel();
         ASearchLabel = new javax.swing.JLabel();
@@ -487,6 +488,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1000, 630));
         setMinimumSize(new java.awt.Dimension(1000, 630));
         setResizable(false);
 
@@ -761,7 +763,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addComponent(EIWelcomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
                 .addComponent(EIDetailsIDsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -905,13 +907,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         EMAddressTextField.setText(" ");
 
-        EMBirthdayTextField.setText(" ");
-        EMBirthdayTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EMBirthdayTextFieldActionPerformed(evt);
-            }
-        });
-
         EMPhoneTextField.setText(" ");
 
         EMDepartmentLabel.setText("Department:");
@@ -953,6 +948,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         });
 
         EMPhilHealthTextField.setText(" ");
+        EMPhilHealthTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EMPhilHealthTextFieldActionPerformed(evt);
+            }
+        });
 
         EMPagIBIGTextField.setText(" ");
         EMPagIBIGTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -1043,7 +1043,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EMPhoneTextField)
-                            .addComponent(EMBirthdayTextField)
                             .addComponent(EMAddressTextField)
                             .addComponent(EMFirstNameTextField)
                             .addComponent(EMMiddleNameTextField)
@@ -1055,16 +1054,13 @@ public final class MainAppFrame extends javax.swing.JFrame {
                             .addComponent(EMBasicSalaryTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                             .addComponent(EMdepartmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EMpositionComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EMemploymentStatusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EMemploymentStatusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EMBirthdayDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EMDetailPanelLayout.createSequentialGroup()
-                        .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EMPhilHealthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(EMDetailPanelLayout.createSequentialGroup()
-                                .addComponent(EMPhilHealthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(113, 113, 113)))
-                        .addGap(47, 47, 47))
+                        .addComponent(EMPhilHealthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(160, 160, 160))
                     .addGroup(EMDetailPanelLayout.createSequentialGroup()
                         .addComponent(EMPhoneAllowanceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(1, 1, 1))
@@ -1076,14 +1072,15 @@ public final class MainAppFrame extends javax.swing.JFrame {
                             .addComponent(EMRiceAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(EMPagIBIGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(EMPagIBIGLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EMTINLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EMTINTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EMPhoneAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EMClearFormButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EMSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                                .addComponent(EMSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                             .addComponent(EMClothingAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EMSSSTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(EMSSSTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EMPhilHealthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EMPagIBIGLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(EMDetailPanelLayout.createSequentialGroup()
@@ -1140,9 +1137,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
                             .addComponent(EMZIPLabel)
                             .addComponent(EMZIPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EMBirthdayLabel)
-                            .addComponent(EMBirthdayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(EMDetailPanelLayout.createSequentialGroup()
+                                .addComponent(EMBirthdayLabel)
+                                .addGap(0, 25, Short.MAX_VALUE))
+                            .addComponent(EMBirthdayDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(EMPhoneLabel)
@@ -1287,7 +1286,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(ASearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ASearchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(AStartDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1776,15 +1775,10 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         RPDepartmentLabel.setText("Department:");
 
-        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","CEO","COO","CFO","CMO","IT Operations and Systems","Human Resources","Finance","Accounts","Sales and Marketing","Supply Chain and Logistics","Customer Service and Relations" }));
+        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         RPGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         RPGenerateReportButton.setText("Generate Report");
-        RPGenerateReportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RPGenerateReportButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout RPayrollTopPanelLayout = new javax.swing.GroupLayout(RPayrollTopPanel);
         RPayrollTopPanel.setLayout(RPayrollTopPanelLayout);
@@ -2281,22 +2275,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
         MainPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
-        // Automatically show all payroll data when Reports tab is selected
-        MainPanel.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                if (MainPanel.getSelectedComponent() == ReportsPanel) {
-                    // Set department to ALL if available
-                    if (RPDepartmentComboBox.getItemCount() > 0) {
-                        RPDepartmentComboBox.setSelectedIndex(0); // 'ALL' should be first
-                    }
-                    // Clear the date chooser
-                    RPayrollDateChooser.setDate(null);
-                    // Trigger the report generation
-                    RPGenerateReportButtonActionPerformed(null);
-                }
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2546,10 +2524,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EMRiceAllowanceTextFieldActionPerformed
 
-    private void EMBirthdayTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMBirthdayTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EMBirthdayTextFieldActionPerformed
-
     private void EMFirstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMFirstNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EMFirstNameTextFieldActionPerformed
@@ -2613,62 +2587,66 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
     private void EMAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMAddButtonActionPerformed
         // TODO add your handling code here:
-//         try {
-//            // Collect values from fields
-//            String firstName = EMfirstNameTextField.getText();
-//            String lastName = lastNameTextField.getText();
-//            int phoneNumber = Integer.parseInt(phoneNumberTextField.getText());
-//            Date birthday = new java.sql.Date(birthdayChooser.getDate().getTime());
-//
-//            // Combo box selections
-//            int departmentId = ForeignKeyMapperUtil.departmentMap.get(departmentComboBox.getSelectedItem().toString());
-//            int positionId = ForeignKeyMapperUtil.positionMap.get(positionComboBox.getSelectedItem().toString());
-//            int statusId = ForeignKeyMapperUtil.statusMap.get(statusComboBox.getSelectedItem().toString());
-//
-//            // Create models
-//            Address address = new Address();
-//            address.setBuilding(buildingField.getText());
-//            address.setStreet(streetField.getText());
-//            address.setCity(cityField.getText());
-//            address.setProvince(provinceField.getText());
-//            address.setZipcode(zipcodeField.getText());
-//
-//            GovernmentID govId = new GovernmentID();
-//            govId.setSssId(sssField.getText());
-//            govId.setPagibigId(pagibigField.getText());
-//            govId.setPhilhealthId(philhealthField.getText());
-//            govId.setTinId(tinField.getText());
-//
-//            Salary salary = new Salary();
-//            salary.setBasicSalary(new BigDecimal(basicSalaryField.getText()));
-//            salary.setGrossSemiMonthlyRate(new BigDecimal(semiMonthlyField.getText()));
-//            salary.setHourlyRate(new BigDecimal(hourlyRateField.getText()));
-//
-//            EmployeeEntity emp = new EmployeeEntity();
-//            emp.setFirstName(firstName);
-//            emp.setLastName(lastName);
-//            emp.setPhoneNumber(phoneNumber);
-//            emp.setBirthday(birthday);
-//            emp.setDepartmentId(departmentId);
-//            emp.setPositionId(positionId);
-//            emp.setStatusId(statusId);
-//            emp.setSupervisorId(1); // Temporary; adjust based on real logic
-//
-//            // Insert using service layer
-//            int newEmpId = employeeService.insertNewEmployee(emp, address, govId, salary);
-//
-//            if (newEmpId != -1) {
-//                JOptionPane.showMessageDialog(this, "Employee added successfully!");
-//                loadEmployeeList(); // Refresh table
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Failed to add employee.");
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-//        }
+         try {
+            // Collect values from fields
+            String firstName = EMFirstNameTextField.getText();
+            String lastName = EMLastNameTextField.getText();
+            int phoneNumber = Integer.parseInt(EMPhoneTextField.getText());
+            Date birthday = new java.sql.Date(EMBirthdayDateChooser.getDate().getTime());
+
+            // Combo box selections
+            int departmentId = ForeignKeyMapperUtil.departmentMap.get(EMdepartmentComboBox.getSelectedItem().toString());
+            int positionId = ForeignKeyMapperUtil.positionMap.get(EMpositionComboBox.getSelectedItem().toString());
+            int statusId = ForeignKeyMapperUtil.statusMap.get(EMemploymentStatusComboBox.getSelectedItem().toString());
+
+            // Create models
+            Address address = new Address();
+            address.setBuilding(EMBuildingTextField.getText());
+            address.setStreet(EMStreetTextField.getText());
+            address.setCity(EMCityTextField.getText());
+            address.setProvince(EMProvinceTextField.getText());
+            address.setZipcode(EMZIPTextField.getText());
+
+            GovernmentID govId = new GovernmentID();
+            govId.setSssId(EMSSSTextField.getText());
+            govId.setPagibigId(EMPagIBIGTextField.getText());
+            govId.setPhilhealthId(EMPhilHealthTextField.getText());
+            govId.setTinId(EMTINTextField.getText());
+
+            Salary salary = new Salary();
+            salary.setBasicSalary(new BigDecimal(EMBasicSalaryTextField.getText()));
+            //salary.setGrossSemiMonthlyRate(new BigDecimal(semiMonthlyField.getText()));
+            // salary.setHourlyRate(new BigDecimal(hourlyRateField.getText()));
+
+            EmployeeEntity emp = new EmployeeEntity();
+            emp.setFirstName(firstName);
+            emp.setLastName(lastName);
+            emp.setPhoneNumber(phoneNumber);
+            emp.setBirthday(birthday);
+            emp.setDepartmentId(departmentId);
+            emp.setPositionId(positionId);
+            emp.setStatusId(statusId);
+            emp.setSupervisorId(1); // Temporary; adjust based on real logic
+
+            // Insert using service layer
+            int newEmpId = employeeService.insertNewEmployee(emp, address, govId, salary);
+
+            if (newEmpId != -1) {
+                JOptionPane.showMessageDialog(this, "Employee added successfully!");
+                loadEmployeeList(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add employee.");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        }
     }//GEN-LAST:event_EMAddButtonActionPerformed
+
+    private void EMPhilHealthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMPhilHealthTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EMPhilHealthTextFieldActionPerformed
 
                                           
                                                                                                  
@@ -2952,8 +2930,8 @@ private void EMpopulateComboBoxes() {
     private javax.swing.JTextField EMAddressTextField;
     private javax.swing.JLabel EMBasicSalaryLabel;
     private javax.swing.JTextField EMBasicSalaryTextField;
+    private com.toedter.calendar.JDateChooser EMBirthdayDateChooser;
     private javax.swing.JLabel EMBirthdayLabel;
-    private javax.swing.JTextField EMBirthdayTextField;
     private javax.swing.JLabel EMBuildingLabel;
     private javax.swing.JTextField EMBuildingTextField;
     private javax.swing.JPanel EMButtonPanel;
