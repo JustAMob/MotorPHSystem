@@ -23,9 +23,30 @@ public class ReportGenerator {
      */
     public void generatePayrollReport(String payrollPeriod, String department) {
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("PayrollPeriod", payrollPeriod);
-        parameters.put("Department", department);
-        generateReport("src/main/resources/jrxml/payroll.jrxml", "Payroll Report", parameters);
+
+        try {
+            if (payrollPeriod != null && !payrollPeriod.isEmpty()) {
+                // Convert "yyyy-MM" to a full date like "yyyy-MM-01"
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date utilDate = sdf.parse(payrollPeriod + "-01");
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                parameters.put("PayrollPeriod", sqlDate); 
+            } else {
+                parameters.put("PayrollPeriod", null);
+            }
+
+            parameters.put("Department", department);
+            generateReport("src/main/resources/jrxml/payroll.jrxml", "Payroll Report", parameters);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Error generating PDF report: " + e.getMessage(),
+                "Export Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+            e.printStackTrace();
+        }
     }
 
     /**
