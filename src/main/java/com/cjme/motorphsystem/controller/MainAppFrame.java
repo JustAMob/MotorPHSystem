@@ -38,7 +38,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
-import java.util.Date;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
@@ -2487,7 +2487,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
         try {
             // Get the selected date from JCalendar
-            Date selectedDate = RPayrollDateChooser.getDate();
+            Date selectedDate = (Date) RPayrollDateChooser.getDate();
             
             // Format the date as needed for your report (e.g., "yyyy-MM" for year-month)
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
