@@ -37,6 +37,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
@@ -1873,6 +1874,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         RPGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         RPGenerateReportButton.setText("Generate Report");
+        RPGenerateReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RPGenerateReportButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RPayrollTopPanelLayout = new javax.swing.GroupLayout(RPayrollTopPanel);
         RPayrollTopPanel.setLayout(RPayrollTopPanelLayout);
@@ -1906,13 +1912,13 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         RPayrollTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Employee ID", "Name", "Department", "Gross Pay", "Total Deductions", "Net Pay"
+               "Date", "Employee ID", "Name", "Department", "Gross Pay", "Total Deductions", "Net Pay"
             }
         ));
         RPayrollScrollPane.setViewportView(RPayrollTable);
@@ -2540,11 +2546,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
         try {
             
-            Date selectedDate = (Date) RPayrollDateChooser.getDate();
+            java.util.Date selectedD = (java.util.Date) RPayrollDateChooser.getDate();
             
             // Format the date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
-            String payrollPeriod = selectedDate != null ? dateFormat.format(selectedDate) : "";
+            String payrollPeriod = selectedD != null ? dateFormat.format(selectedD) : "";
             
             // Get department if you have a department field (
             String department = (String) RPDepartmentComboBox.getSelectedItem(); 
@@ -2626,33 +2632,41 @@ public final class MainAppFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_EMpositionComboBoxActionPerformed
 
     private void RPGenerateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPGenerateReportButtonActionPerformed
-                // Logic for generating payroll report
-        String payPeriod = null;
-        if (RPayrollDateChooser.getDate() != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-            payPeriod = sdf.format(RPayrollDateChooser.getDate());
-        }
-        String department = (String) RPDepartmentComboBox.getSelectedItem();
-        if (department != null && (department.equalsIgnoreCase("ALL") || department.startsWith("Item"))) {
-            department = null; // treat 'ALL' or default as no filter
-        }
         try {
+            // Get the selected date from the date chooser
+            java.util.Date selectedDate = (java.util.Date) RPayrollDateChooser.getDate();
+    
+            // Format the date for both operations
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+            String payrollPeriod = selectedDate != null ? dateFormat.format(selectedDate) : null;
+    
+            // Get department selection
+            String department = (String) RPDepartmentComboBox.getSelectedItem();
+            if (department != null && (department.equalsIgnoreCase("ALL") || department.startsWith("Item"))) {
+                department = null; // treat 'ALL' or default as no filter
+            }
+    
+            // Load data into table
             PayrollDAO payrollDAO = new PayrollDAOImpl();
-            List<Payroll> payrolls = payrollDAO.getMonthSummary(payPeriod, department);
+            List<Payroll> payrolls = payrollDAO.getMonthSummary(payrollPeriod, department);
+    
             DefaultTableModel model = (DefaultTableModel) RPayrollTable.getModel();
             model.setRowCount(0);
             for (Payroll payroll : payrolls) {
                 model.addRow(new Object[] {
+                    payroll.getPayPeriodId(),
                     payroll.getEmployeeNo(),
                     payroll.getEmployeeFullName(),
                     payroll.getDepartment(),
-                    payroll.getGrossIncome(),
-                    payroll.getSummaryDeductions(),
-                    payroll.getNetPay()
+                    "PHP " + new DecimalFormat("#,##0.00").format(payroll.getGrossIncome()),
+                    "PHP " + new DecimalFormat("#,##0.00").format(payroll.getSummaryDeductions()),
+                    "PHP " + new DecimalFormat("#,##0.00").format(payroll.getNetPay())
                 });
             }
-        } catch (Exception ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error generating report: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // For debugging
         }
     }//GEN-LAST:event_RPGenerateReportButtonActionPerformed
 

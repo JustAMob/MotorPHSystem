@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+import java.sql.Date;
 
 public class ReportGenerator {
 
@@ -23,39 +24,22 @@ public class ReportGenerator {
      */
     public void generatePayrollReport(String payrollPeriod, String department) {
         Map<String, Object> parameters = new HashMap<>();
-
-        try {
-            if (payrollPeriod != null && !payrollPeriod.isEmpty()) {
-                // Convert "yyyy-MM" to a full date like "yyyy-MM-01"
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date utilDate = sdf.parse(payrollPeriod + "-01");
-                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-                parameters.put("PayrollPeriod", sqlDate); 
-            } else {
-                parameters.put("PayrollPeriod", null);
-            }
-
-            parameters.put("Department", department);
-            generateReport("src/main/resources/jrxml/payroll.jrxml", "Payroll Report", parameters);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                null,
-                "Error generating PDF report: " + e.getMessage(),
-                "Export Error",
-                JOptionPane.ERROR_MESSAGE
-            );
-            e.printStackTrace();
-        }
+        parameters.put("PayrollPeriod", payrollPeriod);
+        parameters.put("Department", department);
+        generateReport("src/main/resources/jrxml/payroll.jrxml", "Payroll Report", parameters);
     }
 
     /**
-     * Generates and displays the payslip report.
-     * @param employeeId The employee ID to generate payslip for
+     * Generates and displays the payslip report for a specific employee and period.
+     * @param searchEmployee Employee name or ID as String
+     * @param periodStartDate Start date of the pay period (java.util.Date or java.sql.Date)
+     * @param periodEndDate End date of the pay period (java.util.Date or java.sql.Date)
      */
-    public void generatePayslipReport(String employeeId) {
+    public void generatePayslipReport(String searchEmployee, Date periodStartDate, Date periodEndDate) {
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("EmployeeId", employeeId);
+        parameters.put("SearchEmployee", searchEmployee);
+        parameters.put("PeriodStartDate", new Date(periodStartDate.getTime()));
+        parameters.put("PeriodEndDate", new Date(periodEndDate.getTime()));
         generateReport("src/main/resources/jrxml/payslip.jrxml", "Employee Payslip", parameters);
     }
 
