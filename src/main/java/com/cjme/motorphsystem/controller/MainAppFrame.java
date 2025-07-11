@@ -44,12 +44,42 @@ import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
+//
+
+
+import java.sql.Time;
+import java.util.ArrayList; 
+
+import java.time.Duration;
+import java.time.LocalTime;
+
+
+import javax.swing.JButton; 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane; 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
+import java.awt.GridLayout;
+import com.toedter.calendar.JDateChooser;
+import com.cjme.motorphsystem.dao.AttendanceDAO; 
+import com.cjme.motorphsystem.model.Attendance; 
+
+
+
+
+
+
+
+
 /**
  *
  * @author MYS
  */
 
 public final class MainAppFrame extends javax.swing.JFrame {
+    
     private final UserSession session;
     private final EmployeeService employeeService;
     private final SalaryService salaryService;
@@ -57,6 +87,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private DefaultTableModel leaveTableModel;
     private final int loggedInEmployeeId;
     private int selectedEmployeeId = -1;
+    
+    private AttendanceDAO attendanceDAO;
+    private DefaultTableModel attendanceTableModel;
 
     /**
      * Creates new form Payroll
@@ -102,7 +135,323 @@ public final class MainAppFrame extends javax.swing.JFrame {
         loadEmployeeList();
         loadAllLeaveRequests(); 
         
+        initAttendanceTable(); 
+        addAttendanceListeners();
+        
+        try {
+            attendanceDAO = new AttendanceDAO();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, 
+                    "Error connecting to database for attendance: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            
+            // Optionally disable attendance-related features if DAO fails
+        }
+        
     }
+    
+    
+    private void initAttendanceTable() {
+    attendanceTableModel = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Make cells non-editable
+        }
+    };
+    
+        attendanceTableModel.addColumn("Log ID");
+        attendanceTableModel.addColumn("Employee ID");
+        attendanceTableModel.addColumn("Employee Name");
+        attendanceTableModel.addColumn("Date");
+        attendanceTableModel.addColumn("Time In");
+        attendanceTableModel.addColumn("Time Out");
+        attendanceTableModel.addColumn("Hours Worked");
+
+         ATable.setModel(attendanceTableModel); 
+  
+    }
+    
+    private void addAttendanceListeners() {
+        ALoadDataButton.addActionListener(e -> loadAttendanceData());
+        ARefreshButton.addActionListener(e -> loadAttendanceData());
+        ASearchButton.addActionListener(e -> searchAttendanceData());
+        AAddTimeButton.addActionListener(e -> showAddAttendanceDialog());
+        AEditTimeButton.addActionListener(e -> showEditAttendanceDialog());
+        ADeleteTimeButton.addActionListener(e -> deleteAttendanceRecord());
+        ARecordOvertimeButton.addActionListener(e -> recordOvertime());
+
+        // Add a ListSelectionListener to ATable to enable/disable Edit/Delete buttons
+        ATable.getSelectionModel().addListSelectionListener(e -> {
+        if (!e.getValueIsAdjusting()) { // Avoid multiple events for a single click
+            boolean rowSelected = ATable.getSelectedRow() != -1;
+            AEditTimeButton.setEnabled(rowSelected);
+            ADeleteTimeButton.setEnabled(rowSelected);
+        }
+    });
+        
+        AEditTimeButton.setEnabled(false); // Initially disable
+        ADeleteTimeButton.setEnabled(false); // Initially disable
+    }
+    
+    
+    
+    private void loadAttendanceData() {
+        attendanceTableModel.setRowCount(0); // Clear existing data
+
+        java.util.Date startDate = AStartDateChooser.getDate();
+        java.util.Date endDate = AEndDateChooser.getDate();
+
+         if (startDate == null || endDate == null) {
+        JOptionPane.showMessageDialog(this, "Please select both start and end dates.", "Input Error", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+
+        // Convert java.util.Date to java.sql.Date for DAO
+        java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+        java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+
+        try {
+    
+            List<Attendance> logs;
+   
+            logs = attendanceDAO.getTimeLogsByDateRange(sqlStartDate, sqlEndDate);
+
+            for (Attendance log : logs) {
+            // Calculate hours worked for this specific log entry
+            double hoursWorked = 0.0;
+            if (log.getTimeIn() != null && log.getTimeOut() != null) {
+                LocalTime in = log.getTimeIn().toLocalTime();
+                LocalTime out = log.getTimeOut().toLocalTime();
+                Duration duration = Duration.between(in, out);
+                hoursWorked = duration.toMinutes() / 60.0;
+            }
+
+            attendanceTableModel.addRow(new Object[]{
+                log.getLogID(),
+                log.getEmployeeID(),
+                log.getLogDate(),
+                log.getTimeIn(),
+                log.getTimeOut(),
+                String.format("%.2f", hoursWorked) // Format to 2 decimal places
+            });
+        }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error loading attendance data: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        }
+    
+    
+    private void searchAttendanceData() {
+    String searchText = ASearchTextField.getText().trim();
+    if (searchText.isEmpty()) {
+        loadAttendanceData(); // If search text is empty, load all based on date range
+        return;
+    }
+
+    // Option 1: Filter current table data (faster for already loaded small datasets)
+    // Option 2: Make a specific DAO call (better for large datasets)
+
+    // Let's assume Option 2: Filter by Employee ID for now
+    try {
+        int employeeId = Integer.parseInt(searchText);
+        attendanceTableModel.setRowCount(0); // Clear existing data
+
+        // Assuming you have a method to get time logs for a specific employee within a date range
+        java.util.Date startDate = AStartDateChooser.getDate();
+        java.util.Date endDate = AEndDateChooser.getDate();
+
+        if (startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select both start and end dates for employee search.", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+        java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+
+        // You'll need to add a method like this to AttendanceDAO
+        List<Attendance> logs = attendanceDAO.getTimeLogsByEmployeeAndDateRange(employeeId, sqlStartDate, sqlEndDate);
+
+        for (Attendance log : logs) {
+            double hoursWorked = 0.0;
+            if (log.getTimeIn() != null && log.getTimeOut() != null) {
+                LocalTime in = log.getTimeIn().toLocalTime();
+                LocalTime out = log.getTimeOut().toLocalTime();
+                Duration duration = Duration.between(in, out);
+                hoursWorked = duration.toMinutes() / 60.0;
+            }
+            attendanceTableModel.addRow(new Object[]{
+                log.getLogID(),
+                log.getEmployeeID(),
+                log.getLogDate(),
+                log.getTimeIn(),
+                log.getTimeOut(),
+                String.format("%.2f", hoursWorked)
+            });
+        }
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid Employee ID.", "Input Error", JOptionPane.WARNING_MESSAGE);
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error searching attendance data: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+    }
+    
+    
+    private void showAddAttendanceDialog() {
+    // Create a custom dialog (JDialog) for input
+    // Components: JTextField for Employee ID, JDateChooser for Date, JSpinner/JTextField for Time In/Out
+    // Example (simplified):
+    JTextField employeeIdField = new JTextField(10);
+    JDateChooser logDateField = new JDateChooser();
+    JTextField timeInField = new JTextField("HH:mm:ss"); // For time input
+    JTextField timeOutField = new JTextField("HH:mm:ss");
+
+    JPanel panel = new JPanel(new GridLayout(0, 2));
+    panel.add(new JLabel("Employee ID:"));
+    panel.add(employeeIdField);
+    panel.add(new JLabel("Log Date:"));
+    panel.add(logDateField);
+    panel.add(new JLabel("Time In (HH:mm:ss):"));
+    panel.add(timeInField);
+    panel.add(new JLabel("Time Out (HH:mm:ss):"));
+    panel.add(timeOutField);
+
+    int result = JOptionPane.showConfirmDialog(this, panel, "Add New Attendance Log",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+    if (result == JOptionPane.OK_OPTION) {
+        try {
+            int employeeId = Integer.parseInt(employeeIdField.getText());
+            java.util.Date utilLogDate = logDateField.getDate();
+            java.sql.Date sqlLogDate = new java.sql.Date(utilLogDate.getTime());
+            Time timeIn = Time.valueOf(timeInField.getText());
+            Time timeOut = Time.valueOf(timeOutField.getText());
+
+            Attendance newLog = new Attendance(employeeId, sqlLogDate, timeIn, timeOut);
+            boolean success = attendanceDAO.addTimelog(newLog);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Attendance log added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadAttendanceData(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add attendance log.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Employee ID. Please enter a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+             JOptionPane.showMessageDialog(this, "Invalid time format. Please use HH:mm:ss.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error adding log: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    }
+    
+    private void showEditAttendanceDialog() {
+    int selectedRow = ATable.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row to edit.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Get data from selected row
+    int logID = (int) attendanceTableModel.getValueAt(selectedRow, 0);
+    int employeeID = (int) attendanceTableModel.getValueAt(selectedRow, 1);
+    java.sql.Date logDate = (java.sql.Date) attendanceTableModel.getValueAt(selectedRow, 2);
+    Time timeIn = (Time) attendanceTableModel.getValueAt(selectedRow, 3);
+    Time timeOut = (Time) attendanceTableModel.getValueAt(selectedRow, 4);
+
+    // Populate dialog with existing data
+    JTextField employeeIdField = new JTextField(String.valueOf(employeeID));
+    JDateChooser logDateField = new JDateChooser(logDate);
+    JTextField timeInField = new JTextField(timeIn != null ? timeIn.toString() : "");
+    JTextField timeOutField = new JTextField(timeOut != null ? timeOut.toString() : "");
+
+    JPanel panel = new JPanel(new GridLayout(0, 2));
+    panel.add(new JLabel("Employee ID:"));
+    panel.add(employeeIdField);
+    panel.add(new JLabel("Log Date:"));
+    panel.add(logDateField);
+    panel.add(new JLabel("Time In (HH:mm:ss):"));
+    panel.add(timeInField);
+    panel.add(new JLabel("Time Out (HH:mm:ss):"));
+    panel.add(timeOutField);
+
+    int result = JOptionPane.showConfirmDialog(this, panel, "Edit Attendance Log",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+    if (result == JOptionPane.OK_OPTION) {
+        try {
+            int updatedEmployeeId = Integer.parseInt(employeeIdField.getText());
+            java.util.Date utilLogDate = logDateField.getDate();
+            java.sql.Date updatedSqlLogDate = new java.sql.Date(utilLogDate.getTime());
+            Time updatedTimeIn = Time.valueOf(timeInField.getText());
+            Time updatedTimeOut = Time.valueOf(timeOutField.getText());
+
+            Attendance updatedLog = new Attendance(logID, updatedEmployeeId, updatedSqlLogDate, updatedTimeIn, updatedTimeOut);
+
+            // You'll need to add an update method to your AttendanceDAO
+            // public boolean updateTimelog(Attendance attendance) throws SQLException { ... }
+            boolean success = attendanceDAO.updateTimelog(updatedLog);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Attendance log updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadAttendanceData(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update attendance log.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Employee ID. Please enter a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+             JOptionPane.showMessageDialog(this, "Invalid time format. Please use HH:mm:ss.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error updating log: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    }
+    
+    private void deleteAttendanceRecord() {
+    int selectedRow = ATable.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row to delete.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this attendance record?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        int logID = (int) attendanceTableModel.getValueAt(selectedRow, 0);
+        try {
+            // You'll need to add a delete method to your AttendanceDAO
+            // public boolean deleteTimelog(int logID) throws SQLException { ... }
+            boolean success = attendanceDAO.deleteTimelog(logID);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Attendance log deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadAttendanceData(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to delete attendance log.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error deleting log: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    }
+    
+    private void recordOvertime() {
+    JOptionPane.showMessageDialog(this, "Record Overtime functionality to be implemented.", "Under Construction", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    
+    
+    
+    
+    
     
     private void initLeaveTable() {
     
