@@ -8,6 +8,7 @@ import com.cjme.motorphsystem.dao.AddressDAO;
 import com.cjme.motorphsystem.dao.implementations.AddressDAOImpl;
 import com.cjme.motorphsystem.dao.PayrollDAO;
 import com.cjme.motorphsystem.dao.implementations.EmployeeEntityDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.PayslipDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.EmployeeProfileDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.GovernmentIdDAOImpl;
 import com.cjme.motorphsystem.dao.implementations.SalaryDAOImpl;
@@ -21,6 +22,7 @@ import com.cjme.motorphsystem.model.GovernmentID;
 import com.cjme.motorphsystem.model.Salary;
 import com.cjme.motorphsystem.model.LeaveRequest;
 import com.cjme.motorphsystem.model.Payroll;
+import com.cjme.motorphsystem.model.Payslip;
 
 import com.cjme.motorphsystem.service.EmployeeService;
 import com.cjme.motorphsystem.service.GovernmentIDsService;
@@ -2564,17 +2566,59 @@ public final class MainAppFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RPExportPDFButtonActionPerformed
 
     private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGeneratePDFButtonActionPerformed
-       /* // TODO add your handling code here:
+        String searchText = PSearchTextField.getText().trim();
+        java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
+        java.util.Date endDate = jDateChooser1.getDate();
+        if (searchText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please search for an employee first.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select both start and end dates for the payroll period.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         try {
+            Date sqlStart = new Date(startDate.getTime());
+            Date sqlEnd = new Date(endDate.getTime());
             Connection conn = DBConnection.getConnection();
-            new ReportGenerator(conn).generatePayslipReport();
+            new ReportGenerator(conn).generatePayslipReport(searchText, sqlStart, sqlEnd);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }*/
+            JOptionPane.showMessageDialog(this, "Error generating payslip PDF: " + e.getMessage(), "Export Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
 
     private void PCalculatePayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PCalculatePayrollButtonActionPerformed
-        // TODO add your handling code here:
+                String searchText = PSearchTextField.getText().trim();
+        java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
+        java.util.Date endDate = jDateChooser1.getDate();
+        if (searchText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please search for an employee first.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select both start and end dates for the payroll period.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int employeeId;
+        try {
+            employeeId = Integer.parseInt(searchText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            Date sqlStart = new Date(startDate.getTime());
+            Date sqlEnd = new Date(endDate.getTime());
+            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(String.valueOf(employeeId), sqlStart, sqlEnd);
+            if (payslip == null) {
+                JOptionPane.showMessageDialog(this, "Payslip not found for this employee and period.", "Not Found", JOptionPane.ERROR_MESSAGE);
+                PTotalHomePayTextField.setText("");
+                return;
+            }
+            PTotalHomePayTextField.setText(String.valueOf(payslip.getTakeHomePay()));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error fetching payslip details: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_PCalculatePayrollButtonActionPerformed
 
     private void PWithholdingTaxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWithholdingTaxTextFieldActionPerformed
@@ -2582,7 +2626,45 @@ public final class MainAppFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PWithholdingTaxTextFieldActionPerformed
 
     private void PLoadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLoadDataButtonActionPerformed
-        // TODO add your handling code here:
+                String searchText = PSearchTextField.getText().trim();
+        java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
+        java.util.Date endDate = jDateChooser1.getDate();
+        if (searchText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please search for an employee first.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select both start and end dates for the payroll period.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int employeeId;
+        try {
+            employeeId = Integer.parseInt(searchText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            Date sqlStart = new Date(startDate.getTime());
+            Date sqlEnd = new Date(endDate.getTime());
+            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(String.valueOf(employeeId), sqlStart, sqlEnd);
+            if (payslip == null) {
+                JOptionPane.showMessageDialog(this, "Payslip not found for this employee and period.", "Not Found", JOptionPane.ERROR_MESSAGE);
+                PPayslipNoTextField.setText("");
+                PGrossPayTextField.setText("");
+                PSummaryGrossIncomeTextField.setText("");
+                PSummaryBenefitsTextField.setText("");
+                PSummaryDeductionsTextField.setText("");
+                return;
+            }
+            PPayslipNoTextField.setText(String.valueOf(payslip.getPayslipNo()));
+            PGrossPayTextField.setText(String.valueOf(payslip.getGrossIncome()));
+            PSummaryGrossIncomeTextField.setText(String.valueOf(payslip.getSummaryGross()));
+            PSummaryBenefitsTextField.setText(String.valueOf(payslip.getSummaryBenefits()));
+            PSummaryDeductionsTextField.setText(String.valueOf(payslip.getSummaryDeductions()));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error fetching payslip details: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_PLoadDataButtonActionPerformed
 
     private void ARefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARefreshButtonActionPerformed
@@ -2861,7 +2943,66 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void PSummaryBenefitsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PSummaryBenefitsTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PSummaryBenefitsTextFieldActionPerformed
-
+    private void PSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PSearchButtonActionPerformed                                            
+        String searchText = PSearchTextField.getText().trim();
+        if (searchText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter an Employee ID to search.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int employeeId;
+        try {
+            employeeId = Integer.parseInt(searchText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(String.valueOf(employeeId), null, null);
+            if (payslip == null) {
+                JOptionPane.showMessageDialog(this, "Payslip not found for this employee.", "Not Found", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            // Fill all info fields using only Payslip data
+            EmpNTextField.setText(String.valueOf(payslip.getEmployeeId()));
+            FNTextField.setText(payslip.getEmployeeName());
+            PDTextField.setText(payslip.getEmployeePositionDepartment());
+            PMonthlyRateTextField.setText(String.valueOf(payslip.getMonthlyRate()));
+            PHourlyRateTextField.setText(String.valueOf(payslip.getHourlyRate()));
+            PRegularHoursTextField.setText(String.valueOf(payslip.getRegularHours()));
+            POvertimeHoursTextField.setText(String.valueOf(payslip.getOvertimeHours()));
+            POvertimeIncomeTextField.setText(String.valueOf(payslip.getOvertimeIncome()));
+            PRiceSubsidyTextField.setText(String.valueOf(payslip.getRiceSubsidy()));
+            PClothAllowanceTextField.setText(String.valueOf(payslip.getClothingAllowance()));
+            PPhoneAllowanceTextField.setText(String.valueOf(payslip.getPhoneAllowance()));
+            PSSSContributionTextField.setText(String.valueOf(payslip.getSocialSecuritySystem()));
+            PPhilHealthContributionTextField.setText(String.valueOf(payslip.getPhilhealth()));
+            PPagIBIGContributionTextField.setText(String.valueOf(payslip.getPagibig()));
+            PWithholdingTaxTextField.setText(String.valueOf(payslip.getWitholdingtax()));
+                       try {
+                GovernmentIDsService govIdService = new GovernmentIDsService(new GovernmentIdDAOImpl());
+                GovernmentID govID = govIdService.getGovernmentIdByEmployeeId(payslip.getEmployeeId());
+                if (govID != null) {
+                    PSSSNoTextField.setText(govID.getSssId());
+                    PPhilHealthNoTextField.setText(govID.getPhilhealthId());
+                    PPagIBIGNoTextField.setText(govID.getPagibigId());
+                    PTINTextField.setText(govID.getTinId());
+                } else {
+                    PSSSNoTextField.setText("");
+                    PPhilHealthNoTextField.setText("");
+                    PPagIBIGNoTextField.setText("");
+                    PTINTextField.setText("");
+                }
+            } catch (Exception ex) {
+                PSSSNoTextField.setText("");
+                PPhilHealthNoTextField.setText("");
+                PPagIBIGNoTextField.setText("");
+                PTINTextField.setText("");
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error fetching payslip details: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }         
+    }//GEN-FIRST:event_PSearchButtonActionPerformed      
                                           
                                                                                                  
        
