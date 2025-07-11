@@ -1660,12 +1660,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="PayrollTopPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="PayrollEarningsPanel" max="32767" attributes="0"/>
                       <Component id="PayrollDeductionsPanel" max="32767" attributes="0"/>
-                      <Component id="PayrollEarningsPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="PayrollButtonsPanel" min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1870,7 +1871,7 @@
                           <Component id="PPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PClothingAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="PMonthlyRateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PMonthlyRateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1895,7 +1896,7 @@
                           <Component id="POvertimeIncomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="POvertimeIncomeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="PRiceSubsidyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PRiceSubsidyTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1910,12 +1911,12 @@
                           <Component id="PPhoneAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PPhoneAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="PGrossIncomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PGrossPayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
