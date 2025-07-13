@@ -87,4 +87,28 @@ public class AllowanceTypeDAOImpl implements AllowanceTypeDAO {
             stmt.executeUpdate();
         }
     }
+    @Override
+    public List<AllowanceType> getAllowanceTypesByEmployeeId(int employeeId) throws SQLException {
+        List<AllowanceType> list = new ArrayList<>();
+        String sql = """
+            SELECT at.*
+            FROM employee_allowance ea
+            JOIN allowance_type at ON ea.allowance_type_id = at.allowance_type_id
+            WHERE ea.employee_id = ?
+        """;
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, employeeId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                AllowanceType a = new AllowanceType();
+                a.setAllowanceTypeId(rs.getInt("allowance_type_id"));
+                a.setCode(rs.getString("code"));
+                a.setCategory(rs.getString("category"));
+                a.setDescription(rs.getString("description"));
+                a.setAmount(rs.getBigDecimal("amount"));
+                list.add(a);
+            }
+        }
+        return list;
+    }
 }

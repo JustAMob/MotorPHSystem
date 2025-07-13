@@ -30,6 +30,16 @@ public class DeductionDAO {
             stmt.executeUpdate();
         }
     }
+    public void updateDeduction(int employeeId, double sss, double philhealth, double pagibig) throws SQLException {
+        String sql = "UPDATE deduction SET sss_deduction = ?, philhealth_deduction = ?, pagibig_deduction = ? WHERE employee_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setDouble(1, sss);
+            stmt.setDouble(2, philhealth);
+            stmt.setDouble(3, pagibig);
+            stmt.setInt(4, employeeId);
+            stmt.executeUpdate();
+        }
+    }
 
     // Get total deductions from employee ID
     public double getTotalDeductions(int employeeID) throws SQLException {
@@ -60,6 +70,7 @@ public class DeductionDAO {
         }
         return null;
     }
+    
 
     // Helper class for holding data (if needed)
     public static class DeductionRecord {
@@ -74,4 +85,3 @@ public class DeductionDAO {
         }
     }
 }
-

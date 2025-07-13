@@ -47,12 +47,55 @@ import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
+//
+
+
+import java.sql.Time;
+import java.util.ArrayList; 
+
+import java.time.Duration;
+import java.time.LocalTime;
+
+
+import javax.swing.JButton; 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane; 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
+import java.awt.GridLayout;
+import com.toedter.calendar.JDateChooser;
+import com.cjme.motorphsystem.dao.AttendanceDAO; 
+import com.cjme.motorphsystem.dao.DeductionDAO;
+import com.cjme.motorphsystem.dao.DeductionDAO.DeductionRecord;
+import com.cjme.motorphsystem.dao.PayslipDAO;
+import com.cjme.motorphsystem.dao.implementations.AllowanceTypeDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.EmployeeAllowanceDAOImpl;
+import com.cjme.motorphsystem.model.AllowanceType;
+import com.cjme.motorphsystem.model.Attendance; 
+import com.cjme.motorphsystem.model.Deduction;
+import com.cjme.motorphsystem.service.AllowanceService;
+import java.awt.Color;
+import java.awt.Component;
+import java.util.Map;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+
+
+
+
+
+
+
 /**
  *
  * @author MYS
  */
 
 public final class MainAppFrame extends javax.swing.JFrame {
+    
     private final UserSession session;
     private final EmployeeService employeeService;
     private final SalaryService salaryService;
@@ -60,6 +103,10 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private DefaultTableModel leaveTableModel;
     private final int loggedInEmployeeId;
     private int selectedEmployeeId = -1;
+    
+    private AttendanceDAO attendanceDAO;
+    private DefaultTableModel attendanceTableModel;
+    private boolean isPayrollDataLoaded = false;
 
     /**
      * Creates new form Payroll
@@ -105,9 +152,331 @@ public final class MainAppFrame extends javax.swing.JFrame {
         loadEmployeeList();
         loadAllLeaveRequests(); 
         
+        initAttendanceTable(); 
+        addAttendanceListeners();
+        
+        try {
+            attendanceDAO = new AttendanceDAO();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, 
+                    "Error connecting to database for attendance: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            
+            // Optionally disable attendance-related features if DAO fails
+        }
+        
     }
     
+    
+    private void initAttendanceTable() {
+    attendanceTableModel = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Make cells non-editable
+        }
+    };
+    
+        attendanceTableModel.addColumn("Log ID");
+        attendanceTableModel.addColumn("Employee ID");
+        attendanceTableModel.addColumn("Employee Name");
+        attendanceTableModel.addColumn("Date");
+        attendanceTableModel.addColumn("Time In");
+        attendanceTableModel.addColumn("Time Out");
+        attendanceTableModel.addColumn("Hours Worked");
+
+         ATable.setModel(attendanceTableModel); 
+  
+    }
+    
+    private void addAttendanceListeners() {
+        ALoadDataButton.addActionListener(e -> loadAttendanceData());
+        ARefreshButton.addActionListener(e -> loadAttendanceData());
+        ASearchButton.addActionListener(e -> searchAttendanceData());
+        AAddTimeButton.addActionListener(e -> showAddAttendanceDialog());
+        AEditTimeButton.addActionListener(e -> showEditAttendanceDialog());
+        ADeleteTimeButton.addActionListener(e -> deleteAttendanceRecord());
+        ARecordOvertimeButton.addActionListener(e -> recordOvertime());
+
+        // Add a ListSelectionListener to ATable to enable/disable Edit/Delete buttons
+        ATable.getSelectionModel().addListSelectionListener(e -> {
+        if (!e.getValueIsAdjusting()) { // Avoid multiple events for a single click
+            boolean rowSelected = ATable.getSelectedRow() != -1;
+            AEditTimeButton.setEnabled(rowSelected);
+            ADeleteTimeButton.setEnabled(rowSelected);
+        }
+    });
+        
+        AEditTimeButton.setEnabled(false); // Initially disable
+        ADeleteTimeButton.setEnabled(false); // Initially disable
+    }
+    
+    
+    
+    private void loadAttendanceData() {
+        attendanceTableModel.setRowCount(0); // Clear existing data
+
+        java.util.Date startDate = AStartDateChooser.getDate();
+        java.util.Date endDate = AEndDateChooser.getDate();
+
+         if (startDate == null || endDate == null) {
+        JOptionPane.showMessageDialog(this, "Please select both start and end dates.", "Input Error", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+
+        // Convert java.util.Date to java.sql.Date for DAO
+        java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+        java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+
+        try {
+    
+            List<Attendance> logs;
+   
+            logs = attendanceDAO.getTimeLogsByDateRange(sqlStartDate, sqlEndDate);
+
+            for (Attendance log : logs) {
+            // Calculate hours worked for this specific log entry
+            double hoursWorked = 0.0;
+            if (log.getTimeIn() != null && log.getTimeOut() != null) {
+                LocalTime in = log.getTimeIn().toLocalTime();
+                LocalTime out = log.getTimeOut().toLocalTime();
+                Duration duration = Duration.between(in, out);
+                hoursWorked = duration.toMinutes() / 60.0;
+            }
+
+            attendanceTableModel.addRow(new Object[]{
+                log.getLogID(),
+                log.getEmployeeID(),
+                log.getLogDate(),
+                log.getTimeIn(),
+                log.getTimeOut(),
+                String.format("%.2f", hoursWorked) // Format to 2 decimal places
+            });
+        }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error loading attendance data: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        }
+    
+    
+    private void searchAttendanceData() {
+    String searchText = ASearchTextField.getText().trim();
+    if (searchText.isEmpty()) {
+        loadAttendanceData(); // If search text is empty, load all based on date range
+        return;
+    }
+
+    // Option 1: Filter current table data (faster for already loaded small datasets)
+    // Option 2: Make a specific DAO call (better for large datasets)
+
+    // Let's assume Option 2: Filter by Employee ID for now
+    try {
+        int employeeId = Integer.parseInt(searchText);
+        attendanceTableModel.setRowCount(0); // Clear existing data
+
+        // Assuming you have a method to get time logs for a specific employee within a date range
+        java.util.Date startDate = AStartDateChooser.getDate();
+        java.util.Date endDate = AEndDateChooser.getDate();
+
+        if (startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select both start and end dates for employee search.", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+        java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+
+        // You'll need to add a method like this to AttendanceDAO
+        List<Attendance> logs = attendanceDAO.getTimeLogsByEmployeeAndDateRange(employeeId, sqlStartDate, sqlEndDate);
+
+        for (Attendance log : logs) {
+            double hoursWorked = 0.0;
+            if (log.getTimeIn() != null && log.getTimeOut() != null) {
+                LocalTime in = log.getTimeIn().toLocalTime();
+                LocalTime out = log.getTimeOut().toLocalTime();
+                Duration duration = Duration.between(in, out);
+                hoursWorked = duration.toMinutes() / 60.0;
+            }
+            attendanceTableModel.addRow(new Object[]{
+                log.getLogID(),
+                log.getEmployeeID(),
+                log.getLogDate(),
+                log.getTimeIn(),
+                log.getTimeOut(),
+                String.format("%.2f", hoursWorked)
+            });
+        }
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid Employee ID.", "Input Error", JOptionPane.WARNING_MESSAGE);
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error searching attendance data: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+    }
+    
+    
+    private void showAddAttendanceDialog() {
+    // Create a custom dialog (JDialog) for input
+    // Components: JTextField for Employee ID, JDateChooser for Date, JSpinner/JTextField for Time In/Out
+    // Example (simplified):
+    JTextField employeeIdField = new JTextField(10);
+    JDateChooser logDateField = new JDateChooser();
+    JTextField timeInField = new JTextField("HH:mm:ss"); // For time input
+    JTextField timeOutField = new JTextField("HH:mm:ss");
+
+    JPanel panel = new JPanel(new GridLayout(0, 2));
+    panel.add(new JLabel("Employee ID:"));
+    panel.add(employeeIdField);
+    panel.add(new JLabel("Log Date:"));
+    panel.add(logDateField);
+    panel.add(new JLabel("Time In (HH:mm:ss):"));
+    panel.add(timeInField);
+    panel.add(new JLabel("Time Out (HH:mm:ss):"));
+    panel.add(timeOutField);
+
+    int result = JOptionPane.showConfirmDialog(this, panel, "Add New Attendance Log",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+    if (result == JOptionPane.OK_OPTION) {
+        try {
+            int employeeId = Integer.parseInt(employeeIdField.getText());
+            java.util.Date utilLogDate = logDateField.getDate();
+            java.sql.Date sqlLogDate = new java.sql.Date(utilLogDate.getTime());
+            Time timeIn = Time.valueOf(timeInField.getText());
+            Time timeOut = Time.valueOf(timeOutField.getText());
+
+            Attendance newLog = new Attendance(employeeId, sqlLogDate, timeIn, timeOut);
+            boolean success = attendanceDAO.addTimelog(newLog);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Attendance log added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadAttendanceData(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add attendance log.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Employee ID. Please enter a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+             JOptionPane.showMessageDialog(this, "Invalid time format. Please use HH:mm:ss.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error adding log: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    }
+    
+    private void showEditAttendanceDialog() {
+    int selectedRow = ATable.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row to edit.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Get data from selected row
+    int logID = (int) attendanceTableModel.getValueAt(selectedRow, 0);
+    int employeeID = (int) attendanceTableModel.getValueAt(selectedRow, 1);
+    java.sql.Date logDate = (java.sql.Date) attendanceTableModel.getValueAt(selectedRow, 2);
+    Time timeIn = (Time) attendanceTableModel.getValueAt(selectedRow, 3);
+    Time timeOut = (Time) attendanceTableModel.getValueAt(selectedRow, 4);
+
+    // Populate dialog with existing data
+    JTextField employeeIdField = new JTextField(String.valueOf(employeeID));
+    JDateChooser logDateField = new JDateChooser(logDate);
+    JTextField timeInField = new JTextField(timeIn != null ? timeIn.toString() : "");
+    JTextField timeOutField = new JTextField(timeOut != null ? timeOut.toString() : "");
+
+    JPanel panel = new JPanel(new GridLayout(0, 2));
+    panel.add(new JLabel("Employee ID:"));
+    panel.add(employeeIdField);
+    panel.add(new JLabel("Log Date:"));
+    panel.add(logDateField);
+    panel.add(new JLabel("Time In (HH:mm:ss):"));
+    panel.add(timeInField);
+    panel.add(new JLabel("Time Out (HH:mm:ss):"));
+    panel.add(timeOutField);
+
+    int result = JOptionPane.showConfirmDialog(this, panel, "Edit Attendance Log",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+    if (result == JOptionPane.OK_OPTION) {
+        try {
+            int updatedEmployeeId = Integer.parseInt(employeeIdField.getText());
+            java.util.Date utilLogDate = logDateField.getDate();
+            java.sql.Date updatedSqlLogDate = new java.sql.Date(utilLogDate.getTime());
+            Time updatedTimeIn = Time.valueOf(timeInField.getText());
+            Time updatedTimeOut = Time.valueOf(timeOutField.getText());
+
+            Attendance updatedLog = new Attendance(logID, updatedEmployeeId, updatedSqlLogDate, updatedTimeIn, updatedTimeOut);
+
+            // You'll need to add an update method to your AttendanceDAO
+            // public boolean updateTimelog(Attendance attendance) throws SQLException { ... }
+            boolean success = attendanceDAO.updateTimelog(updatedLog);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Attendance log updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadAttendanceData(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update attendance log.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Employee ID. Please enter a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+             JOptionPane.showMessageDialog(this, "Invalid time format. Please use HH:mm:ss.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error updating log: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    }
+    
+    private void deleteAttendanceRecord() {
+    int selectedRow = ATable.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row to delete.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this attendance record?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        int logID = (int) attendanceTableModel.getValueAt(selectedRow, 0);
+        try {
+            // You'll need to add a delete method to your AttendanceDAO
+            // public boolean deleteTimelog(int logID) throws SQLException { ... }
+            boolean success = attendanceDAO.deleteTimelog(logID);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Attendance log deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadAttendanceData(); // Refresh table
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to delete attendance log.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error deleting log: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    }
+    
+    private void recordOvertime() {
+    JOptionPane.showMessageDialog(this, "Record Overtime functionality to be implemented.", "Under Construction", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    
+    
+    
+    
+    
+    
     private void initLeaveTable() {
+        if (PStartPayrollPeriodDateChooser.getDateEditor() != null && PStartPayrollPeriodDateChooser.getDateEditor().getUiComponent() instanceof Component) {
+    ((Component) PStartPayrollPeriodDateChooser.getDateEditor().getUiComponent()).setBackground(Color.WHITE);
+}
+if (jDateChooser1.getDateEditor() != null && jDateChooser1.getDateEditor().getUiComponent() instanceof Component) {
+    ((Component) jDateChooser1.getDateEditor().getUiComponent()).setBackground(java.awt.Color.WHITE);
+}
     
     leaveTableModel = new DefaultTableModel(
         new Object[]{"ID", "Emp ID", "Type", "Start Date", "End Date", "Reason", "Status"},
@@ -264,7 +633,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         EmployeeInfoPanel = new javax.swing.JPanel();
@@ -382,7 +751,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         PLoadDataButton = new javax.swing.JButton();
         PStartPayrollPeriodDateChooser = new com.toedter.calendar.JDateChooser();
         PSearchTextField = new javax.swing.JTextField();
-        PSearchButton = new javax.swing.JButton();
         PEndPayrollPeriod = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         PayrollEarningsPanel = new javax.swing.JPanel();
@@ -392,13 +760,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         PRegularHoursLabel = new javax.swing.JLabel();
         PPositionLabel = new javax.swing.JLabel();
         PMonthlyRateLabel = new javax.swing.JLabel();
-        PGrossIncomeLabel = new javax.swing.JLabel();
-        PBasicSalaryTextField = new javax.swing.JTextField();
-        PRiceAllowanceTextField = new javax.swing.JTextField();
+        EmpNTextField = new javax.swing.JTextField();
+        FNTextField = new javax.swing.JTextField();
         PRegularHoursTextField = new javax.swing.JTextField();
-        PClothingAllowanceTextField = new javax.swing.JTextField();
+        PDTextField = new javax.swing.JTextField();
         PMonthlyRateTextField = new javax.swing.JTextField();
-        PGrossPayTextField = new javax.swing.JTextField();
         PPayslipNoLabel = new javax.swing.JLabel();
         PPayslipNoTextField = new javax.swing.JTextField();
         PHourlyRateLabel = new javax.swing.JLabel();
@@ -441,12 +807,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         PSummaryGrossIncomeTextField = new javax.swing.JTextField();
         PSummaryBenefitsTextField = new javax.swing.JTextField();
         PSummaryDeductionsTextField = new javax.swing.JTextField();
+        PTotalHomePayTextField = new javax.swing.JTextField();
+        PTotalHomePayLabel = new javax.swing.JLabel();
         PayrollButtonsPanel = new javax.swing.JPanel();
-        PCalculatePayrollButton = new javax.swing.JButton();
         PGeneratePDFButton = new javax.swing.JButton();
         PSaveDataButton = new javax.swing.JButton();
-        PTotalHomePayLabel = new javax.swing.JLabel();
-        PTotalHomePayTextField = new javax.swing.JTextField();
         ReportsPanel = new javax.swing.JPanel();
         ReportsSubPanel = new javax.swing.JPanel();
         ReportsTabbedPane = new javax.swing.JTabbedPane();
@@ -502,7 +867,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 630));
         setMinimumSize(new java.awt.Dimension(1000, 630));
         setResizable(false);
 
@@ -1234,7 +1598,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addGroup(EmployeeManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(EMClearFormButton)
                             .addComponent(EMSaveButton))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         AttendancePanel.setMaximumSize(new java.awt.Dimension(1000, 630));
@@ -1287,7 +1651,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(ASearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ASearchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(AStartDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1377,7 +1741,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(AttendanceSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         PayrollPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
@@ -1396,9 +1760,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
             }
         });
 
-        PSearchTextField.setText("Search...");
+        PStartPayrollPeriodDateChooser.setForeground(new java.awt.Color(255, 255, 255));
 
-        PSearchButton.setText("Search");
+        PSearchTextField.setText("Search...");
 
         PEndPayrollPeriod.setText("End of Payroll Period:");
 
@@ -1411,17 +1775,15 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(PSearchEmployeeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(43, 43, 43)
                 .addComponent(PPayrollPeriodLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PStartPayrollPeriodDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addComponent(PEndPayrollPeriod)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(PLoadDataButton)
                 .addGap(19, 19, 19))
         );
@@ -1430,17 +1792,31 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addGroup(PayrollTopPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PPayrollPeriodLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(PSearchEmployeeLabel)
                         .addComponent(PSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(PSearchButton))
+                        .addComponent(PPayrollPeriodLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PLoadDataButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PStartPayrollPeriodDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PEndPayrollPeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
+
+        PSearchTextField.addFocusListener(new java.awt.event.FocusListener() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (PSearchTextField.getText().equals("Search...")) {
+                    PSearchTextField.setText("");
+                }
+            }
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (PSearchTextField.getText().trim().isEmpty()) {
+                    PSearchTextField.setText("Search...");
+                }
+            }
+        });
 
         PPayrollInfoLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         PPayrollInfoLabel.setText("Employee Payroll Information");
@@ -1455,18 +1831,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         PMonthlyRateLabel.setText("Monthly Rate:");
 
-        PGrossIncomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        PGrossIncomeLabel.setText("Gross Income:");
-
         PMonthlyRateTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PMonthlyRateTextFieldActionPerformed(evt);
-            }
-        });
-
-        PGrossPayTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PGrossPayTextFieldActionPerformed(evt);
             }
         });
 
@@ -1502,9 +1869,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PPayslipNoTextField)
                             .addGroup(PayrollEarningsPanelLayout.createSequentialGroup()
-                                .addComponent(PRiceAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(FNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(PClothingAllowanceTextField)))
+                            .addComponent(PDTextField)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollEarningsPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1527,10 +1894,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
                                     .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(PMonthlyRateTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                         .addComponent(PHourlyRateTextField))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollEarningsPanelLayout.createSequentialGroup()
-                                .addComponent(PGrossIncomeLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(PGrossPayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PayrollEarningsPanelLayout.createSequentialGroup()
                                 .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(PClothAllowanceLabel)
@@ -1541,9 +1904,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
                                     .addComponent(PClothAllowanceTextField)
                                     .addComponent(PPhoneAllowanceTextField)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollEarningsPanelLayout.createSequentialGroup()
-                                .addComponent(PEmployeeNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PEmployeeNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(PBasicSalaryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(EmpNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(PRiceSubsidyLabel)))
                     .addGroup(PayrollEarningsPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1563,15 +1926,15 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PEmployeeNoLabel)
-                    .addComponent(PBasicSalaryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EmpNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PRiceAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PFullNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PPositionLabel)
-                    .addComponent(PClothingAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PMonthlyRateLabel)
@@ -1604,15 +1967,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PPhoneAllowanceLabel)
                     .addComponent(PPhoneAllowanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PayrollEarningsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PGrossIncomeLabel)
-                    .addComponent(PGrossPayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PBasicSalaryTextField.getAccessibleContext().setAccessibleName("");
-        PBasicSalaryTextField.getAccessibleContext().setAccessibleDescription("");
+        EmpNTextField.getAccessibleContext().setAccessibleName("");
+        EmpNTextField.getAccessibleContext().setAccessibleDescription("");
 
         PSSSLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         PSSSLabel.setText("Social Security System");
@@ -1669,6 +2028,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
             }
         });
 
+        PTotalHomePayLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        PTotalHomePayLabel.setText("Take Home Pay");
+
         javax.swing.GroupLayout PayrollDeductionsPanelLayout = new javax.swing.GroupLayout(PayrollDeductionsPanel);
         PayrollDeductionsPanel.setLayout(PayrollDeductionsPanelLayout);
         PayrollDeductionsPanelLayout.setHorizontalGroup(
@@ -1704,28 +2066,39 @@ public final class MainAppFrame extends javax.swing.JFrame {
                             .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(PSSSContributionTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                 .addComponent(PSSSNoTextField, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addGap(29, 29, 29)
                 .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PBIRLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
-                            .addComponent(PTINLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                            .addComponent(PTINTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PayrollDeductionsPanelLayout.createSequentialGroup()
-                            .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(PWithholdingTaxLabel)
-                                .addComponent(PSummaryGrossIncomeLabel)
-                                .addComponent(PSummaryBenefitsLabel)
-                                .addComponent(PSummaryDeductionsLabel))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(PWithholdingTaxTextField)
-                                .addComponent(PSummaryGrossIncomeTextField)
-                                .addComponent(PSummaryBenefitsTextField)
-                                .addComponent(PSummaryDeductionsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(PBIRLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
+                                            .addComponent(PTINLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                                            .addComponent(PTINTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PayrollDeductionsPanelLayout.createSequentialGroup()
+                                            .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(PWithholdingTaxLabel)
+                                                .addComponent(PSummaryGrossIncomeLabel)
+                                                .addComponent(PSummaryBenefitsLabel)
+                                                .addComponent(PSummaryDeductionsLabel))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(PWithholdingTaxTextField)
+                                                .addComponent(PSummaryGrossIncomeTextField)
+                                                .addComponent(PSummaryBenefitsTextField)
+                                                .addComponent(PSummaryDeductionsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(PTotalHomePayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollDeductionsPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PTotalHomePayLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PayrollDeductionsPanelLayout.setVerticalGroup(
             PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1734,58 +2107,57 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PSSSLabel)
                     .addComponent(PBIRLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PSSSNoLabel)
-                    .addComponent(PSSSNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PTINLabel)
-                    .addComponent(PTINTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PSSSContributionLabel)
-                    .addComponent(PSSSContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PWithholdingTaxLabel)
-                    .addComponent(PWithholdingTaxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PPHLabel)
-                    .addComponent(jLabel2))
-                .addGap(8, 8, 8)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PPhilHealthNoLabel)
-                    .addComponent(PPhilHealthNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PSummaryGrossIncomeLabel)
-                    .addComponent(PSummaryGrossIncomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PPhilHealthContributionLabel)
-                    .addComponent(PPhilHealthContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PSummaryBenefitsLabel)
-                    .addComponent(PSummaryBenefitsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PSummaryDeductionsLabel)
-                    .addComponent(PSummaryDeductionsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(PPagIBIGLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PPagIBIGNoLabel)
-                    .addComponent(PPagIBIGNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PPagIBIGContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PPagIBIGContributionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PSSSNoLabel)
+                            .addComponent(PSSSNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PTINLabel)
+                            .addComponent(PTINTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PSSSContributionLabel)
+                            .addComponent(PSSSContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PWithholdingTaxLabel)
+                            .addComponent(PWithholdingTaxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PPHLabel)
+                            .addComponent(jLabel2))
+                        .addGap(8, 8, 8)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PPhilHealthNoLabel)
+                            .addComponent(PPhilHealthNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PSummaryGrossIncomeLabel)
+                            .addComponent(PSummaryGrossIncomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PPhilHealthContributionLabel)
+                            .addComponent(PPhilHealthContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PSummaryBenefitsLabel)
+                            .addComponent(PSummaryBenefitsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PSummaryDeductionsLabel)
+                            .addComponent(PSummaryDeductionsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addComponent(PPagIBIGLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PPagIBIGNoLabel)
+                            .addComponent(PPagIBIGNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(PayrollDeductionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PPagIBIGContributionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PPagIBIGContributionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(59, Short.MAX_VALUE))
+                    .addGroup(PayrollDeductionsPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(PTotalHomePayLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PTotalHomePayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
         );
-
-        PCalculatePayrollButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        PCalculatePayrollButton.setText("Calculate Payroll");
-        PCalculatePayrollButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PCalculatePayrollButtonActionPerformed(evt);
-            }
-        });
 
         PGeneratePDFButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         PGeneratePDFButton.setText("Generate Payslip (PDF)");
@@ -1797,22 +2169,18 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         PSaveDataButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         PSaveDataButton.setText("Save Payroll Data");
-
-        PTotalHomePayLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        PTotalHomePayLabel.setText("Total Home Pay:");
+        PSaveDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PSaveDataButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PayrollButtonsPanelLayout = new javax.swing.GroupLayout(PayrollButtonsPanel);
         PayrollButtonsPanel.setLayout(PayrollButtonsPanelLayout);
         PayrollButtonsPanelLayout.setHorizontalGroup(
             PayrollButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollButtonsPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(PTotalHomePayLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PTotalHomePayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PCalculatePayrollButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PGeneratePDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(PSaveDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1822,15 +2190,10 @@ public final class MainAppFrame extends javax.swing.JFrame {
             PayrollButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PayrollButtonsPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PayrollButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PayrollButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PCalculatePayrollButton)
-                        .addComponent(PGeneratePDFButton)
-                        .addComponent(PSaveDataButton))
-                    .addGroup(PayrollButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PTotalHomePayLabel)
-                        .addComponent(PTotalHomePayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(73, 73, 73))
+                .addGroup(PayrollButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PGeneratePDFButton)
+                    .addComponent(PSaveDataButton))
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout PayrollPanelLayout = new javax.swing.GroupLayout(PayrollPanel);
@@ -1838,18 +2201,17 @@ public final class MainAppFrame extends javax.swing.JFrame {
         PayrollPanelLayout.setHorizontalGroup(
             PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PayrollPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PayrollTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PayrollButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PayrollPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(PayrollButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(PayrollPanelLayout.createSequentialGroup()
-                                .addComponent(PayrollEarningsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PayrollDeductionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(PayrollEarningsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PayrollDeductionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(PayrollPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PayrollTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PayrollPanelLayout.setVerticalGroup(
             PayrollPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1861,7 +2223,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(PayrollDeductionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PayrollButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         ReportsPanel.setMaximumSize(new java.awt.Dimension(1000, 630));
@@ -1872,7 +2234,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         RPDepartmentLabel.setText("Department:");
 
-        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        RPDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","CEO","COO","CFO","CMO","IT Operations and Systems","Human Resources","Finance","Accounts","Sales and Marketing","Supply Chain and Logistics","Customer Service and Relations" }));
 
         RPGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         RPGenerateReportButton.setText("Generate Report");
@@ -1920,7 +2282,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-               "Date", "Employee ID", "Name", "Department", "Gross Pay", "Total Deductions", "Net Pay"
+                "Date","Employee ID", "Name", "Department", "Gross Pay", "Total Deductions", "Net Pay"
             }
         ));
         RPayrollScrollPane.setViewportView(RPayrollTable);
@@ -2099,7 +2461,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         ReportsSubPanelLayout.setVerticalGroup(
             ReportsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportsSubPanelLayout.createSequentialGroup()
-                .addComponent(ReportsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                .addComponent(ReportsTabbedPane)
                 .addContainerGap())
         );
 
@@ -2360,6 +2722,21 @@ public final class MainAppFrame extends javax.swing.JFrame {
         MainPanel.setMinimumSize(new java.awt.Dimension(1000, 630));
         MainPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
+        MainPanel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                if (MainPanel.getSelectedComponent() == ReportsPanel) {
+                    // Set department to ALL if available
+                    if (RPDepartmentComboBox.getItemCount() > 0) {
+                        RPDepartmentComboBox.setSelectedIndex(0); // 'ALL' should be first
+                    }
+                    // Clear the date chooser
+                    RPayrollDateChooser.setDate(null);
+                    // Trigger the report generation
+                    RPGenerateReportButtonActionPerformed(null);
+                }
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2444,9 +2821,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void LMDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMDeleteButtonActionPerformed
+    private void LMDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
 
         LMDeleteButton.addActionListener(e -> {
@@ -2472,9 +2849,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please select a leave request to delete.", "No Selection", JOptionPane.WARNING_MESSAGE);
             }
         });
-    }//GEN-LAST:event_LMDeleteButtonActionPerformed
+    }                                              
 
-    private void LMApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApproveButtonActionPerformed
+    private void LMApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
 
         LMApproveButton.addActionListener(e -> {
@@ -2504,9 +2881,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please select a leave request to approve.", "No Selection", JOptionPane.WARNING_MESSAGE);
             }
         });
-    }//GEN-LAST:event_LMApproveButtonActionPerformed
+    }                                               
 
-    private void LMRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMRefreshButtonActionPerformed
+    private void LMRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
 
         LMEmployeeNameIDTextField.setText("");
@@ -2515,9 +2892,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
         LMStartDateChooser.setDate(null);
         LMEndDateChooser.setDate(null);
         loadAllLeaveRequests();
-    }//GEN-LAST:event_LMRefreshButtonActionPerformed
+    }                                               
 
-    private void LMClearFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMClearFiltersButtonActionPerformed
+    private void LMClearFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
 
         LMClearFiltersButton.addActionListener(e -> {
@@ -2529,23 +2906,23 @@ public final class MainAppFrame extends javax.swing.JFrame {
             LMEndDateChooser.setDate(null);
             loadAllLeaveRequests();
         });
-    }//GEN-LAST:event_LMClearFiltersButtonActionPerformed
+    }                                                    
 
-    private void LMApplyFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMApplyFiltersButtonActionPerformed
+    private void LMApplyFiltersButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
         System.out.println("DEBUG: filterLeaveRequests() called.");
         LMApplyFiltersButton.addActionListener(e -> filterLeaveRequests());
-    }//GEN-LAST:event_LMApplyFiltersButtonActionPerformed
+    }                                                    
 
-    private void LMEmployeeNameIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMEmployeeNameIDTextFieldActionPerformed
+    private void LMEmployeeNameIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_LMEmployeeNameIDTextFieldActionPerformed
+    }                                                         
 
-    private void RAExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAExportPDFButtonActionPerformed
+    private void RAExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
-    }//GEN-LAST:event_RAExportPDFButtonActionPerformed
+    }                                                 
 
-    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
+    private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         try {
             
             java.util.Date selectedD = (java.util.Date) RPayrollDateChooser.getDate();
@@ -2563,18 +2940,15 @@ public final class MainAppFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error generating PDF report: " + e.getMessage(),
                                        "Export Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_RPExportPDFButtonActionPerformed
+    }                                                 
 
-    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGeneratePDFButtonActionPerformed
+    private void PGeneratePDFButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         String searchText = PSearchTextField.getText().trim();
         java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
         java.util.Date endDate = jDateChooser1.getDate();
-        if (searchText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please search for an employee first.", "Input Required", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (startDate == null || endDate == null) {
-            JOptionPane.showMessageDialog(this, "Please select both start and end dates for the payroll period.", "Input Required", JOptionPane.WARNING_MESSAGE);
+        
+        if (!isPayrollDataLoaded) {
+            JOptionPane.showMessageDialog(this, "Please load data first.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         try {
@@ -2585,135 +2959,126 @@ public final class MainAppFrame extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error generating payslip PDF: " + e.getMessage(), "Export Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_PGeneratePDFButtonActionPerformed
+    }                                                  
 
-    private void PCalculatePayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PCalculatePayrollButtonActionPerformed
-                String searchText = PSearchTextField.getText().trim();
+    private void PWithholdingTaxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        // TODO add your handling code here:
+    }                                                        
+
+    private void PLoadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        String searchEmployee = PSearchTextField.getText().trim();
         java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
         java.util.Date endDate = jDateChooser1.getDate();
-        if (searchText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please search for an employee first.", "Input Required", JOptionPane.WARNING_MESSAGE);
+         
+        if (searchEmployee.isEmpty() || startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter:\n- Employee ID or Name\n- Start Date\n- End Date",
+                "Missing Required Fields",
+                JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (startDate == null || endDate == null) {
-            JOptionPane.showMessageDialog(this, "Please select both start and end dates for the payroll period.", "Input Required", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        int employeeId;
-        try {
-            employeeId = Integer.parseInt(searchText);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+
         try {
             Date sqlStart = new Date(startDate.getTime());
             Date sqlEnd = new Date(endDate.getTime());
-            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(String.valueOf(employeeId), sqlStart, sqlEnd);
+            
+            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(searchEmployee, sqlStart, sqlEnd);
+
             if (payslip == null) {
                 JOptionPane.showMessageDialog(this, "Payslip not found for this employee and period.", "Not Found", JOptionPane.ERROR_MESSAGE);
                 PTotalHomePayTextField.setText("");
                 return;
             }
-            PTotalHomePayTextField.setText(String.valueOf(payslip.getTakeHomePay()));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error fetching payslip details: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_PCalculatePayrollButtonActionPerformed
+            DecimalFormat pesoFormat = new DecimalFormat("PHP #,##0.00");
 
-    private void PWithholdingTaxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWithholdingTaxTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PWithholdingTaxTextFieldActionPerformed
-
-    private void PLoadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLoadDataButtonActionPerformed
-                String searchText = PSearchTextField.getText().trim();
-        java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
-        java.util.Date endDate = jDateChooser1.getDate();
-        if (searchText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please search for an employee first.", "Input Required", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (startDate == null || endDate == null) {
-            JOptionPane.showMessageDialog(this, "Please select both start and end dates for the payroll period.", "Input Required", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        int employeeId;
-        try {
-            employeeId = Integer.parseInt(searchText);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        try {
-            Date sqlStart = new Date(startDate.getTime());
-            Date sqlEnd = new Date(endDate.getTime());
-            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(String.valueOf(employeeId), sqlStart, sqlEnd);
-            if (payslip == null) {
-                JOptionPane.showMessageDialog(this, "Payslip not found for this employee and period.", "Not Found", JOptionPane.ERROR_MESSAGE);
-                PPayslipNoTextField.setText("");
-                PGrossPayTextField.setText("");
-                PSummaryGrossIncomeTextField.setText("");
-                PSummaryBenefitsTextField.setText("");
-                PSummaryDeductionsTextField.setText("");
-                return;
-            }
+            // Fill out home pay (add more fields if needed)
+            PTotalHomePayTextField.setText(pesoFormat.format(payslip.getTakeHomePay()));
             PPayslipNoTextField.setText(String.valueOf(payslip.getPayslipNo()));
-            PGrossPayTextField.setText(String.valueOf(payslip.getGrossIncome()));
-            PSummaryGrossIncomeTextField.setText(String.valueOf(payslip.getSummaryGross()));
-            PSummaryBenefitsTextField.setText(String.valueOf(payslip.getSummaryBenefits()));
-            PSummaryDeductionsTextField.setText(String.valueOf(payslip.getSummaryDeductions()));
+            PSummaryGrossIncomeTextField.setText(pesoFormat.format(payslip.getSummaryGross()));
+            PSummaryBenefitsTextField.setText(pesoFormat.format(payslip.getSummaryBenefits()));
+            PSummaryDeductionsTextField.setText(pesoFormat.format(payslip.getSummaryDeductions()));
+
+            // Fill static info from payslip (optional)
+            EmpNTextField.setText(String.valueOf(payslip.getEmployeeId()));
+            FNTextField.setText(payslip.getEmployeeName());
+            PDTextField.setText(payslip.getEmployeePositionDepartment());
+            PMonthlyRateTextField.setText(pesoFormat.format(payslip.getMonthlyRate()));
+            PHourlyRateTextField.setText(pesoFormat.format(payslip.getHourlyRate()));
+            PRegularHoursTextField.setText(String.valueOf((int)payslip.getRegularHours()));
+            POvertimeHoursTextField.setText(String.valueOf((int)payslip.getOvertimeHours()));
+            POvertimeIncomeTextField.setText(pesoFormat.format(payslip.getOvertimeIncome()));
+            PRiceSubsidyTextField.setText(pesoFormat.format(payslip.getRiceSubsidy()));
+            PClothAllowanceTextField.setText(pesoFormat.format(payslip.getClothingAllowance()));
+            PPhoneAllowanceTextField.setText(pesoFormat.format(payslip.getPhoneAllowance()));
+            PSSSContributionTextField.setText(pesoFormat.format(payslip.getSocialSecuritySystem()));
+            PPhilHealthContributionTextField.setText(pesoFormat.format(payslip.getPhilhealth()));
+            PPagIBIGContributionTextField.setText(pesoFormat.format(payslip.getPagibig()));
+            PWithholdingTaxTextField.setText(pesoFormat.format(payslip.getWitholdingtax()));
+
+            //EmployeeInformation
+            
+            //GovID
+            GovernmentID govID = new GovernmentIDsService(new GovernmentIdDAOImpl()).getGovernmentIdByEmployeeId(payslip.getEmployeeId());
+            PSSSNoTextField.setText(govID.getSssId());
+            PPhilHealthNoTextField.setText(govID.getPhilhealthId());
+            PPagIBIGNoTextField.setText(govID.getPagibigId());
+            PTINTextField.setText(govID.getTinId());
+ 
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error fetching payslip details: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_PLoadDataButtonActionPerformed
+        PGeneratePDFButton.setEnabled(true);
+        isPayrollDataLoaded = true;
+    }                                               
 
-    private void ARefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARefreshButtonActionPerformed
+    private void ARefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-    }//GEN-LAST:event_ARefreshButtonActionPerformed
+    }                                              
 
-    private void EMStreetTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMStreetTextFieldActionPerformed
+    private void EMStreetTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMStreetTextFieldActionPerformed
+    }                                                 
 
-    private void EMPagIBIGTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMPagIBIGTextFieldActionPerformed
+    private void EMPagIBIGTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMPagIBIGTextFieldActionPerformed
+    }                                                  
 
-    private void EMSSSTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMSSSTextFieldActionPerformed
+    private void EMSSSTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMSSSTextFieldActionPerformed
+    }                                              
 
-    private void EMFirstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMFirstNameTextFieldActionPerformed
+    private void EMFirstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMFirstNameTextFieldActionPerformed
+    }                                                    
 
-    private void EMEmployeeSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMEmployeeSearchTextFieldActionPerformed
+    private void EMEmployeeSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMEmployeeSearchTextFieldActionPerformed
+    }                                                         
 
-    private void SLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SLogOutButtonActionPerformed
+    private void SLogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
         LogOut logout = new LogOut(this,true,session);
         logout.setVisible(true);
         logout.setLocationRelativeTo(null);
-    }//GEN-LAST:event_SLogOutButtonActionPerformed
+    }                                             
 
-    private void EIApplyForLeaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIApplyForLeaveButtonActionPerformed
+    private void EIApplyForLeaveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
         LeaveDialog leave = new LeaveDialog(this,true);
         leave.setLocationRelativeTo(this);
         leave.setVisible(true);
-    }//GEN-LAST:event_EIApplyForLeaveButtonActionPerformed
+    }                                                     
 
-    private void EIEmployeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIEmployeeIDTextFieldActionPerformed
+    private void EIEmployeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_EIEmployeeIDTextFieldActionPerformed
+    }                                                     
 
-    private void EMpositionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMpositionComboBoxActionPerformed
+    private void EMpositionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMpositionComboBoxActionPerformed
+    }                                                  
 
-    private void RPGenerateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPGenerateReportButtonActionPerformed
+    private void RPGenerateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         try {
             // Get the selected date from the date chooser
             java.util.Date selectedDate = (java.util.Date) RPayrollDateChooser.getDate();
@@ -2750,9 +3115,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace(); // For debugging
         }
-    }//GEN-LAST:event_RPGenerateReportButtonActionPerformed
+    }                                                      
 
-    private void EMAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMAddButtonActionPerformed
+    private void EMAddButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
          try {
             // Collect values from fields
@@ -2809,13 +3174,13 @@ public final class MainAppFrame extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         }
-    }//GEN-LAST:event_EMAddButtonActionPerformed
+    }                                           
 
-    private void EMPhilHealthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMPhilHealthTextFieldActionPerformed
+    private void EMPhilHealthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMPhilHealthTextFieldActionPerformed
+    }                                                     
 
-    private void EMTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EMTableMouseClicked
+    private void EMTableMouseClicked(java.awt.event.MouseEvent evt) {                                     
         if (EMTable.getSelectedRow() != -1) {
               int row = EMTable.getSelectedRow();
               selectedEmployeeId = Integer.parseInt(EMTable.getValueAt(row, 0).toString()); // assuming column 0 is employee_id
@@ -2862,9 +3227,9 @@ public final class MainAppFrame extends javax.swing.JFrame {
                   JOptionPane.showMessageDialog(this, "Failed to load employee data.");
               }
           }
-    }//GEN-LAST:event_EMTableMouseClicked
+    }                                    
 
-    private void EMSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMSaveButtonActionPerformed
+    private void EMSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
 //        try {
 //            if (selectedEmployeeId == -1) {
@@ -2922,92 +3287,133 @@ public final class MainAppFrame extends javax.swing.JFrame {
 //            ex.printStackTrace();
 //            JOptionPane.showMessageDialog(this, "Failed to update employee: " + ex.getMessage());
 //        }
-    }//GEN-LAST:event_EMSaveButtonActionPerformed
+    }                                            
 
-    private void EMBasicSalaryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMBasicSalaryTextFieldActionPerformed
+    private void EMBasicSalaryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         // TODO add your handling code here:
-    }//GEN-LAST:event_EMBasicSalaryTextFieldActionPerformed
+    }                                                      
 
-    private void PGrossPayTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGrossPayTextFieldActionPerformed
+    private void PMonthlyRateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_PGrossPayTextFieldActionPerformed
+    }                                                     
 
-    private void PMonthlyRateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PMonthlyRateTextFieldActionPerformed
+    private void PPhilHealthNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         // TODO add your handling code here:
-    }//GEN-LAST:event_PMonthlyRateTextFieldActionPerformed
+    }                                                      
 
-    private void PPhilHealthNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PPhilHealthNoTextFieldActionPerformed
+    private void PSummaryBenefitsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_PPhilHealthNoTextFieldActionPerformed
+    }                                                         
 
-    private void PSummaryBenefitsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PSummaryBenefitsTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PSummaryBenefitsTextFieldActionPerformed
-    private void PSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PSearchButtonActionPerformed                                            
-        String searchText = PSearchTextField.getText().trim();
-        if (searchText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter an Employee ID to search.", "Input Required", JOptionPane.WARNING_MESSAGE);
+    private void PSaveDataButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        String searchEmployee = PSearchTextField.getText().trim();
+        java.util.Date startDate = PStartPayrollPeriodDateChooser.getDate();
+        java.util.Date endDate = jDateChooser1.getDate();
+         
+        if (searchEmployee.isEmpty() || startDate == null || endDate == null) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter:\n- Employee ID or Name\n- Start Date\n- End Date",
+                "Missing Required Fields",
+                JOptionPane.WARNING_MESSAGE);
             return;
         }
-        int employeeId;
-        try {
-            employeeId = Integer.parseInt(searchText);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Employee ID.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        try {
-            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(String.valueOf(employeeId), null, null);
+        
+                try {
+            Date sqlStart = new Date(startDate.getTime());
+            Date sqlEnd = new Date(endDate.getTime());
+            
+            Payslip payslip = new PayslipDAOImpl().getPayslipForReport(searchEmployee, sqlStart, sqlEnd);
+
             if (payslip == null) {
-                JOptionPane.showMessageDialog(this, "Payslip not found for this employee.", "Not Found", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Payslip not found for this employee and period.", "Not Found", JOptionPane.ERROR_MESSAGE);
+                PTotalHomePayTextField.setText("");
                 return;
             }
-            // Fill all info fields using only Payslip data
-            EmpNTextField.setText(String.valueOf(payslip.getEmployeeId()));
-            FNTextField.setText(payslip.getEmployeeName());
-            PDTextField.setText(payslip.getEmployeePositionDepartment());
-            PMonthlyRateTextField.setText(String.valueOf(payslip.getMonthlyRate()));
-            PHourlyRateTextField.setText(String.valueOf(payslip.getHourlyRate()));
-            PRegularHoursTextField.setText(String.valueOf(payslip.getRegularHours()));
-            POvertimeHoursTextField.setText(String.valueOf(payslip.getOvertimeHours()));
-            POvertimeIncomeTextField.setText(String.valueOf(payslip.getOvertimeIncome()));
-            PRiceSubsidyTextField.setText(String.valueOf(payslip.getRiceSubsidy()));
-            PClothAllowanceTextField.setText(String.valueOf(payslip.getClothingAllowance()));
-            PPhoneAllowanceTextField.setText(String.valueOf(payslip.getPhoneAllowance()));
-            PSSSContributionTextField.setText(String.valueOf(payslip.getSocialSecuritySystem()));
-            PPhilHealthContributionTextField.setText(String.valueOf(payslip.getPhilhealth()));
-            PPagIBIGContributionTextField.setText(String.valueOf(payslip.getPagibig()));
-            PWithholdingTaxTextField.setText(String.valueOf(payslip.getWitholdingtax()));
-                       try {
+                        // Show confirmation dialog
+            int confirmResult = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to save the changes?",
+                "Confirm Save",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+            );
+            
+            if (confirmResult == JOptionPane.YES_OPTION) {
+
+                // Get the edited allowance values from text fields
+                String riceSubsidyText = PRiceSubsidyTextField.getText().replace("PHP ", "").replace(",", "");
+                String clothingAllowanceText = PClothAllowanceTextField.getText().replace("PHP ", "").replace(",", "");
+                String phoneAllowanceText = PPhoneAllowanceTextField.getText().replace("PHP ", "").replace(",", "");
+                
+                // Parse the values
+                BigDecimal riceSubsidy = new BigDecimal(riceSubsidyText);
+                BigDecimal clothingAllowance = new BigDecimal(clothingAllowanceText);
+                BigDecimal phoneAllowance = new BigDecimal(phoneAllowanceText);
+
+                // --- ADD THIS BLOCK ---
+                AllowanceService allowanceService = new AllowanceService(
+                new EmployeeAllowanceDAOImpl(),
+                new AllowanceTypeDAOImpl()
+                );
+                int employeeId = payslip.getEmployeeId();
+                List<AllowanceType> employeeAllowanceTypes = allowanceService.getAllowanceTypesByEmployeeId(employeeId);
+
+                for (AllowanceType type : employeeAllowanceTypes) {
+                    String code = type.getCode().toLowerCase();
+
+                    if (code.equals("rice_allowance")) {
+                        allowanceService.assignAllowanceToEmployee(employeeId, type.getAllowanceTypeId(), riceSubsidy);
+                    } else if (code.equals("clothing_allowance")) {
+                        allowanceService.assignAllowanceToEmployee(employeeId, type.getAllowanceTypeId(), clothingAllowance);
+                    } else if (code.equals("phone_allowance")) {
+                        allowanceService.assignAllowanceToEmployee(employeeId, type.getAllowanceTypeId(), phoneAllowance);
+                    }
+             }
+                // Get the edited values from text fields
+                String sssAmount = PSSSContributionTextField.getText().replace("PHP ", "").replace(",", "");
+                String philhealthAmount = PPhilHealthContributionTextField.getText().replace("PHP ", "").replace(",", "");
+                String pagibigAmount = PPagIBIGContributionTextField.getText().replace("PHP ", "").replace(",", "");
+                
+                // Save deduction changes to database
+                DeductionDAO deductionDAO = new DeductionDAO(DBConnection.getConnection());
+                deductionDAO.updateDeduction(payslip.getEmployeeId(), 
+                    Double.parseDouble(sssAmount), 
+                    Double.parseDouble(philhealthAmount), 
+                    Double.parseDouble(pagibigAmount));
+                
+                // Save government ID changes
                 GovernmentIDsService govIdService = new GovernmentIDsService(new GovernmentIdDAOImpl());
                 GovernmentID govID = govIdService.getGovernmentIdByEmployeeId(payslip.getEmployeeId());
                 if (govID != null) {
-                    PSSSNoTextField.setText(govID.getSssId());
-                    PPhilHealthNoTextField.setText(govID.getPhilhealthId());
-                    PPagIBIGNoTextField.setText(govID.getPagibigId());
-                    PTINTextField.setText(govID.getTinId());
-                } else {
-                    PSSSNoTextField.setText("");
-                    PPhilHealthNoTextField.setText("");
-                    PPagIBIGNoTextField.setText("");
-                    PTINTextField.setText("");
+                    govID.setSssId(PSSSNoTextField.getText().trim());
+                    govID.setPhilhealthId(PPhilHealthNoTextField.getText().trim());
+                    govID.setPagibigId(PPagIBIGNoTextField.getText().trim());
+                    govID.setTinId(PTINTextField.getText().trim());
+                    govIdService.updateGovernmentId(govID, DBConnection.getConnection());
                 }
-            } catch (Exception ex) {
-                PSSSNoTextField.setText("");
-                PPhilHealthNoTextField.setText("");
-                PPagIBIGNoTextField.setText("");
-                PTINTextField.setText("");
+                
+                // Show success message
+                JOptionPane.showMessageDialog(
+                    this,
+                    "Changes saved successfully!",
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                
+                // Reset the data loaded flag since data has changed
+                isPayrollDataLoaded = false;
             }
             
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Invalid number format in one of the fields. Please check your input.", 
+                "Invalid Input", 
+                JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error fetching payslip details: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }         
-    }//GEN-FIRST:event_PSearchButtonActionPerformed      
-                                          
-                                                                                                 
-       
-
-   public void setupTabs() {
+            JOptionPane.showMessageDialog(this, "Error saving data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                               
+    public void setupTabs() {
         System.out.println("Setting up tabs...");
         EmployeeManagementPanel.setVisible(false);
         AttendancePanel.setVisible(false);
@@ -3143,49 +3549,6 @@ private void EMpopulateComboBoxes() {
     }
 }    
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -3224,7 +3587,7 @@ private void EMpopulateComboBoxes() {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton AAddTimeButton;
     private javax.swing.JPanel AButtonPanel;
     private javax.swing.JButton ADeleteTimeButton;
@@ -3330,8 +3693,10 @@ private void EMpopulateComboBoxes() {
     private javax.swing.JComboBox<String> EMdepartmentComboBox;
     private javax.swing.JComboBox<String> EMemploymentStatusComboBox;
     private javax.swing.JComboBox<String> EMpositionComboBox;
+    private javax.swing.JTextField EmpNTextField;
     private javax.swing.JPanel EmployeeInfoPanel;
     private javax.swing.JPanel EmployeeManagementPanel;
+    private javax.swing.JTextField FNTextField;
     private javax.swing.JButton LMApplyFiltersButton;
     private javax.swing.JButton LMApproveButton;
     private javax.swing.JButton LMClearFiltersButton;
@@ -3355,17 +3720,13 @@ private void EMpopulateComboBoxes() {
     private javax.swing.JPanel LeaveManagementPanel;
     private javax.swing.JTabbedPane MainPanel;
     private javax.swing.JLabel PBIRLabel;
-    private javax.swing.JTextField PBasicSalaryTextField;
-    private javax.swing.JButton PCalculatePayrollButton;
     private javax.swing.JLabel PClothAllowanceLabel;
     private javax.swing.JTextField PClothAllowanceTextField;
-    private javax.swing.JTextField PClothingAllowanceTextField;
+    private javax.swing.JTextField PDTextField;
     private javax.swing.JLabel PEmployeeNoLabel;
     private javax.swing.JLabel PEndPayrollPeriod;
     private javax.swing.JLabel PFullNameLabel;
     private javax.swing.JButton PGeneratePDFButton;
-    private javax.swing.JLabel PGrossIncomeLabel;
-    private javax.swing.JTextField PGrossPayTextField;
     private javax.swing.JLabel PHourlyRateLabel;
     private javax.swing.JTextField PHourlyRateTextField;
     private javax.swing.JButton PLoadDataButton;
@@ -3394,7 +3755,6 @@ private void EMpopulateComboBoxes() {
     private javax.swing.JLabel PPositionLabel;
     private javax.swing.JLabel PRegularHoursLabel;
     private javax.swing.JTextField PRegularHoursTextField;
-    private javax.swing.JTextField PRiceAllowanceTextField;
     private javax.swing.JLabel PRiceSubsidyLabel;
     private javax.swing.JTextField PRiceSubsidyTextField;
     private javax.swing.JLabel PSSSContributionLabel;
@@ -3403,7 +3763,6 @@ private void EMpopulateComboBoxes() {
     private javax.swing.JLabel PSSSNoLabel;
     private javax.swing.JTextField PSSSNoTextField;
     private javax.swing.JButton PSaveDataButton;
-    private javax.swing.JButton PSearchButton;
     private javax.swing.JLabel PSearchEmployeeLabel;
     private javax.swing.JTextField PSearchTextField;
     private com.toedter.calendar.JDateChooser PStartPayrollPeriodDateChooser;
@@ -3458,5 +3817,5 @@ private void EMpopulateComboBoxes() {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

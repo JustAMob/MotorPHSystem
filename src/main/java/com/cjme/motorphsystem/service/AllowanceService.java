@@ -31,6 +31,9 @@ public class AllowanceService {
     public void assignAllowanceToEmployee(int employeeId, int allowanceTypeId, BigDecimal amount) throws SQLException {
         employeeAllowanceDAO.assignAllowance(employeeId, allowanceTypeId, amount);
     }
+    public List<AllowanceType> getAllowanceTypesByEmployeeId(int employeeId) throws SQLException {
+        return allowanceTypeDAO.getAllowanceTypesByEmployeeId(employeeId);
+    }
 
     public Map<String, BigDecimal> getAllowancesForEmployee(int employeeId) throws SQLException {
         return employeeAllowanceDAO.getAllowancesByEmployee(employeeId);
