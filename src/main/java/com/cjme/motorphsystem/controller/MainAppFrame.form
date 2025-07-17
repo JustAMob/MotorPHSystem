@@ -3,9 +3,6 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1000, 630]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 630]"/>
     </Property>
@@ -676,7 +673,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1378,7 +1375,7 @@
                   <Component id="AttendanceSubPanel" min="-2" pref="540" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="AButtonPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1398,7 +1395,7 @@
                               <Component id="ASearchTextField" min="-2" pref="147" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ASearchButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace pref="33" max="32767" attributes="0"/>
                               <Component id="AStartDateLabel" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="AStartDateChooser" min="-2" pref="151" max="-2" attributes="0"/>
@@ -1665,8 +1662,8 @@
                       <Component id="PayrollDeductionsPanel" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="PayrollButtonsPanel" min="-2" pref="66" max="-2" attributes="0"/>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <Component id="PayrollButtonsPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1682,17 +1679,15 @@
                       <Component id="PSearchEmployeeLabel" min="-2" pref="97" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PSearchTextField" min="-2" pref="180" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PSearchButton" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="PPayrollPeriodLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PStartPayrollPeriodDateChooser" min="-2" pref="110" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PEndPayrollPeriod" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jDateChooser1" min="-2" pref="113" max="-2" attributes="0"/>
-                      <EmptySpace pref="7" max="32767" attributes="0"/>
+                      <Component id="PStartPayrollPeriodDateChooser" min="-2" pref="122" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="PEndPayrollPeriod" pref="119" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jDateChooser1" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="PLoadDataButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -1707,12 +1702,11 @@
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                               <Component id="PSearchEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="PSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jDateChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="PLoadDataButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="PStartPayrollPeriodDateChooser" alignment="0" max="32767" attributes="0"/>
                           <Component id="PEndPayrollPeriod" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDateChooser1" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="9" max="32767" attributes="0"/>
                   </Group>
@@ -1744,11 +1738,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Search..."/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="PSearchButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Search"/>
-              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="PSearchTextField.addFocusListener(new java.awt.event.FocusListener() {&#xa;            @Override&#xa;            public void focusGained(java.awt.event.FocusEvent e) {&#xa;                if (PSearchTextField.getText().equals(&quot;Search...&quot;)) {&#xa;                    PSearchTextField.setText(&quot;&quot;);&#xa;                }&#xa;            }&#xa;            @Override&#xa;            public void focusLost(java.awt.event.FocusEvent e) {&#xa;                if (PSearchTextField.getText().trim().isEmpty()) {&#xa;                    PSearchTextField.setText(&quot;Search...&quot;);&#xa;                }&#xa;            }&#xa;        });"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="PEndPayrollPeriod">
               <Properties>
@@ -1777,10 +1769,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="PPayslipNoTextField" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="PRiceAllowanceTextField" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="FNTextField" min="-2" pref="179" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="PClothingAllowanceTextField" max="32767" attributes="0"/>
+                                  <Component id="PDTextField" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1811,11 +1803,6 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="PGrossIncomeLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="PGrossPayTextField" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="PClothAllowanceLabel" min="-2" max="-2" attributes="0"/>
@@ -1829,9 +1816,9 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="PEmployeeNoLabel" max="32767" attributes="0"/>
+                                      <Component id="PEmployeeNoLabel" pref="80" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="PBasicSalaryTextField" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="EmpNTextField" min="-2" pref="179" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="PRiceSubsidyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1859,17 +1846,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="PEmployeeNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PBasicSalaryTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EmpNTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PRiceAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FNTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PFullNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="PPositionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PClothingAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="PDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1911,11 +1898,6 @@
                           <Component id="PPhoneAllowanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="PPhoneAllowanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PGrossIncomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PGrossPayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1955,34 +1937,21 @@
                 <Property name="text" type="java.lang.String" value="Monthly Rate:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="PGrossIncomeLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Gross Income:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="PBasicSalaryTextField">
+            <Component class="javax.swing.JTextField" name="EmpNTextField">
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                 <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
               </AccessibilityProperties>
             </Component>
-            <Component class="javax.swing.JTextField" name="PRiceAllowanceTextField">
+            <Component class="javax.swing.JTextField" name="FNTextField">
             </Component>
             <Component class="javax.swing.JTextField" name="PRegularHoursTextField">
             </Component>
-            <Component class="javax.swing.JTextField" name="PClothingAllowanceTextField">
+            <Component class="javax.swing.JTextField" name="PDTextField">
             </Component>
             <Component class="javax.swing.JTextField" name="PMonthlyRateTextField">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PMonthlyRateTextFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="PGrossPayTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PGrossPayTextFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="PPayslipNoLabel">
@@ -2045,73 +2014,83 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="PSSSLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="PSSSNoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="PPagIBIGContributionLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                          <Component id="PPagIBIGNoLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="PPagIBIGNoTextField" max="32767" attributes="0"/>
-                                          <Component id="PPagIBIGContributionTextField" min="-2" pref="168" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="PPagIBIGLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="PPHLabel" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="PPhilHealthNoLabel" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="PPhilHealthContributionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="PPhilHealthContributionTextField" max="32767" attributes="0"/>
-                                          <Component id="PPhilHealthNoTextField" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="PGeneratePDFButton" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="PSSSContributionLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="PSSSContributionTextField" alignment="0" pref="170" max="32767" attributes="0"/>
-                                      <Component id="PSSSNoTextField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="PBIRLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="PTINLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="81" max="32767" attributes="0"/>
-                                  <Component id="PTINTextField" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="PWithholdingTaxLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="PSummaryGrossIncomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="PSummaryBenefitsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="PSummaryDeductionsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="PPagIBIGContributionLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                      <Component id="PPagIBIGNoLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="PWithholdingTaxTextField" max="32767" attributes="0"/>
-                                      <Component id="PSummaryGrossIncomeTextField" max="32767" attributes="0"/>
-                                      <Component id="PSummaryBenefitsTextField" max="32767" attributes="0"/>
-                                      <Component id="PSummaryDeductionsTextField" pref="170" max="32767" attributes="0"/>
+                                      <Component id="PPagIBIGNoTextField" max="32767" attributes="0"/>
+                                      <Component id="PPagIBIGContributionTextField" min="-2" pref="168" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="PTotalHomePayTextField" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PSSSLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PSSSNoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="PPagIBIGLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="PPHLabel" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="PPhilHealthNoLabel" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="PPhilHealthContributionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="PPhilHealthContributionTextField" pref="170" max="32767" attributes="0"/>
+                                                      <Component id="PPhilHealthNoTextField" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="PSSSContributionLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="PSSSContributionTextField" alignment="0" pref="170" max="32767" attributes="0"/>
+                                                  <Component id="PSSSNoTextField" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PBIRLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="PTINLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace pref="81" max="32767" attributes="0"/>
+                                              <Component id="PTINTextField" min="-2" pref="170" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="PWithholdingTaxLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="PSummaryGrossIncomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="PSummaryBenefitsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="PSummaryDeductionsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="PWithholdingTaxTextField" max="32767" attributes="0"/>
+                                                  <Component id="PSummaryGrossIncomeTextField" max="32767" attributes="0"/>
+                                                  <Component id="PSummaryBenefitsTextField" max="32767" attributes="0"/>
+                                                  <Component id="PSummaryDeductionsTextField" pref="170" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jLabel2" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="jLabel2" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="45" max="32767" attributes="0"/>
                   </Group>
@@ -2164,18 +2143,27 @@
                           <Component id="PSummaryDeductionsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="PPagIBIGLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="PPagIBIGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PPagIBIGNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PPagIBIGNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="PPagIBIGNoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PPagIBIGNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="PPagIBIGContributionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PPagIBIGContributionLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="PTotalHomePayTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PPagIBIGContributionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="PPagIBIGContributionLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <Component id="PGeneratePDFButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2307,59 +2295,15 @@
             </Component>
             <Component class="javax.swing.JTextField" name="PSummaryDeductionsTextField">
             </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="PayrollButtonsPanel">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="PTotalHomePayLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PTotalHomePayTextField" min="-2" pref="205" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="PCalculatePayrollButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="PGeneratePDFButton" min="-2" pref="192" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="PSaveDataButton" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="PCalculatePayrollButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PGeneratePDFButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PSaveDataButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="PTotalHomePayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="PTotalHomePayTextField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="PCalculatePayrollButton">
+            <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="1"/>
+                  <Font name="Segoe UI" size="20" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Calculate Payroll"/>
+                <Property name="text" type="java.lang.String" value="Total Home Pay"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PCalculatePayrollButtonActionPerformed"/>
-              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="PTotalHomePayTextField">
             </Component>
             <Component class="javax.swing.JButton" name="PGeneratePDFButton">
               <Properties>
@@ -2372,25 +2316,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PGeneratePDFButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="PSaveDataButton">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Save Payroll Data"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="PTotalHomePayLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Total Home Pay:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="PTotalHomePayTextField">
-            </Component>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PayrollButtonsPanel">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="66" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>
@@ -2443,7 +2384,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="ReportsTabbedPane" pref="612" max="32767" attributes="0"/>
+                      <Component id="ReportsTabbedPane" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2561,6 +2502,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Generate Report"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RPGenerateReportButtonActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="RPayrollDateChooser">
                         </Component>
@@ -2715,10 +2659,8 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="RAEmployeeLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="REmployeeSearchTextField" pref="137" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="RASearchButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="REmployeeSearchTextField" pref="141" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                                   <Component id="RAGenerateReportButton" min="-2" pref="175" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2736,7 +2678,6 @@
                                           <Component id="RAEmployeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="RAGenerateReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="REmployeeSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="RASearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -2775,11 +2716,6 @@
                         <Component class="javax.swing.JTextField" name="REmployeeSearchTextField">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="jTextField1"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="RASearchButton">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Search"/>
                           </Properties>
                         </Component>
                       </SubComponents>
