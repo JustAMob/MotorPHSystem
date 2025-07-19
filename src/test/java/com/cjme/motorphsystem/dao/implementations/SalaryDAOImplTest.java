@@ -70,7 +70,7 @@ public class SalaryDAOImplTest {
         salary.setBasicSalary(new BigDecimal("25000.00"));
         salary.setHourlyRate(new BigDecimal("150.00"));
 
-        dao.updateSalary(salary);
+        dao.updateSalary(salary,conn);
 
         Salary updated = dao.getSalaryById(testSalaryId);
         assertEquals(new BigDecimal("25000.00"), updated.getBasicSalary());

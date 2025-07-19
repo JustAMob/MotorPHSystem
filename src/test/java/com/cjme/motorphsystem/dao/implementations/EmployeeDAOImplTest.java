@@ -85,14 +85,14 @@ public class EmployeeDAOImplTest {
     }
 
     @Test
-    public void testUpdateEmployee() {
+    public void testUpdateEmployee() throws SQLException {
         Assume.assumeTrue(testEmployeeId != -1);
 
         EmployeeEntity emp = dao.getEmployeeById(testEmployeeId);
         emp.setFirstName("Jane");
         emp.setLastName("Smith");
 
-        dao.updateEmployee(emp);
+        dao.updateEmployee(emp,conn);
 
         EmployeeEntity updated = dao.getEmployeeById(testEmployeeId);
         assertEquals("Jane", updated.getFirstName());
