@@ -19,6 +19,16 @@ public class GovernmentID {
     public GovernmentID() {
     }
 
+    public GovernmentID(int employeeId, String sssId, String pagibigId, String philhealthId, String tinId) {
+        this.employeeId = employeeId;
+        this.sssId = sssId;
+        this.pagibigId = pagibigId;
+        this.philhealthId = philhealthId;
+        this.tinId = tinId;
+    }
+
+
+
     public int getGovernmentId() {
         return governmentId;
     }

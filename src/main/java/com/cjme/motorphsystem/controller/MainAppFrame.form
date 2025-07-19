@@ -1329,6 +1329,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Clear Form"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMClearFormButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="EMSaveButton">
           <Properties>

@@ -15,6 +15,27 @@ public class Salary {
     public Salary() {
     }
 
+    public Salary(BigDecimal basicSalary) {
+        this.basicSalary = basicSalary;
+    }
+
+    public Salary(int salaryId, BigDecimal basicSalary, BigDecimal grossSemiMonthlyRate, BigDecimal hourlyRate) {
+        this.salaryId = salaryId;
+        this.basicSalary = basicSalary;
+        this.grossSemiMonthlyRate = grossSemiMonthlyRate;
+        this.hourlyRate = hourlyRate;
+    }
+
+    public Salary(BigDecimal basicSalary, BigDecimal grossSemiMonthlyRate, BigDecimal hourlyRate) {
+        this.basicSalary = basicSalary;
+        this.grossSemiMonthlyRate = grossSemiMonthlyRate;
+        this.hourlyRate = hourlyRate;
+    }
+
+   
+
+
+
     public void setSalaryId(int salaryId) {
         this.salaryId = salaryId;
     }

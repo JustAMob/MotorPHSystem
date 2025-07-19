@@ -38,6 +38,17 @@ public class EmployeeEntity {
         this.birthday = birthday;
     }
 
+    public EmployeeEntity(int employeeId, String firstName, String lastName, int phone, Date birthday, int departmentId, int positionId, int statusId) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phone;
+        this.departmentId = departmentId;
+        this.statusId = statusId;
+        this.positionId = positionId;
+        this.birthday = (Date) birthday;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }

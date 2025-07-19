@@ -28,6 +28,15 @@ public class Address {
         this.zipcode = zipcode;
     }
 
+    public Address(String building , String street, String city, String province, String zipcode) {
+        this.building = building;
+        this.street = street;
+        this.city = city;
+        this.province = province;
+        this.zipcode = zipcode;
+    }
+
+
     public int getAddressId() {
         return addressId;
     }

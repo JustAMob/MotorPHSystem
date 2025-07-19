@@ -5,15 +5,24 @@ package com.cjme.motorphsystem.service;
  * @author JustAMob
  */
 import com.cjme.motorphsystem.dao.AddressDAO;
+import com.cjme.motorphsystem.dao.DepartmentDAO;
 import com.cjme.motorphsystem.dao.EmployeeEntityDAO;
 import com.cjme.motorphsystem.dao.EmployeeProfileDAO;
+import com.cjme.motorphsystem.dao.EmploymentStatusDAO;
 import com.cjme.motorphsystem.dao.GovernmentIdDAO;
+import com.cjme.motorphsystem.dao.PositionDAO;
 import com.cjme.motorphsystem.dao.SalaryDAO;
 import com.cjme.motorphsystem.dao.SupervisorDAO;
+import com.cjme.motorphsystem.dao.implementations.DepartmentDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.EmploymentStatusDAOImpl;
+import com.cjme.motorphsystem.dao.implementations.PositionDAOImpl;
 import com.cjme.motorphsystem.model.Address;
+import com.cjme.motorphsystem.model.Department;
 import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
+import com.cjme.motorphsystem.model.EmploymentStatus;
 import com.cjme.motorphsystem.model.GovernmentID;
+import com.cjme.motorphsystem.model.Position;
 import com.cjme.motorphsystem.model.Salary;
 import com.cjme.motorphsystem.model.Supervisor;
 import com.cjme.motorphsystem.util.DBConnection;
@@ -30,6 +39,9 @@ public class EmployeeService {
     private final GovernmentIdDAO governmentDAO;
     private final SalaryDAO salaryDAO;
     private final SupervisorDAO supervisorDAO;
+    private static final DepartmentDAO departmentDAO = new DepartmentDAOImpl();
+    private static final PositionDAO positionDAO = new PositionDAOImpl();
+    private static final EmploymentStatusDAO statusDAO = new EmploymentStatusDAOImpl();
 
     public EmployeeService(EmployeeEntityDAO entityDAO, EmployeeProfileDAO profileDAO, AddressDAO addressDAO, GovernmentIdDAO governmentDAO, SalaryDAO salaryDAO, SupervisorDAO supervisorDAO) {
         this.entityDAO = entityDAO;
@@ -46,7 +58,7 @@ public class EmployeeService {
 
 
 
-    public int insertNewEmployee(EmployeeEntity employee, Address address, GovernmentID govId, Salary salary) throws SQLException {
+    public int insertNewEmployee( Address address, GovernmentID govId, Salary salary,EmployeeEntity employee) throws SQLException {
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
@@ -170,4 +182,32 @@ public class EmployeeService {
         }
         return null;
     }
+    
+    public static int getDepartmentIdByName(String departmentName) throws SQLException {
+        Department department = departmentDAO.getDepartmentByName(departmentName);
+        if (department == null) {
+            throw new IllegalArgumentException("Department not found: " + departmentName);
+        }
+        return department.getDepartmentId();
+    }
+
+    public static int getPositionIdByName(String positionName) throws SQLException {
+        Position position = positionDAO.getPositionByName(positionName);
+        if (position == null) {
+            throw new IllegalArgumentException("Position not found: " + positionName);
+        }
+        return position.getPositionId();
+    }
+
+    public static int getStatusIdByName(String statusName) throws SQLException {
+        EmploymentStatus status = statusDAO.getStatusByName(statusName);
+        if (status == null) {
+            throw new IllegalArgumentException("Employment Status not found: " + statusName);
+        }
+        return status.getStatusId();
+    }
+    
+    
+    
+    
 }

@@ -20,5 +20,6 @@ public interface EmploymentStatusDAO {
     void updateStatus(EmploymentStatus status);
     void deleteStatus(int id);
     int getStatusIdByName(String name) throws SQLException;
+    EmploymentStatus getStatusByName(String statusName) throws SQLException;
     public Map<String, Integer> getEmploymentStatusNameIdMap()throws SQLException;
 }

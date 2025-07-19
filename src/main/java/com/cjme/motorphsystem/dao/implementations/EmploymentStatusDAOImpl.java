@@ -148,5 +148,27 @@ public class EmploymentStatusDAOImpl implements EmploymentStatusDAO {
             }
         }
     }
+    
+    @Override
+    public EmploymentStatus getStatusByName(String statusName) throws SQLException {
+        String sql = "SELECT * FROM employment_status WHERE status_type = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, statusName);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    EmploymentStatus status = new EmploymentStatus();
+                    status.setStatusId(rs.getInt("status_id"));
+                    status.setStatusType(rs.getString("status_type"));
+                    return status;
+                }
+            }
+        }
+        return null;
+    }
+    
+    
+    
+    
 
 }

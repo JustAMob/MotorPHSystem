@@ -1569,6 +1569,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         );
 
         EMClearFormButton.setText("Clear Form");
+        EMClearFormButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EMClearFormButtonActionPerformed(evt);
+            }
+        });
 
         EMSaveButton.setBackground(new java.awt.Color(51, 153, 255));
         EMSaveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -3088,60 +3093,63 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
     private void EMAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMAddButtonActionPerformed
         // TODO add your handling code here:
-         try {
-            // Collect values from fields
+           try {
+            // 1. Collect input data
+            int employeeId = Integer.parseInt(EMEmployeeIDTextField.getText());
             String firstName = EMFirstNameTextField.getText();
             String lastName = EMLastNameTextField.getText();
-            int phoneNumber = Integer.parseInt(EMPhoneTextField.getText());
-            Date birthday = new java.sql.Date(EMBirthdayDateChooser.getDate().getTime());
+            int phone = Integer.parseInt(EMPhoneTextField.getText());
+            java.util.Date birthday = EMBirthdayDateChooser.getDate();
+            java.sql.Date sqlBirthday = new java.sql.Date(birthday.getTime());
+            String departmentName = EMdepartmentComboBox.getSelectedItem().toString();
+            String positionName = EMpositionComboBox.getSelectedItem().toString();
+            String employmentStatus = EMemploymentStatusComboBox.getSelectedItem().toString();
 
-            // Combo box selections
-            int departmentId = ForeignKeyMapperUtil.departmentMap.get(EMdepartmentComboBox.getSelectedItem().toString());
-            int positionId = ForeignKeyMapperUtil.positionMap.get(EMpositionComboBox.getSelectedItem().toString());
-            int statusId = ForeignKeyMapperUtil.statusMap.get(EMemploymentStatusComboBox.getSelectedItem().toString());
+            String street = EMStreetTextField.getText();
+            String building = EMBuildingTextField.getText();
+            String city = EMCityTextField.getText();
+            String province = EMProvinceTextField.getText();
+            String zip = EMZIPTextField.getText();
 
-            // Create models
-            Address address = new Address();
-            address.setBuilding(EMBuildingTextField.getText());
-            address.setStreet(EMStreetTextField.getText());
-            address.setCity(EMCityTextField.getText());
-            address.setProvince(EMProvinceTextField.getText());
-            address.setZipcode(EMZIPTextField.getText());
+            String sss = EMSSSTextField.getText();
+            String tin = EMTINTextField.getText();
+            String philhealth = EMPhilHealthTextField.getText();
+            String pagibig = EMPagIBIGTextField.getText();
+            
+            BigDecimal basicSalary = BigDecimal.valueOf(Double.parseDouble(EMBasicSalaryTextField.getText()));
 
-            GovernmentID govId = new GovernmentID();
-            govId.setSssId(EMSSSTextField.getText());
-            govId.setPagibigId(EMPagIBIGTextField.getText());
-            govId.setPhilhealthId(EMPhilHealthTextField.getText());
-            govId.setTinId(EMTINTextField.getText());
+            // 2. Map combobox selections to foreign key IDs
+            int departmentId = EmployeeService.getDepartmentIdByName(departmentName);
+            int positionId = EmployeeService.getPositionIdByName(positionName);
+            int statusId = EmployeeService.getStatusIdByName(employmentStatus);
 
-            Salary salary = new Salary();
-            salary.setBasicSalary(new BigDecimal(EMBasicSalaryTextField.getText()));
-            //salary.setGrossSemiMonthlyRate(new BigDecimal(semiMonthlyField.getText()));
-            // salary.setHourlyRate(new BigDecimal(hourlyRateField.getText()));
+            // 3. Confirm input
+            String confirmationMessage = String.format(
+                "Please confirm the following details:\n\nName: %s %s\nEmployeeID: %s\nPhone: %s\nBirthday: %s\nDepartment: %s\nPosition: %s\nStatus: %s\n\nSSS: %s\nTIN: %s\nPhilHealth: %s\nPag-IBIG: %s\n\nAddress:\n%s, %s, %s, %s, %s\n\nSalary: %.2f",
+                firstName, lastName,employeeId, phone, birthday, departmentName, positionName, employmentStatus,
+                sss, tin, philhealth, pagibig, building, street, city, province, zip, basicSalary
+            );
+            
+            int confirm = JOptionPane.showConfirmDialog(null, confirmationMessage, "Confirm Add Employee", JOptionPane.YES_NO_OPTION);
+            if (confirm != JOptionPane.YES_OPTION) return;
+            
+            // 4. Construct models
+            Address address = new Address(building, street, city, province, zip);
+            GovernmentID govId = new GovernmentID(employeeId, sss, tin, philhealth, pagibig);
+            Salary salary = new Salary(basicSalary);
+            
+            EmployeeEntity emp = new EmployeeEntity(employeeId, firstName, lastName, phone, sqlBirthday, departmentId, positionId, statusId);
 
-            EmployeeEntity emp = new EmployeeEntity();
-            emp.setFirstName(firstName);
-            emp.setLastName(lastName);
-            emp.setPhoneNumber(phoneNumber);
-            emp.setBirthday(birthday);
-            emp.setDepartmentId(departmentId);
-            emp.setPositionId(positionId);
-            emp.setStatusId(statusId);
-            emp.setSupervisorId(1); 
+            // 5. Insert employee
+            int newEmpId = employeeService.insertNewEmployee(address, govId, salary, emp);
 
-            // Insert using service layer
-            int newEmpId = employeeService.insertNewEmployee(emp, address, govId, salary);
-
-            if (newEmpId != -1) {
-                JOptionPane.showMessageDialog(this, "Employee added successfully!");
-                loadEmployeeList(); // Refresh table
-            } else {
-                JOptionPane.showMessageDialog(this, "Failed to add employee.");
-            }
+            // 6. Notify user and refresh table
+            JOptionPane.showMessageDialog(null, "Employee added successfully! New ID: " + newEmpId);
+            loadEmployeeList(); // Reloads the table data
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Failed to add employee: " + ex.getMessage());
         }
     }//GEN-LAST:event_EMAddButtonActionPerformed
 
@@ -3369,6 +3377,34 @@ public final class MainAppFrame extends javax.swing.JFrame {
         }
       
     }//GEN-LAST:event_EMEditButtonActionPerformed
+
+    private void EMClearFormButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMClearFormButtonActionPerformed
+        // TODO add your handling code here:
+         // Clear text fields
+        EMEmployeeIDTextField.setText("");
+        EMFirstNameTextField.setText("");
+        EMLastNameTextField.setText("");
+        EMPhoneTextField.setText("");
+        EMBirthdayDateChooser.setDate(null);
+
+        EMStreetTextField.setText("");
+        EMBuildingTextField.setText("");
+        EMCityTextField.setText("");
+        EMProvinceTextField.setText("");
+        EMZIPTextField.setText("");
+
+        EMSSSTextField.setText("");
+        EMTINTextField.setText("");
+        EMPhilHealthTextField.setText("");
+        EMPagIBIGTextField.setText("");
+
+        EMBasicSalaryTextField.setText("");
+
+        // Reset combo boxes
+        EMdepartmentComboBox.setSelectedIndex(0);
+        EMpositionComboBox.setSelectedIndex(0);
+        EMemploymentStatusComboBox.setSelectedIndex(0);
+    }//GEN-LAST:event_EMClearFormButtonActionPerformed
     private void PSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                                                          
         String searchText = PSearchTextField.getText().trim();
         if (searchText.isEmpty()) {

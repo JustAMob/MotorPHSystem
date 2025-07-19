@@ -20,6 +20,8 @@ public interface DepartmentDAO {
     void updateDepartment(Department department);
     void deleteDepartment(int id);
     int getDepartmentIdByName(String name) throws SQLException;;
+    Department getDepartmentByName(String departmentName) throws SQLException;
+
     public Map<String, Integer> getDepartmentNameIdMap()throws SQLException;
 
 
