@@ -135,4 +135,24 @@ public class PositionDAOImpl implements PositionDAO {
     }
     return map;
     }
+    
+    @Override
+     public int getPositionIdByName(String name) throws SQLException {
+        String sql = "SELECT position_id FROM position WHERE position_name = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("position_id");
+                } else {
+                    throw new SQLException("Position not found: " + name);
+                }
+            }
+        }
+    }
+    
+    
+    
+    
 }

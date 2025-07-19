@@ -133,4 +133,20 @@ public class EmploymentStatusDAOImpl implements EmploymentStatusDAO {
     }
     return map;
     }
+    @Override
+    public int getStatusIdByName(String name) throws SQLException {
+        String sql = "SELECT status_id FROM employment_status WHERE status_type = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("status_id");
+                } else {
+                    throw new SQLException("Employment status not found: " + name);
+                }
+            }
+        }
+    }
+
 }

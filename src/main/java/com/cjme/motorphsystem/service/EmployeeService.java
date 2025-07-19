@@ -9,11 +9,13 @@ import com.cjme.motorphsystem.dao.EmployeeEntityDAO;
 import com.cjme.motorphsystem.dao.EmployeeProfileDAO;
 import com.cjme.motorphsystem.dao.GovernmentIdDAO;
 import com.cjme.motorphsystem.dao.SalaryDAO;
+import com.cjme.motorphsystem.dao.SupervisorDAO;
 import com.cjme.motorphsystem.model.Address;
 import com.cjme.motorphsystem.model.EmployeeEntity;
 import com.cjme.motorphsystem.model.EmployeeProfile;
 import com.cjme.motorphsystem.model.GovernmentID;
 import com.cjme.motorphsystem.model.Salary;
+import com.cjme.motorphsystem.model.Supervisor;
 import com.cjme.motorphsystem.util.DBConnection;
 import java.sql.Connection;
 
@@ -27,14 +29,18 @@ public class EmployeeService {
     private final AddressDAO addressDAO;
     private final GovernmentIdDAO governmentDAO;
     private final SalaryDAO salaryDAO;
+    private final SupervisorDAO supervisorDAO;
 
-    public EmployeeService(EmployeeEntityDAO entityDAO, EmployeeProfileDAO profileDAO, AddressDAO addressDAO, GovernmentIdDAO governmentDAO, SalaryDAO salaryDAO) {
+    public EmployeeService(EmployeeEntityDAO entityDAO, EmployeeProfileDAO profileDAO, AddressDAO addressDAO, GovernmentIdDAO governmentDAO, SalaryDAO salaryDAO, SupervisorDAO supervisorDAO) {
         this.entityDAO = entityDAO;
         this.profileDAO = profileDAO;
         this.addressDAO = addressDAO;
         this.governmentDAO = governmentDAO;
         this.salaryDAO = salaryDAO;
+        this.supervisorDAO = supervisorDAO;
     }
+
+
 
 
 
@@ -66,18 +72,20 @@ public class EmployeeService {
     /**
      * Updates an existing employee record.
      *
+ 
      * @param emp  the EmployeeEntity with updated values
      * @param role the role of the user performing the operation
      * @throws SQLException on DB errors or authorization failure
      */
-    public void updateEmployee(EmployeeEntity emp, Address address, GovernmentID govId, Salary salary, String role) throws SQLException {
+    public void updateEmployee( Address address, GovernmentID govId, Salary salary,EmployeeEntity emp) throws SQLException {
         try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try {
-                entityDAO.updateEmployee(emp, conn);
+                
                 addressDAO.updateAddress(address, conn);
                 governmentDAO.updateGovernmentId(govId, conn); 
-                salaryDAO.updateSalary(salary, conn);          
+                salaryDAO.updateSalary(salary, conn); 
+                entityDAO.updateEmployee(emp, conn);
                 conn.commit();
             } catch (SQLException | SecurityException ex) {
                 conn.rollback();
@@ -152,6 +160,13 @@ public class EmployeeService {
         EmployeeEntity emp = entityDAO.getEmployeeById(employeeId);
         if (emp != null) {
             return salaryDAO.getSalaryById(emp.getSalaryId());
+        }
+        return null;
+    }
+    public Supervisor getSupervisorByEmployeeId(int employeeId) throws SQLException {
+        EmployeeEntity emp = entityDAO.getEmployeeById(employeeId);
+        if (emp != null) {
+            return supervisorDAO.getSupervisorById(emp.getSupervisorId());
         }
         return null;
     }

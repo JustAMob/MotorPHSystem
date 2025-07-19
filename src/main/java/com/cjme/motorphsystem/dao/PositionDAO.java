@@ -21,6 +21,6 @@ public interface PositionDAO {
     void deletePosition(int id);
 
     public Map<String, Integer> getPositionNameIdMap()throws SQLException;
-
+    int getPositionIdByName(String name) throws SQLException;
   
 }

@@ -137,4 +137,20 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
     return map;
     }
+    
+    @Override
+    public int getDepartmentIdByName(String name) throws SQLException {
+        String sql = "SELECT department_id FROM department WHERE name = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("department_id");
+                } else {
+                    throw new SQLException("Department not found: " + name);
+                }
+            }
+        }   
+    }
 }

@@ -67,7 +67,10 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import com.toedter.calendar.JDateChooser;
 import com.cjme.motorphsystem.dao.AttendanceDAO; 
+import com.cjme.motorphsystem.dao.implementations.SupervisorDAOImpl;
 import com.cjme.motorphsystem.model.Attendance; 
+import com.cjme.motorphsystem.model.Supervisor;
+import com.cjme.motorphsystem.util.EntityIdResolverUtil;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -114,7 +117,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         new EmployeeProfileDAOImpl(),
         new AddressDAOImpl(),
         new GovernmentIdDAOImpl(),
-        new SalaryDAOImpl()
+        new SalaryDAOImpl(),
+        new SupervisorDAOImpl()
        );
        
        
@@ -1151,7 +1155,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
             .addComponent(EIWelcomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(EmployeeInfoPanelLayout.createSequentialGroup()
                 .addComponent(EIDetailsIDsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(EIEmployeeInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -1233,6 +1237,11 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMScrollPane.setViewportView(EMTable);
 
         EMEditButton.setText("Edit Employee");
+        EMEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EMEditButtonActionPerformed(evt);
+            }
+        });
 
         EMAddButton.setText("Add Employee");
         EMAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1415,7 +1424,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(EMCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(EMBirthdayDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addComponent(EMBirthdayDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
                             .addGroup(EMDetailPanelLayout.createSequentialGroup()
                                 .addComponent(EMProvinceLabel)
                                 .addGap(44, 44, 44)
@@ -1449,7 +1458,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                                                 .addComponent(EMBasicSalaryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(EMDetailPanelLayout.createSequentialGroup()
                                                 .addComponent(EMSSSLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                                                 .addComponent(EMSSSTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EMDetailPanelLayout.createSequentialGroup()
                                                 .addGroup(EMDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1581,7 +1590,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                     .addComponent(EMButtonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(EmployeeManagementPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(EMScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)))
+                        .addComponent(EMScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EmployeeManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EMDetailPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1661,7 +1670,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                         .addComponent(ASearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ASearchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(AStartDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1788,7 +1797,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PStartPayrollPeriodDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PEndPayrollPeriod, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(PEndPayrollPeriod, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -3264,6 +3273,102 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void PSummaryBenefitsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PSummaryBenefitsTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PSummaryBenefitsTextFieldActionPerformed
+
+    private void EMEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMEditButtonActionPerformed
+       // TODO add your handling code here:
+         try {
+            
+            // 1. Get values from text fields and combo boxes
+            int employeeId = Integer.parseInt(EMEmployeeIDTextField.getText().trim());
+            Address existingAddress = employeeService.getAddressByEmployeeId(employeeId);
+            int existingAddressId = existingAddress != null ? existingAddress.getAddressId() : -1;
+            GovernmentID governmentId = employeeService.getGovernmentIdByEmployeeId(employeeId);
+            int existGovernmentId = governmentId != null ? governmentId.getGovernmentId() : -1;
+            
+            Supervisor supervisorId = employeeService.getSupervisorByEmployeeId(employeeId);
+            int existSupervisorId = supervisorId != null ? supervisorId.getSupervisorId() : -1;
+  
+            Salary salaryId = employeeService.getSalaryByEmployeeId(employeeId);
+            int existSalaryId = salaryId != null ? salaryId.getSalaryId() : -1;
+            
+            String firstName = EMFirstNameTextField.getText().trim();
+            String lastName = EMLastNameTextField.getText().trim();
+            String phone = EMPhoneTextField.getText().trim();
+            java.util.Date birthDate = EMBirthdayDateChooser.getDate();
+            java.sql.Date sqlBirthDate = new java.sql.Date(birthDate.getTime());
+
+            // Address
+            String street = EMStreetTextField.getText().trim();
+            String building = EMBuildingTextField.getText().trim();
+            String city = EMCityTextField.getText().trim();
+            String province = EMProvinceTextField.getText().trim();
+            String zip = EMZIPTextField.getText().trim();
+
+            // Government IDs
+            String sss = EMSSSTextField.getText().trim();
+            String tin = EMTINTextField.getText().trim();
+            String philhealth = EMPhilHealthTextField.getText().trim();
+            String pagibig = EMPagIBIGTextField.getText().trim();
+
+            // Salary
+            double basicSalary = Double.parseDouble(EMBasicSalaryTextField.getText().trim());
+
+            // Combobox selections
+            String departmentName = EMdepartmentComboBox.getSelectedItem().toString();
+            String positionName = EMpositionComboBox.getSelectedItem().toString();
+            String employmentStatus = EMemploymentStatusComboBox.getSelectedItem().toString();
+
+            // 2. Map combobox selections to IDs (use utility or service to convert names to IDs)
+            int departmentId = EntityIdResolverUtil.getDepartmentIdByName(EMdepartmentComboBox.getSelectedItem().toString());
+            int positionId = EntityIdResolverUtil.getPositionIdByName(EMpositionComboBox.getSelectedItem().toString());
+            int statusId = EntityIdResolverUtil.getStatusIdByName(EMemploymentStatusComboBox.getSelectedItem().toString());
+
+            // 3. Build model objects
+            EmployeeEntity emp = new EmployeeEntity();
+            emp.setEmployeeId(employeeId);
+            emp.setFirstName(firstName);
+            emp.setLastName(lastName);
+            emp.setPhoneNumber(Integer.parseInt(phone));
+            emp.setBirthday(sqlBirthDate);
+            emp.setDepartmentId(departmentId);
+            emp.setPositionId(positionId);
+            emp.setStatusId(statusId);
+            emp.setAddressId(existingAddressId);
+            emp.setGovernmentId(existGovernmentId);
+            emp.setSalaryId(existSalaryId);
+            emp.setSupervisorId(existSupervisorId);
+
+
+            Address address = new Address();
+            address.setAddress_id(existingAddressId);
+            address.setStreet(street);
+            address.setBuilding(building);
+            address.setCity(city);
+            address.setProvince(province);
+            address.setZipcode(zip);
+
+            GovernmentID govId = new GovernmentID();
+            govId.setGovernmentId(existGovernmentId);
+            govId.setEmployeeId(employeeId);
+            govId.setSssId(sss);
+            govId.setTinId(tin);
+            govId.setPhilhealthId(philhealth);
+            govId.setPagibigId(pagibig);
+
+            Salary salary = new Salary();
+            salary.setSalaryId(existSalaryId);
+            salary.setBasicSalary(BigDecimal.valueOf(basicSalary));
+
+            // 4. Call service to update the employee
+            employeeService.updateEmployee(address, govId, salary,emp);
+
+            JOptionPane.showMessageDialog(this, "Employee updated successfully.");
+            loadEmployeeList();
+        } catch (HeadlessException | NumberFormatException | SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error updating employee: " + ex.getMessage());
+        }
+      
+    }//GEN-LAST:event_EMEditButtonActionPerformed
     private void PSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                                                          
         String searchText = PSearchTextField.getText().trim();
         if (searchText.isEmpty()) {
