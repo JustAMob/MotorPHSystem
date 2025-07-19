@@ -38,7 +38,6 @@ public class Login extends javax.swing.JFrame {
         WelcomeBack = new javax.swing.JPanel();
         Welcome = new javax.swing.JLabel();
         LoginWithGoogle = new javax.swing.JPanel();
-        GoogleLogin = new javax.swing.JButton();
         CredentialBars = new javax.swing.JPanel();
         EmailAdd = new javax.swing.JPanel();
         EmpIDTextField = new javax.swing.JTextField();
@@ -78,28 +77,15 @@ public class Login extends javax.swing.JFrame {
         );
         WelcomeBackLayout.setVerticalGroup(
             WelcomeBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WelcomeBackLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeBackLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         LogPanel.add(WelcomeBack);
 
         LoginWithGoogle.setPreferredSize(new java.awt.Dimension(300, 50));
-
-        GoogleLogin.setText("Log In with Google");
-        GoogleLogin.setToolTipText("");
-        GoogleLogin.setIconTextGap(10);
-        GoogleLogin.setMargin(new java.awt.Insets(2, 15, 4, 15));
-        GoogleLogin.setPreferredSize(new java.awt.Dimension(250, 30));
-        GoogleLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GoogleLoginActionPerformed(evt);
-            }
-        });
-        LoginWithGoogle.add(GoogleLogin);
-
         LogPanel.add(LoginWithGoogle);
 
         CredentialBars.setPreferredSize(new java.awt.Dimension(400, 120));
@@ -187,10 +173,6 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void GoogleLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoogleLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GoogleLoginActionPerformed
 
     private void EmpIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextFieldActionPerformed
         // TODO add your handling code here:
@@ -282,7 +264,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel EmailAddLabel;
     private javax.swing.JTextField EmpIDTextField;
     private javax.swing.JLabel ForgotPassword;
-    private javax.swing.JButton GoogleLogin;
     private javax.swing.JPanel Login;
     private javax.swing.JButton LoginButton;
     private javax.swing.JPanel LoginWithGoogle;

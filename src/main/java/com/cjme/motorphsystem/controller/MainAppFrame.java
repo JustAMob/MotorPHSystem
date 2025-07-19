@@ -143,6 +143,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         initAttendanceTable(); 
         addAttendanceListeners();
         
+        hideNonFunctionalAreasAppFrame();
+        
         try {
             attendanceDAO = new AttendanceDAO();
         } catch (SQLException e) {
@@ -153,6 +155,15 @@ public final class MainAppFrame extends javax.swing.JFrame {
             // Optionally disable attendance-related features if DAO fails
         }
         
+    }
+    
+    private void hideNonFunctionalAreasAppFrame(){
+    
+        EIApplyForLeaveButton.setVisible(false);
+        ARecordOvertimeButton.setVisible(false);
+        RAEmployeeLabel.setVisible(false);
+        REmployeeSearchTextField.setVisible(false);
+
     }
     
     
