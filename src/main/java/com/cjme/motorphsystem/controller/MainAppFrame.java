@@ -177,6 +177,8 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMHourlyRateTextField.setVisible(false);
         EMGSMRLabel.setVisible(false);
         EMHRLabel.setVisible(false);
+        
+        EIWelcomeNameLabel.setVisible(false);
 
     }
     
@@ -914,7 +916,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EmployeeInfoPanel.setPreferredSize(new java.awt.Dimension(1000, 630));
 
         EIWelcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        EIWelcomeLabel.setText("Welcome,");
+        EIWelcomeLabel.setText("Welcome");
 
         EIWelcomeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         EIWelcomeNameLabel.setText("Name");
