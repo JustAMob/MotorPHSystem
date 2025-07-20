@@ -179,6 +179,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         EMHRLabel.setVisible(false);
         
         EIWelcomeNameLabel.setVisible(false);
+        AAddTimeButton.setVisible(false);
 
     }
     
