@@ -161,8 +161,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
     
         EIApplyForLeaveButton.setVisible(false);
         ARecordOvertimeButton.setVisible(false);
-        RAEmployeeLabel.setVisible(false);
-        REmployeeSearchTextField.setVisible(false);
+  
         
         EMEditButton.setVisible(false);
         EMSaveButton.setVisible(false);
@@ -180,6 +179,7 @@ public final class MainAppFrame extends javax.swing.JFrame {
         
         EIWelcomeNameLabel.setVisible(false);
         AAddTimeButton.setVisible(false);
+     
 
     }
     
@@ -869,19 +869,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
         RPayrollTable = new javax.swing.JTable();
         RPayrollBottomPanel = new javax.swing.JPanel();
         RPExportPDFButton = new javax.swing.JButton();
-        RAttendanceReportsTab = new javax.swing.JPanel();
-        RAttendanceTopPanel = new javax.swing.JPanel();
-        RAStartDateLabel = new javax.swing.JLabel();
-        RAEndDateLabel = new javax.swing.JLabel();
-        RAEmployeeLabel = new javax.swing.JLabel();
-        RAGenerateReportButton = new javax.swing.JButton();
-        RAStartDateChooser = new com.toedter.calendar.JDateChooser();
-        RAEndDateChooser = new com.toedter.calendar.JDateChooser();
-        REmployeeSearchTextField = new javax.swing.JTextField();
-        RAttendanceScrollPane = new javax.swing.JScrollPane();
-        RAttendanceTable = new javax.swing.JTable();
-        RAttendanceBottomPanel = new javax.swing.JPanel();
-        RAExportPDFButton = new javax.swing.JButton();
         LeaveManagementPanel = new javax.swing.JPanel();
         LMTopPanel = new javax.swing.JPanel();
         LMFilterLabel = new javax.swing.JLabel();
@@ -2395,115 +2382,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
 
         ReportsTabbedPane.addTab("Payroll Report", RPayrollReportsTab);
 
-        RAStartDateLabel.setText("Start Date:");
-
-        RAEndDateLabel.setText("End Date:");
-
-        RAEmployeeLabel.setText("Employee:");
-
-        RAGenerateReportButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        RAGenerateReportButton.setText("Generate Report");
-
-        REmployeeSearchTextField.setText("jTextField1");
-
-        javax.swing.GroupLayout RAttendanceTopPanelLayout = new javax.swing.GroupLayout(RAttendanceTopPanel);
-        RAttendanceTopPanel.setLayout(RAttendanceTopPanelLayout);
-        RAttendanceTopPanelLayout.setHorizontalGroup(
-            RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RAttendanceTopPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RAStartDateLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAEndDateLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAEndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(RAEmployeeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(REmployeeSearchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                .addGap(96, 96, 96)
-                .addComponent(RAGenerateReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        RAttendanceTopPanelLayout.setVerticalGroup(
-            RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RAttendanceTopPanelLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(RAEndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RAStartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(RAttendanceTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(RAStartDateLabel)
-                        .addComponent(RAEndDateLabel)
-                        .addComponent(RAEmployeeLabel)
-                        .addComponent(RAGenerateReportButton)
-                        .addComponent(REmployeeSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-
-        RAttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Employee ID", "Employee Name", "Department", "Total Days Worked", "Total Absences", "Total Lates (min/hrs)", "Total Overtime (hrs)", "Total Leaves Taken"
-            }
-        ));
-        RAttendanceScrollPane.setViewportView(RAttendanceTable);
-
-        RAExportPDFButton.setText("Export to PDF");
-        RAExportPDFButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAExportPDFButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout RAttendanceBottomPanelLayout = new javax.swing.GroupLayout(RAttendanceBottomPanel);
-        RAttendanceBottomPanel.setLayout(RAttendanceBottomPanelLayout);
-        RAttendanceBottomPanelLayout.setHorizontalGroup(
-            RAttendanceBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RAttendanceBottomPanelLayout.createSequentialGroup()
-                .addGap(0, 253, Short.MAX_VALUE)
-                .addComponent(RAExportPDFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        RAttendanceBottomPanelLayout.setVerticalGroup(
-            RAttendanceBottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RAttendanceBottomPanelLayout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(RAExportPDFButton))
-        );
-
-        javax.swing.GroupLayout RAttendanceReportsTabLayout = new javax.swing.GroupLayout(RAttendanceReportsTab);
-        RAttendanceReportsTab.setLayout(RAttendanceReportsTabLayout);
-        RAttendanceReportsTabLayout.setHorizontalGroup(
-            RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RAttendanceScrollPane)
-                    .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
-                        .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        RAttendanceReportsTabLayout.setVerticalGroup(
-            RAttendanceReportsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RAttendanceReportsTabLayout.createSequentialGroup()
-                .addComponent(RAttendanceTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAttendanceScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RAttendanceBottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        ReportsTabbedPane.addTab("Attendance Report", RAttendanceReportsTab);
-
         javax.swing.GroupLayout ReportsSubPanelLayout = new javax.swing.GroupLayout(ReportsSubPanel);
         ReportsSubPanel.setLayout(ReportsSubPanelLayout);
         ReportsSubPanelLayout.setHorizontalGroup(
@@ -2957,10 +2835,6 @@ public final class MainAppFrame extends javax.swing.JFrame {
     private void LMEmployeeNameIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMEmployeeNameIDTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LMEmployeeNameIDTextFieldActionPerformed
-
-    private void RAExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAExportPDFButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RAExportPDFButtonActionPerformed
 
     private void RPExportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPExportPDFButtonActionPerformed
         try {
@@ -3864,19 +3738,6 @@ private void EMpopulateComboBoxes() {
     private javax.swing.JPanel PayrollEarningsPanel;
     private javax.swing.JPanel PayrollPanel;
     private javax.swing.JPanel PayrollTopPanel;
-    private javax.swing.JLabel RAEmployeeLabel;
-    private com.toedter.calendar.JDateChooser RAEndDateChooser;
-    private javax.swing.JLabel RAEndDateLabel;
-    private javax.swing.JButton RAExportPDFButton;
-    private javax.swing.JButton RAGenerateReportButton;
-    private com.toedter.calendar.JDateChooser RAStartDateChooser;
-    private javax.swing.JLabel RAStartDateLabel;
-    private javax.swing.JPanel RAttendanceBottomPanel;
-    private javax.swing.JPanel RAttendanceReportsTab;
-    private javax.swing.JScrollPane RAttendanceScrollPane;
-    private javax.swing.JTable RAttendanceTable;
-    private javax.swing.JPanel RAttendanceTopPanel;
-    private javax.swing.JTextField REmployeeSearchTextField;
     private javax.swing.JComboBox<String> RPDepartmentComboBox;
     private javax.swing.JLabel RPDepartmentLabel;
     private javax.swing.JButton RPExportPDFButton;
